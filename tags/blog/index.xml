@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>blog on 帰宅部</title>
+    <link>https://ao2233.xyz/tags/blog/</link>
+    <description>Recent content in blog on 帰宅部</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>AO</copyright>
+    <lastBuildDate>Tue, 07 Dec 2021 21:13:06 +0000</lastBuildDate><atom:link href="https://ao2233.xyz/tags/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Web 样式测试</title>
+      <link>https://ao2233.xyz/posts/style_test/</link>
+      <pubDate>Tue, 07 Dec 2021 21:13:06 +0000</pubDate>
+      
+      <guid>https://ao2233.xyz/posts/style_test/</guid>
+      <description>标题 and (提示栏)
+一级标题 二级标题 三级标题 四级标题 五级标题 六级标题 级数越大，间距越大
+嵌套效果
+Unicode
+🥺 漢 字 の 部 首 画 数 読 み 方 筆 順 適 湜 ① 葮 焱 暒 妏 雫 翱翔 〆 ㋿ ㍻ ｽｷ
+(*ゝω・)ﾉ♥♥♥ ･ﾟ:*:ﾟ
+code
+1// CPP 2#include &amp;lt;iostream&amp;gt; 3using namespace std; 4int main(){ 5	cout&amp;lt;&amp;lt;&amp;#34;⑨&amp;#34;&amp;lt;&amp;lt;endl; 6	return 0; 7} markdown 标记测试
+間違った 斜体 加粗 超链接 Tex -&amp;gt; $\LaTeX$
+id name level 0 ao 99 特殊样式</description>
+    </item>
+    
+  </channel>
+</rss>

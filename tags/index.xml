@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on 帰宅部</title>
+    <link>https://ao2233.xyz/tags/</link>
+    <description>Recent content in Tags on 帰宅部</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>AO</copyright>
+    <lastBuildDate>Sun, 19 Dec 2021 19:12:01 +0800</lastBuildDate><atom:link href="https://ao2233.xyz/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Windows</title>
+      <link>https://ao2233.xyz/tags/windows/</link>
+      <pubDate>Sun, 19 Dec 2021 19:12:01 +0800</pubDate>
+      
+      <guid>https://ao2233.xyz/tags/windows/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>blog</title>
+      <link>https://ao2233.xyz/tags/blog/</link>
+      <pubDate>Tue, 07 Dec 2021 21:13:06 +0000</pubDate>
+      
+      <guid>https://ao2233.xyz/tags/blog/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

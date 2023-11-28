@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Windows on 帰宅部</title>
+    <link>https://ao2233.xyz/tags/windows/</link>
+    <description>Recent content in Windows on 帰宅部</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>AO</copyright>
+    <lastBuildDate>Sun, 19 Dec 2021 19:12:01 +0800</lastBuildDate><atom:link href="https://ao2233.xyz/tags/windows/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Windows KMS激活</title>
+      <link>https://ao2233.xyz/posts/windows-active/</link>
+      <pubDate>Sun, 19 Dec 2021 19:12:01 +0800</pubDate>
+      
+      <guid>https://ao2233.xyz/posts/windows-active/</guid>
+      <description>Windows KMS 策略 vlmcsd
+docker-vlmcsd
+服务器（推荐 docker or WSL）
+Key
+1$ which windows-active 2windows-active: aliased to /home/ao/kms/binaries/Linux/intel/static/vlmcsd-x64-musl-static 3 4$ which windows-active-test 5windows-active-test: aliased to /home/ao/kms/binaries/Linux/intel/static/vlmcs-x64-musl-static 客户端
+1#requires -runasadministrator 2[cmdletbinding()] 3param( 4 [Parameter(Position = 1, Mandatory = $true, HelpMessage=&amp;#39;set WSL IP,default port 1688,Run as Admin&amp;#39;)] 5 [String] 6 $ip 7) 8# 删除激活信息 9# slmgr.vbs -upk; 10# 专业工作站 key 11# slmgr.vbs -ipk NRG8B-VKK3Q-CXVCJ-9G2XF-6Q84J; 12# 企业版 key 13# slmgr.vbs -ipk NPPR9-FWDCX-D2C8J-H872K-2YT43; 14slmgr.vbs -skms $ip; 15slmgr.</description>
+    </item>
+    
+    <item>
+      <title>Windows 解除占用</title>
+      <link>https://ao2233.xyz/posts/release_occupancy/</link>
+      <pubDate>Thu, 16 Dec 2021 20:55:58 +0800</pubDate>
+      
+      <guid>https://ao2233.xyz/posts/release_occupancy/</guid>
+      <description>Windows常见占用
+文件被使用，无法进行移动删除操作。 a. 资源管理器，句柄查找，结束进程即可。
+b. Process Explorer 库与句柄查找
+移动设备被占用，无法进行插拔操作。 事件查看器，查看占用资源的进程即可。
+端口占用 HyperV有大量保留端口，可能会与IDEA等软件发生冲突。也有可能代理软件进程重复运行或者占用了常用端口导致。
+1netstat -aon | findstr &amp;#34;{port_id}&amp;#34; 2# kill 即可 3# for IDEA 4sudo net stop winnat; # issue 讨论的解决方案，可能会使WSL无网络 5sudo net start winnat; 6# 查看端口情况 7netsh interface ipv4 show excludedportrange protocol=tcp 8netsh int ipv4 show dynamicport tcp </description>
+    </item>
+    
+  </channel>
+</rss>

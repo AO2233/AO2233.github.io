@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>帰宅部</title>
+    <link>https://ao2233.xyz/</link>
+    <description>Recent content on 帰宅部</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>AO</copyright>
+    <lastBuildDate>Fri, 09 Dec 2022 19:22:18 +0800</lastBuildDate><atom:link href="https://ao2233.xyz/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>我的Windows不可能这么的卡顿</title>
+      <link>https://ao2233.xyz/posts/fixbug/</link>
+      <pubDate>Fri, 09 Dec 2022 19:22:18 +0800</pubDate>
+      
+      <guid>https://ao2233.xyz/posts/fixbug/</guid>
+      <description>Bug 发现 前些天，在bilibili的首页刷到一个名为《修BUG的第一天 我给微软的 PowerToys 修了一个 BUG》的视频。恰好Powertoys这款软件我也在使用，于是便点进去看了看视频，是一个文字识别输出方面的Bug，但视频作者过于自信的语气，加之“标题的第一天”就是没有C#或者大型项目开发经验的代名词，对于他代码，我怀疑有大问题。
+第二天早上起来，测试相关模块功能，果然，只是从一个错误转移成了另一个错误。
+Bug 解释 Using TextExtractor to extract Chinese always contains spaces
+最初的bug源于此，是由于中文的文字图片识别引擎返回的内容是以字为单位的，英文部分则是以词为单位。最初的代码在所有的识别单位中添加一个 （空格）作为间隔。如此便导致了中文汉字间包含错误空格。
+[TextExtractor] Add space between CJK words and non-CJK
+错误修复示范：遍历判断单位是否CJK文字，如果是则不加空格，不是的话就前后各加一个空格。也就是从这 里 是 AO 的 blog ， 你 好 ！ 变成了这里是 AO 的 blog ， 你好 ！。
+而实际正确的应该是这里是AO的blog，你好！，英文和中文之间最好没有空格，标点也不应该有空格。这里就有一个新问题，标点怎么涵盖？既然是CJK，那么日语和韩语的情况呢？韩文引擎表现不同，非单字识别，测试日文如下：
+1そ の 後 、 2 人 の 住 む 関東 は 本格的 に 梅雨入 り し 、 雨 の 日 の 午前 た け の さ さ や か な 交流 が は し ま る 。 显然，日语的假名并没有算到CJK words里。观察一下源代码：</description>
+    </item>
+    
+    <item>
+      <title>生日快乐ヾ(≧▽≦*)o</title>
+      <link>https://ao2233.xyz/posts/hb/</link>
+      <pubDate>Thu, 28 Apr 2022 00:18:27 +0800</pubDate>
+      
+      <guid>https://ao2233.xyz/posts/hb/</guid>
+      <description>祝你生日快乐！
+即使市教委的小马走失了，即使前路依旧黑暗，即使不如意事常八九,可与人言无二三，
+也不妨碍今天是个开心的日子👀
+谜之选择
+A. 妙趣横生的老头环与宫崎老贼
+B. 治愈人心的GalGame
+C. 养生种田的咲稻姬
+D. 你跟我说这些 我也不懂啊 -&amp;gt; 271
+E. 其他
+发送codetoUP，中午12时开q(≧▽≦q)</description>
+    </item>
+    
+    <item>
+      <title>MinGW-w64</title>
+      <link>https://ao2233.xyz/posts/mingw-w64/</link>
+      <pubDate>Sun, 13 Mar 2022 18:45:08 +0800</pubDate>
+      
+      <guid>https://ao2233.xyz/posts/mingw-w64/</guid>
+      <description>Mingw-w64项目包含对GCC、GNU Binutils的Windows版本的移植（汇编器、链接器、库文件管理器），一套自由可分发的Windows特定的头文件与静态导入库以使用Windows API，一个Windows本地版本的GNU的调试器，以及其它多种工具。
+维护着一个类似于pthreads-win32的winpthreads包装库（libwinpthread）, 实现了C++11线程库&amp;lt;thread&amp;gt;, &amp;lt;future&amp;gt;, &amp;lt;mutex&amp;gt;。
+各种版本 1MinGW64/32 msvcrt libstdc++ gcc 2 3UCRT64 UCRT libstdc++ gcc 4 5CLANG64 UCRT libc++ clang MSVCRT (Microsoft Visual C++ Runtime) is available by default on all Microsoft Windows versions, but due to backwards compatibility issues is stuck in the past, not C99 compatible and is missing some features.Binaries linked with MSVCRT should not be mixed with UCRT ones because the internal structures and data types are different.</description>
+    </item>
+    
+    <item>
+      <title>Windows KMS激活</title>
+      <link>https://ao2233.xyz/posts/windows-active/</link>
+      <pubDate>Sun, 19 Dec 2021 19:12:01 +0800</pubDate>
+      
+      <guid>https://ao2233.xyz/posts/windows-active/</guid>
+      <description>Windows KMS 策略 vlmcsd
+docker-vlmcsd
+服务器（推荐 docker or WSL）
+Key
+1$ which windows-active 2windows-active: aliased to /home/ao/kms/binaries/Linux/intel/static/vlmcsd-x64-musl-static 3 4$ which windows-active-test 5windows-active-test: aliased to /home/ao/kms/binaries/Linux/intel/static/vlmcs-x64-musl-static 客户端
+1#requires -runasadministrator 2[cmdletbinding()] 3param( 4 [Parameter(Position = 1, Mandatory = $true, HelpMessage=&amp;#39;set WSL IP,default port 1688,Run as Admin&amp;#39;)] 5 [String] 6 $ip 7) 8# 删除激活信息 9# slmgr.vbs -upk; 10# 专业工作站 key 11# slmgr.vbs -ipk NRG8B-VKK3Q-CXVCJ-9G2XF-6Q84J; 12# 企业版 key 13# slmgr.vbs -ipk NPPR9-FWDCX-D2C8J-H872K-2YT43; 14slmgr.vbs -skms $ip; 15slmgr.</description>
+    </item>
+    
+    <item>
+      <title>Windows 解除占用</title>
+      <link>https://ao2233.xyz/posts/release_occupancy/</link>
+      <pubDate>Thu, 16 Dec 2021 20:55:58 +0800</pubDate>
+      
+      <guid>https://ao2233.xyz/posts/release_occupancy/</guid>
+      <description>Windows常见占用
+文件被使用，无法进行移动删除操作。 a. 资源管理器，句柄查找，结束进程即可。
+b. Process Explorer 库与句柄查找
+移动设备被占用，无法进行插拔操作。 事件查看器，查看占用资源的进程即可。
+端口占用 HyperV有大量保留端口，可能会与IDEA等软件发生冲突。也有可能代理软件进程重复运行或者占用了常用端口导致。
+1netstat -aon | findstr &amp;#34;{port_id}&amp;#34; 2# kill 即可 3# for IDEA 4sudo net stop winnat; # issue 讨论的解决方案，可能会使WSL无网络 5sudo net start winnat; 6# 查看端口情况 7netsh interface ipv4 show excludedportrange protocol=tcp 8netsh int ipv4 show dynamicport tcp </description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>https://ao2233.xyz/about/</link>
+      <pubDate>Fri, 10 Dec 2021 10:45:23 +0800</pubDate>
+      
+      <guid>https://ao2233.xyz/about/</guid>
+      <description>仕事を探している → MY résumé PAGE
+Address
+/home/ao
+推し
+Angel Beats </description>
+    </item>
+    
+    <item>
+      <title>学术小飞机</title>
+      <link>https://ao2233.xyz/posts/ss/</link>
+      <pubDate>Fri, 10 Dec 2021 09:51:27 +0800</pubDate>
+      
+      <guid>https://ao2233.xyz/posts/ss/</guid>
+      <description>都什么年代，还在用传统飞机。
+主流方案：
+Vless + Websocket + TLS + 端口转发
+将访问域名某路径的流量转发到内部端口走V2ray服务后，从网页端口发回TLS加密的Websocket响应。到达客户端后由客户端解码获取data。
+V2ray + Caddy2
+1偷懒脚本 2system: ubuntu 22.04 3script: https://github.com/crazypeace/V2ray_VLESS_WebSocket_TLS_CaddyV2 4cf: DNS配置见图，理论上开启泛播性能能好 5namecheaper: DNS配置见图 Cloudflare 优选 指定解析Cloudflare到一个速度最快的ip，优选工具。
+1./CloudflareST -n 1000 -url https://speed.cloudflare.com/__down\?bytes\=200000000 </description>
+    </item>
+    
+    <item>
+      <title>Web 样式测试</title>
+      <link>https://ao2233.xyz/posts/style_test/</link>
+      <pubDate>Tue, 07 Dec 2021 21:13:06 +0000</pubDate>
+      
+      <guid>https://ao2233.xyz/posts/style_test/</guid>
+      <description>标题 and (提示栏)
+一级标题 二级标题 三级标题 四级标题 五级标题 六级标题 级数越大，间距越大
+嵌套效果
+Unicode
+🥺 漢 字 の 部 首 画 数 読 み 方 筆 順 適 湜 ① 葮 焱 暒 妏 雫 翱翔 〆 ㋿ ㍻ ｽｷ
+(*ゝω・)ﾉ♥♥♥ ･ﾟ:*:ﾟ
+code
+1// CPP 2#include &amp;lt;iostream&amp;gt; 3using namespace std; 4int main(){ 5	cout&amp;lt;&amp;lt;&amp;#34;⑨&amp;#34;&amp;lt;&amp;lt;endl; 6	return 0; 7} markdown 标记测试
+間違った 斜体 加粗 超链接 Tex -&amp;gt; $\LaTeX$
+id name level 0 ao 99 特殊样式</description>
+    </item>
+    
+  </channel>
+</rss>

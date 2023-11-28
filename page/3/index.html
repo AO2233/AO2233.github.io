@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta name="generator" content="Hugo 0.119.0">
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	
+	<title>帰宅部 | Home </title><link rel="icon" type="image/png" href=https://ao2233.xyz/favicon.ico /><meta id="viewport" name="viewport">
+
+<script type="text/javascript">
+
+(function(){
+
+  function apply_viewport(){
+    
+      var ww = window.screen.width;
+      var mw = 680; 
+      var ratio =  ww / mw; 
+      var viewport_meta_tag = document.getElementById('viewport');
+      if( ww < mw){ 
+        viewport_meta_tag.setAttribute('content', 'initial-scale=' + ratio + ', width=device-width');
+      }
+      else { 
+        viewport_meta_tag.setAttribute('content', 'initial-scale=1.0, width=device-width');
+      }
+    
+  }
+
+  
+  window.addEventListener('resize', function(){
+    apply_viewport();
+  });
+
+  apply_viewport();
+}());
+</script>
+
+	
+	<script src="https://ao2233.xyz/js/feather.min.js"></script>
+	
+	
+    
+
+	
+	
+	
+	
+	
+	<link href="https://ao2233.xyz/css/fonts.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="https://ao2233.xyz/css/main.css" />
+	<link rel="stylesheet" href="https://ao2233.xyz/aplayer/APlayer.min.css" >
+	<link rel="stylesheet" href="https://ao2233.xyz/videojs/video-js.min.css" >
+
+	<script src="https://ao2233.xyz/aplayer/APlayer.min.js"></script>
+	<script src="https://ao2233.xyz/dplayer/DPlayer.min.js"></script>
+	<script src="https://ao2233.xyz/videojs/video.min.js"></script>
+	<script src="https://ao2233.xyz/js/pdfobject.min.js"></script>
+
+	<link rel="stylesheet" href="https://ao2233.xyz/js/katex.min.css" crossorigin="anonymous">
+	<script defer src="https://ao2233.xyz/js/katex.min.js" crossorigin="anonymous"></script>
+	<script defer src="https://ao2233.xyz/js/auto-render.min.js" crossorigin="anonymous"  onload="renderMathInElement(document.body);"></script>
+
+	
+	<script>
+		document.addEventListener("DOMContentLoaded", function() {
+			renderMathInElement(document.body, {
+				delimiters: [
+				{left: "$$", right: "$$", display: true},
+				{left: "\\[", right: "\\]", display: true},
+				{left: "$", right: "$", display: false},
+				{left: "\\(", right: "\\)", display: false},
+				]
+			});
+		});
+	</script>
+
+	<script src="https://ao2233.xyz/js/mermaid.min.js"></script>
+		<link id="darkModeStyle" rel="stylesheet" type="text/css" href="https://ao2233.xyz/css/dark.css"media="(prefers-color-scheme: dark)"  />
+		<script>
+		const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
+		var config = {
+			startOnLoad:true,
+			flowchart:{
+			useMaxWidth:true,
+			htmlLabels:true,
+			curve:'cardinal',
+			},
+			securityLevel:'loose',
+		};
+		
+		var a=0;
+		function darkModeHandler() {
+			if (mediaQuery.matches) {
+				mermaid.initialize({
+					
+					theme: 'dark',
+					config
+				});
+				if (a>0){
+					document.location.reload(false);
+				}
+				a+=1;
+				
+			} else {
+				mermaid.initialize({
+					
+					theme: 'base',
+					config
+				});
+				if (a>0){
+					document.location.reload(false);
+				}
+				a+=1;
+				
+			}
+		}
+
+		darkModeHandler()
+		mediaQuery.addListener(darkModeHandler)
+
+		</script>
+		
+</head>
+
+	<body>
+		<div class="content">
+			<header>
+	<div class="main">
+		<a href="https://ao2233.xyz/">帰宅部</a>
+		<link rel="icon" type="image/png" href=https://ao2233.xyz/favicon.ico />
+	</div>
+	<nav>
+		
+		<a href="/" class="sub-main">Home</a>
+		
+		<a href="/posts" class="sub-main">All posts</a>
+		
+		<a href="/about" class="sub-main">About</a>
+		
+
+		
+
+	</nav>
+</header>
+
+			<main class="list">
+				<div class="site-description"><p>さらば、すべてのエヴァンゲリオン</p></div>
+
+				
+				
+				
+				
+				<section class="list-item">
+					<h1 class="title">MinGW-w64</a></h1>
+					<time>Mar 13, 2022</time> 
+					<p><strong>Mingw-w64</strong>项目包含对<a href="https://zh.wikipedia.org/wiki/GCC">GCC</a>、<a href="https://zh.wikipedia.org/wiki/GNU_Binutils">GNU Binutils</a>的Windows版本的<a href="https://zh.wikipedia.org/wiki/%E7%A7%BB%E6%A4%8D_(%E8%BB%9F%E9%AB%94)">移植</a>（<a href="https://zh.wikipedia.org/wiki/%E6%B1%87%E7%BC%96%E5%99%A8">汇编器</a>、<a href="https://zh.wikipedia.org/wiki/%E9%93%BE%E6%8E%A5%E5%99%A8">链接器</a>、<a href="https://zh.wikipedia.org/w/index.php?title=%E5%BA%93%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8&amp;action=edit&amp;redlink=1">库文件管理器</a>），一套自由可分发的Windows特定的<a href="https://zh.wikipedia.org/wiki/%E5%A4%B4%E6%96%87%E4%BB%B6">头文件</a>与<a href="https://zh.wikipedia.org/wiki/%E9%9D%99%E6%80%81%E5%BA%93">静态导入库</a>以使用<a href="https://zh.wikipedia.org/wiki/Windows_API">Windows API</a>，一个Windows本地版本的<a href="https://zh.wikipedia.org/wiki/GNU%E8%A8%88%E5%8A%83">GNU</a>的<a href="https://zh.wikipedia.org/wiki/GNU%E4%BE%A6%E9%94%99%E5%99%A8">调试器</a>，以及其它多种工具。</p>
+<p>维护着一个类似于<code>pthreads-win32</code>的<code>winpthreads</code><a href="https://zh.wikipedia.org/wiki/%E5%8C%85%E8%A3%85%E5%BA%93">包装库</a>（<code>libwinpthread</code>）, 实现了C++11线程库<code>&lt;thread&gt;</code>, <code>&lt;future&gt;</code>, <code>&lt;mutex&gt;</code>。</p>
+<h2 id="各种版本">各种版本</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">MinGW64/32 msvcrt libstdc++ gcc
+</span></span><span class="line"><span class="ln">2</span><span class="cl">
+</span></span><span class="line"><span class="ln">3</span><span class="cl">UCRT64 UCRT libstdc++ gcc
+</span></span><span class="line"><span class="ln">4</span><span class="cl">
+</span></span><span class="line"><span class="ln">5</span><span class="cl">CLANG64 UCRT libc++ clang
+</span></span></code></pre></div><p><a href="https://www.msys2.org/docs/environments/"><img src="/media/pic/mingw/msys2.png" alt="msys2"></a></p>
+<p><strong>MSVCRT</strong> (Microsoft Visual C++ Runtime) is available by default on all Microsoft Windows versions, but due to backwards compatibility issues is stuck in the past, not C99 compatible and is missing some features.<code>Binaries linked with MSVCRT should not be mixed with UCRT ones because the internal structures and data types are different. (More strictly, object files or static libraries built for different targets should not be mixed. DLLs built for different CRTs can be mixed as long as they do not share CRT objects).</code></p>
+<p><strong>UCRT</strong> only ships by default on Windows 10 and for older versions you have to provide it yourself or depend on the user having it installed.</p>
+<p><strong>MSVCRT</strong> 开箱即用
+<strong>UCRT</strong> (MSVC uses UCRT by default) 但是只支持Windows10以上的系统，否则需要自行安装运行时</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="c1"># 可能带libwinpthread-1.dll的动态库 </span>
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="c1"># how to make winpthread static ? -&gt;</span>
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="c1"># I think I get it... I need libwinpthread-1.dll only if I compile with static libstdc++,</span>
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="c1"># meaning in my environment (arch and official repositories) static version of libstdc++ depends on shared winpthread. </span>
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl"><span class="c1"># To get around this I probably need to compile mingw-w64 myself.</span>
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">g++ .<span class="se">\t</span>est.cpp -I some_path<span class="se">\i</span>nclude -O3 -Wall -static -std<span class="o">=</span>c++17 -o a.exe
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="c1"># powershell &#34;-Wl,--no-needed&#34;</span>
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl">
+</span></span><span class="line"><span class="ln">10</span><span class="cl">clang++ .<span class="se">\t</span>est.cpp -I some_path<span class="se">\i</span>nclude -O3 -Wall -static -std<span class="o">=</span>c++17 -o a.exe
+</span></span></code></pre></div><p><img src="/media/pic/mingw/p1.png" alt="p1"></p>
+<p><img src="/media/pic/mingw/p2.png" alt="p2"></p>
+<h2 id="mingw-mingw64-cygwin-msys2">MinGW MinGW64 Cygwin msys2</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">msys2 Cygwin魔改，arch模式 pacman包管理
+</span></span><span class="line"><span class="ln">2</span><span class="cl">Cywin POSIX系统的模拟 系统内gcc编译的软件需要配 cywin1.dll 内含 mingw64 套件
+</span></span><span class="line"><span class="ln">3</span><span class="cl">MinGW64 Windows下的GNU编译器 自带包装库翻译用 依赖如上节（系统自带开箱即用）
+</span></span><span class="line"><span class="ln">4</span><span class="cl">MinGW MinGW64的前身，接口有区别
+</span></span></code></pre></div><p><img src="/media/pic/mingw/cygwin1.png" alt="cygwin1"></p>
+<h2 id="msvchttpsdevblogsmicrosoftcomcppblogc11-and-c17-standard-support-arriving-in-msvc"><a href="https://devblogs.microsoft.com/cppblog/c11-and-c17-standard-support-arriving-in-msvc/">MSVC</a></h2>
+<blockquote>
+<p>Variable Length Arrays</p>
+</blockquote>
+<p>Astute readers will note that VLAs are also not supported. Variable length arrays are generally less efficient than comparable fixed sized arrays, and generally inefficient compared to equivalent <code>malloc()</code>, when safely and securely implemented. VLAs provide attack vectors comparable to those of the infamous <code>gets()</code> — deprecated and destined to removal — for opportunities of “shifting the stack” and other exploits. For these reasons we intend not to support VLAs as an optional feature in C11.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="ln">1</span><span class="cl"><span class="cp"># 替代方法
+</span></span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="cp"></span><span class="kt">int</span> <span class="o">*</span><span class="n">array</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span>
+</span></span></code></pre></div><p>总之<code>C++</code>和<code>C</code>的标准支持情况不好，不推荐。<code>C#</code>还行<code>C++</code>属实折磨，工程的配置文件<code>.sln</code>也是要命。</p>
+
+				</section>
+				
+				
+
+<ul class="pagination">
+	<span class="page-item page-prev">
+	
+    <a href="/page/2/" class="page-link" aria-label="Previous"><span aria-hidden="true">← Prev</span></a>
+	
+	</span>
+	<span class="page-item page-next">
+	
+    <a href="/page/4/" class="page-link" aria-label="Next"><span aria-hidden="true">Next →</span></a>
+	
+	</span>
+</ul>
+
+
+			</main>
+			<footer class="footer">
+<hr><a class="soc" href="https://github.com/AO2233" title="GitHub"><i data-feather="github"></i></a>
+<a class="soc" href="https://gitlab.com/AO2233" title="GitLab"><i data-feather="gitlab"></i></a>
+<a class="soc" href="https://twitter.com/u604b" title="X"><i data-feather="twitter"></i></a>
+<a class="soc" href="https://www.kaggle.com/ao2233" title="Kaggle"><i data-feather="link"></i></a>
+<a class="soc" href="https://atcoder.jp/users/AO2233" title="Atcoder"><i data-feather="code"></i></a>
+<a class="soc" href="https://leetcode.com/AO2233" title="Leetcode"><i data-feather="hash"></i></a>
+<a class="soc" href="mailto:momiji_ao@outlook.com" title="Mail"><i data-feather="mail"></i></a>
+</footer><script>
+      feather.replace()
+</script>
+		</div>
+		
+	</body>
+</html>

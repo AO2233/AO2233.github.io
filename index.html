@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta name="generator" content="Hugo 0.119.0">
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	
+	<title>帰宅部 | Home </title><link rel="icon" type="image/png" href=https://ao2233.xyz/favicon.ico /><meta id="viewport" name="viewport">
+
+<script type="text/javascript">
+
+(function(){
+
+  function apply_viewport(){
+    
+      var ww = window.screen.width;
+      var mw = 680; 
+      var ratio =  ww / mw; 
+      var viewport_meta_tag = document.getElementById('viewport');
+      if( ww < mw){ 
+        viewport_meta_tag.setAttribute('content', 'initial-scale=' + ratio + ', width=device-width');
+      }
+      else { 
+        viewport_meta_tag.setAttribute('content', 'initial-scale=1.0, width=device-width');
+      }
+    
+  }
+
+  
+  window.addEventListener('resize', function(){
+    apply_viewport();
+  });
+
+  apply_viewport();
+}());
+</script>
+
+	
+	<script src="https://ao2233.xyz/js/feather.min.js"></script>
+	
+	
+    
+
+	
+	
+	
+	
+	
+	<link href="https://ao2233.xyz/css/fonts.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="https://ao2233.xyz/css/main.css" />
+	<link rel="stylesheet" href="https://ao2233.xyz/aplayer/APlayer.min.css" >
+	<link rel="stylesheet" href="https://ao2233.xyz/videojs/video-js.min.css" >
+
+	<script src="https://ao2233.xyz/aplayer/APlayer.min.js"></script>
+	<script src="https://ao2233.xyz/dplayer/DPlayer.min.js"></script>
+	<script src="https://ao2233.xyz/videojs/video.min.js"></script>
+	<script src="https://ao2233.xyz/js/pdfobject.min.js"></script>
+
+	<link rel="stylesheet" href="https://ao2233.xyz/js/katex.min.css" crossorigin="anonymous">
+	<script defer src="https://ao2233.xyz/js/katex.min.js" crossorigin="anonymous"></script>
+	<script defer src="https://ao2233.xyz/js/auto-render.min.js" crossorigin="anonymous"  onload="renderMathInElement(document.body);"></script>
+
+	
+	<script>
+		document.addEventListener("DOMContentLoaded", function() {
+			renderMathInElement(document.body, {
+				delimiters: [
+				{left: "$$", right: "$$", display: true},
+				{left: "\\[", right: "\\]", display: true},
+				{left: "$", right: "$", display: false},
+				{left: "\\(", right: "\\)", display: false},
+				]
+			});
+		});
+	</script>
+
+	<script src="https://ao2233.xyz/js/mermaid.min.js"></script>
+		<link id="darkModeStyle" rel="stylesheet" type="text/css" href="https://ao2233.xyz/css/dark.css"media="(prefers-color-scheme: dark)"  />
+		<script>
+		const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
+		var config = {
+			startOnLoad:true,
+			flowchart:{
+			useMaxWidth:true,
+			htmlLabels:true,
+			curve:'cardinal',
+			},
+			securityLevel:'loose',
+		};
+		
+		var a=0;
+		function darkModeHandler() {
+			if (mediaQuery.matches) {
+				mermaid.initialize({
+					
+					theme: 'dark',
+					config
+				});
+				if (a>0){
+					document.location.reload(false);
+				}
+				a+=1;
+				
+			} else {
+				mermaid.initialize({
+					
+					theme: 'base',
+					config
+				});
+				if (a>0){
+					document.location.reload(false);
+				}
+				a+=1;
+				
+			}
+		}
+
+		darkModeHandler()
+		mediaQuery.addListener(darkModeHandler)
+
+		</script>
+		
+</head>
+
+	<body>
+		<div class="content">
+			<header>
+	<div class="main">
+		<a href="https://ao2233.xyz/">帰宅部</a>
+		<link rel="icon" type="image/png" href=https://ao2233.xyz/favicon.ico />
+	</div>
+	<nav>
+		
+		<a href="/" class="sub-main">Home</a>
+		
+		<a href="/posts" class="sub-main">All posts</a>
+		
+		<a href="/about" class="sub-main">About</a>
+		
+
+		
+
+	</nav>
+</header>
+
+			<main class="list">
+				<div class="site-description"><p>さらば、すべてのエヴァンゲリオン</p></div>
+
+				
+				
+				
+				
+				<section class="list-item">
+					<h1 class="title">我的Windows不可能这么的卡顿</a></h1>
+					<time>Dec 9, 2022</time> 
+					<h1 id="bug-发现"><code>Bug</code> 发现</h1>
+<p>前些天，在<code>bilibili</code>的首页刷到一个名为《<code>修BUG的第一天 我给微软的 PowerToys 修了一个 BUG</code>》的<a href="https://www.bilibili.com/video/BV1UG4y1t7N3">视频</a>。恰好<code>Powertoys</code>这款软件我也在使用，于是便点进去看了看视频，是一个文字识别输出方面的Bug，但视频作者过于自信的语气，加之“标题的第一天”就是没有<code>C#</code>或者<code>大型项目</code>开发经验的代名词，对于他代码，我怀疑有大问题。</p>
+<p>第二天早上起来，测试相关模块功能，果然，只是从一个错误转移成了另一个错误。</p>
+<h1 id="bug-解释"><code>Bug</code> 解释</h1>
+<p><a href="https://github.com/microsoft/PowerToys/issues/20319">Using TextExtractor to extract Chinese always contains spaces</a></p>
+<p>最初的bug源于此，是由于中文的文字图片识别引擎返回的内容是以<code>字</code>为单位的，<code>英文</code>部分则是以词为单位。最初的代码在所有的识别单位中添加一个<code> </code>（空格）作为间隔。如此便导致了中文汉字间包含错误空格。</p>
+<p><a href="https://github.com/microsoft/PowerToys/pull/20926">[TextExtractor] Add space between CJK words and non-CJK</a></p>
+<p>错误修复示范：遍历判断单位是否CJK文字，如果是则不加空格，不是的话就前后各加一个空格。也就是从<code>这 里 是 AO 的 blog ， 你 好 ！  </code>变成了<code>这里是 AO 的 blog ， 你好 ！</code>。</p>
+<p>而实际正确的应该是<code>这里是AO的blog，你好！</code>，英文和中文之间最好没有空格，标点也不应该有空格。<code>这里就有一个新问题，标点怎么涵盖？既然是CJK，那么日语和韩语的情况呢？</code>韩文引擎表现不同，非单字识别，测试日文如下：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">そ の 後 、 2 人 の 住 む 関東 は 本格的 に 梅雨入 り し 、 雨 の 日 の 午前 た け の さ さ や か な 交流 が は し ま る 。
+</span></span></code></pre></div><p>显然，日语的假名并没有算到<code>CJK words</code>里。观察一下源代码：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-C#" data-lang="C#"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="kt">var</span> <span class="n">cjkRegex</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Regex</span><span class="p">(</span><span class="s">@&#34;\p{IsCJKUnifiedIdeographs}&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="k">foreach</span> <span class="p">(</span><span class="n">OcrLine</span> <span class="n">ocrLine</span> <span class="k">in</span> <span class="n">ocrResult</span><span class="p">.</span><span class="n">Lines</span><span class="p">){</span>
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl">	<span class="kt">bool</span> <span class="n">isBeginning</span> <span class="p">=</span> <span class="kc">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl">	<span class="kt">bool</span> <span class="n">isCJKPrev</span> <span class="p">=</span> <span class="kc">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl">	<span class="k">foreach</span> <span class="p">(</span><span class="n">OcrWord</span> <span class="n">ocrWord</span> <span class="k">in</span> <span class="n">ocrLine</span><span class="p">.</span><span class="n">Words</span><span class="p">){</span>
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">    	<span class="kt">bool</span> <span class="n">isCJK</span> <span class="p">=</span> <span class="n">cjkRegex</span><span class="p">.</span><span class="n">IsMatch</span><span class="p">(</span><span class="n">ocrWord</span><span class="p">.</span><span class="n">Text</span><span class="p">);</span>
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">    	<span class="c1">// Use spaces to separate non-CJK words.</span>
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl">    	<span class="k">if</span> <span class="p">(!</span><span class="n">isBeginning</span> <span class="p">&amp;&amp;</span> <span class="p">(!</span><span class="n">isCJK</span> <span class="p">||</span> <span class="p">!</span><span class="n">isCJKPrev</span><span class="p">)){</span>
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl">    	    <span class="n">_</span> <span class="p">=</span> <span class="n">text</span><span class="p">.</span><span class="n">Append</span><span class="p">(</span><span class="sc">&#39; &#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="ln">10</span><span class="cl"> 	   <span class="p">}</span>
+</span></span><span class="line"><span class="ln">11</span><span class="cl"> 	   <span class="n">_</span> <span class="p">=</span> <span class="n">text</span><span class="p">.</span><span class="n">Append</span><span class="p">(</span><span class="n">ocrWord</span><span class="p">.</span><span class="n">Text</span><span class="p">);</span>
+</span></span><span class="line"><span class="ln">12</span><span class="cl"> 	   <span class="n">isCJKPrev</span> <span class="p">=</span> <span class="n">isCJK</span><span class="p">;</span>
+</span></span><span class="line"><span class="ln">13</span><span class="cl">  	  <span class="n">isBeginning</span> <span class="p">=</span> <span class="kc">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="ln">14</span><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="ln">15</span><span class="cl"><span class="p">...</span>
+</span></span><span class="line"><span class="ln">16</span><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>问题就出现在代码最开头，<code>CJKUnifiedIdeographs</code>只包含<code>CJK的汉字部分</code>。因此数字，假名，符号，统统都有空格。</p>
+<h1 id="patch">Patch</h1>
+<p>那么，是否把所有的<code>CJK符号</code>放到判断式子里就万事大吉了呢？并不，考虑下面情况，空格依旧是重要的：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">韩文半角符号
+</span></span><span class="line"><span class="ln">2</span><span class="cl">⑨ 记得给你的switch充电
+</span></span><span class="line"><span class="ln">3</span><span class="cl">「卍 解」天锁斩月
+</span></span><span class="line"><span class="ln">4</span><span class="cl">现在的B站都喜欢给标题加上空格——《反 复 横 跳》
+</span></span></code></pre></div><p>文本的多样性决定了，空格的出现是难以预料的，引擎的输出格式决定了丢失了一部分的信息，这部分的信息是难以通过代码复现的（比如<a href="https://github.com/TheJoeFin/Text-Grab/issues/191">这个项目的处理</a>也有问题）。此问题应该交由引擎处理，或者分割开来，交给各语言的<code>native speaker</code>来写处理规则，而不是简单的加个残缺的范围了事。</p>
+<p>考虑到这个模块也不是主要模块，引擎目前功能并不完善，不支持多语言识别，语言种类识别加之识别率一般，所以简单做个补丁。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-C#" data-lang="C#"><span class="line"><span class="ln">1</span><span class="cl"><span class="c1">// var cjkRegex = new Regex(@&#34;\p{IsCJKUnifiedIdeographs}|\p{IsHiragana}|\p{IsKatakana}|[\uFF61-\uFF9F]|[\u3000-\u3003]&#34;);</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="kt">var</span> <span class="n">cjkRegex</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Regex</span><span class="p">(</span><span class="s">@&#34;\p{IsCJKUnifiedIdeographs}|\p{IsHiragana}|\p{IsKatakana}|[\uFF61-\uFF9F]&#34;</span><span class="p">);</span>
+</span></span></code></pre></div><p><code>{IsCJKUnifiedIdeographs}</code> for Kanji in JP and ZH
+<code>{IsHiragana}</code> for Hiragana
+<code>{IsKatakana}</code> for Katakana
+<code>[\uFF61-\uFF9F]</code> for Half-width Katakana
+<code>[\u3000-\u3003]</code> for the most common Punctuation</p>
+<p>考虑中文、日文、韩文，加入最常用的假名，半角假名。可供正常阅读。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">その後 、 2 人の住む関東は本格的に梅雨入りし 、 雨の日の午前たけのささやかな交流がはじまる 。 
+</span></span></code></pre></div><h1 id="吐槽">吐槽</h1>
+<ol>
+<li>
+<p>这个问题并没有得到很好的解决。最上策：有一个完备的引擎处理，准确的识别，具备以行为单位输出的功能。中策：分开处理，对每一种语言的符号进行详细的考证，编写规则，确保一般文本的准确性。（混合语言和新型新式可能会出错。）</p>
+</li>
+<li>
+<p><code>修复BUG</code>的时候要考虑周全，描述简要突出。微软的审核者会通过最初的提交者（视频作者）的玩具代码，原因是<code>BUG牵扯到语言相关的内容</code>，审核者说明自己不是<code>CJK</code>语言使用者，不太懂之后，征求提交者的建议，视频作者一句<code>LGTM (looks good to me)</code>，显然，面对80k的项目的责任，他自己却根本没仔细看，只顾着说“看我给微软修了个BUG”。拜托，你是新交了一个<code>BUG</code>，我人麻了，想到自己电脑里跑的这都是些啥程序。。。</p>
+</li>
+<li>
+<p><del><em><strong>微软，提高代码和审核的标准！（我说我电脑怎么越来越卡。这代码不卡才怪。）</strong></em> 如果没更好的解决办法，你就先把我的<code>patch</code>并进去或者把那个问题代码迁出来吧。</del></p>
+</li>
+</ol>
+<h1 id="更新">更新</h1>
+<p>上游程序通过更加复杂的筛选方案，已经修复此Bug，并已合并到<code>Powertoy</code>中，此帖终结。</p>
+
+				</section>
+				
+				
+
+<ul class="pagination">
+	<span class="page-item page-prev">
+	
+	</span>
+	<span class="page-item page-next">
+	
+    <a href="/page/2/" class="page-link" aria-label="Next"><span aria-hidden="true">Next →</span></a>
+	
+	</span>
+</ul>
+
+
+			</main>
+			<footer class="footer">
+<hr><a class="soc" href="https://github.com/AO2233" title="GitHub"><i data-feather="github"></i></a>
+<a class="soc" href="https://gitlab.com/AO2233" title="GitLab"><i data-feather="gitlab"></i></a>
+<a class="soc" href="https://twitter.com/u604b" title="X"><i data-feather="twitter"></i></a>
+<a class="soc" href="https://www.kaggle.com/ao2233" title="Kaggle"><i data-feather="link"></i></a>
+<a class="soc" href="https://atcoder.jp/users/AO2233" title="Atcoder"><i data-feather="code"></i></a>
+<a class="soc" href="https://leetcode.com/AO2233" title="Leetcode"><i data-feather="hash"></i></a>
+<a class="soc" href="mailto:momiji_ao@outlook.com" title="Mail"><i data-feather="mail"></i></a>
+</footer><script>
+      feather.replace()
+</script>
+		</div>
+		
+	</body>
+</html>
