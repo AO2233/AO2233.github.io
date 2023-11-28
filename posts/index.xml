@@ -74,10 +74,7 @@ Key
       
       <guid>https://ao2233.xyz/posts/release_occupancy/</guid>
       <description>Windows常见占用
-文件被使用，无法进行移动删除操作。 a. 资源管理器，句柄查找，结束进程即可。
-b. Process Explorer 库与句柄查找
-移动设备被占用，无法进行插拔操作。 事件查看器，查看占用资源的进程即可。
-端口占用 HyperV有大量保留端口，可能会与IDEA等软件发生冲突。也有可能代理软件进程重复运行或者占用了常用端口导致。
+文件被使用，无法进行移动删除操作。 a. 资源管理器，句柄查找，结束进程即可。 b. Process Explorer 库与句柄查找 移动设备被占用，无法进行插拔操作。 事件查看器，查看占用资源的进程即可。 端口占用 HyperV有大量保留端口，可能会与IDEA等软件发生冲突。也有可能代理软件进程重复运行或者占用了常用端口导致。
 1netstat -aon | findstr &amp;#34;{port_id}&amp;#34; 2# kill 即可 3# for IDEA 4sudo net stop winnat; # issue 讨论的解决方案，可能会使WSL无网络 5sudo net start winnat; 6# 查看端口情况 7netsh interface ipv4 show excludedportrange protocol=tcp 8netsh int ipv4 show dynamicport tcp </description>
     </item>
     

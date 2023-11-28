@@ -161,7 +161,12 @@
 </span></span><span class="line"><span class="ln">3</span><span class="cl">UCRT64 UCRT libstdc++ gcc
 </span></span><span class="line"><span class="ln">4</span><span class="cl">
 </span></span><span class="line"><span class="ln">5</span><span class="cl">CLANG64 UCRT libc++ clang
-</span></span></code></pre></div><p><a href="https://www.msys2.org/docs/environments/"><img src="/media/pic/mingw/msys2.png" alt="msys2"></a></p>
+</span></span></code></pre></div><p><a href="https://www.msys2.org/docs/environments/">
+
+
+
+
+<img src="/media/pic/mingw/msys2.png" alt="" style="width: 800px; hight:"></a></p>
 <p><strong>MSVCRT</strong> (Microsoft Visual C++ Runtime) is available by default on all Microsoft Windows versions, but due to backwards compatibility issues is stuck in the past, not C99 compatible and is missing some features.<code>Binaries linked with MSVCRT should not be mixed with UCRT ones because the internal structures and data types are different. (More strictly, object files or static libraries built for different targets should not be mixed. DLLs built for different CRTs can be mixed as long as they do not share CRT objects).</code></p>
 <p><strong>UCRT</strong> only ships by default on Windows 10 and for older versions you have to provide it yourself or depend on the user having it installed.</p>
 <p><strong>MSVCRT</strong> 开箱即用
@@ -176,14 +181,29 @@
 </span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="c1"># powershell &#34;-Wl,--no-needed&#34;</span>
 </span></span><span class="line"><span class="ln"> 9</span><span class="cl">
 </span></span><span class="line"><span class="ln">10</span><span class="cl">clang++ .<span class="se">\t</span>est.cpp -I some_path<span class="se">\i</span>nclude -O3 -Wall -static -std<span class="o">=</span>c++17 -o a.exe
-</span></span></code></pre></div><p><img src="/media/pic/mingw/p1.png" alt="p1"></p>
-<p><img src="/media/pic/mingw/p2.png" alt="p2"></p>
+</span></span></code></pre></div><p>
+
+
+
+
+<img src="/media/pic/mingw/p1.png" alt="" style="width: 600px; hight:">
+
+
+
+
+
+<img src="/media/pic/mingw/p2.png" alt="" style="width: 600px; hight:"></p>
 <h2 id="mingw-mingw64-cygwin-msys2">MinGW MinGW64 Cygwin msys2</h2>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">msys2 Cygwin魔改，arch模式 pacman包管理
 </span></span><span class="line"><span class="ln">2</span><span class="cl">Cywin POSIX系统的模拟 系统内gcc编译的软件需要配 cywin1.dll 内含 mingw64 套件
 </span></span><span class="line"><span class="ln">3</span><span class="cl">MinGW64 Windows下的GNU编译器 自带包装库翻译用 依赖如上节（系统自带开箱即用）
 </span></span><span class="line"><span class="ln">4</span><span class="cl">MinGW MinGW64的前身，接口有区别
-</span></span></code></pre></div><p><img src="/media/pic/mingw/cygwin1.png" alt="cygwin1"></p>
+</span></span></code></pre></div>
+
+
+
+
+<img src="/media/pic/mingw/cygwin1.png" alt="" style="width: 600px; hight:">
 <h2 id="msvchttpsdevblogsmicrosoftcomcppblogc11-and-c17-standard-support-arriving-in-msvc"><a href="https://devblogs.microsoft.com/cppblog/c11-and-c17-standard-support-arriving-in-msvc/">MSVC</a></h2>
 <blockquote>
 <p>Variable Length Arrays</p>
