@@ -181,6 +181,20 @@
 </span></span><span class="line"><span class="ln">5</span><span class="cl">	<span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&#34;⑨&#34;</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
 </span></span><span class="line"><span class="ln">6</span><span class="cl">	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 </span></span><span class="line"><span class="ln">7</span><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h1 id="custom-img">custom img</h1>
+<p>
+
+
+
+
+<img src="/media/pic/2022/bochii.jpeg" alt="" style="width: 500px; hight:">
+对于长度过长的图片进行合适的缩放，同时也是导入图片的推荐写法。
+对于普通<code>markdown</code>的导入语法，只适合宽度合适的图片<code>（如：16x9）</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="ln">1</span><span class="cl">{\{<span class="p">&lt;</span> <span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;/media/abc.png&#34;</span>  <span class="na">width</span><span class="o">=</span><span class="s">&#34;500px&#34;</span> <span class="p">&gt;</span>}\}
+</span></span><span class="line"><span class="ln">2</span><span class="cl">{\{<span class="p">&lt;</span> <span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;/media/abc.png&#34;</span>  <span class="na">width</span><span class="o">=</span><span class="s">&#34;50%&#34;</span> <span class="p">&gt;</span>}\}
+</span></span><span class="line"><span class="ln">3</span><span class="cl">{\{<span class="p">&lt;</span> <span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;/media/abc.png&#34;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&#34;message&#34;</span> <span class="na">width</span><span class="o">=</span><span class="s">&#34;50%&#34;</span> <span class="na">hight</span><span class="o">=</span><span class="s">&#34;50%&#34;</span> <span class="p">&gt;</span>}\}
+</span></span><span class="line"><span class="ln">4</span><span class="cl">网页过宽采用超过一定大小后，向两边padding的做法（大部分网站通用做法），保证纵向大小不变。对于宽度过小的情况，采用等比缩小的策略。
+</span></span><span class="line"><span class="ln">5</span><span class="cl">注意此处的开头的/
 </span></span></code></pre></div><blockquote>
 <p>markdown 标记测试</p>
 </blockquote>
@@ -358,17 +372,17 @@ ap = new APlayer({
 <p>Single</p>
 </blockquote>
 
-<iframe allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" allowfullscreen="allowfullscreen" class="spotify spotify-track" id="h-sc-spotify-8" loading="lazy" src="https://open.spotify.com/embed/track/7ovUcF5uHTBRzUpB6ZOmvt?theme=1" style="width: 100%; height: 152px; border: none;"></iframe>
+<iframe allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" allowfullscreen="allowfullscreen" class="spotify spotify-track" id="h-sc-spotify-9" loading="lazy" src="https://open.spotify.com/embed/track/7ovUcF5uHTBRzUpB6ZOmvt?theme=1" style="width: 100%; height: 152px; border: none;"></iframe>
 <blockquote>
 <p>Artist</p>
 </blockquote>
 
-<iframe allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" allowfullscreen="allowfullscreen" class="spotify spotify-artist" id="h-sc-spotify-9" loading="lazy" src="https://open.spotify.com/embed/artist/2elBjNSdBE2Y3f0j1mjrql?theme=1" style="width: 100%; height: 380px; border: none;"></iframe>
+<iframe allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" allowfullscreen="allowfullscreen" class="spotify spotify-artist" id="h-sc-spotify-10" loading="lazy" src="https://open.spotify.com/embed/artist/2elBjNSdBE2Y3f0j1mjrql?theme=1" style="width: 100%; height: 380px; border: none;"></iframe>
 <blockquote>
 <p>List</p>
 </blockquote>
 
-<iframe allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" allowfullscreen="allowfullscreen" class="spotify spotify-playlist" id="h-sc-spotify-10" loading="lazy" src="https://open.spotify.com/embed/playlist/37i9dQZF1DXbFuzhIOyS7z?theme=1" style="width: 100%; height: 380px; border: none;"></iframe>
+<iframe allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" allowfullscreen="allowfullscreen" class="spotify spotify-playlist" id="h-sc-spotify-11" loading="lazy" src="https://open.spotify.com/embed/playlist/37i9dQZF1DXbFuzhIOyS7z?theme=1" style="width: 100%; height: 380px; border: none;"></iframe>
 <h1 id="latex">$\LaTeX$</h1>
 <p>基于$\KaTeX$支持其所有特性，唯一麻烦的问题是遇到特殊符号需要转义</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="line"><span class="ln"> 1</span><span class="cl">注意对于 Hugo Goldmark：

@@ -156,6 +156,7 @@
   .highlight pre ::selection { background:pink; }
 
   /* Containers */
+  /* 对于过宽画幅采用增加padding的方法 */
   /* width <= 800 */
   .content {
     margin-bottom: 4em;
@@ -165,6 +166,14 @@
     padding: 0 1%;
     word-wrap: break-word;
   }
+
+    @media screen and (min-width: 1080px) {
+    .content {
+      padding: 0 auto;
+      width: 1058px;
+    }
+  }
+/* 对于过宽画幅采用缩放的方法 */
   /*
       800px <= width <= 1115px
     width = 800px -> display 
@@ -172,35 +181,35 @@
     grow padding to 15%
       800 / (1-2*0.20) = 1333px
     */
-  @media screen and (min-width: 800px) and (max-width: 1333px) {
+  /* @media screen and (min-width: 800px) and (max-width: 1333px) {
     .content {
       padding: 0 auto;
       width: 784px;
     }
-  }
+  } */
   /* 
     width >= 1115px
     for smooth padding
   */
-  @media screen and (min-width: 1333px) and (max-width: 2178px) {
+  /* @media screen and (min-width: 1333px) and (max-width: 2178px) {
     img {
       padding: 0 auto;
-      width: 784px;
+      max-width: 784px;
     }
     .content {padding: 0 20%;}
-  }
+  } */
   /* 
     0.6*0.4+0.4 = 0.64 
     784/0.36 = 2178px
       for pic smooth padding
   */
 
-  @media screen and (min-width: 2178px) {
+  /* @media screen and (min-width: 2178px) {
     img {
-      width: 60%;
+      max-width: 60%;
     }
     .content {padding: 0 20%;}
-  }
+  } */
 
   /* 
   a = 800

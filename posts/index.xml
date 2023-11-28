@@ -109,9 +109,8 @@ Unicode
 🥺 漢 字 の 部 首 画 数 読 み 方 筆 順 適 湜 ① 葮 焱 暒 妏 雫 翱翔 〆 ㋿ ㍻ ｽｷ
 (*ゝω・)ﾉ♥♥♥ ･ﾟ:*:ﾟ
 code
-1// CPP 2#include &amp;lt;iostream&amp;gt; 3using namespace std; 4int main(){ 5	cout&amp;lt;&amp;lt;&amp;#34;⑨&amp;#34;&amp;lt;&amp;lt;endl; 6	return 0; 7} markdown 标记测试
-間違った 斜体 加粗 超链接 Tex -&amp;gt; $\LaTeX$
-id name level 0 ao 99 特殊样式</description>
+1// CPP 2#include &amp;lt;iostream&amp;gt; 3using namespace std; 4int main(){ 5	cout&amp;lt;&amp;lt;&amp;#34;⑨&amp;#34;&amp;lt;&amp;lt;endl; 6	return 0; 7} custom img 对于长度过长的图片进行合适的缩放，同时也是导入图片的推荐写法。 对于普通markdown的导入语法，只适合宽度合适的图片（如：16x9）
+1{\{&amp;lt; img src=&amp;#34;/media/abc.png&amp;#34; width=&amp;#34;500px&amp;#34; &amp;gt;}\} 2{\{&amp;lt; img src=&amp;#34;/media/abc.png&amp;#34; width=&amp;#34;50%&amp;#34; &amp;gt;}\} 3{\{&amp;lt; img src=&amp;#34;/media/abc.</description>
     </item>
     
   </channel>
