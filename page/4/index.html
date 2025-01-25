@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta name="generator" content="Hugo 0.139.2">
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	
+	<title>帰宅部 | Home </title><meta id="viewport" name="viewport">
+
+<script type="text/javascript">
+
+(function(){
+
+  function apply_viewport(){
+    
+      var ww = window.screen.width;
+      var mw = 350; 
+      var ratio =  ww / mw; 
+      var viewport_meta_tag = document.getElementById('viewport');
+      if( ww < mw){ 
+        viewport_meta_tag.setAttribute('content', 'initial-scale=' + ratio + ', width=device-width');
+      }
+      else { 
+        viewport_meta_tag.setAttribute('content', 'initial-scale=1.0, width=device-width');
+      }
+    
+  }
+
+  
+  window.addEventListener('resize', function(){
+    apply_viewport();
+  });
+
+  apply_viewport();
+}());
+</script>
+	
+	
+	
+	
+	
+	
+	
+
+	<link rel="stylesheet" href="https://ao2233.github.io/css/fonts.css" >
+	<link rel="stylesheet" type="text/css" media="screen" href="https://ao2233.github.io/css/main.css" />
+	<link rel="stylesheet" href="https://ao2233.github.io/aplayer/APlayer.min.css" >
+	<link rel="stylesheet" href="https://ao2233.github.io/videojs/video-js.min.css" >
+
+	<script src="https://ao2233.github.io/aplayer/APlayer.min.js"></script>
+	<script src="https://ao2233.github.io/dplayer/DPlayer.min.js"></script>
+	<script src="https://ao2233.github.io/videojs/video.min.js"></script>
+
+	<script src="https://ao2233.github.io/js/pdfobject.min.js"></script>
+	<script src="https://ao2233.github.io/js/feather.min.js"></script>
+
+	
+	
+	
+	
+	<link rel="stylesheet" href="https://ao2233.github.io/katex/katex.min.css" crossorigin="anonymous">
+	<script defer src="https://ao2233.github.io/katex/katex.min.js" crossorigin="anonymous"></script>
+	<script defer src="https://ao2233.github.io/katex/contrib/auto-render.min.js" crossorigin="anonymous"  onload="renderMathInElement(document.body);"></script>
+	<script>
+		document.addEventListener("DOMContentLoaded", function() {
+			renderMathInElement(document.body, {
+				delimiters: [
+				{left: "$$", right: "$$", display: true},
+			
+				{left: "$", right: "$", display: false},
+			
+				]
+			});
+		});
+	</script>
+	
+	<script src="https://ao2233.github.io/js/mermaid.min.js"></script>
+
+	
+	
+	<link id="darkModeStyle" rel="stylesheet" type="text/css" href="https://ao2233.github.io/css/dark.css" media="(prefers-color-scheme: dark)"/>
+	<script>
+	const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
+	var config = {
+		startOnLoad:true,
+		flowchart:{
+		useMaxWidth:true,
+		htmlLabels:true,
+		curve:'cardinal',
+		},
+		securityLevel:'loose',
+	};
+	
+	var a=0;
+	function darkModeHandler() {
+		if (mediaQuery.matches) {
+			mermaid.initialize({
+				
+				theme: 'dark',
+				config
+			});
+			if (a>0){
+				document.location.reload(false);
+			}
+			a+=1;
+			
+		} else {
+			mermaid.initialize({
+				
+				theme: 'base',
+				config
+			});
+			if (a>0){
+				document.location.reload(false);
+			}
+			a+=1;
+			
+		}
+	}
+	darkModeHandler()
+	mediaQuery.addListener(darkModeHandler)
+
+	</script>
+</head>
+
+	<body>
+		<div class="content">
+			<header>
+	<div class="main">
+		<a href="https://ao2233.github.io/">帰宅部</a>
+		<link rel="icon" type="image/png" href=https://ao2233.github.io/favicon.ico />
+	</div>
+	<nav>
+		
+		<a href="/" class="sub-main">Home</a>
+		
+		<a href="/posts" class="sub-main">Archives</a>
+		
+		<a href="/about" class="sub-main">About</a>
+		
+
+		
+
+	</nav>
+</header>
+			<main class="list">
+				<div class="site-description"><p>さらば、すべてのエヴァンゲリオン</p></div>
+
+				
+				
+				
+				
+				<section class="list-item">
+					<h1 class="title">学术小飞机</a></h1>
+					<time>12月 12, 10126</time> 
+					<p><code>都什么年代，还在用传统飞机。</code></p>
+<p>主流方案：</p>
+<p><em><strong>Vless + Websocket  + TLS + 端口转发</strong></em></p>
+<p><code>将访问域名某路径的流量转发到内部端口走V2ray服务后，从网页端口发回TLS加密的Websocket响应。到达客户端后由客户端解码获取data。</code></p>
+<p><em><strong>V2ray + Caddy2</strong></em></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="ln">1</span><span class="cl">偷懒脚本
+</span></span><span class="line"><span class="ln">2</span><span class="cl">system: ubuntu 22.04
+</span></span><span class="line"><span class="ln">3</span><span class="cl">script: https://github.com/crazypeace/V2ray_VLESS_WebSocket_TLS_CaddyV2
+</span></span><span class="line"><span class="ln">4</span><span class="cl">cf: DNS配置见图，理论上开启泛播性能能好
+</span></span><span class="line"><span class="ln">5</span><span class="cl">namecheaper: DNS配置见图
+</span></span></code></pre></div><p>
+
+
+
+
+<img src="/media/pic/2022/cf1.png" alt="" style="width: 800px; hight:">
+
+
+
+
+
+<img src="/media/pic/2022/nc1.png" alt="" style="width: 800px; hight:"></p>
+<h1 id="cloudflare-优选">Cloudflare 优选</h1>
+<p>指定解析<code>Cloudflare</code>到一个速度最快的ip，<a href="https://github.com/XIU2/CloudflareSpeedTest">优选工具</a>。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">./CloudflareST -n <span class="m">1000</span> -url https://speed.cloudflare.com/__down<span class="se">\?</span>bytes<span class="se">\=</span><span class="m">200000000</span>
+</span></span></code></pre></div>
+				</section>
+				
+				
+
+<ul class="pagination">
+	<span class="page-item page-prev">
+	
+    <a href="/page/3/" class="page-link" aria-label="Previous"><span aria-hidden="true">← Prev</span></a>
+	
+	</span>
+	<span class="page-item page-next">
+	
+    <a href="/page/5/" class="page-link" aria-label="Next"><span aria-hidden="true">Next →</span></a>
+	
+	</span>
+</ul>
+
+
+			</main>
+			<footer class="footer">
+<hr><a class="soc" href="https://github.com/AO2233" title="GitHub"><i data-feather="github"></i></a>
+<a class="soc" href="https://gitlab.com/AO2233" title="GitLab"><i data-feather="gitlab"></i></a>
+<a class="soc" href="https://www.kaggle.com/ao2233" title="Kaggle"><i data-feather="link"></i></a>
+<a class="soc" href="https://atcoder.jp/users/AO2233" title="Atcoder"><i data-feather="code"></i></a>
+<a class="soc" href="https://leetcode.com/AO2233" title="Leetcode"><i data-feather="hash"></i></a>
+<a class="soc" href="mailto:qingao@ruri.waseda.jp" title="Mail"><i data-feather="mail"></i></a>
+</footer><script>
+      feather.replace()
+</script>
+		</div>
+		
+	</body>
+</html>
