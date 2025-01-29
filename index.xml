@@ -7,15 +7,8 @@
     <generator>Hugo</generator>
     <language>en</language>
     <copyright>AO</copyright>
-    <lastBuildDate>Thu, 30 Jan 2025 00:54:18 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 09 Dec 2022 19:22:18 +0800</lastBuildDate>
     <atom:link href="https://ao2233.github.io/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>2025总结</title>
-      <link>https://ao2233.github.io/posts/2025/</link>
-      <pubDate>Thu, 30 Jan 2025 00:54:18 +0900</pubDate>
-      <guid>https://ao2233.github.io/posts/2025/</guid>
-      <description></description>
-    </item>
     <item>
       <title>我的Windows不可能这么的卡顿</title>
       <link>https://ao2233.github.io/posts/fixbug/</link>
