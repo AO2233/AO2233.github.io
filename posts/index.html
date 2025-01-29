@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html><head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	
+	<title>Posts - 帰宅部</title><meta id="viewport" name="viewport">
+
+<script type="text/javascript">
+
+(function(){
+
+  function apply_viewport(){
+    
+      var ww = window.screen.width;
+      var mw = 350; 
+      var ratio =  ww / mw; 
+      var viewport_meta_tag = document.getElementById('viewport');
+      if( ww < mw){ 
+        viewport_meta_tag.setAttribute('content', 'initial-scale=' + ratio + ', width=device-width');
+      }
+      else { 
+        viewport_meta_tag.setAttribute('content', 'initial-scale=1.0, width=device-width');
+      }
+    
+  }
+
+  
+  window.addEventListener('resize', function(){
+    apply_viewport();
+  });
+
+  apply_viewport();
+}());
+</script>
+	
+	
+	
+	
+	
+	
+	
+
+	<link rel="stylesheet" href="https://ao2233.github.io/css/fonts.css" >
+	<link rel="stylesheet" type="text/css" media="screen" href="https://ao2233.github.io/css/main.css" />
+	<link rel="stylesheet" href="https://ao2233.github.io/aplayer/APlayer.min.css" >
+	<link rel="stylesheet" href="https://ao2233.github.io/videojs/video-js.min.css" >
+
+	<script src="https://ao2233.github.io/aplayer/APlayer.min.js"></script>
+	<script src="https://ao2233.github.io/dplayer/DPlayer.min.js"></script>
+	<script src="https://ao2233.github.io/videojs/video.min.js"></script>
+
+	<script src="https://ao2233.github.io/js/pdfobject.min.js"></script>
+	<script src="https://ao2233.github.io/js/feather.min.js"></script>
+
+	
+	
+	
+	
+	<link rel="stylesheet" href="https://ao2233.github.io/katex/katex.min.css" crossorigin="anonymous">
+	<script defer src="https://ao2233.github.io/katex/katex.min.js" crossorigin="anonymous"></script>
+	<script defer src="https://ao2233.github.io/katex/contrib/auto-render.min.js" crossorigin="anonymous"  onload="renderMathInElement(document.body);"></script>
+	<script>
+		document.addEventListener("DOMContentLoaded", function() {
+			renderMathInElement(document.body, {
+				delimiters: [
+				{left: "$$", right: "$$", display: true},
+			
+				{left: "$", right: "$", display: false},
+			
+				]
+			});
+		});
+	</script>
+	
+	<script src="https://ao2233.github.io/js/mermaid.min.js"></script>
+
+	
+	
+	<link id="darkModeStyle" rel="stylesheet" type="text/css" href="https://ao2233.github.io/css/dark.css" media="(prefers-color-scheme: dark)"/>
+	<script>
+	const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
+	var config = {
+		startOnLoad:true,
+		flowchart:{
+		useMaxWidth:true,
+		htmlLabels:true,
+		curve:'cardinal',
+		},
+		securityLevel:'loose',
+	};
+	
+	var a=0;
+	function darkModeHandler() {
+		if (mediaQuery.matches) {
+			mermaid.initialize({
+				
+				theme: 'dark',
+				config
+			});
+			if (a>0){
+				document.location.reload(false);
+			}
+			a+=1;
+			
+		} else {
+			mermaid.initialize({
+				
+				theme: 'base',
+				config
+			});
+			if (a>0){
+				document.location.reload(false);
+			}
+			a+=1;
+			
+		}
+	}
+	darkModeHandler()
+	mediaQuery.addListener(darkModeHandler)
+
+	</script>
+</head>
+<body>
+        <div class="content"><header>
+	<div class="main">
+		<a href="https://ao2233.github.io/">帰宅部</a>
+		<link rel="icon" type="image/png" href=https://ao2233.github.io/favicon.ico />
+	</div>
+	<nav>
+		
+		<a href="/" class="sub-main">Home</a>
+		
+		<a href="/posts" class="sub-main">Archives</a>
+		
+		<a href="/about" class="sub-main">About</a>
+		
+
+		
+
+	</nav>
+</header>
+
+<h1 class="page-title">Posts</h1>
+
+
+
+<main class="list">
+	
+	
+	
+	
+	
+	<section class="list-item">
+		
+		
+		<a href="/posts/2025/">2025总结</a> <span class="meta">Jan 30, 2025 <span class="draft-label">DRAFT</span> </span>
+		
+		
+		
+		
+		
+				
+		
+	</section>
+	
+	
+	<section class="list-item">
+		
+		
+		<a href="/posts/fixbug/">我的Windows不可能这么的卡顿</a> <span class="meta">Dec 9, 2022</span>
+		
+		
+		
+		
+		
+				
+		
+	</section>
+	
+	
+	<section class="list-item">
+		
+		
+		<a href="/posts/happyb/">生日快乐ヾ(≧▽≦*)o</a> <span class="meta">Apr 28, 2022</span>
+		
+		
+		
+		
+		
+				
+		
+	</section>
+	
+	
+	<section class="list-item">
+		
+		
+		<a href="/posts/win-active/">Windows KMS激活</a> <span class="meta">Dec 19, 2021</span>
+		
+		
+		
+		
+		
+				
+		
+	</section>
+	
+	
+	<section class="list-item">
+		
+		
+		<a href="/posts/vps/">学术小飞机</a> <span class="meta">Dec 10, 2021</span>
+		
+		
+		
+		
+		
+				
+		
+	</section>
+	
+	
+	<section class="list-item">
+		
+		
+		<a href="/posts/test/">WEB 样式测试</a> <span class="meta">Dec 7, 2021</span>
+		
+		
+		
+		
+		
+				
+		
+	</section>
+	
+	
+	
+</main>
+<footer class="footer">
+<hr><a class="soc" href="https://github.com/AO2233" title="GitHub"><i data-feather="github"></i></a>
+<a class="soc" href="https://gitlab.com/AO2233" title="GitLab"><i data-feather="gitlab"></i></a>
+<a class="soc" href="https://www.kaggle.com/ao2233" title="Kaggle"><i data-feather="link"></i></a>
+<a class="soc" href="https://atcoder.jp/users/AO2233" title="Atcoder"><i data-feather="code"></i></a>
+<a class="soc" href="https://leetcode.com/AO2233" title="Leetcode"><i data-feather="hash"></i></a>
+<a class="soc" href="mailto:qingao@ruri.waseda.jp" title="Mail"><i data-feather="mail"></i></a>
+</footer><script>
+      feather.replace()
+</script></div>
+    </body>
+</html>
