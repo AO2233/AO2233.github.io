@@ -164,13 +164,11 @@
   .highlight pre ::selection { background:pink; }
 
   /* Containers */
-  /* 对于过宽画幅采用增加padding的方法 */
-  /* width <= 800 */
   .content {
     margin-bottom: 4em;
     margin-left: auto;
     margin-right: auto;
-    min-width: 320px;
+    min-width: 540px;
     max-width: 1080px;
     padding: 0 1;
     word-wrap: break-word;
