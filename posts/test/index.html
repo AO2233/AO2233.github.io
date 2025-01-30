@@ -7,30 +7,21 @@
 
 <script type="text/javascript">
 
+
 (function(){
-
-  function apply_viewport(){
-    
-      var ww = window.screen.width;
-      var mw = 350; 
-      var ratio =  ww / mw; 
-      var viewport_meta_tag = document.getElementById('viewport');
-      if( ww < mw){ 
-        viewport_meta_tag.setAttribute('content', 'initial-scale=' + ratio + ', width=device-width');
-      }
-      else { 
-        viewport_meta_tag.setAttribute('content', 'initial-scale=1.0, width=device-width');
-      }
-    
+  function applyViewport() {
+    const minWidth = 350;
+    const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
+    const ratio = Math.min(viewportWidth / minWidth, 1);
+    const viewportMeta = document.querySelector('meta[name="viewport"]');
+    if (viewportMeta) {
+      viewportMeta.content = `initial-scale=${ratio}, width=device-width`;
+    }
   }
+  window.addEventListener('resize', applyViewport);
+  applyViewport();
+})();
 
-  
-  window.addEventListener('resize', function(){
-    apply_viewport();
-  });
-
-  apply_viewport();
-}());
 </script>
 	
 	
@@ -191,14 +182,13 @@
 <img src="/media/pic/2022/bochii.jpeg" alt="" style="width: 500px; hight:">
 对于长度过长的图片进行合适的缩放，同时也是导入图片的推荐写法。
 对于普通<code>markdown</code>的导入语法，只适合宽度合适的图片<code>（如：16x9）</code></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="ln">1</span><span class="cl">
-</span></span><span class="line"><span class="ln">2</span><span class="cl">代码为了避开渲染，全部添加 \，语法忘记时复制去掉 \
-</span></span><span class="line"><span class="ln">3</span><span class="cl">
-</span></span><span class="line"><span class="ln">4</span><span class="cl">{\{<span class="p">&lt;</span> <span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;/media/abc.png&#34;</span>  <span class="na">width</span><span class="o">=</span><span class="s">&#34;500px&#34;</span> <span class="p">&gt;</span>}\}
-</span></span><span class="line"><span class="ln">5</span><span class="cl">{\{<span class="p">&lt;</span> <span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;/media/abc.png&#34;</span>  <span class="na">width</span><span class="o">=</span><span class="s">&#34;50%&#34;</span> <span class="p">&gt;</span>}\}
-</span></span><span class="line"><span class="ln">6</span><span class="cl">{\{<span class="p">&lt;</span> <span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;/media/abc.png&#34;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&#34;message&#34;</span> <span class="na">width</span><span class="o">=</span><span class="s">&#34;50%&#34;</span> <span class="na">hight</span><span class="o">=</span><span class="s">&#34;50%&#34;</span> <span class="p">&gt;</span>}\}
-</span></span><span class="line"><span class="ln">7</span><span class="cl">网页过宽采用超过一定大小后，向两边padding的做法（大部分网站通用做法），保证纵向大小不变。对于宽度过小的情况，采用等比缩小的策略。
-</span></span><span class="line"><span class="ln">8</span><span class="cl">注意此处的开头的/
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="ln">1</span><span class="cl">代码为了避开渲染，全部添加 \，语法忘记时复制去掉 \
+</span></span><span class="line"><span class="ln">2</span><span class="cl">
+</span></span><span class="line"><span class="ln">3</span><span class="cl">{\{<span class="p">&lt;</span> <span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;/media/abc.png&#34;</span>  <span class="na">width</span><span class="o">=</span><span class="s">&#34;500px&#34;</span> <span class="p">&gt;</span>}\}
+</span></span><span class="line"><span class="ln">4</span><span class="cl">{\{<span class="p">&lt;</span> <span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;/media/abc.png&#34;</span>  <span class="na">width</span><span class="o">=</span><span class="s">&#34;50%&#34;</span> <span class="p">&gt;</span>}\}
+</span></span><span class="line"><span class="ln">5</span><span class="cl">{\{<span class="p">&lt;</span> <span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;/media/abc.png&#34;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&#34;message&#34;</span> <span class="na">width</span><span class="o">=</span><span class="s">&#34;50%&#34;</span> <span class="na">hight</span><span class="o">=</span><span class="s">&#34;50%&#34;</span> <span class="p">&gt;</span>}\}
+</span></span><span class="line"><span class="ln">6</span><span class="cl">网页过宽采用超过一定大小后，向两边padding的做法（大部分网站通用做法），保证纵向大小不变。对于宽度过小的情况，采用等比缩小的策略。
+</span></span><span class="line"><span class="ln">7</span><span class="cl">注意此处的开头的/
 </span></span></code></pre></div><blockquote>
 <p>markdown 标记测试</p>
 </blockquote>
@@ -632,11 +622,9 @@ f(x)=\int_{-\infty}^\infty\widehat f\xi e^{2\pi i\xi x}d\xi
 $$</p>
 <p>$$
 v_\pi(s) = \sum_{a \in \mathcal{A}} \pi(a|s) q_\pi(s,a)
-$$
-$$
-P(a|b) = \frac{P(b|a) \cdot P(a)}{(P(b|a) \cdot P(a)) + (P(b|\lnot a) \cdot P(\lnot a))} = \frac{0.05 \cdot
-0.9}{((0.05 \cdot 0.9) + (0.95 \cdot 0.1))} = \frac{0.045}{((0.05 \cdot 0.9) + (0.95 \cdot 0.1))} = \frac{0.045}{(0.045 + (0.95 \cdot
-0.1))} = \frac{0.045}{(0.045 + 0.095)}
+$$</p>
+<p>$$
+\sigma \left( \frac{QK^T}{\sqrt{d}} \right) V
 $$</p>
 <p>\begin{equation}
 \begin{CD}

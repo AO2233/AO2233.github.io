@@ -3,34 +3,25 @@
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	
-	<title>Test - 帰宅部</title><meta id="viewport" name="viewport">
+	<title>Tech - 帰宅部</title><meta id="viewport" name="viewport">
 
 <script type="text/javascript">
 
+
 (function(){
-
-  function apply_viewport(){
-    
-      var ww = window.screen.width;
-      var mw = 350; 
-      var ratio =  ww / mw; 
-      var viewport_meta_tag = document.getElementById('viewport');
-      if( ww < mw){ 
-        viewport_meta_tag.setAttribute('content', 'initial-scale=' + ratio + ', width=device-width');
-      }
-      else { 
-        viewport_meta_tag.setAttribute('content', 'initial-scale=1.0, width=device-width');
-      }
-    
+  function applyViewport() {
+    const minWidth = 350;
+    const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
+    const ratio = Math.min(viewportWidth / minWidth, 1);
+    const viewportMeta = document.querySelector('meta[name="viewport"]');
+    if (viewportMeta) {
+      viewportMeta.content = `initial-scale=${ratio}, width=device-width`;
+    }
   }
+  window.addEventListener('resize', applyViewport);
+  applyViewport();
+})();
 
-  
-  window.addEventListener('resize', function(){
-    apply_viewport();
-  });
-
-  apply_viewport();
-}());
 </script>
 	
 	
@@ -140,11 +131,15 @@
 	</nav>
 </header>
 
-<h1>test</h1>
+<h1>Tech</h1>
 
 
 <ul class="posts"><li class="post">
-			<a href="/posts/test/">WEB 样式测试</a> <span class="meta">Dec 7, 2021</span>
+			<a href="/posts/fixbug/">我的Windows不可能这么的卡顿</a> <span class="meta">Dec 9, 2022</span>
+		</li><li class="post">
+			<a href="/posts/win-active/">Windows KMS激活</a> <span class="meta">Dec 19, 2021</span>
+		</li><li class="post">
+			<a href="/posts/vps/">学术小飞机</a> <span class="meta">Dec 10, 2021</span>
 		</li></ul>
 <footer class="footer">
 <hr><a class="soc" href="https://github.com/AO2233" title="GitHub"><i data-feather="github"></i></a>

@@ -32,9 +32,9 @@
     /* text-indent: 2rem; */
   }
 
-  html, text, p {
+  html, p {
+  /* html, text, p { */
     font-family: 'ZpixA', 'Fpp', 'DOS-c', 'Sarasa Mono Slab SC';
-    /* font-family: 'Fpp', 'ZpixA', 'DOS-c', 'Sarasa Mono Slab SC'; */
     font-size: 17px;
   }
   
@@ -347,7 +347,7 @@
     background: black;
     border-radius: 0 0 0.25rem 0.25rem;
     color: white;
-    font-size: 12px;
+    font-size: 1em;
     letter-spacing: 0.025rem;
     padding: 0.1rem 0.5rem;
     position: absolute;
@@ -593,12 +593,14 @@ a[href^="#fn:"]:after{ content: ']' }
   font-size: 1.1em;
 }
 
-
-
 /* fix hugo short code style problem  */
 
 .twitter-tweet-rendered {
 	display:block;
 	margin-left:auto;
 	margin-right:auto;
+}
+
+.footnote-ref {
+  font-size: 0.75em;
 }

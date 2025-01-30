@@ -9,30 +9,21 @@
 
 <script type="text/javascript">
 
+
 (function(){
-
-  function apply_viewport(){
-    
-      var ww = window.screen.width;
-      var mw = 350; 
-      var ratio =  ww / mw; 
-      var viewport_meta_tag = document.getElementById('viewport');
-      if( ww < mw){ 
-        viewport_meta_tag.setAttribute('content', 'initial-scale=' + ratio + ', width=device-width');
-      }
-      else { 
-        viewport_meta_tag.setAttribute('content', 'initial-scale=1.0, width=device-width');
-      }
-    
+  function applyViewport() {
+    const minWidth = 350;
+    const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
+    const ratio = Math.min(viewportWidth / minWidth, 1);
+    const viewportMeta = document.querySelector('meta[name="viewport"]');
+    if (viewportMeta) {
+      viewportMeta.content = `initial-scale=${ratio}, width=device-width`;
+    }
   }
+  window.addEventListener('resize', applyViewport);
+  applyViewport();
+})();
 
-  
-  window.addEventListener('resize', function(){
-    apply_viewport();
-  });
-
-  apply_viewport();
-}());
 </script>
 	
 	
