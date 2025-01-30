@@ -35,7 +35,7 @@
   html, p {
   /* html, text, p { */
     font-family: 'ZpixA', 'Fpp', 'DOS-c', 'Sarasa Mono Slab SC';
-    font-size: 17px;
+    font-size: 1em;
   }
   
 
@@ -173,13 +173,6 @@
     padding: 0 1;
     word-wrap: break-word;
   }
-
-  @media (max-width: 540px) {
-    html {
-        transform: scale(calc(100vw / 540));  /* 缩放比例 = 屏幕宽度 / 540 */
-        transform-origin: top left;  /* 缩放原点设置为左上角 */
-    }
-}
 
 /* 对于过宽画幅采用缩放的方法 */
   /*
