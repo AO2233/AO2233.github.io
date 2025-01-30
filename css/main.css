@@ -103,11 +103,11 @@
   }
   
   
-  @media screen and (min-width: 600px) {
+  /* @media screen and (min-width: 600px) {
     figure {
       padding: 0 40px;
     }
-  }
+  } */
   
   figure h4 {
     font-size: 1rem;
