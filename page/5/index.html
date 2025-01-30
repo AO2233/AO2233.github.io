@@ -5,26 +5,18 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
-	<title>帰宅部 | Home </title><meta id="viewport" name="viewport">
+	<title>帰宅部 | Home </title><script type="text/javascript">
+	document.addEventListener("DOMContentLoaded", function() {
+		const body = document.body;
+		const minPageWidth = 540;
+		const deviceWidth = window.innerWidth;
+		const scale = deviceWidth / minPageWidth;
 
-<script type="text/javascript">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+		const metaViewport = document.querySelector('meta[name=viewport]');
+		metaViewport.setAttribute('content', `width=device-width, initial-scale=${scale}, maximum-scale=${scale}, user-scalable=no`);
+	});
 </script>
+
 	
 	
 	
