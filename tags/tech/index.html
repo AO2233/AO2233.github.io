@@ -3,10 +3,12 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
-	<title>Tech - 帰宅部</title><script type="text/javascript">
+	<title>Tech - 帰宅部</title><meta id="viewport" name="viewport">
+
+<script type="text/javascript">
 	document.addEventListener("DOMContentLoaded", function() {
 		const body = document.body;
-		const minPageWidth = 540;
+		const minPageWidth = parseFloat(window.getComputedStyle(body).minWidth);
 		const deviceWidth = window.innerWidth;
 		const scale = deviceWidth / minPageWidth;
 
