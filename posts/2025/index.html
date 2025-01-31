@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html><head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<title>2024总结 - 帰宅部</title><meta id="viewport" name="viewport">
+
+
+
+	
+	
+	
+	
+	
+	
+	
+
+	<link rel="stylesheet" href="https://ao2233.github.io/css/fonts.css" >
+	<link rel="stylesheet" type="text/css" media="screen" href="https://ao2233.github.io/css/main.css" />
+	<link rel="stylesheet" href="https://ao2233.github.io/aplayer/APlayer.min.css" >
+	<link rel="stylesheet" href="https://ao2233.github.io/videojs/video-js.min.css" >
+
+	<script src="https://ao2233.github.io/aplayer/APlayer.min.js"></script>
+	<script src="https://ao2233.github.io/dplayer/DPlayer.min.js"></script>
+	<script src="https://ao2233.github.io/videojs/video.min.js"></script>
+
+	<script src="https://ao2233.github.io/js/pdfobject.min.js"></script>
+	<script src="https://ao2233.github.io/js/feather.min.js"></script>
+
+	
+	
+	
+	
+	<link rel="stylesheet" href="https://ao2233.github.io/katex/katex.min.css" crossorigin="anonymous">
+	<script defer src="https://ao2233.github.io/katex/katex.min.js" crossorigin="anonymous"></script>
+	<script defer src="https://ao2233.github.io/katex/contrib/auto-render.min.js" crossorigin="anonymous"  onload="renderMathInElement(document.body);"></script>
+	<script>
+		document.addEventListener("DOMContentLoaded", function() {
+			renderMathInElement(document.body, {
+				delimiters: [
+				{left: "$$", right: "$$", display: true},
+			
+				{left: "$", right: "$", display: false},
+			
+				]
+			});
+		});
+	</script>
+	
+	<script src="https://ao2233.github.io/js/mermaid.min.js"></script>
+
+	
+	
+	<link id="darkModeStyle" rel="stylesheet" type="text/css" href="https://ao2233.github.io/css/dark.css" media="(prefers-color-scheme: dark)"/>
+	<script>
+	const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
+	var config = {
+		startOnLoad:true,
+		flowchart:{
+		useMaxWidth:true,
+		htmlLabels:true,
+		curve:'cardinal',
+		},
+		securityLevel:'loose',
+	};
+	
+	var a=0;
+	function darkModeHandler() {
+		if (mediaQuery.matches) {
+			mermaid.initialize({
+				
+				theme: 'dark',
+				config
+			});
+			if (a>0){
+				document.location.reload(false);
+			}
+			a+=1;
+			
+		} else {
+			mermaid.initialize({
+				
+				theme: 'base',
+				config
+			});
+			if (a>0){
+				document.location.reload(false);
+			}
+			a+=1;
+			
+		}
+	}
+	darkModeHandler()
+	mediaQuery.addListener(darkModeHandler)
+
+	</script>
+</head>
+<body>
+        <div class="content"><header>
+	<div class="main">
+		<a href="https://ao2233.github.io/">帰宅部</a>
+		<link rel="icon" type="image/png" href=https://ao2233.github.io/favicon.ico />
+	</div>
+	<nav>
+		
+		<a href="/" class="sub-main">Home</a>
+		
+		<a href="/posts" class="sub-main">Archives</a>
+		
+		<a href="/about" class="sub-main">About</a>
+		
+
+		
+
+	</nav>
+</header>
+<main>
+	<article>
+		<div class="title">
+			<h1 class="title">2024总结</h1>
+			<div class="meta">Posted on Jan 30, 2025 <span class="draft-label">DRAFT</span> </div>
+		</div>
+		
+
+		<section class="body">
+			<p>今年实在是太多应该写，但是面对着<code>vscode</code>我又啥也写不出来了，哈哈。上次写还是几年前，顺便修了下<code>hugo</code>模版。</p>
+<p>首先，让我们来看看年度音乐：</p>
+<!-- 
+<iframe allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" allowfullscreen="allowfullscreen" class="spotify spotify-track" id="h-sc-spotify-0" loading="lazy" src="https://open.spotify.com/embed/track/2cxcqKwQtfKq7giphxjzOu?theme=1" style="width: 100%; height: 152px; border: none;"></iframe> -->
+<blockquote>
+<p>Spotify</p>
+</blockquote>
+
+<iframe allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" allowfullscreen="allowfullscreen" class="spotify spotify-playlist" id="h-sc-spotify-1" loading="lazy" src="https://open.spotify.com/embed/playlist/37i9dQZF1FoyQGyinuuvRu?theme=1" style="width: 100%; height: 380px; border: none;"></iframe>
+<p>论冲击力，还得是这首：</p>
+<div id="1"></div>
+<script>
+ap = new APlayer({
+    container: document.getElementById('1'),
+    fixed: '',
+    audio: [{
+        name: '借月' ,
+        artist: '王天阳',
+        url: 'media\/a\/借月.mp3',
+        cover: '\/media\/pic\/2025\/c.jpg',
+        autoplay: 'true',
+        lrc: 'no lrc'
+    }]
+});
+</script>
+
+<h1 id="活动时间表">活动时间表</h1>
+<table>
+  <thead>
+      <tr>
+          <th><code>时间</code></th>
+          <th><code>通常状态</code></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>3:00</td>
+          <td>关机，准备睡觉</td>
+      </tr>
+      <tr>
+          <td>10:30</td>
+          <td>华丽丽之自然醒</td>
+      </tr>
+      <tr>
+          <td>11:00</td>
+          <td>洗漱 + 清理房间</td>
+      </tr>
+      <tr>
+          <td>11:40</td>
+          <td>看看<code>paper</code></td>
+      </tr>
+      <tr>
+          <td>12:30</td>
+          <td>中饭大转盘 -&gt; <code>咖喱/拉面/Costco/吉野家</code></td>
+      </tr>
+      <tr>
+          <td>13:40</td>
+          <td><code>回家开躺</code></td>
+      </tr>
+      <tr>
+          <td>18:00</td>
+          <td>晚饭大转盘 = <code>i in set(选择) and not(中饭)</code></td>
+      </tr>
+      <tr>
+          <td>19:30</td>
+          <td><code>回家开躺</code></td>
+      </tr>
+      <tr>
+          <td>22:30</td>
+          <td>躺入浴缸</td>
+      </tr>
+      <tr>
+          <td>24:00</td>
+          <td>小说 &amp; Youtube时间</td>
+      </tr>
+  </tbody>
+</table>
+<p>先躺咯。</p>
+
+		</section>
+
+		<div class="post-tags">
+			
+			
+			
+		</div>
+	</article>
+</main>
+<footer class="footer">
+<hr><a class="soc" href="https://github.com/AO2233" title="GitHub"><i data-feather="github"></i></a>
+<a class="soc" href="https://gitlab.com/AO2233" title="GitLab"><i data-feather="gitlab"></i></a>
+<a class="soc" href="https://www.kaggle.com/ao2233" title="Kaggle"><i data-feather="link"></i></a>
+<a class="soc" href="https://atcoder.jp/users/AO2233" title="Atcoder"><i data-feather="code"></i></a>
+<a class="soc" href="https://leetcode.com/AO2233" title="Leetcode"><i data-feather="hash"></i></a>
+<a class="soc" href="mailto:qingao@ruri.waseda.jp" title="Mail"><i data-feather="mail"></i></a>
+</footer><script>
+      feather.replace()
+</script></div>
+    </body>
+</html>

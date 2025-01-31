@@ -157,7 +157,7 @@
 </span></span><span class="line"><span class="ln">5</span><span class="cl">	<span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&#34;⑨&#34;</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
 </span></span><span class="line"><span class="ln">6</span><span class="cl">	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 </span></span><span class="line"><span class="ln">7</span><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><h1 id="custom-img">custom img</h1>
+</span></span></code></pre></div><h1 id="自定义图片">自定义图片</h1>
 <p>
 
 
@@ -197,6 +197,7 @@
 <p>特殊样式</p>
 </blockquote>
 <h1 id="aplayer">Aplayer</h1>
+<!--  不需要 *注意*：需要写全`/`，使用的相对地址 -->
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="ln">1</span><span class="cl">{/{<span class="p">&lt;</span> <span class="nt">aplayer</span> <span class="na">id</span><span class="o">=</span><span class="s">2</span> <span class="na">url</span><span class="o">=</span><span class="s">/media/fly_away.mp3</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;fly away&#34;</span>  <span class="na">artist</span><span class="o">=</span><span class="s">上原あずみ</span> <span class="p">&gt;</span>}/}
 </span></span></code></pre></div><div id="2"></div>
 <script>
@@ -206,7 +207,7 @@ ap = new APlayer({
     audio: [{
         name: 'fly away' ,
         artist: '上原あずみ',
-        url: 'https:\/\/ao2233.github.io\/\/media\/a\/fly_away.mp3',
+        url: '\/media\/a\/fly_away.mp3',
         cover: '\/media\/pic\/2022\/fly.jpg',
         autoplay: 'true',
         lrc: 'no lrc'
@@ -222,7 +223,7 @@ ap = new APlayer({
     audio: [{
         name: 'Inferno' ,
         artist: 'Benjamin \u0026 mpi',
-        url: 'https:\/\/ao2233.github.io\/\/media\/a\/Inferno.mp3',
+        url: '\/media\/a\/Inferno.mp3',
         cover: '\/media\/pic\/2022\/moe.webp',
         autoplay: 'true',
         lrc: 'no lrc'
@@ -246,7 +247,7 @@ ap = new APlayer({
 </span></span><span class="line"><span class="ln">13</span><span class="cl"><span class="p">});</span>
 </span></span><span class="line"><span class="ln">14</span><span class="cl"><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </span></span></code></pre></div><h1 id="dplayer">Dplayer</h1>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="ln">1</span><span class="cl">{/{<span class="p">&lt;</span> <span class="nt">dplayer</span> <span class="na">id</span><span class="o">=</span><span class="s">1</span> <span class="na">path</span><span class="o">=</span><span class="s">/media/vtest.mp4</span> <span class="p">&gt;</span>}/}
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="ln">1</span><span class="cl">{/{<span class="p">&lt;</span> <span class="nt">dplayer</span> <span class="na">id</span><span class="o">=</span><span class="s">1</span> <span class="na">url</span><span class="o">=</span><span class="s">/media/vtest.mp4</span> <span class="p">&gt;</span>}/}
 </span></span></code></pre></div><div align=center>
 <div id="1"></div>
 
@@ -258,7 +259,7 @@ ap = new APlayer({
     chromecast: true,
     preload: true,
     video: {
-        url: 'https:\/\/ao2233.github.io\/\/media\/v\/vtest.mp4',
+        url: '\/media\/v\/vtest.mp4',
         
     },
 });
@@ -556,7 +557,7 @@ ap = new APlayer({
     var options = {
             fallbackLink: "<p>The browser does not support embedded <a href='[url]'>PDF</a> documents. </p>"
             };
-    PDFObject.embed("https:\/\/ao2233.github.io\/\/media\/pdf\/f@ckTeX.pdf", "#as", {height:'50rem'}, options);
+    PDFObject.embed("\/media\/pdf\/f@ckTeX.pdf", "#as", {height:'50rem'}, options);
 </script>
 
 <p>用于大页面的LaTex的加载</p>
