@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on 帰宅部</title>
+    <link>https://ao2233.github.io/tags/</link>
+    <description>Recent content in Tags on 帰宅部</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <copyright>MIT License</copyright>
+    <lastBuildDate>Fri, 09 Dec 2022 19:22:18 +0800</lastBuildDate>
+    <atom:link href="https://ao2233.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Tech</title>
+      <link>https://ao2233.github.io/tags/tech/</link>
+      <pubDate>Fri, 09 Dec 2022 19:22:18 +0800</pubDate>
+      <guid>https://ao2233.github.io/tags/tech/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Hugo</title>
+      <link>https://ao2233.github.io/tags/hugo/</link>
+      <pubDate>Tue, 07 Dec 2021 21:13:06 +0000</pubDate>
+      <guid>https://ao2233.github.io/tags/hugo/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>
