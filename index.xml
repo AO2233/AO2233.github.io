@@ -7,15 +7,8 @@
     <generator>Hugo</generator>
     <language>en</language>
     <copyright>MIT License</copyright>
-    <lastBuildDate>Sun, 27 Apr 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 25 Feb 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://ao2233.github.io/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Large Language Model 那些事</title>
-      <link>https://ao2233.github.io/posts/llm/</link>
-      <pubDate>Sun, 27 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>https://ao2233.github.io/posts/llm/</guid>
-      <description>&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;&#xA;&lt;p&gt;最近，&lt;code&gt;LLM&lt;/code&gt;炒的甚是火热，于是也来写一篇&lt;code&gt;blog&lt;/code&gt;记录下。训练搞不了，只能做做&lt;code&gt;RAG&lt;/code&gt;&amp;amp;&lt;code&gt;Prompt Pipeline&lt;/code&gt;这种下游工程了，再就是结合&lt;code&gt;API&lt;/code&gt;解决业务。&lt;/p&gt;&#xA;&lt;p&gt;LLM是泡沫还是圣经、拭目以待。&lt;/p&gt;&#xA;&lt;h1 id=&#34;llm的结构&#34;&gt;LLM的结构&lt;/h1&gt;&#xA;&lt;p&gt;TODO: transformer, GPT, zero from hero&lt;/p&gt;&#xA;&lt;h1 id=&#34;rag设计和原理&#34;&gt;RAG设计和原理&lt;/h1&gt;&#xA;&lt;p&gt;TODO: 最小实例&#xA;x的图&lt;/p&gt;&#xA;&lt;h1 id=&#34;市场份额以及ranking现状&#34;&gt;市场份额以及Ranking现状&lt;/h1&gt;&#xA;&lt;h1 id=&#34;应用开发&#34;&gt;应用开发&lt;/h1&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;编程语言和SDK&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;p&gt;鼠🐭鼠、我啊。不做什么机器学习了，要转前端了。&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;demo项目&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;h2 id=&#34;应用&#34;&gt;应用&lt;/h2&gt;&#xA;&lt;h1 id=&#34;言语翻译&#34;&gt;言语翻译&lt;/h1&gt;&#xA;&lt;p&gt;TODO: trick word, style, pipline&lt;/p&gt;&#xA;&lt;h1 id=&#34;vibe编程&#34;&gt;vibe编程&lt;/h1&gt;&#xA;&lt;p&gt;TODO: 插件，质量&lt;/p&gt;&#xA;&lt;h1 id=&#34;flow构建&#34;&gt;Flow构建&lt;/h1&gt;&#xA;&lt;p&gt;TODO: dify, langfuse, langchain&lt;/p&gt;&#xA;&lt;h1 id=&#34;代码性能&#34;&gt;代码性能&lt;/h1&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Atcoder ABC 周赛&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;p&gt;结果：水色&lt;/p&gt;&#xA;&lt;h2 id=&#34;生态&#34;&gt;生态&lt;/h2&gt;&#xA;&lt;h1 id=&#34;serverframework&#34;&gt;Server、Framework&lt;/h1&gt;&#xA;&lt;p&gt;ollama, langchain, vllm, llamaindex&lt;/p&gt;&#xA;&lt;h1 id=&#34;客户端&#34;&gt;客户端&lt;/h1&gt;&#xA;&lt;p&gt;Cherry Studio、Chatwise&lt;/p&gt;&#xA;&lt;h1 id=&#34;mcp&#34;&gt;MCP&lt;/h1&gt;&#xA;&lt;p&gt;我感觉就是一个包装精致的&lt;code&gt;Fuction Call&lt;/code&gt;，很多情况下你只有用&lt;code&gt;C&lt;/code&gt;家的模型，才能&lt;code&gt;call&lt;/code&gt;。&lt;/p&gt;&#xA;&lt;p&gt;瞬息万变、卷成红海。&lt;/p&gt;</description>
-    </item>
     <item>
       <title>加油与无力感</title>
       <link>https://ao2233.github.io/posts/re/</link>
