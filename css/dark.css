@@ -1,0 +1,154 @@
+:root {
+  --mermaid-theme: dark;
+  --darkbgcolor: #202124 /* base, dark, forest, neutral, night */;
+}
+
+body {
+  color: white;
+  background-color: var(--darkbgcolor);
+}
+
+::-moz-selection {
+  background: var(--darkcolor);
+  color: #000;
+}
+
+::selection {
+  background: var(--darkcolor);
+  color: #000;
+}
+
+hr {
+  border-top: 3px dotted lightcoral;
+}
+
+/* ========== code 会覆盖全局所有的普通code颜色 此处加入pre 还原 ``` 的 ========= */
+code {
+  background-color: lightblue;
+  color: var(--darkbgcolor);
+}
+
+a code {
+  color: inherit;
+}
+
+pre code {
+  color: inherit;
+}
+/* =================== */
+
+pre {
+  background-color: var(--darkbgcolor);
+}
+
+blockquote {
+  border-color: palevioletred;
+}
+
+h1::before,
+h2::before,
+h3::before,
+h4::before,
+h5::before,
+h6::before {
+  color: var(--darkcolor);
+}
+
+a {
+  border-bottom: 3px solid var(--darkcolor);
+  color: inherit;
+}
+
+a:hover,
+a code:hover {
+  background-color: var(--darkcolor);
+  color: black;
+}
+
+.site-title a {
+  color: white;
+  text-decoration: none !important;
+}
+
+.header nav,
+.footer {
+  border-color: #333;
+}
+
+.soc:hover {
+  color: black;
+}
+
+.draft-label {
+  color: var(--darkcolor);
+  background-color: blue;
+}
+
+/* 代码块 */
+.chroma {
+  background-color: #1c1c1c;
+}
+
+.highlight pre code[class*="language-"]::before {
+  background: whitesmoke;
+  color: black;
+}
+
+.ln {
+  color: lightblue;
+}
+
+/* Aplayer */
+.aplayer-music .aplayer-title {
+  color: #999;
+}
+
+/* 滑动条 */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #666;
+}
+
+/* 伸缩 Box */
+.collapsible {
+  border: 1px solid #aaa;
+  box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
+}
+
+.callout {
+  border-left: 0.3rem solid var(--darkcolor);
+  background-color: #333;
+}
+
+blockquote {
+  color: #eee;
+}
+
+.list-item {
+  border-bottom: none;
+  color: #eee;
+  line-height: 1.7em;
+}
+
+.moe-mask {
+  color: transparent;
+  background-color: white;
+  transition: all 0.3s ease;
+  display: inline-block;
+  padding: 0 4px;
+}
+
+.moe-mask:hover {
+  color: inherit;
+  background-color: transparent;
+}
+
+#progress-bar {
+  height: 100%;
+  background: var(--darkcolor);
+  width: 0%;
+  transition: width 0.25s ease-out;
+}

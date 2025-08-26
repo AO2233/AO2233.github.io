@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html><head>
+	<meta charset="utf-8" />
+	<meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
+	<meta name=viewport content="width=device-width,initial-scale=1">
+
+	
+
+	<title>帰宅部 </title>
+	
+	<link rel="icon" href=https://ao2233.github.io/duck.ico>
+	
+	<link rel="stylesheet" href="https://ao2233.github.io/css/code_style.css">
+	<link rel="stylesheet" href="https://ao2233.github.io/css/code_light.css">
+	<link rel="stylesheet" href="https://ao2233.github.io/css/fonts.css">
+	<link rel="stylesheet" href="https://ao2233.github.io/js/aplayer/APlayer.min.css">
+	<link rel="stylesheet" href="https://ao2233.github.io/js/videojs/video-js.min.css">
+	<link rel="stylesheet" href="https://ao2233.github.io//js/zoom/style.min.css">
+
+	<link rel="stylesheet" href="https://ao2233.github.io/css/main.css">
+	<link rel="stylesheet" href="https://ao2233.github.io/css/dark.css" media="(prefers-color-scheme: dark)" />
+	<link rel="stylesheet" href="https://ao2233.github.io/css/code_dark.css" media="(prefers-color-scheme: dark)" />
+	
+
+	
+	<script src="https://ao2233.github.io/js/aplayer/APlayer.min.js"></script>
+	<script src="https://ao2233.github.io/js/dplayer/DPlayer.min.js"></script>
+	<script src="https://ao2233.github.io/js/videojs/video.min.js"></script>
+	<script src="https://ao2233.github.io/js/zoom/medium-zoom.min.js"></script>
+
+	<script src="https://ao2233.github.io/js/pdfobject.min.js"></script>
+	<script src="https://ao2233.github.io/js/feather.min.js"></script>
+	<script src="https://ao2233.github.io/js/collapsible.js"></script>
+	<script src="https://ao2233.github.io/js/mermaid.min.js"></script>
+	
+
+	
+	<link rel="stylesheet" href="https://ao2233.github.io/js/katex/katex.min.css" crossorigin="anonymous">
+	<script defer src="https://ao2233.github.io/js/katex/katex.min.js" crossorigin="anonymous"></script>
+	<script defer src="https://ao2233.github.io/js/katex/contrib/auto-render.min.js" crossorigin="anonymous"
+		onload="renderMathInElement(document.body);"></script>
+	<script>
+		document.addEventListener("DOMContentLoaded", function () {
+			renderMathInElement(document.body, {
+				delimiters: [
+					{ left: "$$", right: "$$", display: true },
+					
+					{ left: "$", right: "$", display: false },
+					
+				]
+			});
+		});
+	</script>
+	
+
+	
+	<script>
+		const mq = window.matchMedia('(prefers-color-scheme: dark)'),
+			config = { startOnLoad: true, flowchart: { useMaxWidth: true, htmlLabels: true, curve: 'cardinal' }, securityLevel: 'loose' };
+		let inited = false,
+			setTheme = dark => {
+				mermaid.initialize({ theme: dark ? 'dark' : 'base', config });
+				if (inited) location.reload(false);
+				inited = true;
+			};
+
+		setTheme(mq.matches);
+		(mq.addEventListener ? mq.addEventListener : mq.addListener).call(mq, 'change', e => setTheme(e.matches));
+	</script>
+
+	<script>
+		window.addEventListener('scroll', function() {
+		var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+		var scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
+		var clientHeight = document.documentElement.clientHeight || window.innerHeight;
+		var scrollPercent = (scrollTop / (scrollHeight - clientHeight)) * 100;
+		document.getElementById('progress-bar').style.width = scrollPercent + '%';
+		});
+	</script>
+
+	
+	
+
+</head>
+
+    <body>
+        <div class="content"><header>
+	<div class="main">
+		<a href="https://ao2233.github.io/">帰宅部</a>
+	</div>
+
+	
+	<nav>
+		
+		<a href="/" class="sub-main">Archive</a>
+		
+		<a href="/about" class="sub-main">About</a>
+		
+
+	
+		
+	</nav>
+</header>
+
+
+
+<div id="progress-container">
+	<div id="progress-bar"></div>
+</div>
+<div class="content">
+        
+<main>
+	
+	<div class="title">
+		<h1 class="title">从零开始的博客编写</h1>
+		<div class="meta">Posted on Dec 6, 2021</div>
+	</div>
+	<section class="body">
+	<article>
+		<p>本篇指南将会介绍我的<code>Hugo 主题</code>编写过程。并作为一个备份，太长时间不写<code>blog</code>，自己都忘了。如果要细看<code>Go</code>语法部分，建议重新阅读<a href="https://gohugo.io/documentation/">官方文档</a>，有很多自定量</p>
+<h1 id="感想">感想</h1>
+<p>作为一个解析器，<code>Hugo</code>通过<code>Go</code>的模版解析器，与内部定义的规则，将拓展的<code>markdown</code>生成为<code>html</code>。个人理解是，<code>Go</code>的语法写前处理，<code>hook</code>靠改<code>_default</code>模版和<code>js</code>、<code>css</code>魔改。和其他的<code>blog</code>框架比起来，优势就是生成速度快，结构简单，但问题是：</p>
+<ul>
+<li>很难兼容其余的框架，也许可以把<code>hugo</code>生成的数据作为前处理步骤🤔？</li>
+<li><code>Markdown</code>结构的拓展语法很复杂（尤其是想自定义解析器行为），<code>shortcode</code>应对复杂功能仍是力不从心。$\LaTeX$ 设置了<code>passthrough</code>还有<code>\</code>需要转译，可能我理解上有<code>bug</code>?</li>
+<li>目前没办法在markdown里写特殊方法（比如 <code>shortcode</code>）的注释，会直接影响界面渲染，导致炸掉</li>
+<li>可能目前从不麻烦的框架上来选，<code>hugo</code>也许是最佳选择。但无论如何，<code>MathJax</code>和<code>Hexo</code>我是不会再碰了。下一个选择也许是<code>Next.js</code>，自由度拉满。当然如果你<code>Python</code>更上手可以选择<a href="https://github.com/getpelican/pelican"><strong>Pelican</strong></a></li>
+</ul>
+<h1 id="theme目录结构"><code>Theme</code>目录结构</h1>
+<p>先来一个<code>demo</code>来说明</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="ln">1</span><span class="cl"><span class="c1"># ao @ azusa in ~/Desktop [12:54:13]</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl">$ hugo new theme demo
+</span></span><span class="line"><span class="ln">3</span><span class="cl">Creating new theme in /Users/ao/Desktop/themes/demo
+</span></span></code></pre></div><blockquote>
+<p>核心结构</p></blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="o">(</span>my_env<span class="o">)</span>
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="c1"># ao @ azusa in ~/Desktop [12:54:37]</span>
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl">$ tree ./themes/demo/layouts
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl">./themes/demo/layouts
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl">├── _default
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">│   ├── baseof.html
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">│   ├── home.html
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl">│   ├── list.html
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl">│   └── single.html
+</span></span><span class="line"><span class="ln">10</span><span class="cl">└── partials
+</span></span><span class="line"><span class="ln">11</span><span class="cl">    ├── footer.html
+</span></span><span class="line"><span class="ln">12</span><span class="cl">    ├── head
+</span></span><span class="line"><span class="ln">13</span><span class="cl">    │   ├── css.html
+</span></span><span class="line"><span class="ln">14</span><span class="cl">    │   └── js.html
+</span></span><span class="line"><span class="ln">15</span><span class="cl">    ├── head.html
+</span></span><span class="line"><span class="ln">16</span><span class="cl">    ├── header.html
+</span></span><span class="line"><span class="ln">17</span><span class="cl">    ├── menu.html
+</span></span><span class="line"><span class="ln">18</span><span class="cl">    └── terms.html
+</span></span><span class="line"><span class="ln">19</span><span class="cl">
+</span></span><span class="line"><span class="ln">20</span><span class="cl"><span class="m">4</span> directories, <span class="m">11</span> files
+</span></span></code></pre></div><p><code>layouts</code>下面有2个重要目录，<code> _default</code>和<code>partials</code>，规定网页整体的架构（<code>html结构</code>）。<code> _default</code>放置内置模版，这些内置模版有很多，简单的具体规则如下
+
+
+
+<div class="masonry-gallery" style="display: flex; flex-wrap: wrap; justify-content: center; margin: 0 3px;">
+
+<div class="masonry-gallery-item" style="width: 100%;margin: 0 3px; max-width: 700px">
+<img src="/media/img/2025/hugo-site.jpg" class="zoom-image">
+</div>
+
+</div>
+</p>
+<p>重要的是</p>
+<ul>
+<li>开始界面：<code>home.html</code> 或者 <code>index.html</code></li>
+<li>每个目录下的主界面（比如<code>content/post</code>文件夹的<code>index</code>界面）： <code>section.html</code></li>
+<li>单个文章界面：<code>single.html</code></li>
+<li>特性界面：<code>taxonomy.html</code> 或 <code>term.html</code> 比如<code>Hugo</code>自己生成的<code>tag</code></li>
+</ul>
+<p>余地很大，你每个只写一个界面就行。<code>single section index</code>就够用了。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln"> 1</span><span class="cl">layouts/
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl">├── _default/
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl">│   ├── _markup/
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl">│   │   ├── render-image.html   &lt;-- render hook
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl">│   │   └── render-link.html    &lt;-- render hook
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">│   ├── baseof.html
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">│   ├── home.html
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl">│   ├── section.html
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl">│   ├── single.html
+</span></span><span class="line"><span class="ln">10</span><span class="cl">│   ├── taxonomy.html
+</span></span><span class="line"><span class="ln">11</span><span class="cl">│   └── term.html
+</span></span><span class="line"><span class="ln">12</span><span class="cl">├── articles/
+</span></span><span class="line"><span class="ln">13</span><span class="cl">│   └── card.html               &lt;-- content view
+</span></span><span class="line"><span class="ln">14</span><span class="cl">├── partials/
+</span></span><span class="line"><span class="ln">15</span><span class="cl">│   ├── footer.html
+</span></span><span class="line"><span class="ln">16</span><span class="cl">│   └── header.html
+</span></span><span class="line"><span class="ln">17</span><span class="cl">└── shortcodes/
+</span></span><span class="line"><span class="ln">18</span><span class="cl">    ├── audio.html
+</span></span><span class="line"><span class="ln">19</span><span class="cl">    └── video.html
+</span></span></code></pre></div><p>至于<code>partials</code>目录则是放置代码片段，用以快速复用。比如<code>html</code>头结构。当然你也可以直接在上面的<code>_default</code>里直接写。</p>
+<p>最后就是<code>shortcode</code>了，虽然可以<code>直接</code>（没有什么别的包装）在markdown里手搓<code>html</code>，但是非常麻烦。<code>shortcode</code>就是把这个写成模版，并用<code>类Go</code>语法读取参数。但是不得不说，还是挺麻烦。个人感觉某些场合可能还不如直接<code>html</code></p>
+<h1 id="文件存放">文件存放</h1>
+<p>说完了主题文件结构，接下来简单写下文件存放与解析方式</p>
+<blockquote>
+<p>文件结构</p></blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="c1"># ao @ azusa in ~/Library/Mobile Documents/com~apple~CloudDocs/MyBlog/hugo-blog/themes/pixel on git:master x [14:42:46]</span>
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl">$ ls -al
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl">total <span class="m">56</span>
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl">drwxr-xr-x  <span class="m">11</span> ao  staff   <span class="m">352</span> Feb  <span class="m">9</span> 13:30 .
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl">drwx------   <span class="m">4</span> ao  staff   <span class="m">128</span> Feb  <span class="m">9</span> 13:30 ..
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">-rw-r--r--@  <span class="m">1</span> ao  staff  <span class="m">6148</span> Feb  <span class="m">8</span> 20:19 .DS_Store
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">drwxr-xr-x  <span class="m">13</span> ao  staff   <span class="m">416</span> Feb  <span class="m">9</span> 10:09 .git
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl">-rw-r--r--   <span class="m">1</span> ao  staff  <span class="m">3096</span> Feb  <span class="m">8</span> 15:53 .gitignore
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl">-rwxr-xr-x   <span class="m">1</span> ao  staff  <span class="m">1104</span> Feb  <span class="m">8</span> 15:53 LICENSE
+</span></span><span class="line"><span class="ln">10</span><span class="cl">-rwxr-xr-x   <span class="m">1</span> ao  staff  <span class="m">1579</span> Feb  <span class="m">8</span> 15:53 README.md
+</span></span><span class="line"><span class="ln">11</span><span class="cl">-rw-r--r--   <span class="m">1</span> ao  staff  <span class="m">1640</span> Feb  <span class="m">8</span> 15:53 README.zh-CN.md
+</span></span><span class="line"><span class="ln">12</span><span class="cl">-rwxr-xr-x@  <span class="m">2</span> ao  staff  <span class="m">3358</span> Feb  <span class="m">9</span> 10:07 hugo.yaml
+</span></span><span class="line"><span class="ln">13</span><span class="cl">drwxr-xr-x   <span class="m">7</span> ao  staff   <span class="m">224</span> Feb  <span class="m">9</span> 13:27 layouts
+</span></span><span class="line"><span class="ln">14</span><span class="cl">drwxr-xr-x  <span class="m">10</span> ao  staff   <span class="m">320</span> Feb  <span class="m">9</span> 13:30 static
+</span></span></code></pre></div><div class="collapsible">
+  <div class="bar"><code>build</code>之后的结构</div>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="c1"># 生成到tmp的public下 -D 解析 draft</span>
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl">$ hugo server -D --bind<span class="o">=</span>0.0.0.0  --disableFastRender -d ~/tmp/public 
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl">
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="c1"># ao @ azusa in ~/tmp/public on git:main x [14:46:57]</span>
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl">$ ll
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">total <span class="m">1000</span>
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">drwxr-xr-x  <span class="m">20</span> ao  staff   640B Feb  <span class="m">9</span> 13:32 .
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl">drwxr-xr-x   <span class="m">4</span> ao  staff   128B Feb  <span class="m">8</span> 17:06 ..
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl">-rw-r--r--   <span class="m">1</span> ao  staff   6.0K Feb  <span class="m">8</span> 20:19 .DS_Store
+</span></span><span class="line"><span class="ln">10</span><span class="cl">drwxr-xr-x  <span class="m">13</span> ao  staff   416B Feb  <span class="m">9</span> 10:51 .git
+</span></span><span class="line"><span class="ln">11</span><span class="cl">drwxr-xr-x   <span class="m">4</span> ao  staff   128B Feb  <span class="m">8</span> 15:53 <span class="m">404</span>
+</span></span><span class="line"><span class="ln">12</span><span class="cl">-rw-r--r--   <span class="m">1</span> ao  staff   688B Feb  <span class="m">9</span> 13:32 404.html
+</span></span><span class="line"><span class="ln">13</span><span class="cl">drwxr-xr-x   <span class="m">3</span> ao  staff    96B Feb  <span class="m">9</span> 10:09 about
+</span></span><span class="line"><span class="ln">14</span><span class="cl">drwxr-xr-x   <span class="m">5</span> ao  staff   160B Feb  <span class="m">8</span> 16:59 counter
+</span></span><span class="line"><span class="ln">15</span><span class="cl">drwxr-xr-x   <span class="m">8</span> ao  staff   256B Feb  <span class="m">9</span> 10:43 css
+</span></span><span class="line"><span class="ln">16</span><span class="cl">-rw-r--r--   <span class="m">1</span> ao  staff   172K Feb  <span class="m">9</span> 09:13 duck.ico
+</span></span><span class="line"><span class="ln">17</span><span class="cl">-rwxr-xr-x   <span class="m">1</span> ao  staff   264K Feb  <span class="m">8</span> 15:53 favicon.ico
+</span></span><span class="line"><span class="ln">18</span><span class="cl">drwxr-xr-x   <span class="m">9</span> ao  staff   288B Feb  <span class="m">8</span> 15:53 fonts
+</span></span><span class="line"><span class="ln">19</span><span class="cl">-rw-r--r--   <span class="m">1</span> ao  staff   7.2K Feb  <span class="m">9</span> 14:46 index.html
+</span></span><span class="line"><span class="ln">20</span><span class="cl">-rw-r--r--   <span class="m">1</span> ao  staff    36K Feb  <span class="m">9</span> 14:46 index.xml
+</span></span><span class="line"><span class="ln">21</span><span class="cl">drwxr-xr-x  <span class="m">12</span> ao  staff   384B Feb  <span class="m">9</span> 13:30 js
+</span></span><span class="line"><span class="ln">22</span><span class="cl">drwxr-xr-x  <span class="m">10</span> ao  staff   320B Feb  <span class="m">9</span> 13:29 media
+</span></span><span class="line"><span class="ln">23</span><span class="cl">drwxr-xr-x  <span class="m">10</span> ao  staff   320B Feb  <span class="m">9</span> 12:36 page
+</span></span><span class="line"><span class="ln">24</span><span class="cl">drwxr-xr-x  <span class="m">13</span> ao  staff   416B Feb  <span class="m">9</span> 12:36 posts
+</span></span><span class="line"><span class="ln">25</span><span class="cl">-rw-r--r--   <span class="m">1</span> ao  staff   1.7K Feb  <span class="m">9</span> 14:46 sitemap.xml
+</span></span><span class="line"><span class="ln">26</span><span class="cl">drwxr-xr-x   <span class="m">9</span> ao  staff   288B Feb  <span class="m">9</span> 10:51 tags
+</span></span><span class="line"><span class="ln">27</span><span class="cl">
+</span></span><span class="line"><span class="ln">28</span><span class="cl"><span class="c1"># ao @ azusa in ~/tmp/public on git:main x [14:46:59]</span>
+</span></span><span class="line"><span class="ln">29</span><span class="cl">$ ll posts
+</span></span><span class="line"><span class="ln">30</span><span class="cl">total <span class="m">104</span>
+</span></span><span class="line"><span class="ln">31</span><span class="cl">drwxr-xr-x  <span class="m">13</span> ao  staff   416B Feb  <span class="m">9</span> 12:36 .
+</span></span><span class="line"><span class="ln">32</span><span class="cl">drwxr-xr-x  <span class="m">20</span> ao  staff   640B Feb  <span class="m">9</span> 13:32 ..
+</span></span><span class="line"><span class="ln">33</span><span class="cl">-rw-r--r--@  <span class="m">1</span> ao  staff   6.0K Feb  <span class="m">9</span> 10:51 .DS_Store
+</span></span><span class="line"><span class="ln">34</span><span class="cl">drwxr-xr-x   <span class="m">3</span> ao  staff    96B Feb  <span class="m">9</span> 10:09 <span class="m">2025</span>
+</span></span><span class="line"><span class="ln">35</span><span class="cl">drwxr-xr-x   <span class="m">3</span> ao  staff    96B Feb  <span class="m">9</span> 10:09 fixbug
+</span></span><span class="line"><span class="ln">36</span><span class="cl">drwxr-xr-x   <span class="m">3</span> ao  staff    96B Feb  <span class="m">9</span> 10:09 hb
+</span></span><span class="line"><span class="ln">37</span><span class="cl">drwxr-xr-x   <span class="m">3</span> ao  staff    96B Feb  <span class="m">9</span> 12:36 hugo
+</span></span><span class="line"><span class="ln">38</span><span class="cl">-rw-r--r--   <span class="m">1</span> ao  staff   5.9K Feb  <span class="m">9</span> 14:46 index.html
+</span></span><span class="line"><span class="ln">39</span><span class="cl">-rw-r--r--   <span class="m">1</span> ao  staff    33K Feb  <span class="m">9</span> 14:46 index.xml
+</span></span><span class="line"><span class="ln">40</span><span class="cl">drwxr-xr-x   <span class="m">3</span> ao  staff    96B Feb  <span class="m">9</span> 10:09 page
+</span></span><span class="line"><span class="ln">41</span><span class="cl">drwxr-xr-x   <span class="m">3</span> ao  staff    96B Feb  <span class="m">9</span> 10:09 <span class="nb">test</span>
+</span></span><span class="line"><span class="ln">42</span><span class="cl">drwxr-xr-x   <span class="m">3</span> ao  staff    96B Feb  <span class="m">9</span> 10:09 vps
+</span></span><span class="line"><span class="ln">43</span><span class="cl">drwxr-xr-x   <span class="m">3</span> ao  staff    96B Feb  <span class="m">9</span> 10:09 win-active
+</span></span></code></pre></div>
+  </div>
+</div>
+<p>这里有两个特殊文件夹，<code>static</code>和<code>assert</code>。<code>static</code>会原封不动的全部复制到构建完的目录的<code>Root</code>，<code>assert</code>和<code>static</code>基本一致，但是有两个好处，只有调用了才生成，可以使用<code>Go</code>的语法<code>Hugo</code>框架来操作。</p>
+<p>两种方法因人而异，我更倾向直接全部放进<code>static</code>直接手搓，<code>js</code> <code>css</code> <code>config</code>分别放好。<code>src</code>直接根据预计生成后的地址写。</p>
+<h1 id="网站配置文件">网站配置文件</h1>
+<p>个人理解<code>Hugo</code>的网站配置文件有点像程序开始的<code>Define</code>。即用于直接配置或设置参数。最新版建议写成<code>hugo.yaml</code>。这里比较重要的参数有</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="c"># 基本参数</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="w"></span><span class="nt">baseURL</span><span class="p">:</span><span class="w"> </span><span class="l">https://ao2233.github.io/</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="w"></span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l">帰宅部</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="w"></span><span class="nt">theme</span><span class="p">:</span><span class="w"> </span><span class="l">pixel</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 5</span><span class="cl"><span class="w"></span><span class="nt">copyright</span><span class="p">:</span><span class="w"> </span><span class="l">MIT License</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 6</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln"> 7</span><span class="cl"><span class="w"></span><span class="c"># taxonomies: {} # 设置你要的拓展功能 比如我不要 categories</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="w"></span><span class="c"># https://gohugo.io/content-management/taxonomies/</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 9</span><span class="cl"><span class="w"></span><span class="nt">taxonomies</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="w">  </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l">tags</span><span class="w">
+</span></span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln">12</span><span class="cl"><span class="w"></span><span class="nt">pagination</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="ln">13</span><span class="cl"><span class="w">  </span><span class="nt">pagerSize</span><span class="p">:</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="c"># 首页文章数</span><span class="w">
+</span></span></span><span class="line"><span class="ln">14</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln">15</span><span class="cl"><span class="w"></span><span class="c"># 剩余就是自定参数了 下面供参考</span><span class="w">
+</span></span></span><span class="line"><span class="ln">16</span><span class="cl"><span class="w"></span><span class="nt">params</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="ln">17</span><span class="cl"><span class="w">  </span><span class="nt">favicon</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;duck.ico&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="ln">18</span><span class="cl"><span class="w">  </span><span class="nt">subtitle</span><span class="p">:</span><span class="w"> </span><span class="l">さらば、すべてのエヴァンゲリオン</span><span class="w">
+</span></span></span><span class="line"><span class="ln">19</span><span class="cl"><span class="w">  </span><span class="nt">paginate</span><span class="p">:</span><span class="w"> </span><span class="m">50</span><span class="w"> </span><span class="c"># Number of posts per page</span><span class="w">
+</span></span></span><span class="line"><span class="ln">20</span><span class="cl"><span class="w">  </span><span class="nt">social</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="ln">21</span><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">GitHub</span><span class="w">
+</span></span></span><span class="line"><span class="ln">22</span><span class="cl"><span class="w">      </span><span class="nt">icon</span><span class="p">:</span><span class="w"> </span><span class="l">github</span><span class="w">
+</span></span></span><span class="line"><span class="ln">23</span><span class="cl"><span class="w">      </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l">https://github.com/AO2233</span><span class="w">
+</span></span></span><span class="line"><span class="ln">24</span><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">GitLab</span><span class="w">
+</span></span></span><span class="line"><span class="ln">25</span><span class="cl"><span class="w">      </span><span class="nt">icon</span><span class="p">:</span><span class="w"> </span><span class="l">gitlab</span><span class="w">
+</span></span></span><span class="line"><span class="ln">26</span><span class="cl"><span class="w">      </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l">https://gitlab.com/AO2233</span><span class="w">
+</span></span></span></code></pre></div><div class="collapsible">
+  <div class="bar">代码样式配置</div>
+  <div class="content">
+    <p>这些都是用来配置代码渲染样式的，或者解析器的配置</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="nt">pygmentsstyle</span><span class="p">:</span><span class="w"> </span><span class="l">native</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="w"></span><span class="nt">pygmentscodefences</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="w"></span><span class="nt">pygmentscodefencesguesssyntax</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln"> 5</span><span class="cl"><span class="w"></span><span class="c"># markup &amp; code</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 6</span><span class="cl"><span class="w"></span><span class="nt">markup</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 7</span><span class="cl"><span class="w">  </span><span class="nt">defaultMarkdownHandler</span><span class="p">:</span><span class="w"> </span><span class="l">goldmark</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="w">  </span><span class="nt">asciidocExt</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 9</span><span class="cl"><span class="w">    </span><span class="nt">backend</span><span class="p">:</span><span class="w"> </span><span class="l">html5</span><span class="w">
+</span></span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="w">    </span><span class="nt">extensions</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span></span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="w">    </span><span class="nt">failureLevel</span><span class="p">:</span><span class="w"> </span><span class="l">fatal</span><span class="w">
+</span></span></span><span class="line"><span class="ln">12</span><span class="cl"><span class="w">    </span><span class="nt">noHeaderOrFooter</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="ln">13</span><span class="cl"><span class="w">    </span><span class="nt">preserveTOC</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span></span></span><span class="line"><span class="ln">14</span><span class="cl"><span class="w">    </span><span class="nt">safeMode</span><span class="p">:</span><span class="w"> </span><span class="l">unsafe</span><span class="w">
+</span></span></span><span class="line"><span class="ln">15</span><span class="cl"><span class="w">    </span><span class="nt">sectionNumbers</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span></span></span><span class="line"><span class="ln">16</span><span class="cl"><span class="w">    </span><span class="nt">trace</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span></span></span><span class="line"><span class="ln">17</span><span class="cl"><span class="w">    </span><span class="nt">verbose</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span></span></span><span class="line"><span class="ln">18</span><span class="cl"><span class="w">    </span><span class="nt">workingFolderCurrent</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span></span></span><span class="line"><span class="ln">19</span><span class="cl"><span class="w">    </span><span class="nt">attributes</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span></span></span><span class="line"><span class="ln">20</span><span class="cl"><span class="w">  </span><span class="nt">blackFriday</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="ln">21</span><span class="cl"><span class="w">    </span><span class="nt">angledQuotes</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span></span></span><span class="line"><span class="ln">22</span><span class="cl"><span class="w">    </span><span class="nt">footnoteAnchorPrefix</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="ln">23</span><span class="cl"><span class="w">    </span><span class="nt">footnoteReturnLinkContents</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="ln">24</span><span class="cl"><span class="w">    </span><span class="nt">fractions</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="ln">25</span><span class="cl"><span class="w">    </span><span class="nt">hrefTargetBlank</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span></span></span><span class="line"><span class="ln">26</span><span class="cl"><span class="w">    </span><span class="nt">latexDashes</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="ln">27</span><span class="cl"><span class="w">    </span><span class="nt">nofollowLinks</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span></span></span><span class="line"><span class="ln">28</span><span class="cl"><span class="w">    </span><span class="nt">noreferrerLinks</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span></span></span><span class="line"><span class="ln">29</span><span class="cl"><span class="w">    </span><span class="nt">plainIDAnchors</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="ln">30</span><span class="cl"><span class="w">    </span><span class="nt">skipHTML</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span></span></span><span class="line"><span class="ln">31</span><span class="cl"><span class="w">    </span><span class="nt">smartDashes</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="ln">32</span><span class="cl"><span class="w">    </span><span class="nt">smartypants</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="ln">33</span><span class="cl"><span class="w">    </span><span class="nt">smartypantsQuotesNBSP</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span></span></span><span class="line"><span class="ln">34</span><span class="cl"><span class="w">    </span><span class="nt">taskLists</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="ln">35</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln">36</span><span class="cl"><span class="w">  </span><span class="nt">goldmark</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="ln">37</span><span class="cl"><span class="w">    </span><span class="nt">extensions</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="ln">38</span><span class="cl"><span class="w">      </span><span class="nt">definitionList</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="ln">39</span><span class="cl"><span class="w">      </span><span class="nt">footnote</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="ln">40</span><span class="cl"><span class="w">      </span><span class="nt">linkify</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="ln">41</span><span class="cl"><span class="w">      </span><span class="nt">strikethrough</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="ln">42</span><span class="cl"><span class="w">      </span><span class="nt">table</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="ln">43</span><span class="cl"><span class="w">      </span><span class="nt">taskList</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="ln">44</span><span class="cl"><span class="w">      </span><span class="nt">typographer</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span></span></span><span class="line"><span class="ln">45</span><span class="cl"><span class="w">      </span><span class="nt">passthrough</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="ln">46</span><span class="cl"><span class="w">        </span><span class="nt">delimiters</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="ln">47</span><span class="cl"><span class="w">          </span><span class="nt">block</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="ln">48</span><span class="cl"><span class="w">          </span>- - <span class="l">$$</span><span class="w">
+</span></span></span><span class="line"><span class="ln">49</span><span class="cl"><span class="w">            </span>- <span class="l">$$</span><span class="w">
+</span></span></span><span class="line"><span class="ln">50</span><span class="cl"><span class="w">          </span><span class="nt">inline</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="ln">51</span><span class="cl"><span class="w">          </span>- - <span class="l">$</span><span class="w">
+</span></span></span><span class="line"><span class="ln">52</span><span class="cl"><span class="w">            </span>- <span class="l">$</span><span class="w">
+</span></span></span><span class="line"><span class="ln">53</span><span class="cl"><span class="w">        </span><span class="nt">enable</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="ln">54</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln">55</span><span class="cl"><span class="w">    </span><span class="nt">parser</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="ln">56</span><span class="cl"><span class="w">      </span><span class="nt">autoHeadingID</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="ln">57</span><span class="cl"><span class="w">      </span><span class="nt">autoHeadingIDType</span><span class="p">:</span><span class="w"> </span><span class="l">github</span><span class="w">
+</span></span></span><span class="line"><span class="ln">58</span><span class="cl"><span class="w">      </span><span class="nt">attribute</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="ln">59</span><span class="cl"><span class="w">        </span><span class="nt">block</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span></span></span><span class="line"><span class="ln">60</span><span class="cl"><span class="w">        </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="ln">61</span><span class="cl"><span class="w">    </span><span class="nt">renderer</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="ln">62</span><span class="cl"><span class="w">    </span><span class="c">#   hardWraps: false # markdown里的换行符是否被解释为换行 </span><span class="w">
+</span></span></span><span class="line"><span class="ln">63</span><span class="cl"><span class="w">        </span><span class="nt">unsafe</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="c"># 是否允许渲染html标签</span><span class="w">
+</span></span></span><span class="line"><span class="ln">64</span><span class="cl"><span class="w">    </span><span class="c">#   xhtml: false </span><span class="w">
+</span></span></span><span class="line"><span class="ln">65</span><span class="cl"><span class="w">  
+</span></span></span><span class="line"><span class="ln">66</span><span class="cl"><span class="w">  </span><span class="nt">highlight</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="ln">67</span><span class="cl"><span class="w">    </span><span class="nt">anchorLineNos</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span></span></span><span class="line"><span class="ln">68</span><span class="cl"><span class="w">    </span><span class="nt">codeFences</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="ln">69</span><span class="cl"><span class="w">    </span><span class="nt">guessSyntax</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="ln">70</span><span class="cl"><span class="w">    </span><span class="nt">lineNoStart</span><span class="p">:</span><span class="w"> </span><span class="m">1</span><span class="w">
+</span></span></span><span class="line"><span class="ln">71</span><span class="cl"><span class="w">    </span><span class="nt">lineNos</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="ln">72</span><span class="cl"><span class="w">    </span><span class="nt">lineNumbersInTable</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span></span></span><span class="line"><span class="ln">73</span><span class="cl"><span class="w">    </span><span class="nt">noClasses</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="c"># 自行调整code样式</span><span class="w">
+</span></span></span><span class="line"><span class="ln">74</span><span class="cl"><span class="w">    </span><span class="nt">style</span><span class="p">:</span><span class="w"> </span><span class="l">monokai</span><span class="w">
+</span></span></span><span class="line"><span class="ln">75</span><span class="cl"><span class="w">    </span><span class="nt">tabWidth</span><span class="p">:</span><span class="w"> </span><span class="m">4</span><span class="w">
+</span></span></span><span class="line"><span class="ln">76</span><span class="cl"><span class="w">  </span><span class="nt">tableOfContents</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="ln">77</span><span class="cl"><span class="w">    </span><span class="nt">endLevel</span><span class="p">:</span><span class="w"> </span><span class="m">3</span><span class="w">
+</span></span></span><span class="line"><span class="ln">78</span><span class="cl"><span class="w">    </span><span class="nt">ordered</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span></span></span><span class="line"><span class="ln">79</span><span class="cl"><span class="w">    </span><span class="nt">startLevel</span><span class="p">:</span><span class="w"> </span><span class="m">2</span><span class="w">
+</span></span></span></code></pre></div><p>其中比较重要的是</p>
+<ul>
+<li>$\LaTeX$的代码直接传入而设置的<code>passthrough</code>，要注意在<code>goldmark</code>下别配错了地方</li>
+<li><code>highlight noClasses</code>设置为<code>false</code>，然后导出自己想要的<code>css</code>配置，来适配不同颜色的主题</li>
+</ul>
+
+  </div>
+</div>
+<p>个人觉得最麻烦的是代码渲染设置<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>，<code>css</code>要改很久，它的<code>dark</code>和<code>light</code>文件里，类名有的不一样，导致不能通过直接前后加载来覆盖</p>
+<h1 id="写blog最佳实践">写<code>Blog</code>最佳实践</h1>
+<p>最影响写作兴趣的，对我而言就是，不能太麻烦。目前的解决方案</p>
+<ul>
+<li>统一<code>shortcode</code>参数，不用纠结参数名，和有哪些参数</li>
+<li><code>tmux</code>启动<code>server</code>，隐身模式启动<code>Chrome</code>（没<code>cache</code>），<code>vscode</code>手搓</li>
+</ul>
+<blockquote>
+<p>所见即所得</p></blockquote>
+
+
+
+<div class="masonry-gallery" style="display: flex; flex-wrap: wrap; justify-content: center; margin: 0 3px;">
+
+<div class="masonry-gallery-item" style="width: 100%;margin: 0 3px; max-width: 700px">
+<img src="/media/img/2025/editor.png" class="zoom-image">
+</div>
+
+</div>
+
+<p>也算是半个<code>IDE</code>吧😂，接下来是给<code>vscode</code>新写一个拓展版<code>markdown</code>的解析器。不能折叠可太无语了。</p>
+<p>另外、就是最头痛的<code>shortcode</code>，参数太复杂。</p>
+<h1 id="shortcode代码参数"><code>shortcode</code>代码参数</h1>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln"> 1</span><span class="cl">aplayer(name, artist=&#34;&#34;, url, cover=&#34;&#34;, autoplay=true, lrc=&#34;no lrc&#34;)
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl">dplayer(id, url)
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl">
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl">bilibili(p1) # av-id
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl">box(title){content} /box
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">callout{content} /callout
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">mermaid{content} /mermaid
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl">spotify(url) # link
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl">date
+</span></span><span class="line"><span class="ln">10</span><span class="cl">video(src, width=&#34;auto&#34;)
+</span></span><span class="line"><span class="ln">11</span><span class="cl">img(src -&gt; list, width=&#34;auto&#34;, caption=&#34;&#34;)
+</span></span><span class="line"><span class="ln">12</span><span class="cl">
+</span></span><span class="line"><span class="ln">13</span><span class="cl"># 这个库很奇怪，必须预设置高度，否则默认值很小，预设 heigth=70em
+</span></span><span class="line"><span class="ln">14</span><span class="cl">pdf(id, src) # 注意这里id不能是纯数字
+</span></span></code></pre></div><p>至此，博客搭建完毕。至于<code>域名</code>，<code>多语言</code>，<code>站点配置</code>那就是后话了。已经佛系，直接套<code>Github</code>的<code>page</code>就完事了，关于<code>Github page</code>，记得两件事</p>
+<ul>
+<li>404 界面需要加一个识别头</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="ln">1</span><span class="cl">---
+</span></span><span class="line"><span class="ln">2</span><span class="cl">permalink: /404.html
+</span></span><span class="line"><span class="ln">3</span><span class="cl">---
+</span></span></code></pre></div><ul>
+<li>如果要自动挂域名加一个<code>CNAME</code>文件，不用自定义域名记得删除。</li>
+</ul>
+<p>此网站所用主题 -&gt; 自制主题 <a href="https://github.com/AO2233/pixel">pixel</a>。下回、主题测试！</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p><a href="https://gohugo.io/content-management/syntax-highlighting/">官网说明</a>、包含代码渲染设置和代码高亮写法&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+	</article>
+	</section>
+</main>
+
+<footer class="footer">
+<hr>
+<div style="display: flex; justify-content: space-between; align-items: center;">
+      <div><a class="soc" href="https://github.com/AO2233" title="GitHub"><i data-feather="github"></i></a>
+      <a class="soc" href="https://gitlab.com/AO2233" title="GitLab"><i data-feather="gitlab"></i></a>
+      <a class="soc" href="https://steamcommunity.com/id/u604b" title="Steam"><i data-feather="hash"></i></a>
+      <a class="soc" href="https://x.com/u604b" title="Twitter"><i data-feather="twitter"></i></a>
+      <a class="soc" href="mailto:ao.debian@gmail.com" title="Mail"><i data-feather="mail"></i></a>
+      </div>
+
+      <div class="no-ai-logo">
+            <embed src="/svg/no-ai-white.svg"
+                   type="image/svg+xml"
+                   width="128" height="37">
+            <embed src="/svg/no-ai-black.svg"
+                   type="image/svg+xml"
+                   width="128" height="37">
+          </div>
+      </div>
+      <style>
+      .no-ai-logo embed {
+            display: none;
+      }
+      @media (prefers-color-scheme: light) {
+            .no-ai-logo embed[src$="no-ai-white.svg"] {
+              display: block;
+            }
+          }
+          @media (prefers-color-scheme: dark) {
+            .no-ai-logo embed[src$="no-ai-black.svg"] {
+              display: block;
+            }
+          }
+      </style>
+</div>
+
+</footer>
+
+<script>
+      feather.replace();
+      
+      const images = document.querySelectorAll('.zoom-image');  
+      mediumZoom(images,{
+            background: 'rgba(0, 0, 0, 0.7)', 
+            margin: 0, 
+      });
+</script>
+
+</div>
+    </body>
+    
+</html>
