@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html><head>
+	<meta charset="utf-8" />
+	<meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
+	<meta name=viewport content="width=device-width,initial-scale=1">
+
+	
+
+	<title>帰宅部 </title>
+	
+	<link rel="icon" href=https://ao2233.github.io/duck.ico>
+	
+	<link rel="stylesheet" href="https://ao2233.github.io/css/code_style.css">
+	<link rel="stylesheet" href="https://ao2233.github.io/css/code_light.css">
+	<link rel="stylesheet" href="https://ao2233.github.io/css/fonts.css">
+	<link rel="stylesheet" href="https://ao2233.github.io/js/aplayer/APlayer.min.css">
+	<link rel="stylesheet" href="https://ao2233.github.io/js/videojs/video-js.min.css">
+	<link rel="stylesheet" href="https://ao2233.github.io//js/zoom/style.min.css">
+
+	<link rel="stylesheet" href="https://ao2233.github.io/css/main.css">
+	<link rel="stylesheet" href="https://ao2233.github.io/css/dark.css" media="(prefers-color-scheme: dark)" />
+	<link rel="stylesheet" href="https://ao2233.github.io/css/code_dark.css" media="(prefers-color-scheme: dark)" />
+	
+
+	
+	<script src="https://ao2233.github.io/js/aplayer/APlayer.min.js"></script>
+	<script src="https://ao2233.github.io/js/dplayer/DPlayer.min.js"></script>
+	<script src="https://ao2233.github.io/js/videojs/video.min.js"></script>
+	<script src="https://ao2233.github.io/js/zoom/medium-zoom.min.js"></script>
+
+	<script src="https://ao2233.github.io/js/pdfobject.min.js"></script>
+	<script src="https://ao2233.github.io/js/feather.min.js"></script>
+	<script src="https://ao2233.github.io/js/collapsible.js"></script>
+	<script src="https://ao2233.github.io/js/mermaid.min.js"></script>
+	
+
+	
+	<link rel="stylesheet" href="https://ao2233.github.io/js/katex/katex.min.css" crossorigin="anonymous">
+	<script defer src="https://ao2233.github.io/js/katex/katex.min.js" crossorigin="anonymous"></script>
+	<script defer src="https://ao2233.github.io/js/katex/contrib/auto-render.min.js" crossorigin="anonymous"
+		onload="renderMathInElement(document.body);"></script>
+	<script>
+		document.addEventListener("DOMContentLoaded", function () {
+			renderMathInElement(document.body, {
+				delimiters: [
+					{ left: "$$", right: "$$", display: true },
+					
+					{ left: "$", right: "$", display: false },
+					
+				]
+			});
+		});
+	</script>
+	
+
+	
+	<script>
+		const mq = window.matchMedia('(prefers-color-scheme: dark)'),
+			config = { startOnLoad: true, flowchart: { useMaxWidth: true, htmlLabels: true, curve: 'cardinal' }, securityLevel: 'loose' };
+		let inited = false,
+			setTheme = dark => {
+				mermaid.initialize({ theme: dark ? 'dark' : 'base', config });
+				if (inited) location.reload(false);
+				inited = true;
+			};
+
+		setTheme(mq.matches);
+		(mq.addEventListener ? mq.addEventListener : mq.addListener).call(mq, 'change', e => setTheme(e.matches));
+	</script>
+
+	<script>
+		window.addEventListener('scroll', function() {
+		var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+		var scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
+		var clientHeight = document.documentElement.clientHeight || window.innerHeight;
+		var scrollPercent = (scrollTop / (scrollHeight - clientHeight)) * 100;
+		document.getElementById('progress-bar').style.width = scrollPercent + '%';
+		});
+	</script>
+
+	
+	
+
+</head>
+
+    <body>
+        <div class="content"><header>
+	<div class="main">
+		<a href="https://ao2233.github.io/">帰宅部</a>
+	</div>
+
+	
+	<nav>
+		
+		<a href="/" class="sub-main">Archive</a>
+		
+		<a href="/about" class="sub-main">About</a>
+		
+
+	
+		
+	</nav>
+</header>
+
+
+
+<div id="progress-container">
+	<div id="progress-bar"></div>
+</div>
+<div class="content">
+        
+<main>
+	
+	<div class="title">
+		<h1 class="title">所以我放弃了手工编程</h1>
+		<div class="meta">Posted on Aug 26, 2025 <span class="draft-label">DRAFT</span> </div>
+	</div>
+	<section class="body">
+	<article>
+		<p>时间来到了2025年下半，<code>LLM</code>的发展速度比我的预想还要快一点。开源虽然等到了<code>OpenAI</code>的模型，但是已然泯然众人。除了一个品牌在，其余的并没有出色到眼前一亮的点。</p>
+<p>但令人振奋的是<code>Agent</code>类的应用多了很多。相比客户端类型的交互式提问软件（<a href="https://github.com/CherryHQ/cherry-studio"><code>Cherry Studio</code></a>、<a href="https://chatwise.app/"><code>Chatwise</code></a>之类的）使用起来感觉更加的轻便。另外、<code>Cherry Studio</code>的<code>mcp</code>以及联网查询做的并不太好。</p>
+<p>客户端换皮软件，目前还少了一个<code>deep search</code>的功能，以及一个开箱即用，整合调用系统工具的功能。如果后续能把这些<code>claude code</code>已经做好的领域也做好。那么将成为一个真正的工作站。目前，只能算作一个对话工具。</p>
+<p>于是想了很久，目前唯一可用的，跑通的工作流程是什么呢？个人认为是<code>Coding</code>——编程。<br>
+但是也正是如此，我发现，我已经被取代了。对于编程菜鸡来说（比如我），AI编程可以解放大脑，单纯从编码上就提升效率、单车变电助力甚至跑车。对于大佬而言，也许是新玩具，也可能是跑车变飞机。</p>
+<p><em>だから僕は「CODING」を辞めた。</em><br>
+其实是放弃手动挡写代码了，码还是要写的、哈哈哈🤣。</p>
+<h1 id="模型">模型</h1>
+<p>基础模型性能在<code>Deepseek V3.1</code>之上，思考模型能力在<code>Deepseek R1 0528</code>之上的模型均可用作补全模型。</p>
+<blockquote>
+<p>体感排名</p>
+</blockquote>
+<ol>
+<li>claude opus 4/4.1</li>
+<li>gemini 2.5 pro</li>
+<li>claude sonnet 3.5/3.7 <code>3.7幻觉有点严重</code></li>
+<li>gpt-5</li>
+<li>gpt-oss 120b/Kimi K2</li>
+</ol>
+<p>能用的就这些。<code>Qwen Coder</code>虽然跑分好看，但是个人感觉不太实用，没钱部署300b玩玩，仅小模型的感想。另外Deepseek系列则统统不太好用。</p>
+<h1 id="cli工具">CLI工具</h1>
+<h2 id="claude-code"><a href="https://github.com/anthropics/claude-code">claude code</a></h2>
+<blockquote>
+<p>一键发射</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">npm install -g @anthropic-ai/claude-code
+</span></span><span class="line"><span class="ln">2</span><span class="cl">npm install -g @musistudio/claude-code-router
+</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="c1"># 常用mcp</span>
+</span></span><span class="line"><span class="ln">4</span><span class="cl">claude mcp add context7 -s project -- npx -y @upstash/context7-mcp
+</span></span><span class="line"><span class="ln">5</span><span class="cl"><span class="c1"># 配置</span>
+</span></span><span class="line"><span class="ln">6</span><span class="cl">ccr ui
+</span></span></code></pre></div><p>善于写项目，CLI性能最强。可惜没开源，github上的仅仅是一个使用手册一样的东西。逆向在<a href="https://github.com/shareAI-lab/analysis_claude_code">此处</a><sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>有，有时间再细看咯。用<a href="https://github.com/musistudio/claude-code-router">claude-code-router</a>可以接入部分第三方API，也算是穷人救星了。</p>
+<h2 id="gemini-cli"><a href="https://github.com/google-gemini/gemini-cli">gemini-cli</a></h2>
+<blockquote>
+<p>一键发射</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">npm install -g @google/gemini-cli
+</span></span></code></pre></div><p>我的最爱，单文件或者写小Tool时候的究极利器。例如，FFmpeg的命令参数忘了怎么办，直接gemini就完事了。但是debug性能不如claude code。</p>
+<h2 id="codex"><a href="https://github.com/openai/codex">codex</a></h2>
+<p>目前太垃了。没啥好评的。</p>
+<h2 id="copilot"><a href="https://github.com/microsoft/vscode-copilot-chat">copilot</a></h2>
+<p>开了一半的源（开了个前端），终于在最新的<a href="https://github.com/microsoft/vscode-copilot-chat/pull/621">#621</a>里加入了对任意OpenAI API模型的支持。相当于官方下场做了个官方版的<code>Roo code</code>或者<code>Continue</code>。但是仓库开发者和贡献数量有限，至于开发速度是否能紧跟潮流，在此存疑。不过至少gpt-oss 20b来本地写码的梦想，是已经可以实现的了。</p>
+<h1 id="实际工程测试">实际工程测试</h1>
+<h2 id="leetcode">Leetcode</h2>
+<p>题目 Leetcode 3000，简单模拟题，ccr+gpt-oss 20b，零提示词，1pass。<br>
+结果、秒杀。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python3" data-lang="python3"><span class="line"><span class="ln">1</span><span class="cl"><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl">    <span class="k">def</span> <span class="nf">areaOfMaxDiagonal</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dimensions</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl">        <span class="n">best_d2</span><span class="p">,</span> <span class="n">best_area</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="ln">4</span><span class="cl">        <span class="k">for</span> <span class="n">l</span><span class="p">,</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">dimensions</span><span class="p">:</span>
+</span></span><span class="line"><span class="ln">5</span><span class="cl">            <span class="n">d2</span> <span class="o">=</span> <span class="n">l</span> <span class="o">*</span> <span class="n">l</span> <span class="o">+</span> <span class="n">w</span> <span class="o">*</span> <span class="n">w</span>
+</span></span><span class="line"><span class="ln">6</span><span class="cl">            <span class="n">area</span> <span class="o">=</span> <span class="n">l</span> <span class="o">*</span> <span class="n">w</span>
+</span></span><span class="line"><span class="ln">7</span><span class="cl">            <span class="k">if</span> <span class="n">d2</span> <span class="o">&gt;</span> <span class="n">best_d2</span> <span class="ow">or</span> <span class="p">(</span><span class="n">d2</span> <span class="o">==</span> <span class="n">best_d2</span> <span class="ow">and</span> <span class="n">area</span> <span class="o">&gt;</span> <span class="n">best_area</span><span class="p">):</span>
+</span></span><span class="line"><span class="ln">8</span><span class="cl">                <span class="n">best_d2</span><span class="p">,</span> <span class="n">best_area</span> <span class="o">=</span> <span class="n">d2</span><span class="p">,</span> <span class="n">area</span>
+</span></span><span class="line"><span class="ln">9</span><span class="cl">        <span class="k">return</span> <span class="n">best_area</span>
+</span></span></code></pre></div><h2 id="atcoder">Atcoder</h2>
+<p>很久之前做过一次接近<code>5pass</code>的<a href="https://atcoder.jp/contests/abc390/standings?watching=AO2233">测试</a>，无任何Agent，题目直接给到Deepseek R1旧版的时候，大概是水色的水平，即1200-1999分的水平。更不说现在的模型了。已然跻身于上位5%。不过现在大家都有GPT、代理战争开起来，分数也越来越难挣了。</p>
+<h1 id="感想">感想</h1>
+<p>大概做玩具项目是已经可以完全自动化了，剩下的其实是点子的好坏了。至少秒杀我是绰绰有余了，以前需要一上午的事情，现在最多20分钟。甚至连写文档都不需要人力了。不仅取代了传统的搜索引擎，连工作模式都发生了彻底的变化。</p>
+<p>有任何不懂的直接GPT，有任何搞不定的开一个shell，同时勾选一个YOLO选项，坐着等就行了，只要最终目的清晰，会拆解任务的话，<strong>终将抵达彼岸</strong>。</p>
+<p>未来希望有一个能在搜索和对话上，有类似claude code的强大工具，目前的deep search性能还是太差，局限于知识的总结，思考很难看见。但只是代码有评测的基准，清晰的逻辑，但是对话跟搜索，不一定有标准啊。</p>
+<p>未完待续。最近出的<a href="https://x.com/u604b/status/1962872603628245113"><code>nano banana</code></a>，效果简直吓人。</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>claude code v1.0.33的逆向工程完整研究和分析资料。不过回溯的方式是vibe coding&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+	</article>
+	</section>
+</main>
+
+<footer class="footer">
+<hr>
+<div style="display: flex; justify-content: space-between; align-items: center;">
+      <div><a class="soc" href="https://github.com/AO2233" title="GitHub"><i data-feather="github"></i></a>
+      <a class="soc" href="https://gitlab.com/AO2233" title="GitLab"><i data-feather="gitlab"></i></a>
+      <a class="soc" href="https://steamcommunity.com/id/u604b" title="Steam"><i data-feather="hash"></i></a>
+      <a class="soc" href="https://x.com/u604b" title="Twitter"><i data-feather="twitter"></i></a>
+      <a class="soc" href="mailto:ao.debian@gmail.com" title="Mail"><i data-feather="mail"></i></a>
+      </div>
+
+      <div class="no-ai-logo">
+            <embed src="/svg/no-ai-white.svg"
+                   type="image/svg+xml"
+                   width="128" height="37">
+            <embed src="/svg/no-ai-black.svg"
+                   type="image/svg+xml"
+                   width="128" height="37">
+          </div>
+      </div>
+      <style>
+      .no-ai-logo embed {
+            display: none;
+      }
+      @media (prefers-color-scheme: light) {
+            .no-ai-logo embed[src$="no-ai-white.svg"] {
+              display: block;
+            }
+          }
+          @media (prefers-color-scheme: dark) {
+            .no-ai-logo embed[src$="no-ai-black.svg"] {
+              display: block;
+            }
+          }
+      </style>
+</div>
+
+</footer>
+
+<script>
+      feather.replace();
+      
+      const images = document.querySelectorAll('.zoom-image');  
+      mediumZoom(images,{
+            background: 'rgba(0, 0, 0, 0.7)', 
+            margin: 0, 
+      });
+</script>
+
+</div>
+    </body>
+    
+</html>

@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html><head>
+	<meta charset="utf-8" />
+	<meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
+	<meta name=viewport content="width=device-width,initial-scale=1">
+
+	
+
+	<title>帰宅部 </title>
+	
+	<link rel="icon" href=https://ao2233.github.io/duck.ico>
+	
+	<link rel="stylesheet" href="https://ao2233.github.io/css/code_style.css">
+	<link rel="stylesheet" href="https://ao2233.github.io/css/code_light.css">
+	<link rel="stylesheet" href="https://ao2233.github.io/css/fonts.css">
+	<link rel="stylesheet" href="https://ao2233.github.io/js/aplayer/APlayer.min.css">
+	<link rel="stylesheet" href="https://ao2233.github.io/js/videojs/video-js.min.css">
+	<link rel="stylesheet" href="https://ao2233.github.io//js/zoom/style.min.css">
+
+	<link rel="stylesheet" href="https://ao2233.github.io/css/main.css">
+	<link rel="stylesheet" href="https://ao2233.github.io/css/dark.css" media="(prefers-color-scheme: dark)" />
+	<link rel="stylesheet" href="https://ao2233.github.io/css/code_dark.css" media="(prefers-color-scheme: dark)" />
+	
+
+	
+	<script src="https://ao2233.github.io/js/aplayer/APlayer.min.js"></script>
+	<script src="https://ao2233.github.io/js/dplayer/DPlayer.min.js"></script>
+	<script src="https://ao2233.github.io/js/videojs/video.min.js"></script>
+	<script src="https://ao2233.github.io/js/zoom/medium-zoom.min.js"></script>
+
+	<script src="https://ao2233.github.io/js/pdfobject.min.js"></script>
+	<script src="https://ao2233.github.io/js/feather.min.js"></script>
+	<script src="https://ao2233.github.io/js/collapsible.js"></script>
+	<script src="https://ao2233.github.io/js/mermaid.min.js"></script>
+	
+
+	
+	<link rel="stylesheet" href="https://ao2233.github.io/js/katex/katex.min.css" crossorigin="anonymous">
+	<script defer src="https://ao2233.github.io/js/katex/katex.min.js" crossorigin="anonymous"></script>
+	<script defer src="https://ao2233.github.io/js/katex/contrib/auto-render.min.js" crossorigin="anonymous"
+		onload="renderMathInElement(document.body);"></script>
+	<script>
+		document.addEventListener("DOMContentLoaded", function () {
+			renderMathInElement(document.body, {
+				delimiters: [
+					{ left: "$$", right: "$$", display: true },
+					
+					{ left: "$", right: "$", display: false },
+					
+				]
+			});
+		});
+	</script>
+	
+
+	
+	<script>
+		const mq = window.matchMedia('(prefers-color-scheme: dark)'),
+			config = { startOnLoad: true, flowchart: { useMaxWidth: true, htmlLabels: true, curve: 'cardinal' }, securityLevel: 'loose' };
+		let inited = false,
+			setTheme = dark => {
+				mermaid.initialize({ theme: dark ? 'dark' : 'base', config });
+				if (inited) location.reload(false);
+				inited = true;
+			};
+
+		setTheme(mq.matches);
+		(mq.addEventListener ? mq.addEventListener : mq.addListener).call(mq, 'change', e => setTheme(e.matches));
+	</script>
+
+	<script>
+		window.addEventListener('scroll', function() {
+		var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+		var scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
+		var clientHeight = document.documentElement.clientHeight || window.innerHeight;
+		var scrollPercent = (scrollTop / (scrollHeight - clientHeight)) * 100;
+		document.getElementById('progress-bar').style.width = scrollPercent + '%';
+		});
+	</script>
+
+	
+	
+
+</head>
+
+    <body>
+        <div class="content"><header>
+	<div class="main">
+		<a href="https://ao2233.github.io/">帰宅部</a>
+	</div>
+
+	
+	<nav>
+		
+		<a href="/" class="sub-main">Archive</a>
+		
+		<a href="/about" class="sub-main">About</a>
+		
+
+	
+		
+	</nav>
+</header>
+
+
+
+<div id="progress-container">
+	<div id="progress-bar"></div>
+</div>
+<div class="content">
+        
+<main>
+	
+	<div class="title">
+		<h1 class="title">我的2024</h1>
+		<div class="meta">Posted on Jan 30, 2025</div>
+	</div>
+	<section class="body">
+	<article>
+		<p>今年实在是太多应该写，但是面对着<code>vscode</code>我又啥也写不出来了，哈哈。也许确实没有什么好写的。</p>
+<div class="callout">
+    <p>草稿越写越多，只能说明，自身的<code>精神状态</code>逐步下滑。
+其实这篇也是草稿，不过、我已没心境来回忆了。</p>
+</div>
+<p>上次写还是几年前，玩 <code>S4U: 都市朋克2011与爱的重拳</code><sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>，感觉美术风格甚是不错。于是顺便 <del>修了下</del> 重写了<code>hugo</code>模版。我的感受就是，与其拿一个模版改到天昏地暗，不如直接从头开始重写，在代码屎山上的行动总是不便的。</p>
+<p>首先，让我们来看看年度音乐：</p>
+<blockquote>
+<p>Spotify</p>
+</blockquote>
+
+<iframe allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" allowfullscreen="allowfullscreen" class="spotify spotify-playlist" id="h-sc-spotify-1" loading="lazy" src="https://open.spotify.com/embed/playlist/37i9dQZF1FoAyFii1PuqBt?theme=1" style="width: 100%; height: 380px; border: none;"></iframe>
+<p>论冲击力，还得是这首</p>
+<blockquote>
+<p>年度中文单曲</p>
+</blockquote>
+<div id="1"></div>
+<script>
+ap = new APlayer({
+    container: document.getElementById('1'),
+    fixed: '',
+    audio: [{
+        name: '借月' ,
+        artist: '王天阳',
+        url: '\/media\/audio\/借月.mp3',
+        cover: '\/media\/img\/2025\/c.jpg',
+        autoplay: 'true',
+        lrc: 'no lrc'
+    }]
+});
+</script>
+
+<blockquote>
+<p>年度日文单曲</p>
+</blockquote>
+
+<iframe allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" allowfullscreen="allowfullscreen" class="spotify spotify-track" id="h-sc-spotify-3" loading="lazy" src="https://open.spotify.com/embed/track/4bM9itWEyMkLUSd2VeROAd?theme=1" style="width: 100%; height: 152px; border: none;"></iframe>
+<p>查了下才发现是综艺<code>「今日、好きになりました。」</code><sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>的插入曲，顺带还看了看，感叹了下。</p>
+<p>接下来，登场的是 -&gt;</p>
+<h1 id="活动时间表">活动时间表</h1>
+<table>
+  <thead>
+      <tr>
+          <th><code>时间</code></th>
+          <th><code>通常状态</code></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>3:00</td>
+          <td>关机，准备睡觉</td>
+      </tr>
+      <tr>
+          <td>10:30</td>
+          <td>华丽丽之自然醒</td>
+      </tr>
+      <tr>
+          <td>11:00</td>
+          <td>洗漱 + 清理房间</td>
+      </tr>
+      <tr>
+          <td>11:40</td>
+          <td>看看<code>paper</code></td>
+      </tr>
+      <tr>
+          <td>12:30</td>
+          <td>中饭大转盘 -&gt; <a href="https://tenpo.ichibanya.co.jp/map/1123/">咖喱</a>/<a href="https://g.co/kgs/H3RDh5J">拉面</a>/<a href="https://www.costco.co.jp/store-finder/Kitakyushu">Costco</a>/<a href="https://g.co/kgs/Sd4hmVL">吉野家</a></td>
+      </tr>
+      <tr>
+          <td>13:40</td>
+          <td><code>回家开躺</code></td>
+      </tr>
+      <tr>
+          <td>18:00</td>
+          <td>晚饭大转盘 = <code>random(i in 选择 but not 中饭)</code></td>
+      </tr>
+      <tr>
+          <td>19:30</td>
+          <td><code>回家开躺</code></td>
+      </tr>
+      <tr>
+          <td>22:30</td>
+          <td>躺入浴缸</td>
+      </tr>
+      <tr>
+          <td>24:00</td>
+          <td>小说 &amp; Youtube时间</td>
+      </tr>
+  </tbody>
+</table>
+<p>说实话，这个时间非常的自由。安静的乡下，很适合养老，以及逃离多年以来的压力与内心的焦虑。</p>
+
+
+
+<div class="masonry-gallery" style="display: flex; flex-wrap: wrap; justify-content: center; margin: 0 3px;">
+
+<div class="masonry-gallery-item" style="width: 100%;margin: 0 3px; max-width: 400px">
+<img src="/media/img/2025/uchiage.jpg" class="zoom-image">
+</div>
+
+<div class="masonry-gallery-item" style="width: 100%;margin: 0 3px; max-width: 400px">
+<img src="/media/img/2025/bluesky.jpg" class="zoom-image">
+</div>
+
+</div>
+
+<p style="text-align: center;  margin: 0;">火箭发射与乡下蓝天</p>
+
+<p>随手一拍就是，秒速5厘米里山崎大叔的那句 -&gt; <code>🎵夏の思い出がまわる、ふいに消えた鼓動 🎵</code>，泪目了。</p>
+<h1 id="电子游戏">电子游戏</h1>
+<p>先说电子游戏，就看<code>Switch2</code>能不能<code>Make Nintendo Great Again</code>了，爱信等，要是真如网传的座机芯片，那估计有点爆炸。跟我一起来</p>
+<div class="callout">
+    <p><p><code>任天堂**的就是世界的主宰！</code></p>
+<p><code>Nintendo ruled the f*cking world</code></p>
+</p>
+</div>
+<p>因此，最佳游戏颁给<code>Splatoon 3</code>。<code>米忽悠</code>的<code>绝区零</code>在我这里已经暴死，就等网易的<code>无限大</code>了。至于<code>黑神话</code>，评价是很🐮🍺，有过誉之嫌，但拿个年度最佳也是不过分的。只是剧情过于悲剧，估计国外看懂的不多，要是完成度再高点就好了，等<code>DLC</code></p>
+<h1 id="书与动画与电影">书与动画与电影</h1>
+<p>书、电影？没看很多，PASS。稍稍看了看日文轻小说，总感觉后劲不足，更加有意思的书又没办法完全Get到全部的意思。语言没学好，看书都费力。文学与出版上，中日差距太大，就不多评了，悲哀</p>
+
+
+
+<div class="masonry-gallery" style="display: flex; flex-wrap: wrap; justify-content: center; margin: 0 3px;">
+
+<div class="masonry-gallery-item" style="width: 100%;margin: 0 3px; max-width: 800px">
+<img src="/media/img/2025/chikyu.png" class="zoom-image">
+</div>
+
+</div>
+
+<p style="text-align: center;  margin: 0;"><a href="https://www.shinchosha.co.jp/book/310073/"><em>地球星人</em></a></p>
+
+<p>出了国，倒是没怎么看动画了。发现动画里都是真的，哈哈，但<code>“热闹不属于我”</code>。</p>
+<p><code>双城之战</code>最终季没第一季那么有意思了，甚至现在我都忘记剧情了，相比之下，推荐<code>ガールズバンドクライ</code>，主打一个青春</p>
+
+
+
+<div class="masonry-gallery" style="display: flex; flex-wrap: wrap; justify-content: center; margin: 0 3px;">
+
+<div class="masonry-gallery-item" style="width: 100%;margin: 0 3px; max-width: 400px">
+<img src="/media/img/2025/gbc.png" class="zoom-image">
+</div>
+
+</div>
+
+<p style="text-align: center;  margin: 0;"><a href="https://girls-band-cry.com/character/">官网的图</a></p>
+
+<h1 id="研究">研究</h1>
+<p>研究内容主打一个，什么火爆做什么。现专注于<code>LLM</code>系统构建，主打一个调调<code>prompt</code>，缝合一下深度学习和机器人硬件了。一周最多去2次实验室调硬件，其余情况全部远程写代码训模型就完事了。等就完活，就文章写了投了，万万不可再拖</p>
+
+
+
+<div class="masonry-gallery" style="display: flex; flex-wrap: wrap; justify-content: center; margin: 0 3px;">
+
+<div class="masonry-gallery-item" style="width: 100%;margin: 0 3px; max-width: 800px">
+<img src="/media/img/2025/llm.png" class="zoom-image">
+</div>
+
+</div>
+
+<p style="text-align: center;  margin: 0;"><code>饼学奥义</code></p>
+
+<p>有时间写写就<code>RAG &amp; pipeline</code>构建吧</p>
+<h1 id="就活---救活">就活 -&gt; 救活</h1>
+<p>希望老东家能把我收了🥹😭</p>
+<p>冷冷清清，先写到这里了。</p>
+
+
+
+<div class="masonry-gallery" style="display: flex; flex-wrap: wrap; justify-content: center; margin: 0 3px;">
+
+<div class="masonry-gallery-item" style="width: 100%;margin: 0 3px; max-width: 800px">
+<img src="/media/img/2025/langchain.png" class="zoom-image">
+</div>
+
+</div>
+
+<p style="text-align: center;  margin: 0;"><code>啊这，看个文档而已</code></p>
+
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p><a href="https://store.steampowered.com/app/2612700/S4U_2011/">Steam链接</a>，对于这款游戏，我只能说白瞎了美术。目睹好评从95%跳水到86%，估计还得下滑&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>高中生之间的恋爱让人嫉妒。<a href="https://abema.tv/video/title/90-1965?s=90-1965_s610">直达链接</a>、你需要能够看<code>Abema</code>的网络环境&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+	</article>
+	</section>
+</main>
+
+<footer class="footer">
+<hr>
+<div style="display: flex; justify-content: space-between; align-items: center;">
+      <div><a class="soc" href="https://github.com/AO2233" title="GitHub"><i data-feather="github"></i></a>
+      <a class="soc" href="https://gitlab.com/AO2233" title="GitLab"><i data-feather="gitlab"></i></a>
+      <a class="soc" href="https://steamcommunity.com/id/u604b" title="Steam"><i data-feather="hash"></i></a>
+      <a class="soc" href="https://x.com/u604b" title="Twitter"><i data-feather="twitter"></i></a>
+      <a class="soc" href="mailto:ao.debian@gmail.com" title="Mail"><i data-feather="mail"></i></a>
+      </div>
+
+      <div class="no-ai-logo">
+            <embed src="/svg/no-ai-white.svg"
+                   type="image/svg+xml"
+                   width="128" height="37">
+            <embed src="/svg/no-ai-black.svg"
+                   type="image/svg+xml"
+                   width="128" height="37">
+          </div>
+      </div>
+      <style>
+      .no-ai-logo embed {
+            display: none;
+      }
+      @media (prefers-color-scheme: light) {
+            .no-ai-logo embed[src$="no-ai-white.svg"] {
+              display: block;
+            }
+          }
+          @media (prefers-color-scheme: dark) {
+            .no-ai-logo embed[src$="no-ai-black.svg"] {
+              display: block;
+            }
+          }
+      </style>
+</div>
+
+</footer>
+
+<script>
+      feather.replace();
+      
+      const images = document.querySelectorAll('.zoom-image');  
+      mediumZoom(images,{
+            background: 'rgba(0, 0, 0, 0.7)', 
+            margin: 0, 
+      });
+</script>
+
+</div>
+    </body>
+    
+</html>

@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html><head>
+	<meta charset="utf-8" />
+	<meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
+	<meta name=viewport content="width=device-width,initial-scale=1">
+
+	
+
+	<title>帰宅部 </title>
+	
+	<link rel="icon" href=https://ao2233.github.io/duck.ico>
+	
+	<link rel="stylesheet" href="https://ao2233.github.io/css/code_style.css">
+	<link rel="stylesheet" href="https://ao2233.github.io/css/code_light.css">
+	<link rel="stylesheet" href="https://ao2233.github.io/css/fonts.css">
+	<link rel="stylesheet" href="https://ao2233.github.io/js/aplayer/APlayer.min.css">
+	<link rel="stylesheet" href="https://ao2233.github.io/js/videojs/video-js.min.css">
+	<link rel="stylesheet" href="https://ao2233.github.io//js/zoom/style.min.css">
+
+	<link rel="stylesheet" href="https://ao2233.github.io/css/main.css">
+	<link rel="stylesheet" href="https://ao2233.github.io/css/dark.css" media="(prefers-color-scheme: dark)" />
+	<link rel="stylesheet" href="https://ao2233.github.io/css/code_dark.css" media="(prefers-color-scheme: dark)" />
+	
+
+	
+	<script src="https://ao2233.github.io/js/aplayer/APlayer.min.js"></script>
+	<script src="https://ao2233.github.io/js/dplayer/DPlayer.min.js"></script>
+	<script src="https://ao2233.github.io/js/videojs/video.min.js"></script>
+	<script src="https://ao2233.github.io/js/zoom/medium-zoom.min.js"></script>
+
+	<script src="https://ao2233.github.io/js/pdfobject.min.js"></script>
+	<script src="https://ao2233.github.io/js/feather.min.js"></script>
+	<script src="https://ao2233.github.io/js/collapsible.js"></script>
+	<script src="https://ao2233.github.io/js/mermaid.min.js"></script>
+	
+
+	
+	<link rel="stylesheet" href="https://ao2233.github.io/js/katex/katex.min.css" crossorigin="anonymous">
+	<script defer src="https://ao2233.github.io/js/katex/katex.min.js" crossorigin="anonymous"></script>
+	<script defer src="https://ao2233.github.io/js/katex/contrib/auto-render.min.js" crossorigin="anonymous"
+		onload="renderMathInElement(document.body);"></script>
+	<script>
+		document.addEventListener("DOMContentLoaded", function () {
+			renderMathInElement(document.body, {
+				delimiters: [
+					{ left: "$$", right: "$$", display: true },
+					
+					{ left: "$", right: "$", display: false },
+					
+				]
+			});
+		});
+	</script>
+	
+
+	
+	<script>
+		const mq = window.matchMedia('(prefers-color-scheme: dark)'),
+			config = { startOnLoad: true, flowchart: { useMaxWidth: true, htmlLabels: true, curve: 'cardinal' }, securityLevel: 'loose' };
+		let inited = false,
+			setTheme = dark => {
+				mermaid.initialize({ theme: dark ? 'dark' : 'base', config });
+				if (inited) location.reload(false);
+				inited = true;
+			};
+
+		setTheme(mq.matches);
+		(mq.addEventListener ? mq.addEventListener : mq.addListener).call(mq, 'change', e => setTheme(e.matches));
+	</script>
+
+	<script>
+		window.addEventListener('scroll', function() {
+		var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+		var scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
+		var clientHeight = document.documentElement.clientHeight || window.innerHeight;
+		var scrollPercent = (scrollTop / (scrollHeight - clientHeight)) * 100;
+		document.getElementById('progress-bar').style.width = scrollPercent + '%';
+		});
+	</script>
+
+	
+	
+
+</head>
+
+    <body>
+        <div class="content"><header>
+	<div class="main">
+		<a href="https://ao2233.github.io/">帰宅部</a>
+	</div>
+
+	
+	<nav>
+		
+		<a href="/" class="sub-main">Archive</a>
+		
+		<a href="/about" class="sub-main">About</a>
+		
+
+	
+		
+	</nav>
+</header>
+
+
+
+<div id="progress-container">
+	<div id="progress-bar"></div>
+</div>
+<div class="content">
+        
+<main>
+	
+	<div class="title">
+		<h1 class="title">WEB样式测试</h1>
+		<div class="meta">Posted on Dec 7, 2021</div>
+	</div>
+	<section class="body">
+	<article>
+		<p>本页面用于<code>Hugo Website</code>界面的功能测试。</p>
+<blockquote>
+<p>标题 and (提示栏)</p>
+</blockquote>
+<div class="collapsible">
+  <div class="bar">标题栏</div>
+  <div class="content">
+    <h1 id="一级标题">一级标题</h1>
+<h2 id="二级标题">二级标题</h2>
+<h3 id="三级标题">三级标题</h3>
+<h4 id="四级标题">四级标题</h4>
+<h5 id="五级标题">五级标题</h5>
+<h6 id="六级标题">六级标题</h6>
+<p>级数越大，间距越大</p>
+  </div>
+</div>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>嵌套效果</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>Unicode</p>
+</blockquote>
+<p>🥺 漢 字 の 部 首 画 数 読 み 方 筆 順 適 湜 ① 葮 焱 暒 妏 雫 翱翔 〆
+㋿ ㍻ ｽｷ</p>
+<p>(*ゝω・)ﾉ♥♥♥ ･ﾟ:*:ﾟ</p>
+<blockquote>
+<p>code</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="ln">1</span><span class="cl"><span class="c1">// CPP
+</span></span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="c1"></span><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+</span></span><span class="line"><span class="ln">4</span><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+</span></span><span class="line"><span class="ln">5</span><span class="cl">	<span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&#34;⑨&#34;</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="ln">6</span><span class="cl">	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="ln">7</span><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><blockquote>
+<p>video-loop</p>
+</blockquote>
+
+
+<div style="text-align: center;">
+<video autoplay loop muted playsinline preload="auto" style="max-width: 800px; width: 100%;">
+    <source src="/media/video/2025/magnolia.mp4" type="video/mp4">
+    check the <a href="/media/video/2025/magnolia.mp4">video</a>.
+  </video>
+
+<p style="margin: 0.1rem;"><code>エンダーマグノリア最終戦</code></p>
+
+</div>
+  
+<div class="collapsible">
+  <div class="bar">样式代码</div>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="ln">1</span><span class="cl">{\{<span class="p">&lt;</span> <span class="nt">video</span> <span class="na">src</span><span class="o">=</span><span class="s">/media/video/2025/magnolia.mp4</span> <span class="na">width</span><span class="o">=</span><span class="s">800px</span> <span class="na">caption</span><span class="o">=</span><span class="s">&#34;`エンダーマグノリア最終戦`&#34;</span><span class="p">&gt;</span>}\}
+</span></span></code></pre></div>
+  </div>
+</div>
+<h1 id="自定义图片">自定义图片</h1>
+
+
+
+<div class="masonry-gallery" style="display: flex; flex-wrap: wrap; justify-content: center; margin: 0 3px;">
+
+<div class="masonry-gallery-item" style="width: 100%;margin: 0 3px; max-width: 500px">
+<img src="/media/img/2022/bochii.jpeg" class="zoom-image">
+</div>
+
+</div>
+
+<p style="text-align: center;  margin: 0;"><code>ぼっち・ざ・ろっく！</code></p>
+
+<p>图片的布局是极其繁琐的，宽高不同的图片的放置更是地狱。并且希望图片是可以点击放大的。底部有可选的说明文字。</p>
+<p>目前方法，可以放多张图，用<code>半角逗号隔开</code>，<code>但是每次指定一排放置</code>，强迫症患者必须手搓，<code>flex</code>居中。建议同宽度的图片一起放。宽度指定的是单张图片的最大宽度，超过此宽度先变成单列排放，更小的情况单列进行图片缩放。</p>
+<div class="collapsible">
+  <div class="bar"><em>详细说明</em></div>
+  <div class="content">
+    <blockquote>
+<p>code</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="ln">1</span><span class="cl">代码为了避开渲染，全部添加 \，语法忘记时复制去掉 \
+</span></span><span class="line"><span class="ln">2</span><span class="cl">
+</span></span><span class="line"><span class="ln">3</span><span class="cl">{\{<span class="p">&lt;</span> <span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;/media/abc.png, /media/ss.jpeg&#34;</span>  <span class="na">width</span><span class="o">=</span><span class="s">&#34;500px&#34;</span> <span class="p">&gt;</span>}\}
+</span></span><span class="line"><span class="ln">4</span><span class="cl">{\{<span class="p">&lt;</span> <span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;/media/abc.png&#34;</span>  <span class="na">width</span><span class="o">=</span><span class="s">&#34;50%&#34;</span> <span class="na">cation</span><span class="o">=</span><span class="s">&#34;说明文字&#34;</span> <span class="p">&gt;</span>}\}
+</span></span><span class="line"><span class="ln">5</span><span class="cl">{\{<span class="p">&lt;</span> <span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;/media/abc.png&#34;</span>  <span class="na">width</span><span class="o">=</span><span class="s">&#34;50%&#34;</span> <span class="p">&gt;</span>}\}
+</span></span><span class="line"><span class="ln">6</span><span class="cl">网页过宽采用超过一定大小后，向两边padding的做法（大部分网站通用做法），保证纵向大小不变。对于宽度过小的情况，采用等比缩小的策略。
+</span></span></code></pre></div>
+  </div>
+</div>
+<blockquote>
+<p>markdown 标记测试</p>
+</blockquote>
+<p><del>間違った</del> <em>斜体</em> <strong>加粗</strong> <a href="">超链接</a> Tex -&gt; $\LaTeX$</p>
+<table>
+  <thead>
+      <tr>
+          <th>id</th>
+          <th>name</th>
+          <th>level</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>0</td>
+          <td>ao</td>
+          <td>99</td>
+      </tr>
+  </tbody>
+</table>
+<blockquote>
+<p>特殊样式</p>
+</blockquote>
+<h1 id="折叠框">折叠框</h1>
+<div class="collapsible">
+  <div class="bar">点击展开</div>
+  <div class="content">
+    <p>啥都没有</p>
+<div class="collapsible">
+  <div class="bar">猜猜看有什么</div>
+  <div class="content">
+    <p>🐮🍺</p>
+<div class="collapsible">
+  <div class="bar">啥都没有哦</div>
+  <div class="content">
+    🥹
+  </div>
+</div>
+  </div>
+</div>
+
+  </div>
+</div>
+<h1 id="aplayer">Aplayer</h1>
+<div id="2"></div>
+<script>
+ap = new APlayer({
+    container: document.getElementById('2'),
+    fixed: '',
+    audio: [{
+        name: 'fly away' ,
+        artist: '上原あずみ',
+        url: '\/media\/audio\/fly_away.mp3',
+        cover: '\/media\/img\/2022\/fly.jpg',
+        autoplay: 'true',
+        lrc: 'no lrc'
+    }]
+});
+</script>
+
+<div id="k"></div>
+<script>
+ap = new APlayer({
+    container: document.getElementById('k'),
+    fixed: 'true',
+    audio: [{
+        name: 'Inferno' ,
+        artist: 'Benjamin \u0026 mpi',
+        url: '\/media\/audio\/Inferno.mp3',
+        cover: '\/media\/img\/2022\/moe.webp',
+        autoplay: 'true',
+        lrc: 'no lrc'
+    }]
+});
+</script>
+
+<div class="collapsible">
+  <div class="bar"><em>详细说明</em></div>
+  <div class="content">
+    <blockquote>
+<p>code</p>
+</blockquote>
+<!--  不需要 *注意*：需要写全`/`，使用的相对地址 -->
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="ln">1</span><span class="cl">{/{<span class="p">&lt;</span> <span class="nt">aplayer</span> <span class="na">id</span><span class="o">=</span><span class="s">2</span> <span class="na">url</span><span class="o">=</span><span class="s">/media/fly_away.mp3</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;fly away&#34;</span>  <span class="na">artist</span><span class="o">=</span><span class="s">上原あずみ</span> <span class="p">&gt;</span>}/}
+</span></span></code></pre></div><h2 id="参数-id-url">参数 id url</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;{{- .Get `id` -}}&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="kr">const</span> <span class="nx">ap</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">APlayer</span><span class="p">({</span>
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl">    <span class="nx">container</span><span class="o">:</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;{{- .Get `id` -}}&#39;</span><span class="p">),</span>
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl">    <span class="nx">audio</span><span class="o">:</span> <span class="p">[{</span>
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">        <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;{{- .Get `name` -}}&#39;</span> <span class="p">,</span>
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">        <span class="nx">artist</span><span class="o">:</span> <span class="s1">&#39;{{- .Get `artist` | default `` -}}&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl">        <span class="nx">url</span><span class="o">:</span> <span class="s1">&#39;{{ .Site.BaseURL  }}{{ .Get `url` -}}&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl">        <span class="nx">cover</span><span class="o">:</span> <span class="s1">&#39;{{- .Get `cover` | default `` -}}&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="ln">10</span><span class="cl">        <span class="nx">autoplay</span><span class="o">:</span> <span class="s1">&#39;{{- .Get `auto` | default `true` -}}&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="ln">11</span><span class="cl">        <span class="nx">lrc</span><span class="o">:</span> <span class="s1">&#39;{{- .Get `lrc` | default `无歌词` -}}&#39;</span>
+</span></span><span class="line"><span class="ln">12</span><span class="cl">    <span class="p">}]</span>
+</span></span><span class="line"><span class="ln">13</span><span class="cl"><span class="p">});</span>
+</span></span><span class="line"><span class="ln">14</span><span class="cl"><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span></code></pre></div>
+  </div>
+</div>
+<h1 id="dplayer">Dplayer</h1>
+<div align=center>
+<div id="1"></div>
+
+<script>
+    dp = new DPlayer({
+    container: document.getElementById('1'),
+    screenshot: true,
+    airplay: true,
+    chromecast: true,
+    preload: true,
+    video: {
+        url: '\/media\/video\/vtest.mp4',
+        
+    },
+});
+</script>
+</div>
+
+<div class="collapsible">
+  <div class="bar"><em>详细说明</em></div>
+  <div class="content">
+    <blockquote>
+<p>code</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="ln">1</span><span class="cl">{/{<span class="p">&lt;</span> <span class="nt">dplayer</span> <span class="na">id</span><span class="o">=</span><span class="s">1</span> <span class="na">url</span><span class="o">=</span><span class="s">/media/vtest.mp4</span> <span class="p">&gt;</span>}/}
+</span></span></code></pre></div><h2 id="参数-id-path">参数 id path</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">align</span><span class="o">=</span><span class="s">center</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;{{- .Get `id`  -}}&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl">    <span class="kr">const</span> <span class="nx">dp</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DPlayer</span><span class="p">({</span>
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl">    <span class="nx">container</span><span class="o">:</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;{{- .Get `id` -}}&#39;</span><span class="p">),</span>
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">    <span class="nx">video</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">        <span class="nx">url</span><span class="o">:</span> <span class="s1">&#39;{{ .Site.BaseURL  }}{{- .Get `path` -}}&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl"><span class="p">});</span>
+</span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span></code></pre></div>
+  </div>
+</div>
+<h1 id="youtube">Youtube</h1>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/EHw005ZqCXk?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
+    </div>
+
+<!-- # Instagram -->
+<!-- <blockquote
+    class="instagram-media"
+    data-instgrm-captioned
+    data-instgrm-permalink="https://www.instagram.com/p/BWNjjyYFxVx"
+    data-instgrm-version="14"
+    style="
+      background: #fff;
+      border: 0;
+      border-radius: 3px;
+      box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.5), 0 1px 10px 0 rgba(0, 0, 0, 0.15);
+      margin: 1px;
+      max-width: 540px;
+      min-width: 326px;
+      padding: 0;
+      width: 99.375%;
+      width: -webkit-calc(100% - 2px);
+      width: calc(100% - 2px);
+    "
+  >
+    <div style="padding: 16px">
+      <a
+        href="https://www.instagram.com/p/BWNjjyYFxVx"
+        style="
+          background: #ffffff;
+          line-height: 0;
+          padding: 0 0;
+          text-align: center;
+          text-decoration: none;
+          width: 100%;
+        "
+        target="_blank"
+      >
+        <div style="display: flex; flex-direction: row; align-items: center">
+          <div
+            style="
+              background-color: #f4f4f4;
+              border-radius: 50%;
+              flex-grow: 0;
+              height: 40px;
+              margin-right: 14px;
+              width: 40px;
+            "
+          ></div>
+          <div
+            style="
+              display: flex;
+              flex-direction: column;
+              flex-grow: 1;
+              justify-content: center;
+            "
+          >
+            <div
+              style="
+                background-color: #f4f4f4;
+                border-radius: 4px;
+                flex-grow: 0;
+                height: 14px;
+                margin-bottom: 6px;
+                width: 100px;
+              "
+            ></div>
+            <div
+              style="
+                background-color: #f4f4f4;
+                border-radius: 4px;
+                flex-grow: 0;
+                height: 14px;
+                width: 60px;
+              "
+            ></div>
+          </div>
+        </div>
+        <div style="padding: 19% 0"></div>
+        <div
+          style="display: block; height: 50px; margin: 0 auto 12px; width: 50px"
+        >
+          <svg
+            width="50px"
+            height="50px"
+            viewBox="0 0 60 60"
+            version="1.1"
+            xmlns="https://www.w3.org/2000/svg"
+            xmlns:xlink="https://www.w3.org/1999/xlink"
+          >
+            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+              <g transform="translate(-511.000000, -20.000000)" fill="#000000">
+                <g>
+                  <path
+                    d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"
+                  ></path>
+                </g>
+              </g>
+            </g>
+          </svg>
+        </div>
+        <div style="padding-top: 8px">
+          <div
+            style="
+              color: #3897f0;
+              font-family: Arial, sans-serif;
+              font-size: 14px;
+              font-style: normal;
+              font-weight: 550;
+              line-height: 18px;
+            "
+          >
+            View this post on Instagram
+          </div>
+        </div>
+        <div style="padding: 12.5% 0"></div>
+        <div
+          style="
+            display: flex;
+            flex-direction: row;
+            margin-bottom: 14px;
+            align-items: center;
+          "
+        >
+          <div>
+            <div
+              style="
+                background-color: #f4f4f4;
+                border-radius: 50%;
+                height: 12.5px;
+                width: 12.5px;
+                transform: translateX(0px) translateY(7px);
+              "
+            ></div>
+            <div
+              style="
+                background-color: #f4f4f4;
+                height: 12.5px;
+                transform: rotate(-45deg) translateX(3px) translateY(1px);
+                width: 12.5px;
+                flex-grow: 0;
+                margin-right: 14px;
+                margin-left: 2px;
+              "
+            ></div>
+            <div
+              style="
+                background-color: #f4f4f4;
+                border-radius: 50%;
+                height: 12.5px;
+                width: 12.5px;
+                transform: translateX(9px) translateY(-18px);
+              "
+            ></div>
+          </div>
+          <div style="margin-left: 8px">
+            <div
+              style="
+                background-color: #f4f4f4;
+                border-radius: 50%;
+                flex-grow: 0;
+                height: 20px;
+                width: 20px;
+              "
+            ></div>
+            <div
+              style="
+                width: 0;
+                height: 0;
+                border-top: 2px solid transparent;
+                border-left: 6px solid #f4f4f4;
+                border-bottom: 2px solid transparent;
+                transform: translateX(16px) translateY(-4px) rotate(30deg);
+              "
+            ></div>
+          </div>
+          <div style="margin-left: auto">
+            <div
+              style="
+                width: 0px;
+                border-top: 8px solid #f4f4f4;
+                border-right: 8px solid transparent;
+                transform: translateY(16px);
+              "
+            ></div>
+            <div
+              style="
+                background-color: #f4f4f4;
+                flex-grow: 0;
+                height: 12px;
+                width: 16px;
+                transform: translateY(-4px);
+              "
+            ></div>
+            <div
+              style="
+                width: 0;
+                height: 0;
+                border-top: 8px solid #f4f4f4;
+                border-left: 8px solid transparent;
+                transform: translateY(-4px) translateX(8px);
+              "
+            ></div>
+          </div>
+        </div>
+        <div
+          style="
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: center;
+            margin-bottom: 24px;
+          "
+        >
+          <div
+            style="
+              background-color: #f4f4f4;
+              border-radius: 4px;
+              flex-grow: 0;
+              height: 14px;
+              margin-bottom: 6px;
+              width: 224px;
+            "
+          ></div>
+          <div
+            style="
+              background-color: #f4f4f4;
+              border-radius: 4px;
+              flex-grow: 0;
+              height: 14px;
+              width: 144px;
+            "
+          ></div></div
+      ></a>
+    </div>
+  </blockquote><script async src="https://www.instagram.com/embed.js"></script> -->
+<h1 id="twitter">Twitter</h1>
+<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">YOYO!のフリーレン <a href="https://t.co/3rhsPOuJb8">pic.twitter.com/3rhsPOuJb8</a></p>&mdash; 『葬送のフリーレン』公式 (@FRIEREN_PR) <a href="https://twitter.com/FRIEREN_PR/status/1873247579632468269?ref_src=twsrc%5Etfw">December 29, 2024</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+<h1 id="bilibili">Bilibili</h1>
+<div align=center class="aspect-ratio">
+    <iframe src="https://player.bilibili.com/player.html?bvid=BV18X4y1N7Yh&&page=1&as_wide=1&high_quality=1&danmaku=1&autoplay=0" 
+    scrolling="no" 
+    border="0" 
+    frameborder="no" 
+    framespacing="0" 
+    allowfullscreen="false"> 
+    </iframe>
+
+    <style>
+        .aspect-ratio {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 45%;
+            }
+              
+        .aspect-ratio iframe {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            }
+        </style>
+</div>
+
+<p>由于B站的接口，实测用手机端访问，<code>User-agent</code>会导致有的视频无法加载被替换，怀疑与反外链有关</p>
+<h1 id="pdf-内嵌">PDF 内嵌</h1>
+
+
+<div id='s'></div>
+<script>
+var options = {
+    fallbackLink: "<p>The browser does not support embedded <a href='[url]'>PDF</a> documents. </p>"
+    };
+PDFObject.embed("\/media\/pdf\/Transformer.pdf", "#s", {height:'70em'}, options);
+</script>
+
+<p>用于大页面的$\LaTeX$的加载</p>
+<div class="collapsible">
+  <div class="bar"><em>详细说明</em></div>
+  <div class="content">
+    <blockquote>
+<p>code</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="ln">1</span><span class="cl">{\{<span class="p">&lt;</span> <span class="nt">pdf</span> <span class="na">id</span><span class="o">=</span><span class="s">s</span> <span class="na">src</span><span class="o">=</span><span class="s">/media/pdf/Transformer.pdf</span> <span class="p">&gt;</span>}\}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="c">&lt;!-- 不可纯数字 --&gt;</span>
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl">
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&#39;{{- .Get `id` -}}&#39;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl">    <span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">            <span class="nx">fallbackLink</span><span class="o">:</span> <span class="s2">&#34;&lt;p&gt;This browser don&#39;t support embeded PDFs. &lt;a href=&#39;[url]&#39;&gt;Download it&lt;/a&gt;&lt;/p&gt;&#34;</span>
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">            <span class="p">};</span>
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl">    <span class="nx">PDFObject</span><span class="p">.</span><span class="nx">embed</span><span class="p">(</span><span class="s2">&#34;{{ .Site.BaseURL  }}{{- .Get `path` -}}&#34;</span><span class="p">,</span> <span class="s2">&#34;#a{{- .Get `id` -}}&#34;</span><span class="p">,</span> <span class="p">{</span><span class="nx">height</span><span class="o">:</span><span class="s1">&#39;{{- .Get `h` | default `50rem` -}}&#39;</span><span class="p">},</span> <span class="nx">options</span><span class="p">);</span>
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl"><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="ln">10</span><span class="cl">
+</span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="c">&lt;!--
+</span></span></span><span class="line"><span class="ln">12</span><span class="cl"><span class="c">引擎不支持的时候，使用fallback，给出Link
+</span></span></span><span class="line"><span class="ln">13</span><span class="cl"><span class="c">--&gt;</span>
+</span></span></code></pre></div>
+  </div>
+</div>
+<h1 id="spotify">Spotify</h1>
+<div class="collapsible">
+  <div class="bar"><em>效果展示</em></div>
+  <div class="content">
+    <blockquote>
+<p>Single</p>
+</blockquote>
+<iframe allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" allowfullscreen="allowfullscreen" class="spotify spotify-track" id="h-sc-spotify-0" loading="lazy" src="https://open.spotify.com/embed/track/7ovUcF5uHTBRzUpB6ZOmvt?theme=1" style="width: 100%; height: 152px; border: none;"></iframe>
+<blockquote>
+<p>Artist</p>
+</blockquote>
+<iframe allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" allowfullscreen="allowfullscreen" class="spotify spotify-artist" id="h-sc-spotify-1" loading="lazy" src="https://open.spotify.com/embed/artist/2elBjNSdBE2Y3f0j1mjrql?theme=1" style="width: 100%; height: 380px; border: none;"></iframe>
+<blockquote>
+<p>List</p>
+</blockquote>
+<iframe allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" allowfullscreen="allowfullscreen" class="spotify spotify-playlist" id="h-sc-spotify-2" loading="lazy" src="https://open.spotify.com/embed/playlist/37i9dQZF1DXbFuzhIOyS7z?theme=1" style="width: 100%; height: 380px; border: none;"></iframe>
+
+  </div>
+</div>
+<h1>$\LaTeX$</h1>
+<p>行公式效果：</p>
+$$
+f(x)=\int_{-\infty}^\infty\widehat f\xi e^{2\pi i\xi x}d\xi
+$$$$
+v_\pi(s) = \sum_{a \in \mathcal{A}} \pi(a|s) q_\pi(s,a)
+$$$$
+\sigma \left( \frac{QK^T}{\sqrt{d}} \right) V
+$$$$
+\begin{equation}
+\begin{CD}
+   A @>a>> B \\
+   @VbVV @AAcA \\
+   C @= D
+\end{CD}
+\end{equation}
+$$$$
+\begin{equation}
+  x = a_0 + \cfrac{1}{a_1 
+          + \cfrac{1}{a_2 
+          + \cfrac{1}{a_3 + \cfrac{1}{a_4} } } }
+\end{equation}
+$$<p>内联公式效果：$x = {-b \pm \sqrt{b^2-4ac} \over 2a}$，由$\LaTeX$ 强力驱动</p>
+<div class="collapsible">
+  <div class="bar"><em>详细说明</em></div>
+  <div class="content">
+    <p>基于$KaTeX$支持其所有特性，唯一麻烦的问题是根据goldmark的转译规则，需要注意符号转译</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="line"><span class="ln">1</span><span class="cl">注意对于 Hugo Goldmark：
+</span></span><span class="line"><span class="ln">2</span><span class="cl">对于单独出现的&#39;<span class="k">\&#39;</span>符号，需要使用转义<span class="k">\\</span>表达
+</span></span><span class="line"><span class="ln">3</span><span class="cl">我们可以用passthrough hook来绕过，需要加上 <span class="sb">$$</span><span class="nb"> </span><span class="s">$$</span>
+</span></span></code></pre></div><p>滑动方案：</p>
+<p>隐藏了横向滑动条，PC端使用<code>SHIFT + 滚轮</code>或者<code>触控板</code>操作</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-latex" data-lang="latex"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="sb">$$</span><span class="nb"> E </span><span class="o">=</span><span class="nb"> MC^</span><span class="m">2</span><span class="nb"> </span><span class="s">$$</span>
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="s">$</span><span class="nb">x </span><span class="o">=</span><span class="nb"> {</span><span class="o">-</span><span class="nb">b </span><span class="nv">\pm</span><span class="nb"> </span><span class="nv">\sqrt</span><span class="nb">{b^</span><span class="m">2</span><span class="o">-</span><span class="m">4</span><span class="nb">ac} </span><span class="nv">\over</span><span class="nb"> </span><span class="m">2</span><span class="nb">a}</span><span class="s">$</span>
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="s">$</span><span class="nv">\LaTeX</span><span class="s">$</span>
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl">
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl">left: &#34;<span class="sb">$$</span><span class="nb">&#34;, right: &#34;</span><span class="s">$$</span>&#34;
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">left: &#34;<span class="k">\\</span><span class="na">[&#34;, right: &#34;\\]</span>&#34;
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">left: &#34;<span class="s">$</span><span class="nb">&#34;, right: &#34;</span><span class="s">$</span>&#34;
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl">left: &#34;<span class="k">\\</span>(&#34;, right: &#34;<span class="k">\\</span>)&#34;
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl">left: &#34;<span class="k">\begin</span><span class="nb">{</span>equation<span class="nb">}</span>&#34;, right: &#34;<span class="k">\end</span><span class="nb">{</span>equation<span class="nb">}</span>&#34;
+</span></span><span class="line"><span class="ln">10</span><span class="cl">left: &#34;<span class="k">\begin</span><span class="nb">{</span>align<span class="nb">}</span>&#34;, right: &#34;<span class="k">\end</span><span class="nb">{</span>align<span class="nb">}</span>&#34;
+</span></span><span class="line"><span class="ln">11</span><span class="cl">left: &#34;<span class="k">\begin</span><span class="nb">{</span>alignat<span class="nb">}</span>&#34;, right: &#34;<span class="k">\end</span><span class="nb">{</span>alignat<span class="nb">}</span>&#34;
+</span></span><span class="line"><span class="ln">12</span><span class="cl">left: &#34;<span class="k">\begin</span><span class="nb">{</span>gather<span class="nb">}</span>&#34;, right: &#34;<span class="k">\end</span><span class="nb">{</span>gather<span class="nb">}</span>&#34;
+</span></span><span class="line"><span class="ln">13</span><span class="cl">left: &#34;<span class="k">\begin</span><span class="nb">{</span>CD<span class="nb">}</span>&#34;, right: &#34;<span class="k">\end</span><span class="nb">{</span>CD<span class="nb">}</span>&#34;
+</span></span></code></pre></div>
+  </div>
+</div>
+<h1 id="mermaid">mermaid</h1>
+<div class="collapsible">
+  <div class="bar"><em>详细说明</em></div>
+  <div class="content">
+    <p>用于画图，但是对页面加载负担较大（移动端），并且导致切换系统主题时，会刷新界面，以适配主题</p>
+<p>并且对于窄屏幕而言，甘特图，饼图等会出现样式重叠，建议生成后，使用图片嵌入（此处已修改为至少900px）</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="ln"> 1</span><span class="cl">{\{<span class="p">&lt;</span> <span class="nt">mermaid</span> <span class="p">&gt;</span>}\}
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl">gantt
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl">    dateFormat  YYYY-MM-DD
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl">    title Adding GANTT diagram functionality to mermaid
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl">    section A section
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">    Completed task            :done,    des1, 2014-01-06,2014-01-08
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">    Active task               :active,  des2, 2014-01-09, 3d
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl">    Future task               :         des3, after des2, 5d
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl">    Future task2               :         des4, after des3, 5d
+</span></span><span class="line"><span class="ln">10</span><span class="cl">    section Critical tasks
+</span></span><span class="line"><span class="ln">11</span><span class="cl">    Completed task in the critical line :crit, done, 2014-01-06,24h
+</span></span><span class="line"><span class="ln">12</span><span class="cl">    Implement parser and jison          :crit, done, after des1, 2d
+</span></span><span class="line"><span class="ln">13</span><span class="cl">    Create tests for parser             :crit, active, 3d
+</span></span><span class="line"><span class="ln">14</span><span class="cl">    Future task in critical line        :crit, 5d
+</span></span><span class="line"><span class="ln">15</span><span class="cl">    Create tests for renderer           :2d
+</span></span><span class="line"><span class="ln">16</span><span class="cl">    Add to mermaid                      :1d
+</span></span><span class="line"><span class="ln">17</span><span class="cl">{\{<span class="p">&lt;</span> <span class="p">/</span><span class="nt">mermaid</span> <span class="p">&gt;</span>}\}
+</span></span></code></pre></div>
+  </div>
+</div>
+<h2 id="sequence-测试">Sequence 测试</h2>
+<pre>
+<div class="mermaid" style="min-width: 600px; text-align: center;">
+
+sequenceDiagram
+    participant Alice
+    participant Bob
+    Alice->>John: Hello John, how are you?
+    loop Healthcheck
+        John->John: Fight against hypochondria
+    end
+    Note right of John: Rational thoughts <br/>prevail...
+    John-->Alice: Great!
+    John->Bob: How about you?
+    Bob-->John: Jolly good!
+
+</div>
+</pre>
+<h2 id="gantt">GANTT</h2>
+<pre>
+<div class="mermaid" style="min-width: 600px; text-align: center;">
+
+gantt
+    dateFormat  YYYY-MM-DD
+    title Adding GANTT diagram functionality to mermaid
+    section A section
+    Completed task            :done,    des1, 2014-01-06,2014-01-08
+    Active task               :active,  des2, 2014-01-09, 3d
+    Future task               :         des3, after des2, 5d
+    Future task2               :         des4, after des3, 5d
+    section Critical tasks
+    Completed task in the critical line :crit, done, 2014-01-06,24h
+    Implement parser and jison          :crit, done, after des1, 2d
+    Create tests for parser             :crit, active, 3d
+    Future task in critical line        :crit, 5d
+    Create tests for renderer           :2d
+    Add to mermaid                      :1d
+
+</div>
+</pre>
+<h2 id="pie">Pie</h2>
+<pre>
+<div class="mermaid" style="min-width: 600px; text-align: center;">
+
+pie
+    "Dogs" : 386
+    "Cats" : 85
+    "Rats" : 15
+
+</div>
+</pre>
+<h1 id="footnote">footnote</h1>
+<p>原神<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>是米哈游开发的一款奇幻题材开放世界动作角色扮演游戏，采用基于抽卡的基本免费及道具收费制。</p>
+<p>相对引用：<a href="https://ao2233.github.io/posts/test/">本篇文章</a></p>
+<p>界面交叉引用：<a href="/posts/test/#2">id引用</a></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-md" data-lang="md"><span class="line"><span class="ln">1</span><span class="cl"><span class="gh"># 相对地址
+</span></span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="gh"></span>相对引用：[<span class="nt">本篇文章</span>](<span class="na">{\{&lt; ref &#34;posts/test.md&#34; &gt;}\}</span>)
+</span></span><span class="line"><span class="ln">3</span><span class="cl">
+</span></span><span class="line"><span class="ln">4</span><span class="cl"><span class="gh"># 2为元素id，标题的坐标元素默认为其内容，shortcode为自设，引脚为fnref:X
+</span></span></span><span class="line"><span class="ln">5</span><span class="cl"><span class="gh"></span>界面交叉引用：[<span class="nt">id引用</span>](<span class="na">{\{&lt; relref &#34;posts/test.md#2&#34; &gt;}\}</span>)
+</span></span></code></pre></div><h1 id="reference">reference：</h1>
+<p><a href="https://aplayer.js.org/#/">Aplayer</a>    音频播放器</p>
+<p><a href="https://github.com/MoePlayer/DPlayer">Dplayer</a> 视频播放器</p>
+<p><a href="https://katex.org/">KaTeX</a> $\LaTeX$</p>
+<p><a href="https://www.mathjax.org/">MathJAX</a> $\LaTeX$</p>
+<p><a href="https://pdfobject.com/">PDFObject</a> PDF</p>
+<p><a href="https://mermaidjs.github.io/">Mermaid.js</a> Graph</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p><a href="https://genshin.mihoyo.com">Genshin Impact Official Website</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+	</article>
+	</section>
+</main>
+
+<footer class="footer">
+<hr>
+<div style="display: flex; justify-content: space-between; align-items: center;">
+      <div><a class="soc" href="https://github.com/AO2233" title="GitHub"><i data-feather="github"></i></a>
+      <a class="soc" href="https://gitlab.com/AO2233" title="GitLab"><i data-feather="gitlab"></i></a>
+      <a class="soc" href="https://steamcommunity.com/id/u604b" title="Steam"><i data-feather="hash"></i></a>
+      <a class="soc" href="https://x.com/u604b" title="Twitter"><i data-feather="twitter"></i></a>
+      <a class="soc" href="mailto:ao.debian@gmail.com" title="Mail"><i data-feather="mail"></i></a>
+      </div>
+
+      <div class="no-ai-logo">
+            <embed src="/svg/no-ai-white.svg"
+                   type="image/svg+xml"
+                   width="128" height="37">
+            <embed src="/svg/no-ai-black.svg"
+                   type="image/svg+xml"
+                   width="128" height="37">
+          </div>
+      </div>
+      <style>
+      .no-ai-logo embed {
+            display: none;
+      }
+      @media (prefers-color-scheme: light) {
+            .no-ai-logo embed[src$="no-ai-white.svg"] {
+              display: block;
+            }
+          }
+          @media (prefers-color-scheme: dark) {
+            .no-ai-logo embed[src$="no-ai-black.svg"] {
+              display: block;
+            }
+          }
+      </style>
+</div>
+
+</footer>
+
+<script>
+      feather.replace();
+      
+      const images = document.querySelectorAll('.zoom-image');  
+      mediumZoom(images,{
+            background: 'rgba(0, 0, 0, 0.7)', 
+            margin: 0, 
+      });
+</script>
+
+</div>
+    </body>
+    
+</html>

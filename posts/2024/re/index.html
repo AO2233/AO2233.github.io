@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html><head>
+	<meta charset="utf-8" />
+	<meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
+	<meta name=viewport content="width=device-width,initial-scale=1">
+
+	
+
+	<title>帰宅部 </title>
+	
+	<link rel="icon" href=https://ao2233.github.io/duck.ico>
+	
+	<link rel="stylesheet" href="https://ao2233.github.io/css/code_style.css">
+	<link rel="stylesheet" href="https://ao2233.github.io/css/code_light.css">
+	<link rel="stylesheet" href="https://ao2233.github.io/css/fonts.css">
+	<link rel="stylesheet" href="https://ao2233.github.io/js/aplayer/APlayer.min.css">
+	<link rel="stylesheet" href="https://ao2233.github.io/js/videojs/video-js.min.css">
+	<link rel="stylesheet" href="https://ao2233.github.io//js/zoom/style.min.css">
+
+	<link rel="stylesheet" href="https://ao2233.github.io/css/main.css">
+	<link rel="stylesheet" href="https://ao2233.github.io/css/dark.css" media="(prefers-color-scheme: dark)" />
+	<link rel="stylesheet" href="https://ao2233.github.io/css/code_dark.css" media="(prefers-color-scheme: dark)" />
+	
+
+	
+	<script src="https://ao2233.github.io/js/aplayer/APlayer.min.js"></script>
+	<script src="https://ao2233.github.io/js/dplayer/DPlayer.min.js"></script>
+	<script src="https://ao2233.github.io/js/videojs/video.min.js"></script>
+	<script src="https://ao2233.github.io/js/zoom/medium-zoom.min.js"></script>
+
+	<script src="https://ao2233.github.io/js/pdfobject.min.js"></script>
+	<script src="https://ao2233.github.io/js/feather.min.js"></script>
+	<script src="https://ao2233.github.io/js/collapsible.js"></script>
+	<script src="https://ao2233.github.io/js/mermaid.min.js"></script>
+	
+
+	
+	<link rel="stylesheet" href="https://ao2233.github.io/js/katex/katex.min.css" crossorigin="anonymous">
+	<script defer src="https://ao2233.github.io/js/katex/katex.min.js" crossorigin="anonymous"></script>
+	<script defer src="https://ao2233.github.io/js/katex/contrib/auto-render.min.js" crossorigin="anonymous"
+		onload="renderMathInElement(document.body);"></script>
+	<script>
+		document.addEventListener("DOMContentLoaded", function () {
+			renderMathInElement(document.body, {
+				delimiters: [
+					{ left: "$$", right: "$$", display: true },
+					
+					{ left: "$", right: "$", display: false },
+					
+				]
+			});
+		});
+	</script>
+	
+
+	
+	<script>
+		const mq = window.matchMedia('(prefers-color-scheme: dark)'),
+			config = { startOnLoad: true, flowchart: { useMaxWidth: true, htmlLabels: true, curve: 'cardinal' }, securityLevel: 'loose' };
+		let inited = false,
+			setTheme = dark => {
+				mermaid.initialize({ theme: dark ? 'dark' : 'base', config });
+				if (inited) location.reload(false);
+				inited = true;
+			};
+
+		setTheme(mq.matches);
+		(mq.addEventListener ? mq.addEventListener : mq.addListener).call(mq, 'change', e => setTheme(e.matches));
+	</script>
+
+	<script>
+		window.addEventListener('scroll', function() {
+		var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+		var scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
+		var clientHeight = document.documentElement.clientHeight || window.innerHeight;
+		var scrollPercent = (scrollTop / (scrollHeight - clientHeight)) * 100;
+		document.getElementById('progress-bar').style.width = scrollPercent + '%';
+		});
+	</script>
+
+	
+	
+
+</head>
+
+    <body>
+        <div class="content"><header>
+	<div class="main">
+		<a href="https://ao2233.github.io/">帰宅部</a>
+	</div>
+
+	
+	<nav>
+		
+		<a href="/" class="sub-main">Archive</a>
+		
+		<a href="/about" class="sub-main">About</a>
+		
+
+	
+		
+	</nav>
+</header>
+
+
+
+<div id="progress-container">
+	<div id="progress-bar"></div>
+</div>
+<div class="content">
+        
+<main>
+	
+	<div class="title">
+		<h1 class="title">无力感</h1>
+		<div class="meta">Posted on Feb 25, 2025</div>
+	</div>
+	<section class="body">
+	<article>
+		<h1 id="就业">就业</h1>
+<p><del>还是NNT（無い内定、一个和<code>内々定</code>同音的梗）状态，投了十几家，全部都落了。实习过的、老东家的研究所，把我的简历挂了。グループ会社也没给我消息，估计也是挂了吧。之后面了几家大厂全挂１面。</del></p>
+<p><del>还是先想办法留在这里，就业季时间不等人，先抓紧时间ES。</del> 时常感到绝望、加上面试问题比较独特，开卷的人生质问、让我这个<code>小镇做题家</code>本身就没有什么意义的人生，更显得苍白单薄。</p>
+<p>计划有变、该为未来谋下出路了 -&gt; <a href="https://ao2233.github.io/posts/2025/ending/">百日后的想法</a>。</p>
+<h1 id="活着">活着</h1>
+<p>深夜负能量、命运的格差、只能说，事已至此，向前看、不要拘泥于过往的细节。</p>
+<h1 id="关于论文研究">关于论文研究</h1>
+<p>老板曾在选题的时候，直接把我分配到机械控制和机器人关节制御组，我偏偏想着我就是要实践下具身智能。结果时至今日、才发现做研究一人孤身奋战、不太现实。本科的计算机视觉的研究经验、无法直接无缝迁移。花了大功夫做完模拟，最后倒在了实机的硬件上。心情只能说用痛苦形容。</p>
+<p>另外、发现自己做报告和PPT的水平太烂了，自己的研究。却是大纲都没理清楚、甚至水平不如本科时代。</p>
+<blockquote>
+<p>犯下的最大错误</p>
+</blockquote>
+<p>根据兴趣选了一个，实验性质拉满的课题。
+<div class="callout">
+    <p><strong>研究还是以一个具体的问题、开始研究更好、至少在日本是这样。</strong></p>
+</div></p>
+<p>老板问到：<code>LLM</code>能用在哪里，感觉不太可靠。本人是想把<code>LLM</code>缝合进<code>机器人任务规划</code>以及<code>错误恢复策略中</code>。类似于各厂的语音助手，既然能有<code>Apple Intelligence</code>，怎么就不能有<code>Robot Intelligence</code>。前者有<code>Agent</code>调用<code>系统API</code>实现任务完成，或者用来操控电脑，后者能否自建动作库，<code>Agent</code>调用动作库来完成实现任务呢。</p>
+<p>但是，一套实验弄下来，发现没有核心技术几乎全靠<code>Trick</code>。首先，计算机里的任务基本都可以拆分成固定的<code>API</code>，并且<code>API</code>成功率极高，失败状态较少，现实环境复杂程度远超想象，单是环境识别就足够研究。另动作失败概率也较大。导致最后<code>LLM</code>的作用与其说是规划器不如说是目标与动作提取器。又因为涉及到硬件的东西又极其昂贵，目前做的动作仅有抓取。</p>
+
+
+
+<div class="masonry-gallery" style="display: flex; flex-wrap: wrap; justify-content: center; margin: 0 3px;">
+
+<div class="masonry-gallery-item" style="width: 100%;margin: 0 3px; max-width: 800px">
+<img src="/media/img/2025/bin1.png" class="zoom-image">
+</div>
+
+</div>
+
+<p style="text-align: center;  margin: 0;"><code>物体抓取</code></p>
+
+
+
+
+<div class="masonry-gallery" style="display: flex; flex-wrap: wrap; justify-content: center; margin: 0 3px;">
+
+<div class="masonry-gallery-item" style="width: 100%;margin: 0 3px; max-width: 800px">
+<img src="/media/img/2025/bin2.png" class="zoom-image">
+</div>
+
+</div>
+
+<p style="text-align: center;  margin: 0;"><code>物品调度就不用想了，太复杂了，实机不可能，我放弃了</code></p>
+
+<p>于是，分割成两个部分</p>
+<ul>
+<li>设计<code>Prompt</code>来用<code>LLM</code>分解任务解析为<code>动作API</code>，并考虑如何结合环境多模态。现有论文能reproduce出完整结果的少之又少，很多都是某个模型（比如 <code>GPT4</code>）效果还可以，但是换个别的，比如<code>GPT-4o</code>就原地爆炸，明明后者性能更好。</li>
+<li>运用各种方法，构建动作库，比如传统算法+<code>slam</code>做导航，<code>GraspNet</code>配合3D点云做抓取，强化学习弄动作姿态等等。只要能<code>work</code>就行。像设计API一样，如果都是不可抢断的任务的话，<code>线性执行</code>的情况只需考虑<code>传入参数</code>和结果就行了。</li>
+</ul>
+
+
+
+<div class="masonry-gallery" style="display: flex; flex-wrap: wrap; justify-content: center; margin: 0 3px;">
+
+<div class="masonry-gallery-item" style="width: 100%;margin: 0 3px; max-width: 800px">
+<img src="/media/img/2025/llm.png" class="zoom-image">
+</div>
+
+</div>
+
+<p style="text-align: center;  margin: 0;"><code>饼学奥义</code></p>
+
+<p>另外如同大部分人的观点一般，<code>Prompt Engineer</code>就那几套，没必要写成<code>paper</code>，浪费纸张。</p>
+<p>OpenAI之前发布会放的，无人机拍照的demo，也是短程任务，因此我觉得我这个自己想的题啊，成功率堪忧，目前仿真的效果就真挺一般的，对于一个普通任务而言，先用<code>LLM</code>做一次大的分解，再用执行器去执行<code>Decomposed Task</code>。</p>
+$$
+n=num(LLM(task)) \\
+rate_{task} = \prod_{i}^n rate_{planer_{i}} * rate_{action_{i}}
+$$<p>这成功率只能说是感动人心，问题还是硬件最大，其次是模型。尤其是当<code>Reasoning Model</code>出来之后，也许这种<code>分解task</code>的方法，比直接代码生成的方案要好。</p>
+<p>现在再看看几篇<code>paper</code>，模拟早就发出来了，而不考虑实机的成功率仅仅<code>40%～60%</code>，而且都是简单的短期任务。
+我非常担心，我实机做不出来。光一个<code>Mobile Manipulation</code>就够我想很久了，坐标系标定该怎么弄。</p>
+<div class="collapsible">
+  <div class="bar"><strong>顶会参考论文</strong></div>
+  <div class="content">
+    <div class="masonry-gallery" style="display: flex; flex-wrap: wrap; justify-content: center; margin: 0 3px;">
+<div class="masonry-gallery-item" style="width: 100%;margin: 0 3px; max-width: 900px">
+<img src="/media/img/2025/tb.png" class="zoom-image">
+</div>
+</div>
+<p style="text-align: center;  margin: 0;">benchmark 大汇总</p>
+<p><a href="https://arxiv.org/abs/2502.09560">EmbodiedBench</a> 虽然还没投，但是我估计不是<code>ICRA</code>就是<code>IROS</code>。<code>A会</code>起步走。</p>
+  </div>
+</div>
+<!-- 
+这也许就是老板开始反对我做的原因吧，老板真的太好了😭，仍然让我选了我想试的题，还买了`RTX 3090`。我的内心只有——感恩🥹。
+
+老板之于我，如同“藤野先生”之于鲁迅。增补：最近跟老板沟通又卡壳了，组会前我得好好准备。 -->
+<p>可以说现在目前进展的卡壳、来自于自身能力不足、对自己想的东西，难度估计错误。对<code>LLM</code>估计太乐观、什么多模态，还有太远的路要走。</p>
+<p>一个2年的项目、前面半年修完学分、做研究时间就一年半、找工作又是一年、半年能做出什么大文章、<code>mdpi</code>就是我的极限了。</p>
+
+	</article>
+	</section>
+</main>
+
+<footer class="footer">
+<hr>
+<div style="display: flex; justify-content: space-between; align-items: center;">
+      <div><a class="soc" href="https://github.com/AO2233" title="GitHub"><i data-feather="github"></i></a>
+      <a class="soc" href="https://gitlab.com/AO2233" title="GitLab"><i data-feather="gitlab"></i></a>
+      <a class="soc" href="https://steamcommunity.com/id/u604b" title="Steam"><i data-feather="hash"></i></a>
+      <a class="soc" href="https://x.com/u604b" title="Twitter"><i data-feather="twitter"></i></a>
+      <a class="soc" href="mailto:ao.debian@gmail.com" title="Mail"><i data-feather="mail"></i></a>
+      </div>
+
+      <div class="no-ai-logo">
+            <embed src="/svg/no-ai-white.svg"
+                   type="image/svg+xml"
+                   width="128" height="37">
+            <embed src="/svg/no-ai-black.svg"
+                   type="image/svg+xml"
+                   width="128" height="37">
+          </div>
+      </div>
+      <style>
+      .no-ai-logo embed {
+            display: none;
+      }
+      @media (prefers-color-scheme: light) {
+            .no-ai-logo embed[src$="no-ai-white.svg"] {
+              display: block;
+            }
+          }
+          @media (prefers-color-scheme: dark) {
+            .no-ai-logo embed[src$="no-ai-black.svg"] {
+              display: block;
+            }
+          }
+      </style>
+</div>
+
+</footer>
+
+<script>
+      feather.replace();
+      
+      const images = document.querySelectorAll('.zoom-image');  
+      mediumZoom(images,{
+            background: 'rgba(0, 0, 0, 0.7)', 
+            margin: 0, 
+      });
+</script>
+
+</div>
+    </body>
+    
+</html>
