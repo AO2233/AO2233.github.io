@@ -508,3 +508,10 @@ a[href^="#fn:"]:after {
   width: 0%;
   transition: width 0.2s ease-out;
 }
+
+/* ======================== APlayer 移动端吸底优化 ======================== */
+.aplayer.aplayer-fixed,
+.aplayer.aplayer-fixed .aplayer-body {
+  bottom: env(safe-area-inset-bottom, 0) !important;
+  max-width: 400px;
+}

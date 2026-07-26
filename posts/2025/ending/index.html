@@ -182,21 +182,22 @@
 		<div id="1"></div>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    var container = document.getElementById('1');
-    if (container && typeof APlayer !== 'undefined') {
-        new APlayer({
-            container: container,
-            fixed: true,
-            audio: [{
-                name: '可不可以',
-                artist: '张紫豪',
-                url: '\/media\/audio\/可不可以.mp3',
-                cover: '\/media\/img\/2025\/kbky.jpg',
-                autoplay: false,
-                lrc: 'no lrc'
-            }]
-        });
-    }
+    var el = document.getElementById('1');
+    if (!el || typeof APlayer === 'undefined') return;
+
+    document.body.appendChild(el);
+
+    new APlayer({
+        container: el,
+        fixed:  true ,
+        audio: [{
+            name:"\"可不可以\"",
+            artist:"\"张紫豪\"",
+            url:"\"/media/audio/可不可以.mp3\"",
+            cover:"\"/media/img/2025/kbky.jpg\"",
+            autoplay:  false ,
+            lrc:"\"\""}]
+    });
 });
 </script>
 

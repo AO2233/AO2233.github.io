@@ -196,21 +196,22 @@
 <div id="1"></div>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    var container = document.getElementById('1');
-    if (container && typeof APlayer !== 'undefined') {
-        new APlayer({
-            container: container,
-            fixed: false,
-            audio: [{
-                name: '借月',
-                artist: '王天阳',
-                url: '\/media\/audio\/借月.mp3',
-                cover: '\/media\/img\/2025\/c.jpg',
-                autoplay: false,
-                lrc: 'no lrc'
-            }]
-        });
-    }
+    var el = document.getElementById('1');
+    if (!el || typeof APlayer === 'undefined') return;
+
+    
+
+    new APlayer({
+        container: el,
+        fixed:  false ,
+        audio: [{
+            name:"\"借月\"",
+            artist:"\"王天阳\"",
+            url:"\"/media/audio/借月.mp3\"",
+            cover:"\"/media/img/2025/c.jpg\"",
+            autoplay:  false ,
+            lrc:"\"\""}]
+    });
 });
 </script>
 

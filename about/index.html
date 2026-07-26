@@ -266,21 +266,22 @@ Address マシュマロ（棉花糖） -&gt; /home/ao Nintendo …">
 <div id="k"></div>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    var container = document.getElementById('k');
-    if (container && typeof APlayer !== 'undefined') {
-        new APlayer({
-            container: container,
-            fixed: true,
-            audio: [{
-                name: 'バニラソルト',
-                artist: 'Yui Horie',
-                url: '\/media\/audio\/バニラ.mp3',
-                cover: '\/media\/img\/2022\/tiger.jpg',
-                autoplay: false,
-                lrc: 'no lrc'
-            }]
-        });
-    }
+    var el = document.getElementById('k');
+    if (!el || typeof APlayer === 'undefined') return;
+
+    document.body.appendChild(el);
+
+    new APlayer({
+        container: el,
+        fixed:  true ,
+        audio: [{
+            name:"\"バニラソルト\"",
+            artist:"\"Yui Horie\"",
+            url:"\"/media/audio/バニラ.mp3\"",
+            cover:"\"/media/img/2022/tiger.jpg\"",
+            autoplay:  false ,
+            lrc:"\"\""}]
+    });
 });
 </script>
 

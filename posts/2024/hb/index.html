@@ -189,21 +189,22 @@ A. 妙趣横生的 老头环与宫崎老贼 …">
 <div id="没有回去的理由了"></div>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    var container = document.getElementById('没有回去的理由了');
-    if (container && typeof APlayer !== 'undefined') {
-        new APlayer({
-            container: container,
-            fixed: false,
-            audio: [{
-                name: '狮子座',
-                artist: '曾轶可',
-                url: '\/media\/audio\/狮子座.mp3',
-                cover: '\/media\/img\/2025\/szz.jpg',
-                autoplay: false,
-                lrc: 'no lrc'
-            }]
-        });
-    }
+    var el = document.getElementById('没有回去的理由了');
+    if (!el || typeof APlayer === 'undefined') return;
+
+    
+
+    new APlayer({
+        container: el,
+        fixed:  false ,
+        audio: [{
+            name:"\"狮子座\"",
+            artist:"\"曾轶可\"",
+            url:"\"/media/audio/狮子座.mp3\"",
+            cover:"\"/media/img/2025/szz.jpg\"",
+            autoplay:  false ,
+            lrc:"\"\""}]
+    });
 });
 </script>
 

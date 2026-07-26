@@ -329,42 +329,44 @@ Unicode
 <div id="2"></div>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    var container = document.getElementById('2');
-    if (container && typeof APlayer !== 'undefined') {
-        new APlayer({
-            container: container,
-            fixed: false,
-            audio: [{
-                name: 'fly away',
-                artist: '上原あずみ',
-                url: '\/media\/audio\/fly_away.mp3',
-                cover: '\/media\/img\/2022\/fly.jpg',
-                autoplay: false,
-                lrc: 'no lrc'
-            }]
-        });
-    }
+    var el = document.getElementById('2');
+    if (!el || typeof APlayer === 'undefined') return;
+
+    
+
+    new APlayer({
+        container: el,
+        fixed:  false ,
+        audio: [{
+            name:"\"fly away\"",
+            artist:"\"上原あずみ\"",
+            url:"\"/media/audio/fly_away.mp3\"",
+            cover:"\"/media/img/2022/fly.jpg\"",
+            autoplay:  false ,
+            lrc:"\"\""}]
+    });
 });
 </script>
 
 <div id="k"></div>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    var container = document.getElementById('k');
-    if (container && typeof APlayer !== 'undefined') {
-        new APlayer({
-            container: container,
-            fixed: true,
-            audio: [{
-                name: 'Inferno',
-                artist: 'Benjamin \u0026 mpi',
-                url: '\/media\/audio\/Inferno.mp3',
-                cover: '\/media\/img\/2022\/moe.webp',
-                autoplay: false,
-                lrc: 'no lrc'
-            }]
-        });
-    }
+    var el = document.getElementById('k');
+    if (!el || typeof APlayer === 'undefined') return;
+
+    document.body.appendChild(el);
+
+    new APlayer({
+        container: el,
+        fixed:  true ,
+        audio: [{
+            name:"\"Inferno\"",
+            artist:"\"Benjamin \\u0026 mpi\"",
+            url:"\"/media/audio/Inferno.mp3\"",
+            cover:"\"/media/img/2022/moe.webp\"",
+            autoplay:  false ,
+            lrc:"\"\""}]
+    });
 });
 </script>
 
