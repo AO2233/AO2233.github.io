@@ -149,7 +149,7 @@ Unicode
 <p>video-loop</p>
 </blockquote>
 <figure class="media-figure">
-  <video class="media-item" autoplay loop muted playsinline preload="auto" style="max-width: 800px">
+  <video class="media-item" autoplay loop muted playsinline preload="auto" style="width: 100%; max-width: 800px">
     <source src="/media/video/2025/magnolia.mp4" type="video/mp4">
     Download the <a href="/media/video/2025/magnolia.mp4">video</a>.
   </video>
@@ -682,50 +682,41 @@ Unicode
   </div>
 </details>
 
-<h1>$\LaTeX$</h1>
+<h1>\(\LaTeX\)</h1>
 <p>行公式效果：</p>
-$$
-f(x)=\int_{-\infty}^\infty\widehat f\xi e^{2\pi i\xi x}d\xi
-$$$$
+\[
+f(x)=\int_{-\infty}^{\infty}\widehat{f}(\xi)e^{2\pi i\xi x}\,d\xi
+\]\[
 v_\pi(s) = \sum_{a \in \mathcal{A}} \pi(a|s) q_\pi(s,a)
-$$$$
+\]\[
 \sigma \left( \frac{QK^T}{\sqrt{d}} \right) V
-$$$$
-\begin{equation}
+\]\[
 \begin{CD}
    A @>a>> B \\
    @VbVV @AAcA \\
    C @= D
 \end{CD}
-\end{equation}
-$$$$
-\begin{equation}
+\]\[
   x = a_0 + \cfrac{1}{a_1 
           + \cfrac{1}{a_2 
           + \cfrac{1}{a_3 + \cfrac{1}{a_4} } } }
-\end{equation}
-$$<p>内联公式效果：$x = {-b \pm \sqrt{b^2-4ac} \over 2a}$，由$\LaTeX$ 强力驱动</p>
+\]<p>内联公式效果：\(x = \frac{-b \pm \sqrt{b^2-4ac}}{2a}\)，由 \(\LaTeX\) 强力驱动</p>
 <details class="collapsible">
   <summary class="bar"><em>详细说明</em></summary>
   <div class="collapsible-content">
-    <p>基于$KaTeX$支持其所有特性，唯一麻烦的问题是根据goldmark的转译规则，需要注意符号转译</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="line"><span class="ln">1</span><span class="cl">注意对于Hugo Goldmark：
-</span></span><span class="line"><span class="ln">2</span><span class="cl">对于单独出现的&#39;<span class="k">\&#39;</span>符号，需要使用转义<span class="k">\\</span>表达
-</span></span><span class="line"><span class="ln">3</span><span class="cl">我们可以用passthrough hook来绕过，需要加上 <span class="sb">$$</span><span class="nb"> </span><span class="s">$$</span></span></span></code></pre></div><p>滑动方案：</p>
+    <p>本站使用 KaTeX 渲染数学公式，并通过 Hugo Goldmark passthrough 保留公式中的原始 LaTeX 内容。</p>
+<p>Markdown 中的公式可以直接使用标准 LaTeX 写法，不需要为了 Goldmark 额外转义反斜杠。推荐使用 <code>\(...\)</code> 表示行内公式，使用 <code>\[...\]</code> 表示块级公式；旧的 <code>$...$</code> 和 <code>$$...$$</code> 写法仍然兼容。</p>
+<p>需要注意，公式中的 <code>\\</code> 是 LaTeX 本身的换行命令，并不是 Markdown 转义。只有在 JavaScript 字符串中配置分隔符时，才需要把一个反斜杠写成 <code>\\</code>。</p>
+<p>滑动方案：</p>
 <p>隐藏了横向滑动条，PC端使用<code>SHIFT + 滚轮</code>或者<code>触控板</code>操作</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-latex" data-lang="latex"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="sb">$$</span><span class="nb"> E </span><span class="o">=</span><span class="nb"> MC^</span><span class="m">2</span><span class="nb"> </span><span class="s">$$</span>
-</span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="s">$</span><span class="nb">x </span><span class="o">=</span><span class="nb"> {</span><span class="o">-</span><span class="nb">b </span><span class="nv">\pm</span><span class="nb"> </span><span class="nv">\sqrt</span><span class="nb">{b^</span><span class="m">2</span><span class="o">-</span><span class="m">4</span><span class="nb">ac} </span><span class="nv">\over</span><span class="nb"> </span><span class="m">2</span><span class="nb">a}</span><span class="s">$</span>
-</span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="s">$</span><span class="nv">\LaTeX</span><span class="s">$</span>
-</span></span><span class="line"><span class="ln"> 4</span><span class="cl">
-</span></span><span class="line"><span class="ln"> 5</span><span class="cl">left: &#34;<span class="sb">$$</span><span class="nb">&#34;, right: &#34;</span><span class="s">$$</span>&#34;
-</span></span><span class="line"><span class="ln"> 6</span><span class="cl">left: &#34;<span class="k">\\</span><span class="na">[&#34;, right: &#34;\\]</span>&#34;
-</span></span><span class="line"><span class="ln"> 7</span><span class="cl">left: &#34;<span class="s">$</span><span class="nb">&#34;, right: &#34;</span><span class="s">$</span>&#34;
-</span></span><span class="line"><span class="ln"> 8</span><span class="cl">left: &#34;<span class="k">\\</span>(&#34;, right: &#34;<span class="k">\\</span>)&#34;
-</span></span><span class="line"><span class="ln"> 9</span><span class="cl">left: &#34;<span class="k">\begin</span><span class="nb">{</span>equation<span class="nb">}</span>&#34;, right: &#34;<span class="k">\end</span><span class="nb">{</span>equation<span class="nb">}</span>&#34;
-</span></span><span class="line"><span class="ln">10</span><span class="cl">left: &#34;<span class="k">\begin</span><span class="nb">{</span>align<span class="nb">}</span>&#34;, right: &#34;<span class="k">\end</span><span class="nb">{</span>align<span class="nb">}</span>&#34;
-</span></span><span class="line"><span class="ln">11</span><span class="cl">left: &#34;<span class="k">\begin</span><span class="nb">{</span>alignat<span class="nb">}</span>&#34;, right: &#34;<span class="k">\end</span><span class="nb">{</span>alignat<span class="nb">}</span>&#34;
-</span></span><span class="line"><span class="ln">12</span><span class="cl">left: &#34;<span class="k">\begin</span><span class="nb">{</span>gather<span class="nb">}</span>&#34;, right: &#34;<span class="k">\end</span><span class="nb">{</span>gather<span class="nb">}</span>&#34;
-</span></span><span class="line"><span class="ln">13</span><span class="cl">left: &#34;<span class="k">\begin</span><span class="nb">{</span>CD<span class="nb">}</span>&#34;, right: &#34;<span class="k">\end</span><span class="nb">{</span>CD<span class="nb">}</span>&#34;</span></span></code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-latex" data-lang="latex"><span class="line"><span class="ln">1</span><span class="cl">行内公式：<span class="s">\(</span><span class="nb">E</span><span class="o">=</span><span class="nb">mc^</span><span class="m">2</span><span class="s">\)</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl">
+</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="sb">\[</span><span class="nb">
+</span></span></span><span class="line"><span class="ln">4</span><span class="cl"><span class="nv">\begin</span><span class="nb">{aligned}
+</span></span></span><span class="line"><span class="ln">5</span><span class="cl"><span class="nb">  a &amp;</span><span class="o">=</span><span class="nb"> b</span><span class="o">+</span><span class="nb">c </span><span class="nv">\\</span><span class="nb">
+</span></span></span><span class="line"><span class="ln">6</span><span class="cl"><span class="nb">  d &amp;</span><span class="o">=</span><span class="nb"> e</span><span class="o">+</span><span class="nb">f
+</span></span></span><span class="line"><span class="ln">7</span><span class="cl"><span class="nv">\end</span><span class="nb">{aligned}
+</span></span></span><span class="line"><span class="ln">8</span><span class="cl"><span class="s">\]</span></span></span></code></pre></div>
   </div>
 </details>
 
