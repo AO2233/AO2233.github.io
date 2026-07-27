@@ -1,11 +1,20 @@
 /* ======================== CSS 变量定义 ======================== */
 :root {
-  --maincolor: #e63946; /* 复古朱红 */
-  --bordercl: #2b2d42; /* 复古暗灰 */
-  --callouctcolor: #00b4d8;
-  --hovercolor: #d62828;
-  --darkcolor: #50fa7b;
+  --maincolor: #b64f5c; /* 低饱和朱红 */
+  --bordercl: #34343e;
+  --callouctcolor: #718c9b;
+  --hovercolor: #9f3f4b;
+  --darkcolor: #9bd6ac;
+  --pagebg: #fbfaf6;
+  --surfacecolor: #f3f0e9;
+  --mutedcolor: #77736d;
+  --linecolor: #c9c2b8;
+  --textcolor: #2f3038;
   --content-max-width: 70ch; /* 黄金单栏阅读行长 68~72 字符 */
+  --space-text: 0.8rem;
+  --space-block: 1rem;
+  --space-subsection: 1.5rem;
+  --space-section: 2rem;
 }
 
 :root { text-autospace: normal; }
@@ -53,6 +62,8 @@ p {
 
 body {
   display: block;
+  color: var(--textcolor);
+  background-color: var(--pagebg);
   cursor: default;
   margin: 0;
   padding: 0;
@@ -75,9 +86,53 @@ div {
 
 /* ======================== 文本元素样式 ======================== */
 hr {
+  height: 2px;
   border: 0;
-  border-top: 3px dotted var(--bordercl);
-  margin: 1em 0;
+  margin: 1rem 0;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--linecolor) 0 8px,
+    transparent 8px 12px
+  );
+}
+
+article del {
+  opacity: 0.78;
+  text-decoration-line: line-through;
+  text-decoration-color: var(--maincolor);
+  text-decoration-thickness: 2px;
+  text-decoration-skip-ink: none;
+}
+
+article strong {
+  font-weight: 700;
+  background-image: linear-gradient(
+    transparent 65%,
+    rgba(182, 79, 92, 0.2) 65%
+  );
+}
+
+article em {
+  font-style: normal;
+  text-emphasis: filled dot var(--maincolor);
+  text-emphasis-position: over right;
+}
+
+article mark {
+  color: var(--bordercl);
+  background: #f2c94c;
+  padding: 0 0.15em;
+}
+
+article kbd {
+  display: inline-block;
+  padding: 0 0.3em;
+  border: 1px solid var(--linecolor);
+  color: inherit;
+  background: var(--surfacecolor);
+  box-shadow: 0 2px 0 var(--linecolor);
+  font-family: "DOS", "DOS-c", "ZpixA";
+  line-height: 1.25;
 }
 
 ol {
@@ -86,13 +141,13 @@ ol {
 
 blockquote {
   position: relative;
-  border-left: 3px solid var(--bordercl);
-  background: rgba(0, 0, 0, 0.02);
+  border-left: 3px solid var(--maincolor);
+  background: var(--surfacecolor);
   color: inherit;
   margin: 0.6rem 0;
   padding: 0.4rem 0.8rem;
   border-radius: 0;
-  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.05);
+  box-shadow: inset 0 0 0 1px rgba(52, 52, 62, 0.08);
 }
 
 blockquote p {
@@ -116,16 +171,46 @@ blockquote p:last-child::after,
 
 /* ======================== 链接样式 ======================== */
 a {
-  border-bottom: 3px solid var(--maincolor);
+  border: 0;
   color: inherit;
-  text-decoration: none; /* remove underline */
+  background: none;
+  text-decoration: none;
   cursor: default;
-  padding-bottom: 0.1em;
+  padding: 0;
 }
 
-a:hover {
-  background-color: var(--hovercolor);
+a:focus-visible {
+  outline: 1px dashed var(--maincolor);
+  outline-offset: 3px;
+}
+
+article a {
+  background-image: linear-gradient(var(--maincolor), var(--maincolor));
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 100% 2px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  padding-bottom: 0.04em;
+  transition: color 0.15s ease, background-size 0.15s steps(3, end);
+}
+
+article a:hover {
+  background-size: 100% 100%;
   color: #fff;
+}
+
+article a:has(img),
+.media-figure > a {
+  background: none;
+  padding: 0;
+}
+
+.site-header a,
+.footer a,
+.list-item,
+.pagination a {
+  background: none;
 }
 
 /* ======================== 列表样式 ======================== */
@@ -139,22 +224,69 @@ ul li {
 }
 
 ul > li::before {
-  content: "• ";
+  content: "・";
+  color: var(--maincolor);
   font-weight: bold;
 }
 
 /* ======================== 图片样式 ======================== */
 img {
-  border: 3px solid #ececec;
+  border: 2px solid var(--linecolor);
   max-width: 100%;
   display: block;
   margin: 0 auto;
   cursor: default;
 }
 
+figure.media-figure {
+  width: 100%;
+  margin: var(--space-block) auto;
+  text-align: center;
+}
+
+.media-figure > img {
+  margin-inline: auto;
+}
+
+.media-item {
+  display: block;
+  max-width: 100%;
+  margin: 0 auto;
+  border: 3px double var(--bordercl);
+  background: #000;
+}
+
+.masonry-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  margin-inline: auto;
+  gap: 6px;
+}
+
+.masonry-gallery-item {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-inline: auto;
+}
+
+.media-figure .caption {
+  margin: 0.35rem 0 0;
+  color: var(--mutedcolor);
+  font-size: 0.85rem;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.media-figure .caption p {
+  margin: 0;
+}
+
 /* ======================== 代码框样式 ======================== */
 code {
-  background-color: #f1f1f1;
+  background-color: var(--surfacecolor);
   padding: 0.1rem 0.2rem;
   margin: 0 0.2rem;
   font-family: "DOS", "DOS-c", "ZpixA";
@@ -183,6 +315,15 @@ pre code {
   color: inherit;
 }
 
+.highlight {
+  border: 1px solid var(--linecolor);
+}
+
+.highlight > .chroma {
+  margin: 0;
+  border: 0;
+}
+
 /* 代码行号样式 */
 .ln {
   margin-right: 1rem;
@@ -192,82 +333,120 @@ pre code {
 
 /* 代码块背景框 */
 .chroma {
+  border: 1px solid var(--linecolor);
   border-radius: 0;
-  background-color: #ececec;
+  background-color: var(--surfacecolor);
   padding: 0.5em;
 }
 
 /* ======================== 标题样式 ======================== */
 /* 头部区域布局 */
-header {
+.site-header {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: baseline;
   gap: 0.5rem 1rem;
-  margin: 1rem 0;
+  margin: 0.8rem 0 0.65rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--linecolor);
   font-size: 1.6rem;
 }
 
-/* ======================== 极度保守与比例呼吸感排版系统 ======================== */
+.site-title a {
+  color: inherit;
+}
+
+.site-title a:hover {
+  color: var(--maincolor);
+}
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2rem 0.8rem;
+  align-items: baseline;
+}
+
+.site-nav a {
+  box-shadow: inset 0 0 0 rgba(182, 79, 92, 0);
+  transition: color 0.15s ease, box-shadow 0.15s steps(3, end);
+}
+
+.site-nav a:hover {
+  color: var(--maincolor);
+  box-shadow: inset 0 -0.35em 0 rgba(182, 79, 92, 0.16);
+}
+
+/* ======================== 轻小说式标题层级 ======================== */
 h1, h2, h3, h4, h5, h6 {
   font-family: inherit;
-  line-height: 1.35;
-  letter-spacing: -0.01em;
+  line-height: 1.4;
+  letter-spacing: 0;
+  text-wrap: balance;
 }
 
 .title,
 .page-title {
-  font-size: 1.25rem;
+  font-size: 1.3rem;
   font-weight: 700;
   margin-top: 1.8rem;
   margin-bottom: 0.7rem;
-  line-height: 1.25;
+  line-height: 1.35;
 }
 
 h1 {
-  font-size: 1.22rem;
-  font-weight: 600;
+  font-size: 1.26rem;
+  font-weight: 650;
   margin-top: 1.7rem;
   margin-bottom: 0.65rem;
 }
 
 h2,
 .year-heading {
-  font-size: 1.2rem;
+  font-size: 1.18rem;
   font-weight: 600;
   margin-top: 1.5rem;
   margin-bottom: 0.6rem;
 }
 
 h3 {
-  font-size: 1.18rem;
+  font-size: 1.12rem;
   font-weight: 600;
   margin-top: 1.35rem;
   margin-bottom: 0.55rem;
 }
 
 h4 {
-  font-size: 1.15rem;
+  font-size: 1.07rem;
   font-weight: 600;
   margin-top: 1.2rem;
   margin-bottom: 0.5rem;
 }
 
-h5, h6 {
-  font-size: 1.12rem;
+h5 {
+  font-size: 1.03rem;
   font-weight: 600;
   margin-top: 1.1rem;
   margin-bottom: 0.45rem;
 }
 
+h6 {
+  color: var(--mutedcolor);
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 1rem;
+  margin-bottom: 0.4rem;
+}
+
 .site-description {
   justify-content: space-between;
   margin: 0;
+  color: var(--mutedcolor);
 }
 
 .sub-main {
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 
 /* 容器首位标题上边距收紧 */
@@ -279,45 +458,157 @@ article > h2:first-child {
   margin-top: 0.5rem;
 }
 
-/* ======================== 标题前缀样式 ======================== */
-h1::before {
-  color: var(--maincolor);
-  content: "# ";
-}
-h2::before {
-  color: var(--maincolor);
-  content: "✦ ";
-}
-h3::before {
-  color: var(--maincolor);
-  content: "◇ ";
-}
-h4::before {
-  color: var(--maincolor);
-  content: "▪ ";
-}
-h5::before {
-  color: var(--maincolor);
-  content: "▫ ";
-}
+/* 星芒、菱形与线段逐级收敛，形成安静但清晰的章节语法。 */
+h1::before,
+h2::before,
+h3::before,
+h4::before,
+h5::before,
 h6::before {
   color: var(--maincolor);
-  content: "· ";
+  display: inline-block;
+  width: 0.95em;
+  margin-inline-end: 0.38em;
+  font-weight: 400;
+  line-height: 1;
+  text-align: center;
+  text-shadow: none;
+  transform: translateY(-0.04em);
+}
+
+h1::before {
+  content: "✦";
+}
+
+.page-title::before {
+  content: "✦";
+}
+
+h2::before {
+  content: "◇";
+}
+
+h3::before {
+  content: "─";
+}
+
+h4::before {
+  content: "┈";
+}
+
+h5::before {
+  content: "・";
+}
+
+h6::before {
+  content: "·";
 }
 
 /* ======================== 时间戳样式 ======================== */
 .meta,
 .post-meta,
 time {
-  color: #888;
+  color: var(--mutedcolor);
   font-size: 1rem;
   margin-top: 0.25rem;
   margin-bottom: 1.2rem;
 }
 
+.meta time {
+  margin: 0;
+  color: inherit;
+  font: inherit;
+}
+
+/* ======================== 文章语义间距 ======================== */
+/* 文章标题、日期与正文是三个独立层级，避免依赖默认 margin 折叠。 */
+.post-header {
+  margin: 1.5rem 0 0;
+}
+
+.post-header h1.title {
+  margin: 0;
+}
+
+.post-header .meta {
+  display: block;
+  margin: 0.35rem 0 0;
+}
+
+.body {
+  margin-top: 1.5rem;
+}
+
+/* 只约束文章的直接内容块，避免干扰播放器与 shortcode 内部布局。 */
+article > :where(p, ul, ol) {
+  margin-top: var(--space-text);
+  margin-bottom: var(--space-text);
+}
+
+article > :where(blockquote, .callout, .collapsible, .highlight, .chroma, .katex-display, .mermaid, .media-figure, table) {
+  margin-top: var(--space-block);
+  margin-bottom: var(--space-block);
+}
+
+article > img {
+  margin-top: 1.25rem;
+  margin-bottom: 0.35rem;
+}
+
+article > img + .caption {
+  margin-top: 0;
+  margin-bottom: 1.25rem;
+}
+
+article > :where(h1, h2) {
+  margin-top: var(--space-section);
+  margin-bottom: 0.6rem;
+}
+
+article > h3 {
+  margin-top: var(--space-subsection);
+  margin-bottom: 0.5rem;
+}
+
+article > :where(h4, h5, h6) {
+  margin-top: 1.25rem;
+  margin-bottom: 0.4rem;
+}
+
+article > :where(h1, h2, h3, h4, h5, h6) + * {
+  margin-top: 0;
+}
+
+article > :first-child {
+  margin-top: 0 !important;
+}
+
+article > :last-child {
+  margin-bottom: 0;
+}
+
+article li + li {
+  margin-top: 0.2rem;
+}
+
 /* ======================== 页脚样式 ======================== */
 footer {
-  margin-top: 1em;
+  margin-top: 1.5rem;
+  color: var(--mutedcolor);
+}
+
+.footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.footer-social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
 }
 
 /* 社交媒体图标 */
@@ -332,7 +623,17 @@ footer {
 }
 
 .soc:hover {
-  color: white;
+  color: var(--maincolor);
+}
+
+.no-ai-logo embed {
+  display: none;
+}
+
+@media (prefers-color-scheme: light) {
+  .no-ai-logo embed[src$="no-ai-white.svg"] {
+    display: block;
+  }
 }
 
 /* ======================== 草稿标签样式 ======================== */
@@ -340,26 +641,34 @@ footer {
   color: var(--bordercl);
   text-decoration: none;
   padding: 2px 4px;
-  border-radius: 4px;
+  border-radius: 0;
   margin-left: 6px;
-  background-color: #f9f2f4;
+  border: 1px solid rgba(182, 79, 92, 0.28);
+  background-color: var(--surfacecolor);
 }
 
 /* ======================== 表格样式 ======================== */
 table {
+  max-width: 100%;
+  margin-inline: auto;
   border-spacing: 0;
   border-collapse: collapse;
   overflow-x: auto;
+  font-size: 0.95rem;
 }
 
 table td,
-th {
-  padding: 6px 13px;
-  border: 1px solid #dfe2e5;
+table th {
+  padding: 0.35rem 0.55rem;
+  border: 1px solid var(--linecolor);
 }
 
 table th {
-  font-size: large;
+  border-bottom: 2px solid var(--maincolor);
+  background: rgba(182, 79, 92, 0.08);
+  font-size: inherit;
+  font-weight: 700;
+  text-align: left;
 }
 
 /* ======================== 滚动条样式 ======================== */
@@ -389,6 +698,12 @@ a[href^="#fn:"]:after {
   content: ">";
 }
 
+a[href^="#fn:"],
+a[href^="#fnref:"] {
+  color: var(--maincolor);
+  background-image: none;
+}
+
 /* ======================== 分页导航样式 ======================== */
 .pagination {
   margin: 0;
@@ -408,10 +723,10 @@ a[href^="#fn:"]:after {
 
 /* ======================== 折叠栏样式 ======================== */
 .collapsible {
-  border: 1px solid #444;
+  border: 1px solid var(--linecolor);
   overflow: hidden;
   margin: 1rem 0;
-  box-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
+  box-shadow: none;
 }
 
 .collapsible .bar {
@@ -421,6 +736,7 @@ a[href^="#fn:"]:after {
   font-size: 1rem;
   transition: 0.3s;
   position: relative;
+  background: var(--surfacecolor);
 }
 
 .collapsible .bar::after {
@@ -457,9 +773,19 @@ a[href^="#fn:"]:after {
 
 /* ======================== 标注框样式 ======================== */
 .callout {
-  border-left: 0.3rem solid crimson;
-  background-color: #fff;
-  padding: 0.1rem 1rem;
+  border-left: 3px solid var(--maincolor);
+  background-color: var(--surfacecolor);
+  padding: 0.4rem 0.8rem;
+  box-shadow: inset 0 0 0 1px rgba(52, 52, 62, 0.08);
+}
+
+.callout-label {
+  color: var(--maincolor);
+  background: none;
+  font-family: "DOS", "DOS-c", "ZpixA";
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
 /* ======================== Danbooru 计数器样式 ======================== */
@@ -501,7 +827,7 @@ a[href^="#fn:"]:after {
 /* 列表项样式 */
 .list-item {
   border-bottom: none;
-  color: #333;
+  color: var(--textcolor);
   line-height: 1.7em;
   padding: 0.2rem;
   position: relative;
@@ -510,7 +836,103 @@ a[href^="#fn:"]:after {
 }
 
 .list-item:hover {
-  left: 6px;
+  left: 4px;
+  color: var(--maincolor);
+}
+
+/* 首页的年份是时间分组，条目标题与日期属于同一个信息单元。 */
+.site-description + .list {
+  margin-top: 1.25rem;
+}
+
+.list > .year-heading {
+  margin-top: 1.75rem;
+  margin-bottom: 0.35rem;
+}
+
+.list > .year-heading:first-child {
+  margin-top: 0;
+}
+
+.post-list-entry {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1rem;
+  align-items: baseline;
+  padding: 0.1rem 0;
+}
+
+.post-list-entry .list-item {
+  display: block;
+  padding: 0;
+  min-width: 0;
+}
+
+.post-list-entry .meta {
+  display: block;
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+.media-figure .caption a {
+  background-size: 100% 1px;
+}
+
+.highlight pre code[class*="language-"]::before {
+  border-radius: 0;
+  color: #fff;
+  background: var(--bordercl);
+}
+
+/* ======================== 404 ======================== */
+.error-page {
+  display: flex;
+  min-height: 100svh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+.error-page .error-label {
+  margin: 0;
+  color: var(--mutedcolor);
+  font-family: "DOS", "DOS-c", "ZpixA";
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+}
+
+.error-page .error-code {
+  margin: 0.4rem 0 0;
+  color: var(--maincolor);
+  font-size: clamp(3rem, 18vw, 7rem);
+  line-height: 1;
+}
+
+.error-page .error-code::before {
+  content: none;
+}
+
+.error-page .error-return {
+  margin: 0.5rem 0 1rem;
+  color: var(--maincolor);
+  background-image: linear-gradient(var(--maincolor), var(--maincolor));
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 100% 2px;
+}
+
+.error-page .error-return:hover {
+  color: #fff;
+  background-size: 100% 100%;
+}
+
+.error-page img {
+  width: min(18rem, 70vw);
+  border: 0;
 }
 
 /* ======================== 萌娘百科样式 ======================== */
@@ -525,25 +947,6 @@ a[href^="#fn:"]:after {
 .moe-mask:hover {
   color: inherit;
   background-color: transparent;
-}
-
-/* ======================== 进度条样式 ======================== */
-#progress-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 5px;
-  background: transparent;
-  pointer-events: none;
-  z-index: 10000 !important;
-}
-
-#progress-bar {
-  height: 100%;
-  background: var(--hovercolor);
-  width: 0%;
-  transition: width 0.2s ease-out;
 }
 
 /* ======================== APlayer 吸底优化 ======================== */

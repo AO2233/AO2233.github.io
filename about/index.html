@@ -106,37 +106,6 @@ Address マシュマロ（棉花糖） -&gt; /home/ao Nintendo …">
 		(mq.addEventListener ? mq.addEventListener : mq.addListener).call(mq, 'change', e => setTheme(e.matches));
 	</script>
 
-	<script>
-		window.addEventListener('DOMContentLoaded', function() {
-			var progressBar = document.getElementById('progress-bar');
-			if (!progressBar) return;
-
-			function updateProgress() {
-				var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-				var windowHeight = window.innerHeight || document.documentElement.clientHeight;
-				var scrollHeight = Math.max(
-					document.body.scrollHeight, document.documentElement.scrollHeight,
-					document.body.offsetHeight, document.documentElement.offsetHeight
-				);
-				var maxScroll = scrollHeight - windowHeight;
-				var percent = 0;
-
-				if (maxScroll > 0) {
-					if (scrollTop + windowHeight >= scrollHeight - 2) {
-						percent = 100;
-					} else {
-						percent = (scrollTop / maxScroll) * 100;
-					}
-				}
-				progressBar.style.width = Math.min(100, Math.max(0, percent)) + '%';
-			}
-
-			updateProgress();
-			window.addEventListener('scroll', updateProgress, { passive: true });
-			window.addEventListener('resize', updateProgress, { passive: true });
-		});
-	</script>
-
 	
 	
 
@@ -144,17 +113,13 @@ Address マシュマロ（棉花糖） -&gt; /home/ao Nintendo …">
 
     <body>
         <div class="crt-overlay"></div>
-        <div class="content"><div id="progress-container">
-	<div id="progress-bar"></div>
-</div>
-
-<header>
-	<div class="main">
+        <div class="content"><header class="site-header">
+	<div class="main site-title">
 		<a href="https://ao2233.github.io/">帰宅部</a>
 	</div>
 
 	
-	<nav>
+	<nav class="site-nav" aria-label="Main navigation">
 		
 		<a href="/" class="sub-main">Archive</a>
 		
@@ -166,14 +131,12 @@ Address マシュマロ（棉花糖） -&gt; /home/ao Nintendo …">
 	</nav>
 </header>
 
-
-
         
 <main>
 	
-	<div class="title">
+	<div class="title post-header">
 		<h1 class="title">About</h1>
-		<div class="meta">Posted on Dec 10, 2021</div>
+		<div class="meta">Posted on <time datetime="2021-12-10">2021.12.10</time></div>
 	</div>
 	<section class="body">
 	<article>
@@ -193,15 +156,20 @@ Address マシュマロ（棉花糖） -&gt; /home/ao Nintendo …">
 
 
 
-<div class="masonry-gallery" style="display: flex; flex-wrap: wrap; justify-content: center; margin: 0 3px;">
 
-<div class="masonry-gallery-item" style="width: 100%;margin: 0 3px; max-width: 600px">
-<img src="/media/img/2025/key.jpg" class="zoom-image">
-</div>
 
-</div>
-
-<p style="text-align: center;  margin: 0;"><a href="https://www.angelbeats.jp" target="_blank" rel="noopener noreferrer"><em>Angel Beats</em></a></p>
+<figure class="media-figure">
+  <div class="masonry-gallery">
+  
+    <div class="masonry-gallery-item" style="max-width: 600px">
+      <img src="/media/img/2025/key.jpg" alt="退游边缘人" class="zoom-image">
+    </div>
+  
+  </div>
+  
+  <figcaption class="caption"><a href="https://www.angelbeats.jp" target="_blank" rel="noopener noreferrer"><em>Angel Beats</em></a></figcaption>
+  
+</figure>
 
 <h1 id="game-account">Game Account</h1>
 <blockquote>
@@ -210,15 +178,20 @@ Address マシュマロ（棉花糖） -&gt; /home/ao Nintendo …">
 
 
 
-<div class="masonry-gallery" style="display: flex; flex-wrap: wrap; justify-content: center; margin: 0 3px;">
 
-<div class="masonry-gallery-item" style="width: 100%;margin: 0 3px; max-width: 700px">
-<img src="/media/img/2025/arknights.png" class="zoom-image">
-</div>
 
-</div>
-
-<p style="text-align: center;  margin: 0;"><em>By</em> <em>退游边缘人</em></p>
+<figure class="media-figure">
+  <div class="masonry-gallery">
+  
+    <div class="masonry-gallery-item" style="max-width: 700px">
+      <img src="/media/img/2025/arknights.png" alt="退游边缘人" class="zoom-image">
+    </div>
+  
+  </div>
+  
+  <figcaption class="caption"><em>By</em> <em>退游边缘人</em></figcaption>
+  
+</figure>
 
 <blockquote>
 <p>雀魂</p>
@@ -226,13 +199,18 @@ Address マシュマロ（棉花糖） -&gt; /home/ao Nintendo …">
 
 
 
-<div class="masonry-gallery" style="display: flex; flex-wrap: wrap; justify-content: center; margin: 0 3px;">
 
-<div class="masonry-gallery-item" style="width: 100%;margin: 0 3px; max-width: 700px">
-<img src="/media/img/2025/majong_souls.jpg" class="zoom-image">
-</div>
 
-</div>
+<figure class="media-figure">
+  <div class="masonry-gallery">
+  
+    <div class="masonry-gallery-item" style="max-width: 700px">
+      <img src="/media/img/2025/majong_souls.jpg" alt="" class="zoom-image">
+    </div>
+  
+  </div>
+  
+</figure>
 
 <hr>
 <h1 id="友人link">友人LINK</h1>
@@ -301,8 +279,8 @@ Address マシュマロ（棉花糖） -&gt; /home/ao Nintendo …">
 
 <footer class="footer">
 <hr>
-<div style="display: flex; justify-content: space-between; align-items: center;">
-      <div><a class="soc" href="https://github.com/AO2233" title="GitHub"><i data-feather="github"></i></a>
+<div class="footer-inner">
+      <div class="footer-social"><a class="soc" href="https://github.com/AO2233" title="GitHub"><i data-feather="github"></i></a>
       <a class="soc" href="https://gitlab.com/AO2233" title="GitLab"><i data-feather="gitlab"></i></a>
       <a class="soc" href="https://steamcommunity.com/id/u604b" title="Steam"><i data-feather="hash"></i></a>
       <a class="soc" href="https://x.com/u604b" title="Twitter"><i data-feather="twitter"></i></a>
@@ -318,21 +296,6 @@ Address マシュマロ（棉花糖） -&gt; /home/ao Nintendo …">
                    width="128" height="37">
           </div>
       </div>
-      <style>
-      .no-ai-logo embed {
-            display: none;
-      }
-      @media (prefers-color-scheme: light) {
-            .no-ai-logo embed[src$="no-ai-white.svg"] {
-              display: block;
-            }
-          }
-          @media (prefers-color-scheme: dark) {
-            .no-ai-logo embed[src$="no-ai-black.svg"] {
-              display: block;
-            }
-          }
-      </style>
 </footer>
 
 <script>
