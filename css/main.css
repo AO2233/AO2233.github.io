@@ -5,9 +5,24 @@
   --callouctcolor: #00b4d8;
   --hovercolor: #d62828;
   --darkcolor: #50fa7b;
+  --content-max-width: 70ch; /* 黄金单栏阅读行长 68~72 字符 */
 }
 
 :root { text-autospace: normal; }
+
+/* ======================== 全局重置与排版防跳变设置 ======================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scrollbar-gutter: stable; /* 稳定滚动条，防止页面切换/内容变动时布局左右跳变 */
+  overflow-y: scroll; /* 强制保留滚动条空间，零跳变回退 */
+  -webkit-text-size-adjust: 100% !important;
+  -moz-text-size-adjust: 100% !important;
+  -ms-text-size-adjust: 100% !important;
+  text-size-adjust: 100% !important;
+}
 
 /* ======================== 全局选择器样式 ======================== */
 ::-moz-selection {
@@ -36,18 +51,11 @@ p {
   /* text-indent: 2rem; */
 }
 
-/* 禁止 iOS Safari 在横屏（及任何情况下）自动放大文字 */
-html {
-  -webkit-text-size-adjust: 100% !important;
-  -moz-text-size-adjust: 100% !important;
-  -ms-text-size-adjust: 100% !important;
-  text-size-adjust: 100% !important;
-}
-
 body {
   display: block;
   cursor: default;
-  /* margin: 8px; */
+  margin: 0;
+  padding: 0;
 }
 
 div {
@@ -58,9 +66,11 @@ div {
 /* container */
 .content {
   margin: 0 auto 5rem auto; /* top right bottom left */
-  /* min-width: 375px; */
-  max-width: 1080px;
+  padding: 0 1%;
+  width: 100%;
+  max-width: var(--content-max-width, 70ch); /* 黄金单栏阅读行长 68~72 字符 */
   word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 /* ======================== 文本元素样式 ======================== */
@@ -75,10 +85,33 @@ ol {
 }
 
 blockquote {
+  position: relative;
   border-left: 3px solid var(--bordercl);
-  color: #737373;
-  margin: 0;
-  padding-left: 1em;
+  background: rgba(0, 0, 0, 0.02);
+  color: inherit;
+  margin: 0.6rem 0;
+  padding: 0.4rem 0.8rem;
+  border-radius: 0;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.05);
+}
+
+blockquote p {
+  margin: 0.2rem 0;
+}
+
+blockquote p:last-child::after,
+.callout p:last-child::after {
+  content: " ▼";
+  display: inline-block;
+  color: var(--maincolor);
+  font-size: 0.85em;
+  margin-left: 0.4rem;
+  animation: jrpgBlink 0.8s steps(2, start) infinite;
+}
+
+@keyframes jrpgBlink {
+  0%, 100% { opacity: 1; transform: translateY(0); }
+  50% { opacity: 0; transform: translateY(2px); }
 }
 
 /* ======================== 链接样式 ======================== */
@@ -170,6 +203,8 @@ header {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  align-items: baseline;
+  gap: 0.5rem 1rem;
   margin: 1rem 0;
   font-size: 1.6rem;
 }
@@ -399,6 +434,8 @@ a[href^="#fn:"]:after {
   display: none;
   animation: fadeIn 0.5s;
   margin: 0.5rem;
+  width: auto;
+  max-width: none;
 }
 
 .collapsible.active > .bar::after {
@@ -509,9 +546,70 @@ a[href^="#fn:"]:after {
   transition: width 0.2s ease-out;
 }
 
-/* ======================== APlayer 移动端吸底优化 ======================== */
+/* ======================== APlayer 吸底优化 ======================== */
+.aplayer.aplayer-fixed {
+  z-index: 99999 !important;
+}
+
 .aplayer.aplayer-fixed,
 .aplayer.aplayer-fixed .aplayer-body {
   bottom: env(safe-area-inset-bottom, 0) !important;
   max-width: 400px;
+}
+
+/* ======================== 2. 真实 8-Bit CRT 显像管光栅与 RGB 磷光边缘 ======================== */
+.crt-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: 
+    linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.14) 50%),
+    linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+  background-size: 100% 3px, 6px 100%;
+  z-index: 9998;
+  pointer-events: none;
+  opacity: 0.35;
+  box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.35); /* 模拟 CRT 显像管曲面边缘阴影 */
+}
+
+/* 标题 8-Bit CRT 磷光微色差重影 (RGB Chromatic Fringe) */
+h1, .title {
+  text-shadow: 1px 0 1px rgba(230, 57, 70, 0.2), -1px 0 1px rgba(0, 180, 216, 0.2);
+}
+
+/* ======================== 5. Game Boy / FC 实体按键触感 ======================== */
+a, 
+.sub-main, 
+.list-item, 
+.collapsible .bar, 
+.draft-label,
+.pagination a {
+  transition: transform 0.08s ease, box-shadow 0.08s ease, background-color 0.15s ease;
+}
+
+/* 悬停微浮 */
+.sub-main:hover, 
+.collapsible .bar:hover,
+.pagination a:hover {
+  transform: translateY(-1px);
+}
+
+/* 按下 (Active Press Step Down - 模拟 Game Boy / FC 实体 AB 键与十字键按压) */
+a:active, 
+.sub-main:active, 
+.list-item:active, 
+.collapsible .bar:active,
+.pagination a:active {
+  transform: translateY(2px) !important;
+}
+
+/* 解密打字机末尾闪烁光标 */
+.decrypt-cursor {
+  display: inline-block;
+  color: var(--maincolor);
+  font-size: 0.85em;
+  margin-left: 4px;
+  animation: jrpgBlink 0.3s steps(2, start) infinite;
 }

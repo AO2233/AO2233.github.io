@@ -150,6 +150,7 @@ Vmess &#43; Websocket &#43; TLS &#43; 端口转发
 </head>
 
     <body>
+        <div class="crt-overlay"></div>
         <div class="content"><div id="progress-container">
 	<div id="progress-bar"></div>
 </div>
@@ -173,7 +174,7 @@ Vmess &#43; Websocket &#43; TLS &#43; 端口转发
 </header>
 
 
-
+
         
 <main>
 	
@@ -268,6 +269,53 @@ Vmess &#43; Websocket &#43; TLS &#43; 端口转发
                         margin: 0,
                   });
             }
+
+            
+            (function() {
+                var targets = document.querySelectorAll('.title h1.title, h1.title, .site-description p, p.site-description');
+                if (!targets.length) return;
+
+                var katakana = 'アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワン0123456789!?#$@&%';
+
+                targets.forEach(function(el) {
+                    var originalText = el.textContent.trim();
+                    if (!originalText) return;
+
+                    var length = originalText.length;
+                    var step = 0;
+                    var maxSteps = length + 14;
+                    var intervalMs = 65;
+
+                    function getRandomChar() {
+                        return katakana.charAt(Math.floor(Math.random() * katakana.length));
+                    }
+
+                    var timer = setInterval(function() {
+                        step++;
+                        var revealedLength = Math.floor((step / maxSteps) * length);
+                        var result = '';
+
+                        for (var i = 0; i < length; i++) {
+                            if (i < revealedLength) {
+                                result += originalText.charAt(i);
+                            } else {
+                                result += getRandomChar();
+                            }
+                        }
+
+                        if (revealedLength < length) {
+                            result += '<span class="decrypt-cursor">█</span>';
+                        }
+
+                        el.innerHTML = result;
+
+                        if (step >= maxSteps) {
+                            clearInterval(timer);
+                            el.textContent = originalText;
+                        }
+                    }, intervalMs);
+                });
+            })();
       });
 </script>
 

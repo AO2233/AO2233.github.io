@@ -143,6 +143,7 @@ Address マシュマロ（棉花糖） -&gt; /home/ao Nintendo …">
 </head>
 
     <body>
+        <div class="crt-overlay"></div>
         <div class="content"><div id="progress-container">
 	<div id="progress-bar"></div>
 </div>
@@ -166,7 +167,7 @@ Address マシュマロ（棉花糖） -&gt; /home/ao Nintendo …">
 </header>
 
 
-
+
         
 <main>
 	
@@ -265,24 +266,32 @@ Address マシュマロ（棉花糖） -&gt; /home/ao Nintendo …">
 <!-- # BGM -->
 <div id="k"></div>
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    var el = document.getElementById('k');
-    if (!el || typeof APlayer === 'undefined') return;
-
-    document.body.appendChild(el);
-
-    new APlayer({
-        container: el,
-        fixed:  true ,
-        audio: [{
-            name:"\"バニラソルト\"",
-            artist:"\"Yui Horie\"",
-            url:"\"/media/audio/バニラ.mp3\"",
-            cover:"\"/media/img/2022/tiger.jpg\"",
+(function() {
+    function initAPlayer() {
+        var el = document.getElementById('k');
+        if (!el) return;
+        if (typeof APlayer === 'undefined') {
+            setTimeout(initAPlayer, 50);
+            return;
+        }
+        new APlayer({
+            container: el,
+            fixed:  true ,
             autoplay:  false ,
-            lrc:"\"\""}]
-    });
-});
+            audio: [{
+                name:"バニラソルト",
+                artist:"Yui Horie",
+                url:"/media/audio/バニラ.mp3",
+                cover:"/media/img/2022/tiger.jpg",
+                lrc:""}]
+        });
+    }
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initAPlayer);
+    } else {
+        initAPlayer();
+    }
+})();
 </script>
 
 
@@ -336,6 +345,53 @@ document.addEventListener('DOMContentLoaded', function() {
                         margin: 0,
                   });
             }
+
+            
+            (function() {
+                var targets = document.querySelectorAll('.title h1.title, h1.title, .site-description p, p.site-description');
+                if (!targets.length) return;
+
+                var katakana = 'アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワン0123456789!?#$@&%';
+
+                targets.forEach(function(el) {
+                    var originalText = el.textContent.trim();
+                    if (!originalText) return;
+
+                    var length = originalText.length;
+                    var step = 0;
+                    var maxSteps = length + 14;
+                    var intervalMs = 65;
+
+                    function getRandomChar() {
+                        return katakana.charAt(Math.floor(Math.random() * katakana.length));
+                    }
+
+                    var timer = setInterval(function() {
+                        step++;
+                        var revealedLength = Math.floor((step / maxSteps) * length);
+                        var result = '';
+
+                        for (var i = 0; i < length; i++) {
+                            if (i < revealedLength) {
+                                result += originalText.charAt(i);
+                            } else {
+                                result += getRandomChar();
+                            }
+                        }
+
+                        if (revealedLength < length) {
+                            result += '<span class="decrypt-cursor">█</span>';
+                        }
+
+                        el.innerHTML = result;
+
+                        if (step >= maxSteps) {
+                            clearInterval(timer);
+                            el.textContent = originalText;
+                        }
+                    }, intervalMs);
+                });
+            })();
       });
 </script>
 

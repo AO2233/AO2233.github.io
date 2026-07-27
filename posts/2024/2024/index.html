@@ -144,6 +144,7 @@
 </head>
 
     <body>
+        <div class="crt-overlay"></div>
         <div class="content"><div id="progress-container">
 	<div id="progress-bar"></div>
 </div>
@@ -167,7 +168,7 @@
 </header>
 
 
-
+
         
 <main>
 	
@@ -195,24 +196,32 @@
 </blockquote>
 <div id="1"></div>
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    var el = document.getElementById('1');
-    if (!el || typeof APlayer === 'undefined') return;
-
-    
-
-    new APlayer({
-        container: el,
-        fixed:  false ,
-        audio: [{
-            name:"\"借月\"",
-            artist:"\"王天阳\"",
-            url:"\"/media/audio/借月.mp3\"",
-            cover:"\"/media/img/2025/c.jpg\"",
+(function() {
+    function initAPlayer() {
+        var el = document.getElementById('1');
+        if (!el) return;
+        if (typeof APlayer === 'undefined') {
+            setTimeout(initAPlayer, 50);
+            return;
+        }
+        new APlayer({
+            container: el,
+            fixed:  false ,
             autoplay:  false ,
-            lrc:"\"\""}]
-    });
-});
+            audio: [{
+                name:"借月",
+                artist:"王天阳",
+                url:"/media/audio/借月.mp3",
+                cover:"/media/img/2025/c.jpg",
+                lrc:""}]
+        });
+    }
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initAPlayer);
+    } else {
+        initAPlayer();
+    }
+})();
 </script>
 
 <blockquote>
@@ -430,6 +439,53 @@ document.addEventListener('DOMContentLoaded', function() {
                         margin: 0,
                   });
             }
+
+            
+            (function() {
+                var targets = document.querySelectorAll('.title h1.title, h1.title, .site-description p, p.site-description');
+                if (!targets.length) return;
+
+                var katakana = 'アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワン0123456789!?#$@&%';
+
+                targets.forEach(function(el) {
+                    var originalText = el.textContent.trim();
+                    if (!originalText) return;
+
+                    var length = originalText.length;
+                    var step = 0;
+                    var maxSteps = length + 14;
+                    var intervalMs = 65;
+
+                    function getRandomChar() {
+                        return katakana.charAt(Math.floor(Math.random() * katakana.length));
+                    }
+
+                    var timer = setInterval(function() {
+                        step++;
+                        var revealedLength = Math.floor((step / maxSteps) * length);
+                        var result = '';
+
+                        for (var i = 0; i < length; i++) {
+                            if (i < revealedLength) {
+                                result += originalText.charAt(i);
+                            } else {
+                                result += getRandomChar();
+                            }
+                        }
+
+                        if (revealedLength < length) {
+                            result += '<span class="decrypt-cursor">█</span>';
+                        }
+
+                        el.innerHTML = result;
+
+                        if (step >= maxSteps) {
+                            clearInterval(timer);
+                            el.textContent = originalText;
+                        }
+                    }, intervalMs);
+                });
+            })();
       });
 </script>
 
