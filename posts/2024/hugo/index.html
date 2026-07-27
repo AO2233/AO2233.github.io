@@ -5,8 +5,8 @@
 	<meta name=viewport content="width=device-width,initial-scale=1">
 	
 <meta name="title" content="从零开始的博客编写 - 帰宅部">
-<meta name="description" content="本篇指南将会介绍我的Hugo主题编写过程。并作为一个备份，太长时间不写blog，自己都忘了。如果要细看Go语法部分，建议重新阅读官方文档 ，有很多自定量
-感想 作为一个解析器，Hugo通过Go的模版解析器，与内部定义的规则，将拓展的markdown生成为html。个人理解是，Go的语法写前处理，hook靠改 …">
+<meta name="description" content="本篇指南将会介绍我的 Hugo 主题编写过程，并作为一个备份。太长时间不写 blog，自己都忘了。如果要细看 Go 语法部分，建议重新阅读官方文档 ，有很多自定义量。
+感想 作为一个解析器，Hugo 通过 Go 的模版解析器与内部定义的规则，将扩展 Markdown 生成为 HTML。个人理解是，用 Go 语法写前处理 …">
 <meta name="author" content="AO">
 <link rel="canonical" href="https://ao2233.github.io/posts/2024/hugo/">
 
@@ -14,8 +14,8 @@
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://ao2233.github.io/posts/2024/hugo/">
 <meta property="og:title" content="从零开始的博客编写 - 帰宅部">
-<meta property="og:description" content="本篇指南将会介绍我的Hugo主题编写过程。并作为一个备份，太长时间不写blog，自己都忘了。如果要细看Go语法部分，建议重新阅读官方文档 ，有很多自定量
-感想 作为一个解析器，Hugo通过Go的模版解析器，与内部定义的规则，将拓展的markdown生成为html。个人理解是，Go的语法写前处理，hook靠改 …">
+<meta property="og:description" content="本篇指南将会介绍我的 Hugo 主题编写过程，并作为一个备份。太长时间不写 blog，自己都忘了。如果要细看 Go 语法部分，建议重新阅读官方文档 ，有很多自定义量。
+感想 作为一个解析器，Hugo 通过 Go 的模版解析器与内部定义的规则，将扩展 Markdown 生成为 HTML。个人理解是，用 Go 语法写前处理 …">
 <meta property="og:site_name" content="帰宅部">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://ao2233.github.io/duck.ico">
@@ -24,8 +24,8 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:url" content="https://ao2233.github.io/posts/2024/hugo/">
 <meta name="twitter:title" content="从零开始的博客编写 - 帰宅部">
-<meta name="twitter:description" content="本篇指南将会介绍我的Hugo主题编写过程。并作为一个备份，太长时间不写blog，自己都忘了。如果要细看Go语法部分，建议重新阅读官方文档 ，有很多自定量
-感想 作为一个解析器，Hugo通过Go的模版解析器，与内部定义的规则，将拓展的markdown生成为html。个人理解是，Go的语法写前处理，hook靠改 …">
+<meta name="twitter:description" content="本篇指南将会介绍我的 Hugo 主题编写过程，并作为一个备份。太长时间不写 blog，自己都忘了。如果要细看 Go 语法部分，建议重新阅读官方文档 ，有很多自定义量。
+感想 作为一个解析器，Hugo 通过 Go 的模版解析器与内部定义的规则，将扩展 Markdown 生成为 HTML。个人理解是，用 Go 语法写前处理 …">
 <meta name="twitter:image" content="https://ao2233.github.io/duck.ico">
 
 
@@ -42,115 +42,68 @@
 
 	
 
-	<title>帰宅部 </title>
-	
-	<link rel="icon" href=https://ao2233.github.io/duck.ico>
-	
-	<link rel="stylesheet" href="https://ao2233.github.io/css/code_style.css">
-	<link rel="stylesheet" href="https://ao2233.github.io/css/code_light.css">
-	<link rel="stylesheet" href="https://ao2233.github.io/css/fonts.css">
-	<link rel="stylesheet" href="https://ao2233.github.io/js/aplayer/APlayer.min.css">
-	<link rel="stylesheet" href="https://ao2233.github.io/js/videojs/video-js.min.css">
-	<link rel="stylesheet" href="https://ao2233.github.io//js/zoom/style.min.css">
+	<title>帰宅部</title>
 
-	<link rel="stylesheet" href="https://ao2233.github.io/css/main.css">
-	<link rel="stylesheet" href="https://ao2233.github.io/css/dark.css" media="(prefers-color-scheme: dark)" />
-	<link rel="stylesheet" href="https://ao2233.github.io/css/code_dark.css" media="(prefers-color-scheme: dark)" />
-	
+	<link rel="icon" href="/duck.ico">
+	<link rel="stylesheet" href="/css/code_style.css">
+	<link rel="stylesheet" href="/css/code_light.css">
+	<link rel="stylesheet" href="/css/fonts.css">
+	<link rel="stylesheet" href="/js/aplayer/APlayer.min.css">
+	<link rel="stylesheet" href="/js/zoom/style.min.css">
+	<link rel="stylesheet" href="/css/main.css">
+	<link rel="stylesheet" href="/css/dark.css" media="(prefers-color-scheme: dark)">
+	<link rel="stylesheet" href="/css/code_dark.css" media="(prefers-color-scheme: dark)">
+	<link rel="stylesheet" href="/js/katex/katex.min.css">
 
-	
-	<script defer src="https://ao2233.github.io/js/aplayer/APlayer.min.js"></script>
-	<script defer src="https://ao2233.github.io/js/dplayer/DPlayer.min.js"></script>
-	<script defer src="https://ao2233.github.io/js/videojs/video.min.js"></script>
-	<script defer src="https://ao2233.github.io/js/zoom/medium-zoom.min.js"></script>
-
-	<script defer src="https://ao2233.github.io/js/pdfobject.min.js"></script>
-	<script defer src="https://ao2233.github.io/js/feather.min.js"></script>
-	<script defer src="https://ao2233.github.io/js/collapsible.js"></script>
-	<script defer src="https://ao2233.github.io/js/mermaid.min.js"></script>
-	
-
-	
-	<link rel="stylesheet" href="https://ao2233.github.io/js/katex/katex.min.css" crossorigin="anonymous">
-	<script defer src="https://ao2233.github.io/js/katex/katex.min.js" crossorigin="anonymous"></script>
-	<script defer src="https://ao2233.github.io/js/katex/contrib/auto-render.min.js" crossorigin="anonymous"
-		onload="renderMathInElement(document.body);"></script>
-	<script>
-		document.addEventListener("DOMContentLoaded", function () {
-			renderMathInElement(document.body, {
-				delimiters: [
-					{ left: "$$", right: "$$", display: true },
-					
-					{ left: "$", right: "$", display: false },
-					
-				]
-			});
-		});
-	</script>
-	
-
-	
-	<script>
-		const mq = window.matchMedia('(prefers-color-scheme: dark)'),
-			config = { startOnLoad: true, flowchart: { useMaxWidth: true, htmlLabels: true, curve: 'cardinal' }, securityLevel: 'loose' };
-		let inited = false,
-			setTheme = dark => {
-				mermaid.initialize({ theme: dark ? 'dark' : 'base', config });
-				if (inited) location.reload(false);
-				inited = true;
-			};
-
-		setTheme(mq.matches);
-		(mq.addEventListener ? mq.addEventListener : mq.addListener).call(mq, 'change', e => setTheme(e.matches));
-	</script>
-
-	
-	
+	<script defer src="/js/aplayer/APlayer.min.js"></script>
+	<script defer src="/js/dplayer/DPlayer.min.js"></script>
+	<script defer src="/js/zoom/medium-zoom.min.js"></script>
+	<script defer src="/js/pdfobject.min.js"></script>
+	<script defer src="/js/feather.min.js"></script>
+	<script defer src="/js/mermaid.min.js"></script>
+	<script defer src="/js/katex/katex.min.js"></script>
+	<script defer src="/js/katex/contrib/auto-render.min.js"></script>
+	<script defer src="/js/theme.js"></script>
 
 </head>
 
-    <body>
-        <div class="crt-overlay"></div>
-        <div class="content"><header class="site-header">
-	<div class="main site-title">
-		<a href="https://ao2233.github.io/">帰宅部</a>
-	</div>
-
-	
-	<nav class="site-nav" aria-label="Main navigation">
-		
-		<a href="/" class="sub-main">Archive</a>
-		
-		<a href="/about" class="sub-main">About</a>
-		
-
-	
-		
-	</nav>
+  <body>
+    <div class="crt-overlay"></div>
+    <div class="content"><header class="site-header">
+  <div class="main site-title">
+    <a href="https://ao2233.github.io/">帰宅部</a>
+  </div>
+  <nav class="site-nav" aria-label="Main navigation">
+    
+    <a href="/" class="sub-main">Archive</a>
+    
+    <a href="/about" class="sub-main">About</a>
+    
+    
+  </nav>
 </header>
 
-        
+      
 <main>
-	
-	<div class="title post-header">
-		<h1 class="title">从零开始的博客编写</h1>
-		<div class="meta">Posted on <time datetime="2021-12-06">2021.12.06</time></div>
-	</div>
-	<section class="body">
-	<article>
-		<p>本篇指南将会介绍我的<code>Hugo主题</code>编写过程。并作为一个备份，太长时间不写<code>blog</code>，自己都忘了。如果要细看<code>Go</code>语法部分，建议重新阅读<a href="https://gohugo.io/documentation/" target="_blank" rel="noopener noreferrer">官方文档</a>
-，有很多自定量</p>
+  <div class="title post-header">
+    <h1 class="title">从零开始的博客编写</h1>
+    <div class="meta">Posted on <time datetime="2021-12-06">2021.12.06</time></div>
+  </div>
+  <section class="body">
+    <article>
+      <p>本篇指南将会介绍我的 Hugo 主题编写过程，并作为一个备份。太长时间不写 blog，自己都忘了。如果要细看 Go 语法部分，建议重新阅读<a href="https://gohugo.io/documentation/" target="_blank" rel="noopener noreferrer">官方文档</a>
+，有很多自定义量。</p>
 <h1 id="感想">感想</h1>
-<p>作为一个解析器，<code>Hugo</code>通过<code>Go</code>的模版解析器，与内部定义的规则，将拓展的<code>markdown</code>生成为<code>html</code>。个人理解是，<code>Go</code>的语法写前处理，<code>hook</code>靠改<code>_default</code>模版和<code>js</code>、<code>css</code>魔改。和其他的<code>blog</code>框架比起来，优势就是生成速度快，结构简单，但问题是：</p>
+<p>作为一个解析器，Hugo 通过 Go 的模版解析器与内部定义的规则，将扩展 Markdown 生成为 HTML。个人理解是，用 Go 语法写前处理，hook 靠修改 <code>_default</code> 模版和 JS、CSS。和其他 blog 框架比起来，优势就是生成速度快、结构简单，但问题是：</p>
 <ul>
-<li>很难兼容其余的框架，也许可以把<code>hugo</code>生成的数据作为前处理步骤🤔？</li>
-<li><code>Markdown</code>结构的拓展语法很复杂（尤其是想自定义解析器行为），<code>shortcode</code>应对复杂功能仍是力不从心。$\LaTeX$ 设置了<code>passthrough</code>还有<code>\</code>需要转译，可能我理解上有<code>bug</code>?</li>
-<li>目前没办法在markdown里写特殊方法（比如<code>shortcode</code>）的注释，会直接影响界面渲染，导致炸掉</li>
-<li>可能目前从不麻烦的框架上来选，<code>hugo</code>也许是最佳选择。但无论如何，<code>MathJax</code>和<code>Hexo</code>我是不会再碰了。下一个选择也许是<code>Next.js</code>，自由度拉满。当然如果你<code>Python</code>更上手可以选择<a href="https://github.com/getpelican/pelican" target="_blank" rel="noopener noreferrer"><strong>Pelican</strong></a>
-</li>
+<li>很难兼容其余的框架，也许可以把 Hugo 生成的数据作为前处理步骤🤔？</li>
+<li>Markdown 结构的扩展语法很复杂（尤其是想自定义解析器行为），shortcode 应对复杂功能仍是力不从心。$\LaTeX$ 设置了 <code>passthrough</code> 之后，<code>\</code> 仍需要转译，可能我理解上有问题？</li>
+<li>目前没办法在 Markdown 里写特殊方法（比如 shortcode）的注释，会直接影响界面渲染，导致炸掉。</li>
+<li>可能目前从不麻烦的框架上来选，Hugo 也许是最佳选择。但无论如何，MathJax 和 Hexo 我是不会再碰了。下一个选择也许是 Next.js，自由度拉满。当然如果你对 Python 更上手，可以选择 <a href="https://github.com/getpelican/pelican" target="_blank" rel="noopener noreferrer">Pelican</a>
+。</li>
 </ul>
-<h1 id="theme目录结构"><code>Theme</code>目录结构</h1>
-<p>先来一个<code>demo</code>来说明</p>
+<h1 id="theme-目录结构">Theme 目录结构</h1>
+<p>先来一个 demo 说明：</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="ln">1</span><span class="cl"><span class="c1"># ao @ azusa in ~/Desktop [12:54:13]</span>
 </span></span><span class="line"><span class="ln">2</span><span class="cl">$ hugo new theme demo
 </span></span><span class="line"><span class="ln">3</span><span class="cl">Creating new theme in /Users/ao/Desktop/themes/demo</span></span></code></pre></div><blockquote>
@@ -175,7 +128,7 @@
 </span></span><span class="line"><span class="ln">17</span><span class="cl">    ├── menu.html
 </span></span><span class="line"><span class="ln">18</span><span class="cl">    └── terms.html
 </span></span><span class="line"><span class="ln">19</span><span class="cl">
-</span></span><span class="line"><span class="ln">20</span><span class="cl"><span class="m">4</span> directories, <span class="m">11</span> files</span></span></code></pre></div><p><code>layouts</code>下面有2个重要目录，<code> _default</code>和<code>partials</code>，规定网页整体的架构（<code>html结构</code>）。<code> _default</code>放置内置模版，这些内置模版有很多，简单的具体规则如下
+</span></span><span class="line"><span class="ln">20</span><span class="cl"><span class="m">4</span> directories, <span class="m">11</span> files</span></span></code></pre></div><p><code>layouts</code> 下面有两个重要目录：<code>_default</code> 和 <code>partials</code>，它们规定网页的整体架构（HTML 结构）。<code>_default</code> 放置内置模版，这些内置模版有很多，简单规则如下：</p>
 
 
 
@@ -191,7 +144,7 @@
   </div>
   
 </figure>
-</p>
+
 <p>重要的是</p>
 <ul>
 <li>开始界面：<code>home.html</code>或者<code>index.html</code></li>
@@ -199,7 +152,7 @@
 <li>单个文章界面：<code>single.html</code></li>
 <li>特性界面：<code>taxonomy.html</code>或<code>term.html</code>比如<code>Hugo</code>自己生成的<code>tag</code></li>
 </ul>
-<p>余地很大，你每个只写一个界面就行。<code>single section index</code>就够用了。</p>
+<p>余地很大，你每个只写一个界面就行。<code>single.html</code>、<code>section.html</code>、<code>index.html</code> 就够用了。</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln"> 1</span><span class="cl">layouts/
 </span></span><span class="line"><span class="ln"> 2</span><span class="cl">├── _default/
 </span></span><span class="line"><span class="ln"> 3</span><span class="cl">│   ├── _markup/
@@ -218,8 +171,8 @@
 </span></span><span class="line"><span class="ln">16</span><span class="cl">│   └── header.html
 </span></span><span class="line"><span class="ln">17</span><span class="cl">└── shortcodes/
 </span></span><span class="line"><span class="ln">18</span><span class="cl">    ├── audio.html
-</span></span><span class="line"><span class="ln">19</span><span class="cl">    └── video.html</span></span></code></pre></div><p>至于<code>partials</code>目录则是放置代码片段，用以快速复用。比如<code>html</code>头结构。当然你也可以直接在上面的<code>_default</code>里直接写。</p>
-<p>最后就是<code>shortcode</code>了，虽然可以<code>直接</code>（没有什么别的包装）在markdown里手搓<code>html</code>，但是非常麻烦。<code>shortcode</code>就是把这个写成模版，并用<code>类Go</code>语法读取参数。但是不得不说，还是挺麻烦。个人感觉某些场合可能还不如直接<code>html</code></p>
+</span></span><span class="line"><span class="ln">19</span><span class="cl">    └── video.html</span></span></code></pre></div><p>至于 <code>partials</code> 目录，则用于放置可快速复用的代码片段，比如 HTML 头结构。当然你也可以直接写在上面的 <code>_default</code> 里。</p>
+<p>最后就是 shortcode 了。虽然可以直接在 Markdown 里手搓 HTML，但是非常麻烦。shortcode 就是把这部分写成模版，并用类似 Go 的语法读取参数。不得不说，还是挺麻烦，个人感觉某些场合可能还不如直接写 HTML。</p>
 <h1 id="文件存放">文件存放</h1>
 <p>说完了主题文件结构，接下来简单写下文件存放与解析方式</p>
 <blockquote>
@@ -238,9 +191,9 @@
 </span></span><span class="line"><span class="ln">11</span><span class="cl">-rw-r--r--   <span class="m">1</span> ao  staff  <span class="m">1640</span> Feb  <span class="m">8</span> 15:53 README.zh-CN.md
 </span></span><span class="line"><span class="ln">12</span><span class="cl">-rwxr-xr-x@  <span class="m">2</span> ao  staff  <span class="m">3358</span> Feb  <span class="m">9</span> 10:07 hugo.yaml
 </span></span><span class="line"><span class="ln">13</span><span class="cl">drwxr-xr-x   <span class="m">7</span> ao  staff   <span class="m">224</span> Feb  <span class="m">9</span> 13:27 layouts
-</span></span><span class="line"><span class="ln">14</span><span class="cl">drwxr-xr-x  <span class="m">10</span> ao  staff   <span class="m">320</span> Feb  <span class="m">9</span> 13:30 static</span></span></code></pre></div><div class="collapsible">
-  <div class="bar"><code>build</code>之后的结构</div>
-  <div class="content">
+</span></span><span class="line"><span class="ln">14</span><span class="cl">drwxr-xr-x  <span class="m">10</span> ao  staff   <span class="m">320</span> Feb  <span class="m">9</span> 13:30 static</span></span></code></pre></div><details class="collapsible">
+  <summary class="bar">Build 之后的结构</summary>
+  <div class="collapsible-content">
     <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="c1"># 生成到tmp的public下 -D 解析 draft</span>
 </span></span><span class="line"><span class="ln"> 2</span><span class="cl">$ hugo server -D --bind<span class="o">=</span>0.0.0.0  --disableFastRender -d ~/tmp/public 
 </span></span><span class="line"><span class="ln"> 3</span><span class="cl">
@@ -285,12 +238,12 @@
 </span></span><span class="line"><span class="ln">42</span><span class="cl">drwxr-xr-x   <span class="m">3</span> ao  staff    96B Feb  <span class="m">9</span> 10:09 vps
 </span></span><span class="line"><span class="ln">43</span><span class="cl">drwxr-xr-x   <span class="m">3</span> ao  staff    96B Feb  <span class="m">9</span> 10:09 win-active</span></span></code></pre></div>
   </div>
-</div>
+</details>
 
-<p>这里有两个特殊文件夹，<code>static</code>和<code>assert</code>。<code>static</code>会原封不动的全部复制到构建完的目录的<code>Root</code>，<code>assert</code>和<code>static</code>基本一致，但是有两个好处，只有调用了才生成，可以使用<code>Go</code>的语法<code>Hugo</code>框架来操作。</p>
-<p>两种方法因人而异，我更倾向直接全部放进<code>static</code>直接手搓，<code>js</code> <code>css</code> <code>config</code>分别放好。<code>src</code>直接根据预计生成后的地址写。</p>
+<p>这里有两个特殊文件夹，<code>static</code> 和 <code>assets</code>。<code>static</code> 会原封不动地全部复制到构建目录的根路径；<code>assets</code> 和 <code>static</code> 基本一致，但有两个好处：只有调用了才生成，并且可以使用 Hugo 的资源处理能力操作。</p>
+<p>两种方法因人而异，我更倾向直接全部放进 <code>static</code>，将 <code>js</code>、<code>css</code>、<code>config</code> 分别放好，<code>src</code> 直接根据预计生成后的地址写。</p>
 <h1 id="网站配置文件">网站配置文件</h1>
-<p>个人理解<code>Hugo</code>的网站配置文件有点像程序开始的<code>Define</code>。即用于直接配置或设置参数。最新版建议写成<code>hugo.yaml</code>。这里比较重要的参数有</p>
+<p>个人理解，Hugo 的网站配置文件有点像程序开始时的 Define，即用于直接配置或设置参数。最新版建议写成 <code>hugo.yaml</code>。这里比较重要的参数有：</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="c"># 基本参数</span><span class="w">
 </span></span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="nt">baseURL</span><span class="p">:</span><span class="w"> </span><span class="l">https://ao2233.github.io/</span><span class="w">
 </span></span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l">帰宅部</span><span class="w">
@@ -316,9 +269,9 @@
 </span></span></span><span class="line"><span class="ln">23</span><span class="cl"><span class="w">      </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l">https://github.com/AO2233</span><span class="w">
 </span></span></span><span class="line"><span class="ln">24</span><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">GitLab</span><span class="w">
 </span></span></span><span class="line"><span class="ln">25</span><span class="cl"><span class="w">      </span><span class="nt">icon</span><span class="p">:</span><span class="w"> </span><span class="l">gitlab</span><span class="w">
-</span></span></span><span class="line"><span class="ln">26</span><span class="cl"><span class="w">      </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l">https://gitlab.com/AO2233</span></span></span></code></pre></div><div class="collapsible">
-  <div class="bar">代码样式配置</div>
-  <div class="content">
+</span></span></span><span class="line"><span class="ln">26</span><span class="cl"><span class="w">      </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l">https://gitlab.com/AO2233</span></span></span></code></pre></div><details class="collapsible">
+  <summary class="bar">代码样式配置</summary>
+  <div class="collapsible-content">
     <p>这些都是用来配置代码渲染样式的，或者解析器的配置</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="nt">pygmentsstyle</span><span class="p">:</span><span class="w"> </span><span class="l">native</span><span class="w">
 </span></span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="nt">pygmentscodefences</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
@@ -405,14 +358,14 @@
 </ul>
 
   </div>
-</div>
+</details>
 
-<p>个人觉得最麻烦的是代码渲染设置<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>，<code>css</code>要改很久，它的<code>dark</code>和<code>light</code>文件里，类名有的不一样，导致不能通过直接前后加载来覆盖</p>
-<h1 id="写blog最佳实践">写<code>Blog</code>最佳实践</h1>
+<p>个人觉得最麻烦的是代码渲染设置<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>，CSS 要改很久。dark 和 light 文件里的类名有的不一样，导致不能通过直接前后加载来覆盖。</p>
+<h1 id="写-blog-的最佳实践">写 Blog 的最佳实践</h1>
 <p>最影响写作兴趣的，对我而言就是，不能太麻烦。目前的解决方案</p>
 <ul>
-<li>统一<code>shortcode</code>参数，不用纠结参数名，和有哪些参数</li>
-<li><code>tmux</code>启动<code>server</code>，隐身模式启动<code>Chrome</code>（没<code>cache</code>），<code>vscode</code>手搓</li>
+<li>统一 shortcode 参数，不用纠结参数名和有哪些参数。</li>
+<li>用 <code>tmux</code> 启动 server，以隐身模式启动 Chrome（没有 cache），再用 VS Code 手搓。</li>
 </ul>
 <blockquote>
 <p>所见即所得</p>
@@ -433,9 +386,9 @@
   
 </figure>
 
-<p>也算是半个<code>IDE</code>吧😂，接下来是给<code>vscode</code>新写一个拓展版<code>markdown</code>的解析器。不能折叠可太无语了。</p>
-<p>另外、就是最头痛的<code>shortcode</code>，参数太复杂。</p>
-<h1 id="shortcode代码参数"><code>shortcode</code>代码参数</h1>
+<p>也算是半个 IDE 吧😂，接下来是给 VS Code 新写一个扩展版 Markdown 解析器。不能折叠可太无语了。</p>
+<p>另外，就是最头痛的 shortcode，参数太复杂。</p>
+<h1 id="shortcode-代码参数">Shortcode 代码参数</h1>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln"> 1</span><span class="cl">aplayer(name, artist=&#34;&#34;, url, cover=&#34;&#34;, autoplay=true, lrc=&#34;no lrc&#34;)
 </span></span><span class="line"><span class="ln"> 2</span><span class="cl">dplayer(id, url)
 </span></span><span class="line"><span class="ln"> 3</span><span class="cl">
@@ -449,14 +402,14 @@
 </span></span><span class="line"><span class="ln">11</span><span class="cl">img(src -&gt; list, width=&#34;auto&#34;, caption=&#34;&#34;)
 </span></span><span class="line"><span class="ln">12</span><span class="cl">
 </span></span><span class="line"><span class="ln">13</span><span class="cl"># 这个库很奇怪，必须预设置高度，否则默认值很小，预设 heigth=70em
-</span></span><span class="line"><span class="ln">14</span><span class="cl">pdf(id, src) # 注意这里id不能是纯数字</span></span></code></pre></div><p>至此，博客搭建完毕。至于<code>域名</code>，<code>多语言</code>，<code>站点配置</code>那就是后话了。已经佛系，直接套<code>Github</code>的<code>page</code>就完事了，关于<code>Github page</code>，记得两件事</p>
+</span></span><span class="line"><span class="ln">14</span><span class="cl">pdf(id, src) # 注意这里id不能是纯数字</span></span></code></pre></div><p>至此，博客搭建完毕。至于域名、多语言、站点配置，那就是后话了。已经佛系，直接套 GitHub Pages 就完事了。关于 GitHub Pages，记得两件事：</p>
 <ul>
 <li>404界面需要加一个识别头</li>
 </ul>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="ln">1</span><span class="cl">---
 </span></span><span class="line"><span class="ln">2</span><span class="cl">permalink: /404.html
 </span></span><span class="line"><span class="ln">3</span><span class="cl">---</span></span></code></pre></div><ul>
-<li>如果要自动挂域名加一个<code>CNAME</code>文件，不用自定义域名记得删除。</li>
+<li>如果要自动挂域名，加一个 <code>CNAME</code> 文件；不用自定义域名时记得删除。</li>
 </ul>
 <p>此网站所用主题 -&gt; 自制主题 <a href="https://github.com/AO2233/pixel" target="_blank" rel="noopener noreferrer">pixel</a>
 。下回、主题测试！</p>
@@ -470,92 +423,26 @@
 </ol>
 </div>
 
-	</article>
-	</section>
+    </article>
+  </section>
 </main>
-
 <footer class="footer">
-<hr>
-<div class="footer-inner">
-      <div class="footer-social"><a class="soc" href="https://github.com/AO2233" title="GitHub"><i data-feather="github"></i></a>
+  <hr>
+  <div class="footer-inner">
+    <div class="footer-social">
+      <a class="soc" href="https://github.com/AO2233" title="GitHub"><i data-feather="github"></i></a>
       <a class="soc" href="https://gitlab.com/AO2233" title="GitLab"><i data-feather="gitlab"></i></a>
       <a class="soc" href="https://steamcommunity.com/id/u604b" title="Steam"><i data-feather="hash"></i></a>
       <a class="soc" href="https://x.com/u604b" title="Twitter"><i data-feather="twitter"></i></a>
       <a class="soc" href="mailto:ao.debian@gmail.com" title="Mail"><i data-feather="mail"></i></a>
-      </div>
-
-      <div class="no-ai-logo">
-            <embed src="/svg/no-ai-white.svg"
-                   type="image/svg+xml"
-                   width="128" height="37">
-            <embed src="/svg/no-ai-black.svg"
-                   type="image/svg+xml"
-                   width="128" height="37">
-          </div>
-      </div>
+    </div>
+    <div class="no-ai-logo">
+      <embed src="/svg/no-ai-white.svg" type="image/svg+xml" width="128" height="37">
+      <embed src="/svg/no-ai-black.svg" type="image/svg+xml" width="128" height="37">
+    </div>
+  </div>
 </footer>
 
-<script>
-      document.addEventListener('DOMContentLoaded', function() {
-            if (typeof feather !== 'undefined') { feather.replace(); }
-            const images = document.querySelectorAll('.zoom-image');
-            if (images.length > 0 && typeof mediumZoom !== 'undefined') {
-                  mediumZoom(images, {
-                        background: 'rgba(0, 0, 0, 0.7)',
-                        margin: 0,
-                  });
-            }
-
-            
-            (function() {
-                var targets = document.querySelectorAll('.title h1.title, h1.title, .site-description p, p.site-description');
-                if (!targets.length) return;
-
-                var katakana = 'アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワン0123456789!?#$@&%';
-
-                targets.forEach(function(el) {
-                    var originalText = el.textContent.trim();
-                    if (!originalText) return;
-
-                    var length = originalText.length;
-                    var step = 0;
-                    var maxSteps = length + 14;
-                    var intervalMs = 65;
-
-                    function getRandomChar() {
-                        return katakana.charAt(Math.floor(Math.random() * katakana.length));
-                    }
-
-                    var timer = setInterval(function() {
-                        step++;
-                        var revealedLength = Math.floor((step / maxSteps) * length);
-                        var result = '';
-
-                        for (var i = 0; i < length; i++) {
-                            if (i < revealedLength) {
-                                result += originalText.charAt(i);
-                            } else {
-                                result += getRandomChar();
-                            }
-                        }
-
-                        if (revealedLength < length) {
-                            result += '<span class="decrypt-cursor">█</span>';
-                        }
-
-                        el.innerHTML = result;
-
-                        if (step >= maxSteps) {
-                            clearInterval(timer);
-                            el.textContent = originalText;
-                        }
-                    }, intervalMs);
-                });
-            })();
-      });
-</script>
-
-</div>
-    </body>
-    
+    </div>
+  </body>
 </html>

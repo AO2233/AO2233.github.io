@@ -1,82 +1,139 @@
 /* ======================== CSS 变量定义 ======================== */
 :root {
-  --maincolor: #b64f5c; /* 低饱和朱红 */
+  --maincolor: #b64f5c;
   --bordercl: #34343e;
   --callouctcolor: #718c9b;
   --hovercolor: #9f3f4b;
-  --darkcolor: #9bd6ac;
   --pagebg: #fbfaf6;
   --surfacecolor: #f3f0e9;
   --mutedcolor: #77736d;
   --linecolor: #c9c2b8;
   --textcolor: #2f3038;
   --content-max-width: 70ch; /* 黄金单栏阅读行长 68~72 字符 */
-  --space-text: 0.8rem;
-  --space-block: 1rem;
+  --space-text: 0.78rem;
+  --space-block: 1.1rem;
   --space-subsection: 1.5rem;
-  --space-section: 2rem;
+  --space-section: 2.05rem;
+  --reading-leading: 1.72;
+  --motion-fast: 120ms;
+  --motion-normal: 180ms;
+  text-autospace: normal;
 }
 
-:root { text-autospace: normal; }
-
-/* ======================== 全局重置与排版防跳变设置 ======================== */
+/* ======================== 基础设置 ======================== */
 *, *::before, *::after {
   box-sizing: border-box;
 }
 
 html {
-  scrollbar-gutter: stable; /* 稳定滚动条，防止页面切换/内容变动时布局左右跳变 */
-  overflow-y: scroll; /* 强制保留滚动条空间，零跳变回退 */
+  overflow-y: scroll;
+  scrollbar-gutter: stable;
+  font-family: "ZpixA", "fusion", "DOS-c";
+  font-size: 1rem;
+  line-height: var(--reading-leading);
   -webkit-text-size-adjust: 100% !important;
   -moz-text-size-adjust: 100% !important;
   -ms-text-size-adjust: 100% !important;
   text-size-adjust: 100% !important;
 }
 
-/* ======================== 全局选择器样式 ======================== */
 ::-moz-selection {
   background: var(--maincolor);
-  color: #fff; /* text color */
+  color: #fff;
 }
 
 ::selection {
   background: var(--maincolor);
-  color: #fff; /* text color */
+  color: #fff;
 }
 
-/* 全局光标设置 */
 * {
   cursor: default !important;
 }
 
-/* ======================== 基础元素样式 ======================== */
-html,
-p {
-  font-family: "ZpixA", "fusion", "DOS-c";
-  font-size: 1rem;
-  line-height: 1.6em; /* 1.6 中文 */
-  cursor: default !important;
-  /* if you want indent */
-  /* text-indent: 2rem; */
-}
-
 body {
-  display: block;
   color: var(--textcolor);
   background-color: var(--pagebg);
-  cursor: default;
   margin: 0;
   padding: 0;
+  font-kerning: normal;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
 }
 
-div {
-  cursor: default !important;
+/* ======================== 隐藏成就提示 ======================== */
+.achievement-stack {
+  position: fixed;
+  top: 0.7rem;
+  right: 0.7rem;
+  z-index: 99999;
+  display: grid;
+  width: min(17rem, calc(100vw - 1.4rem));
+  gap: 0.35rem;
+  pointer-events: none;
 }
 
-/* ======================== 容器布局 ======================== */
-/* container */
+.achievement-notice {
+  padding: 0.42rem 0.6rem;
+  border-left: 2px solid var(--maincolor);
+  color: var(--textcolor);
+  background: color-mix(in srgb, var(--pagebg) 96%, var(--maincolor));
+  box-shadow: 0 1px 4px color-mix(in srgb, var(--textcolor) 10%, transparent);
+  animation: achievement-enter 0.18s ease-out both;
+}
+
+.achievement-content {
+  display: grid;
+  line-height: 1.3;
+}
+
+.achievement-content strong {
+  color: var(--maincolor);
+  font-family: "DOS", "DOS-c", "ZpixA";
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+}
+
+.achievement-content small {
+  margin-top: 0.08rem;
+  color: var(--mutedcolor);
+  font-size: 0.7rem;
+}
+
+.achievement-notice.is-leaving {
+  animation: achievement-leave 0.18s ease-in forwards;
+}
+
+html.secret-signal {
+  --maincolor: #a98bff;
+  --hovercolor: #8e70e8;
+}
+
+.secret-signal .crt-overlay {
+  opacity: 0.3;
+}
+
+@keyframes achievement-enter {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes achievement-leave {
+  to {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+}
+
+/* ======================== 页面布局 ======================== */
 .content {
-  margin: 0 auto 5rem auto; /* top right bottom left */
+  margin: 0 auto 2.25rem; /* 页脚之后只保留短暂的章节收尾 */
   padding: 0 1%;
   width: 100%;
   max-width: var(--content-max-width, 70ch); /* 黄金单栏阅读行长 68~72 字符 */
@@ -84,11 +141,25 @@ div {
   overflow-wrap: break-word;
 }
 
+main,
+article {
+  min-width: 0;
+}
+
+article {
+  hanging-punctuation: first last;
+  line-height: var(--reading-leading);
+}
+
+article :where(p, li, dd, figcaption, blockquote) {
+  overflow-wrap: anywhere;
+}
+
 /* ======================== 文本元素样式 ======================== */
 hr {
-  height: 2px;
+  height: 1px;
   border: 0;
-  margin: 1rem 0;
+  margin: var(--space-section) 0;
   background: repeating-linear-gradient(
     90deg,
     var(--linecolor) 0 8px,
@@ -107,15 +178,14 @@ article del {
 article strong {
   font-weight: 700;
   background-image: linear-gradient(
-    transparent 65%,
-    rgba(182, 79, 92, 0.2) 65%
+    transparent 72%,
+    color-mix(in srgb, var(--maincolor) 16%, transparent) 72%
   );
 }
 
 article em {
-  font-style: normal;
-  text-emphasis: filled dot var(--maincolor);
-  text-emphasis-position: over right;
+  color: color-mix(in srgb, var(--textcolor) 82%, var(--maincolor));
+  font-style: italic;
 }
 
 article mark {
@@ -144,8 +214,8 @@ blockquote {
   border-left: 3px solid var(--maincolor);
   background: var(--surfacecolor);
   color: inherit;
-  margin: 0.6rem 0;
-  padding: 0.4rem 0.8rem;
+  margin: var(--space-block) 0;
+  padding: 0.55rem 0.9rem;
   border-radius: 0;
   box-shadow: inset 0 0 0 1px rgba(52, 52, 62, 0.08);
 }
@@ -175,7 +245,6 @@ a {
   color: inherit;
   background: none;
   text-decoration: none;
-  cursor: default;
   padding: 0;
 }
 
@@ -192,12 +261,20 @@ article a {
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
   padding-bottom: 0.04em;
-  transition: color 0.15s ease, background-size 0.15s steps(3, end);
+  transition: color var(--motion-fast) ease, background-size var(--motion-normal) steps(3, end);
 }
 
 article a:hover {
-  background-size: 100% 100%;
-  color: #fff;
+  background-size: 100% 0.38em;
+  color: var(--hovercolor);
+}
+
+article a:visited {
+  color: color-mix(in srgb, var(--maincolor) 72%, var(--textcolor));
+}
+
+article a:active {
+  background-size: 100% 0.65em;
 }
 
 article a:has(img),
@@ -214,19 +291,45 @@ article a:has(img),
 }
 
 /* ======================== 列表样式 ======================== */
-ul {
+ul:not(.pagination) {
   list-style: none;
   padding-left: 2ch; /* 2 english char indent */
 }
 
-ul li {
+ul:not(.pagination) li {
   text-indent: -2ch; /* 2 english char indent */
 }
 
-ul > li::before {
+ul:not(.pagination) > li::before {
   content: "・";
   color: var(--maincolor);
   font-weight: bold;
+}
+
+article :where(ul, ol) :where(ul, ol) {
+  margin-block: 0.25rem;
+}
+
+article li > p {
+  margin-block: 0.25rem;
+}
+
+article input[type="checkbox"] {
+  margin: 0 0.45em 0 0;
+  accent-color: var(--maincolor);
+}
+
+dl {
+  margin-block: var(--space-text);
+}
+
+dt {
+  color: var(--maincolor);
+  font-weight: 700;
+}
+
+dd {
+  margin: 0.25rem 0 0.7rem 2ch;
 }
 
 /* ======================== 图片样式 ======================== */
@@ -235,7 +338,6 @@ img {
   max-width: 100%;
   display: block;
   margin: 0 auto;
-  cursor: default;
 }
 
 figure.media-figure {
@@ -244,16 +346,40 @@ figure.media-figure {
   text-align: center;
 }
 
-.media-figure > img {
-  margin-inline: auto;
-}
-
 .media-item {
   display: block;
   max-width: 100%;
   margin: 0 auto;
   border: 3px double var(--bordercl);
   background: #000;
+}
+
+.media-embed,
+.responsive-embed,
+.mermaid-scroll {
+  width: 100%;
+  margin-block: var(--space-block);
+}
+
+.responsive-embed {
+  position: relative;
+  aspect-ratio: 16 / 9;
+}
+
+.responsive-embed iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.mermaid-scroll {
+  overflow-x: auto;
+  text-align: center;
+}
+
+.mermaid-scroll > .mermaid {
+  min-width: 600px;
 }
 
 .masonry-gallery {
@@ -292,6 +418,10 @@ code {
   font-family: "DOS", "DOS-c", "ZpixA";
 }
 
+article :not(pre) > code {
+  overflow-wrap: anywhere;
+}
+
 a code {
   background-color: transparent;
   padding: 0;
@@ -301,6 +431,7 @@ a code {
 pre {
   padding: 0;
   overflow-x: auto;
+  overscroll-behavior-inline: contain;
 }
 
 pre code {
@@ -347,8 +478,8 @@ pre code {
   justify-content: space-between;
   align-items: baseline;
   gap: 0.5rem 1rem;
-  margin: 0.8rem 0 0.65rem;
-  padding-bottom: 0.5rem;
+  margin: 0.7rem 0 0.55rem;
+  padding-bottom: 0.45rem;
   border-bottom: 1px solid var(--linecolor);
   font-size: 1.6rem;
 }
@@ -369,35 +500,41 @@ pre code {
 }
 
 .site-nav a {
-  box-shadow: inset 0 0 0 rgba(182, 79, 92, 0);
-  transition: color 0.15s ease, box-shadow 0.15s steps(3, end);
+  box-shadow: inset 0 0 0 transparent;
+  transition:
+    color var(--motion-fast) ease,
+    box-shadow var(--motion-normal) steps(3, end),
+    transform 0.08s steps(2, end);
 }
 
 .site-nav a:hover {
   color: var(--maincolor);
-  box-shadow: inset 0 -0.35em 0 rgba(182, 79, 92, 0.16);
+  box-shadow: inset 0 -0.35em 0 color-mix(in srgb, var(--maincolor) 16%, transparent);
 }
 
-/* ======================== 轻小说式标题层级 ======================== */
+/* ======================== 视觉小说式标题层级 ======================== */
 h1, h2, h3, h4, h5, h6 {
   font-family: inherit;
   line-height: 1.4;
-  letter-spacing: 0;
+  letter-spacing: 0.01em;
   text-wrap: balance;
+  overflow-wrap: anywhere;
+  position: relative;
+  scroll-margin-top: 1.5rem;
 }
 
-.title,
+h1.title,
 .page-title {
-  font-size: 1.3rem;
+  font-size: 1.34rem;
   font-weight: 700;
-  margin-top: 1.8rem;
-  margin-bottom: 0.7rem;
-  line-height: 1.35;
+  margin-top: 1.65rem;
+  margin-bottom: 0.65rem;
+  line-height: 1.32;
 }
 
 h1 {
-  font-size: 1.26rem;
-  font-weight: 650;
+  font-size: 1.28rem;
+  font-weight: 700;
   margin-top: 1.7rem;
   margin-bottom: 0.65rem;
 }
@@ -411,21 +548,21 @@ h2,
 }
 
 h3 {
-  font-size: 1.12rem;
+  font-size: 1.1rem;
   font-weight: 600;
   margin-top: 1.35rem;
   margin-bottom: 0.55rem;
 }
 
 h4 {
-  font-size: 1.07rem;
+  font-size: 1.04rem;
   font-weight: 600;
   margin-top: 1.2rem;
   margin-bottom: 0.5rem;
 }
 
 h5 {
-  font-size: 1.03rem;
+  font-size: 1rem;
   font-weight: 600;
   margin-top: 1.1rem;
   margin-bottom: 0.45rem;
@@ -433,14 +570,14 @@ h5 {
 
 h6 {
   color: var(--mutedcolor);
-  font-size: 1rem;
+  font-size: 0.94rem;
   font-weight: 600;
   margin-top: 1rem;
   margin-bottom: 0.4rem;
+  letter-spacing: 0.04em;
 }
 
 .site-description {
-  justify-content: space-between;
   margin: 0;
   color: var(--mutedcolor);
 }
@@ -458,50 +595,115 @@ article > h2:first-child {
   margin-top: 0.5rem;
 }
 
-/* 星芒、菱形与线段逐级收敛，形成安静但清晰的章节语法。 */
-h1::before,
-h2::before,
-h3::before,
-h4::before,
-h5::before,
-h6::before {
+/* 页面题名使用简短的视觉小说式 eyebrow。 */
+.post-header h1.title::before,
+.page-title::before {
+  display: block;
+  margin-bottom: 0.08rem;
   color: var(--maincolor);
-  display: inline-block;
-  width: 0.95em;
-  margin-inline-end: 0.38em;
-  font-weight: 400;
+  font-family: "DOS", "DOS-c", "ZpixA";
+  font-size: 0.64rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
   line-height: 1;
-  text-align: center;
   text-shadow: none;
-  transform: translateY(-0.04em);
 }
 
-h1::before {
-  content: "✦";
+.post-header h1.title::before {
+  content: "ENTRY";
 }
 
 .page-title::before {
-  content: "✦";
+  content: "INDEX";
 }
 
-h2::before {
-  content: "◇";
+.post-header h1.title::after,
+.page-title::after {
+  content: "";
+  display: block;
+  width: 2.4rem;
+  height: 1px;
+  margin-top: 0.3rem;
+  background: var(--maincolor);
 }
 
-h3::before {
-  content: "─";
+/* 年份使用独立的 LOG 铭牌。 */
+.year-heading {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
 }
 
-h4::before {
-  content: "┈";
+.year-heading::before {
+  content: "LOG";
+  flex: none;
+  padding: 0.09rem 0.36rem 0.07rem;
+  border: 1px solid var(--maincolor);
+  color: var(--maincolor);
+  background: color-mix(in srgb, var(--maincolor) 7%, transparent);
+  font-family: "DOS", "DOS-c", "ZpixA";
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  line-height: 1;
 }
 
-h5::before {
-  content: "・";
+/* 正文章节使用简单的独立计数，两级标签都位于标题上方。 */
+article {
+  counter-reset: vn-chapter vn-section;
 }
 
-h6::before {
-  content: "·";
+article > h1 {
+  counter-increment: vn-chapter;
+  padding-top: 0.64rem;
+  padding-bottom: 0.24rem;
+  border-bottom: 1px solid var(--linecolor);
+}
+
+article > h2 {
+  counter-increment: vn-section;
+  padding-top: 0.64rem;
+}
+
+article > h1::before,
+article > h2::before {
+  position: absolute;
+  inset-inline-start: 0;
+  top: 0;
+  color: var(--maincolor);
+  font-family: "DOS", "DOS-c", "ZpixA";
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  line-height: 1;
+  text-shadow: none;
+}
+
+article > h1::before {
+  content: "CH." counter(vn-chapter, decimal-leading-zero);
+}
+
+article > h2::before {
+  content: "SCENE." counter(vn-section, decimal-leading-zero);
+}
+
+article > h3 {
+  padding-inline-start: 1.25rem;
+}
+
+article > h3::before {
+  content: "//";
+  position: absolute;
+  inset-inline-start: 0;
+  top: 0;
+  color: var(--maincolor);
+  font-family: "DOS", "DOS-c", "ZpixA";
+  font-weight: 400;
+  letter-spacing: -0.12em;
+}
+
+article > h4 {
+  padding-inline-start: 0.65rem;
+  border-inline-start: 2px solid var(--maincolor);
 }
 
 /* ======================== 时间戳样式 ======================== */
@@ -523,7 +725,7 @@ time {
 /* ======================== 文章语义间距 ======================== */
 /* 文章标题、日期与正文是三个独立层级，避免依赖默认 margin 折叠。 */
 .post-header {
-  margin: 1.5rem 0 0;
+  margin: 1.35rem 0 0;
 }
 
 .post-header h1.title {
@@ -536,7 +738,7 @@ time {
 }
 
 .body {
-  margin-top: 1.5rem;
+  margin-top: 1.35rem;
 }
 
 /* 只约束文章的直接内容块，避免干扰播放器与 shortcode 内部布局。 */
@@ -545,9 +747,17 @@ article > :where(p, ul, ol) {
   margin-bottom: var(--space-text);
 }
 
+article > p + p {
+  margin-top: 0.92rem;
+}
+
 article > :where(blockquote, .callout, .collapsible, .highlight, .chroma, .katex-display, .mermaid, .media-figure, table) {
   margin-top: var(--space-block);
   margin-bottom: var(--space-block);
+}
+
+article :where(h1, h2, h3, h4, h5, h6):target {
+  color: var(--maincolor);
 }
 
 article > img {
@@ -561,8 +771,8 @@ article > img + .caption {
 }
 
 article > :where(h1, h2) {
-  margin-top: var(--space-section);
-  margin-bottom: 0.6rem;
+  margin-top: 1.7rem;
+  margin-bottom: 0.5rem;
 }
 
 article > h3 {
@@ -593,8 +803,12 @@ article li + li {
 
 /* ======================== 页脚样式 ======================== */
 footer {
-  margin-top: 1.5rem;
+  margin-top: 0.9rem;
   color: var(--mutedcolor);
+}
+
+footer > hr {
+  margin: 0.7rem 0 0.55rem;
 }
 
 .footer-inner {
@@ -602,13 +816,13 @@ footer {
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  gap: 1rem;
+  gap: 0.45rem 0.8rem;
 }
 
 .footer-social {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.55rem;
+  gap: 0.45rem;
 }
 
 /* 社交媒体图标 */
@@ -643,17 +857,20 @@ footer {
   padding: 2px 4px;
   border-radius: 0;
   margin-left: 6px;
-  border: 1px solid rgba(182, 79, 92, 0.28);
+  border: 1px solid color-mix(in srgb, var(--maincolor) 28%, transparent);
   background-color: var(--surfacecolor);
 }
 
 /* ======================== 表格样式 ======================== */
 table {
+  display: block;
+  width: max-content;
   max-width: 100%;
   margin-inline: auto;
   border-spacing: 0;
   border-collapse: collapse;
   overflow-x: auto;
+  overscroll-behavior-inline: contain;
   font-size: 0.95rem;
 }
 
@@ -665,29 +882,16 @@ table th {
 
 table th {
   border-bottom: 2px solid var(--maincolor);
-  background: rgba(182, 79, 92, 0.08);
+  background: color-mix(in srgb, var(--maincolor) 8%, transparent);
   font-size: inherit;
   font-weight: 700;
   text-align: left;
 }
 
-/* ======================== 滚动条样式 ======================== */
+/* 隐藏滚动条，但保留滚动能力。 */
 ::-webkit-scrollbar {
-  width: 0px;
-  height: 0px;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #444;
-  border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #555;
-}
-
-.box::-webkit-scrollbar {
-  display: none;
+  width: 0;
+  height: 0;
 }
 
 /* ======================== 脚注引用样式 ======================== */
@@ -704,12 +908,32 @@ a[href^="#fnref:"] {
   background-image: none;
 }
 
+.footnotes {
+  margin-top: var(--space-section);
+  color: color-mix(in srgb, var(--textcolor) 86%, var(--mutedcolor));
+  font-size: 0.92rem;
+}
+
+.footnotes hr {
+  margin-bottom: 1rem;
+}
+
+.footnotes ol {
+  padding-inline-start: 2.2em;
+}
+
+.footnotes li:target {
+  background: color-mix(in srgb, var(--maincolor) 9%, transparent);
+}
+
 /* ======================== 分页导航样式 ======================== */
 .pagination {
-  margin: 0;
+  margin: 1.5rem 0 0;
   padding: 0;
   display: flex;
   justify-content: space-between;
+  gap: 1rem;
+  list-style: none;
 }
 
 /* 左右栏 */
@@ -730,45 +954,55 @@ a[href^="#fnref:"] {
 }
 
 .collapsible .bar {
+  display: block;
+  width: 100%;
+  border: 0;
+  color: inherit;
+  font: inherit;
+  text-align: start;
   padding: 0.6rem;
-  cursor: pointer;
   user-select: none;
   font-size: 1rem;
-  transition: 0.3s;
+  transition:
+    color var(--motion-fast) ease,
+    background-color var(--motion-fast) ease,
+    transform 0.08s steps(2, end);
   position: relative;
   background: var(--surfacecolor);
 }
 
 .collapsible .bar::after {
-  content: "↓";
+  content: "＋";
   position: absolute;
   right: 1rem;
-  transition: transform 0.3s;
+  transition: transform var(--motion-normal) steps(3, end);
 }
 
-.collapsible .content {
+.collapsible .bar::-webkit-details-marker {
   display: none;
-  animation: fadeIn 0.5s;
-  margin: 0.5rem;
+}
+
+.collapsible .bar::marker {
+  content: "";
+}
+
+.collapsible .collapsible-content {
+  margin: 0.65rem;
   width: auto;
   max-width: none;
 }
 
-.collapsible.active > .bar::after {
-  transform: rotate(180deg);
+.collapsible[open] > .bar::after {
+  transform: rotate(45deg);
 }
 
-.collapsible.active > .content {
-  display: block;
+.collapsible .bar:hover {
+  color: var(--maincolor);
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+.collapsible .bar:focus-visible {
+  outline: 1px dashed var(--maincolor);
+  outline-offset: -4px;
 }
 
 /* ======================== 标注框样式 ======================== */
@@ -777,6 +1011,14 @@ a[href^="#fnref:"] {
   background-color: var(--surfacecolor);
   padding: 0.4rem 0.8rem;
   box-shadow: inset 0 0 0 1px rgba(52, 52, 62, 0.08);
+}
+
+.callout > :first-child {
+  margin-top: 0;
+}
+
+.callout > :last-child {
+  margin-bottom: 0;
 }
 
 .callout-label {
@@ -824,6 +1066,14 @@ a[href^="#fnref:"] {
   -webkit-overflow-scrolling: touch;
 }
 
+article :where(iframe, video, audio, embed, object, svg) {
+  max-width: 100%;
+}
+
+article iframe {
+  border: 0;
+}
+
 /* 列表项样式 */
 .list-item {
   border-bottom: none;
@@ -832,11 +1082,14 @@ a[href^="#fnref:"] {
   padding: 0.2rem;
   position: relative;
   left: 0;
-  transition: left 0.15s ease;
+  transition:
+    color var(--motion-fast) ease,
+    transform var(--motion-fast) steps(2, end);
 }
 
 .list-item:hover {
-  left: 4px;
+  left: 0;
+  transform: translateX(3px);
   color: var(--maincolor);
 }
 
@@ -860,6 +1113,10 @@ a[href^="#fnref:"] {
   gap: 1rem;
   align-items: baseline;
   padding: 0.1rem 0;
+}
+
+.post-list-entry + .post-list-entry {
+  border-top: 1px dotted color-mix(in srgb, var(--linecolor) 58%, transparent);
 }
 
 .post-list-entry .list-item {
@@ -907,6 +1164,7 @@ a[href^="#fnref:"] {
 
 .error-page .error-code {
   margin: 0.4rem 0 0;
+  padding-inline-start: 0;
   color: var(--maincolor);
   font-size: clamp(3rem, 18vw, 7rem);
   line-height: 1;
@@ -949,9 +1207,100 @@ a[href^="#fnref:"] {
   background-color: transparent;
 }
 
-/* ======================== APlayer 吸底优化 ======================== */
+/* ======================== APlayer：与书页表面和细线语言统一 ======================== */
+.aplayer {
+  max-width: 100%;
+  margin: var(--space-block) auto;
+  border: 1px solid var(--linecolor);
+  border-radius: 0;
+  color: var(--textcolor);
+  background: var(--surfacecolor);
+  box-shadow: none;
+  font-family: inherit;
+}
+
+.aplayer .aplayer-body,
+.aplayer .aplayer-list {
+  background: var(--surfacecolor);
+}
+
+.aplayer .aplayer-pic {
+  border-right: 1px solid var(--linecolor);
+  filter: saturate(0.82) contrast(0.96);
+}
+
+.aplayer .aplayer-pic .aplayer-button {
+  border-radius: 0;
+  background: rgba(32, 33, 36, 0.52);
+  box-shadow: none;
+}
+
+.aplayer .aplayer-info .aplayer-music .aplayer-title {
+  color: var(--textcolor);
+  font-family: inherit;
+  font-size: 0.92rem;
+}
+
+.aplayer .aplayer-info .aplayer-music .aplayer-author,
+.aplayer .aplayer-info .aplayer-controller .aplayer-time,
+.aplayer .aplayer-list ol li .aplayer-list-index,
+.aplayer .aplayer-list ol li .aplayer-list-author,
+.aplayer .aplayer-lrc p {
+  color: var(--mutedcolor);
+}
+
+.aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap .aplayer-bar,
+.aplayer .aplayer-info .aplayer-controller .aplayer-volume-wrap .aplayer-volume-bar-wrap .aplayer-volume-bar {
+  border-radius: 0;
+  background: var(--linecolor);
+}
+
+.aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap .aplayer-bar .aplayer-loaded {
+  background: color-mix(in srgb, var(--mutedcolor) 58%, transparent);
+}
+
+.aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap .aplayer-bar .aplayer-played,
+.aplayer .aplayer-info .aplayer-controller .aplayer-volume-wrap .aplayer-volume-bar-wrap .aplayer-volume-bar .aplayer-volume,
+.aplayer .aplayer-list ol li .aplayer-list-cur {
+  background: var(--maincolor) !important;
+}
+
+.aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap .aplayer-bar .aplayer-played .aplayer-thumb {
+  border-radius: 0;
+  background: var(--maincolor);
+}
+
+.aplayer .aplayer-info .aplayer-controller .aplayer-time .aplayer-icon path,
+.aplayer .aplayer-miniswitcher .aplayer-icon path {
+  fill: var(--mutedcolor);
+}
+
+.aplayer .aplayer-info .aplayer-controller .aplayer-time .aplayer-icon:hover path,
+.aplayer .aplayer-miniswitcher .aplayer-icon:hover path {
+  fill: var(--maincolor);
+}
+
+.aplayer.aplayer-withlist .aplayer-info,
+.aplayer .aplayer-list ol li {
+  border-color: var(--linecolor);
+}
+
+.aplayer .aplayer-list ol li:hover,
+.aplayer .aplayer-list ol li.aplayer-list-light {
+  background: color-mix(in srgb, var(--maincolor) 8%, var(--surfacecolor));
+}
+
+.aplayer .aplayer-lrc::before {
+  background: linear-gradient(to bottom, var(--surfacecolor), transparent);
+}
+
+.aplayer .aplayer-lrc::after {
+  background: linear-gradient(to bottom, transparent, var(--surfacecolor));
+}
+
 .aplayer.aplayer-fixed {
   z-index: 99999 !important;
+  border-width: 1px 1px 0 0;
 }
 
 .aplayer.aplayer-fixed,
@@ -960,7 +1309,22 @@ a[href^="#fnref:"] {
   max-width: 400px;
 }
 
-/* ======================== 2. 真实 8-Bit CRT 显像管光栅与 RGB 磷光边缘 ======================== */
+.aplayer.aplayer-fixed .aplayer-body {
+  border-top: 1px solid var(--linecolor);
+  background: var(--surfacecolor);
+}
+
+.aplayer.aplayer-fixed .aplayer-info {
+  border-top-color: var(--linecolor);
+}
+
+.aplayer .aplayer-miniswitcher {
+  border-radius: 0;
+  border-left: 1px solid var(--linecolor);
+  background: var(--surfacecolor);
+}
+
+/* ======================== CRT 与像素交互 ======================== */
 .crt-overlay {
   position: fixed;
   top: 0;
@@ -970,49 +1334,115 @@ a[href^="#fnref:"] {
   background: 
     linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.14) 50%),
     linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
-  background-size: 100% 3px, 6px 100%;
+  background-size: 100% 4px, 8px 100%;
   z-index: 9998;
   pointer-events: none;
-  opacity: 0.35;
-  box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.35); /* 模拟 CRT 显像管曲面边缘阴影 */
+  opacity: 0.18;
+  box-shadow: inset 0 0 42px rgba(0, 0, 0, 0.2); /* 保留光栅，但让它在阅读时退场 */
 }
 
-/* 标题 8-Bit CRT 磷光微色差重影 (RGB Chromatic Fringe) */
-h1, .title {
+/* 标题磷光微色差重影 */
+h1 {
   text-shadow: 1px 0 1px rgba(230, 57, 70, 0.2), -1px 0 1px rgba(0, 180, 216, 0.2);
 }
 
-/* ======================== 5. Game Boy / FC 实体按键触感 ======================== */
-a, 
-.sub-main, 
-.list-item, 
-.collapsible .bar, 
-.draft-label,
 .pagination a {
-  transition: transform 0.08s ease, box-shadow 0.08s ease, background-color 0.15s ease;
+  transition:
+    color var(--motion-fast) ease,
+    transform 0.08s steps(2, end);
 }
 
-/* 悬停微浮 */
 .sub-main:hover, 
 .collapsible .bar:hover,
 .pagination a:hover {
   transform: translateY(-1px);
 }
 
-/* 按下 (Active Press Step Down - 模拟 Game Boy / FC 实体 AB 键与十字键按压) */
 a:active, 
 .sub-main:active, 
 .list-item:active, 
 .collapsible .bar:active,
 .pagination a:active {
-  transform: translateY(2px) !important;
+  transform: translateY(1px) !important;
 }
 
-/* 解密打字机末尾闪烁光标 */
 .decrypt-cursor {
   display: inline-block;
   color: var(--maincolor);
   font-size: 0.85em;
   margin-left: 4px;
   animation: jrpgBlink 0.3s steps(2, start) infinite;
+}
+
+@media (max-width: 480px) {
+  .achievement-stack {
+    top: 0.5rem;
+    right: 0.5rem;
+    width: min(17rem, calc(100vw - 1rem));
+  }
+
+  .content {
+    margin-bottom: 2rem;
+  }
+
+  .site-header {
+    gap: 0.35rem 0.8rem;
+    font-size: 1.38rem;
+  }
+
+  .site-nav {
+    gap: 0.15rem 0.65rem;
+  }
+
+  h1.title,
+  .page-title {
+    font-size: 1.22rem;
+  }
+
+  .post-list-entry {
+    gap: 0.55rem;
+  }
+
+  .post-list-entry .meta {
+    font-size: 0.82rem;
+  }
+
+  footer {
+    margin-top: 0.65rem;
+  }
+
+  footer > hr {
+    margin-top: 0.55rem;
+  }
+
+}
+
+@media (max-width: 340px) {
+  .post-list-entry {
+    grid-template-columns: minmax(0, 1fr) max-content;
+    gap: 0.35rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .list-item:hover,
+  .sub-main:hover,
+  .collapsible .bar:hover,
+  .pagination a:hover,
+  a:active {
+    transform: none !important;
+  }
+
+  .crt-overlay {
+    opacity: 0.12;
+  }
 }

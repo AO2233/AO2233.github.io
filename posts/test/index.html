@@ -57,109 +57,62 @@ Unicode
 
 	
 
-	<title>帰宅部 </title>
-	
-	<link rel="icon" href=https://ao2233.github.io/duck.ico>
-	
-	<link rel="stylesheet" href="https://ao2233.github.io/css/code_style.css">
-	<link rel="stylesheet" href="https://ao2233.github.io/css/code_light.css">
-	<link rel="stylesheet" href="https://ao2233.github.io/css/fonts.css">
-	<link rel="stylesheet" href="https://ao2233.github.io/js/aplayer/APlayer.min.css">
-	<link rel="stylesheet" href="https://ao2233.github.io/js/videojs/video-js.min.css">
-	<link rel="stylesheet" href="https://ao2233.github.io//js/zoom/style.min.css">
+	<title>帰宅部</title>
 
-	<link rel="stylesheet" href="https://ao2233.github.io/css/main.css">
-	<link rel="stylesheet" href="https://ao2233.github.io/css/dark.css" media="(prefers-color-scheme: dark)" />
-	<link rel="stylesheet" href="https://ao2233.github.io/css/code_dark.css" media="(prefers-color-scheme: dark)" />
-	
+	<link rel="icon" href="/duck.ico">
+	<link rel="stylesheet" href="/css/code_style.css">
+	<link rel="stylesheet" href="/css/code_light.css">
+	<link rel="stylesheet" href="/css/fonts.css">
+	<link rel="stylesheet" href="/js/aplayer/APlayer.min.css">
+	<link rel="stylesheet" href="/js/zoom/style.min.css">
+	<link rel="stylesheet" href="/css/main.css">
+	<link rel="stylesheet" href="/css/dark.css" media="(prefers-color-scheme: dark)">
+	<link rel="stylesheet" href="/css/code_dark.css" media="(prefers-color-scheme: dark)">
+	<link rel="stylesheet" href="/js/katex/katex.min.css">
 
-	
-	<script defer src="https://ao2233.github.io/js/aplayer/APlayer.min.js"></script>
-	<script defer src="https://ao2233.github.io/js/dplayer/DPlayer.min.js"></script>
-	<script defer src="https://ao2233.github.io/js/videojs/video.min.js"></script>
-	<script defer src="https://ao2233.github.io/js/zoom/medium-zoom.min.js"></script>
-
-	<script defer src="https://ao2233.github.io/js/pdfobject.min.js"></script>
-	<script defer src="https://ao2233.github.io/js/feather.min.js"></script>
-	<script defer src="https://ao2233.github.io/js/collapsible.js"></script>
-	<script defer src="https://ao2233.github.io/js/mermaid.min.js"></script>
-	
-
-	
-	<link rel="stylesheet" href="https://ao2233.github.io/js/katex/katex.min.css" crossorigin="anonymous">
-	<script defer src="https://ao2233.github.io/js/katex/katex.min.js" crossorigin="anonymous"></script>
-	<script defer src="https://ao2233.github.io/js/katex/contrib/auto-render.min.js" crossorigin="anonymous"
-		onload="renderMathInElement(document.body);"></script>
-	<script>
-		document.addEventListener("DOMContentLoaded", function () {
-			renderMathInElement(document.body, {
-				delimiters: [
-					{ left: "$$", right: "$$", display: true },
-					
-					{ left: "$", right: "$", display: false },
-					
-				]
-			});
-		});
-	</script>
-	
-
-	
-	<script>
-		const mq = window.matchMedia('(prefers-color-scheme: dark)'),
-			config = { startOnLoad: true, flowchart: { useMaxWidth: true, htmlLabels: true, curve: 'cardinal' }, securityLevel: 'loose' };
-		let inited = false,
-			setTheme = dark => {
-				mermaid.initialize({ theme: dark ? 'dark' : 'base', config });
-				if (inited) location.reload(false);
-				inited = true;
-			};
-
-		setTheme(mq.matches);
-		(mq.addEventListener ? mq.addEventListener : mq.addListener).call(mq, 'change', e => setTheme(e.matches));
-	</script>
-
-	
-	
+	<script defer src="/js/aplayer/APlayer.min.js"></script>
+	<script defer src="/js/dplayer/DPlayer.min.js"></script>
+	<script defer src="/js/zoom/medium-zoom.min.js"></script>
+	<script defer src="/js/pdfobject.min.js"></script>
+	<script defer src="/js/feather.min.js"></script>
+	<script defer src="/js/mermaid.min.js"></script>
+	<script defer src="/js/katex/katex.min.js"></script>
+	<script defer src="/js/katex/contrib/auto-render.min.js"></script>
+	<script defer src="/js/theme.js"></script>
 
 </head>
 
-    <body>
-        <div class="crt-overlay"></div>
-        <div class="content"><header class="site-header">
-	<div class="main site-title">
-		<a href="https://ao2233.github.io/">帰宅部</a>
-	</div>
-
-	
-	<nav class="site-nav" aria-label="Main navigation">
-		
-		<a href="/" class="sub-main">Archive</a>
-		
-		<a href="/about" class="sub-main">About</a>
-		
-
-	
-		
-	</nav>
+  <body>
+    <div class="crt-overlay"></div>
+    <div class="content"><header class="site-header">
+  <div class="main site-title">
+    <a href="https://ao2233.github.io/">帰宅部</a>
+  </div>
+  <nav class="site-nav" aria-label="Main navigation">
+    
+    <a href="/" class="sub-main">Archive</a>
+    
+    <a href="/about" class="sub-main">About</a>
+    
+    
+  </nav>
 </header>
 
-        
+      
 <main>
-	
-	<div class="title post-header">
-		<h1 class="title">WEB样式测试</h1>
-		<div class="meta">Posted on <time datetime="2021-12-07">2021.12.07</time></div>
-	</div>
-	<section class="body">
-	<article>
-		<p>本页面用于<code>Hugo Website</code>界面的功能测试。</p>
+  <div class="title post-header">
+    <h1 class="title">WEB样式测试</h1>
+    <div class="meta">Posted on <time datetime="2021-12-07">2021.12.07</time></div>
+  </div>
+  <section class="body">
+    <article>
+      <p>本页面用于<code>Hugo Website</code>界面的功能测试。</p>
 <blockquote>
 <p>标题and (提示栏)</p>
 </blockquote>
-<div class="collapsible">
-  <div class="bar">标题栏</div>
-  <div class="content">
+<details class="collapsible">
+  <summary class="bar">标题栏</summary>
+  <div class="collapsible-content">
     <h1 id="一级标题">一级标题</h1>
 <h2 id="二级标题">二级标题</h2>
 <h3 id="三级标题">三级标题</h3>
@@ -168,7 +121,7 @@ Unicode
 <h6 id="六级标题">六级标题</h6>
 <p>级数越大，间距越大</p>
   </div>
-</div>
+</details>
 
 <blockquote>
 <blockquote>
@@ -195,24 +148,20 @@ Unicode
 </span></span><span class="line"><span class="ln">7</span><span class="cl"><span class="p">}</span></span></span></code></pre></div><blockquote>
 <p>video-loop</p>
 </blockquote>
-
-
-<div style="text-align: center;">
-<video autoplay loop muted playsinline preload="auto" style="max-width: 800px; width: 100%;">
+<figure class="media-figure">
+  <video class="media-item" autoplay loop muted playsinline preload="auto" style="max-width: 800px">
     <source src="/media/video/2025/magnolia.mp4" type="video/mp4">
-    check the <a href="/media/video/2025/magnolia.mp4">video</a>.
+    Download the <a href="/media/video/2025/magnolia.mp4">video</a>.
   </video>
+  <figcaption class="caption"><code>エンダーマグノリア最終戦</code></figcaption>
+</figure>
 
-<p style="margin: 0.1rem;"><code>エンダーマグノリア最終戦</code></p>
-
-</div>
-  
-<div class="collapsible">
-  <div class="bar">样式代码</div>
-  <div class="content">
+<details class="collapsible">
+  <summary class="bar">样式代码</summary>
+  <div class="collapsible-content">
     <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="ln">1</span><span class="cl">{\{<span class="p">&lt;</span> <span class="nt">video</span> <span class="na">src</span><span class="o">=</span><span class="s">/media/video/2025/magnolia.mp4</span> <span class="na">width</span><span class="o">=</span><span class="s">800px</span> <span class="na">caption</span><span class="o">=</span><span class="s">&#34;`エンダーマグノリア最終戦`&#34;</span><span class="p">&gt;</span>}\}</span></span></code></pre></div>
   </div>
-</div>
+</details>
 
 <h1 id="自定义图片">自定义图片</h1>
 
@@ -235,9 +184,9 @@ Unicode
 
 <p>图片的布局是极其繁琐的，宽高不同的图片的放置更是地狱。并且希望图片是可以点击放大的。底部有可选的说明文字。</p>
 <p>目前方法，可以放多张图，用<code>半角逗号隔开</code>，<code>但是每次指定一排放置</code>，强迫症患者必须手搓，<code>flex</code>居中。建议同宽度的图片一起放。宽度指定的是单张图片的最大宽度，超过此宽度先变成单列排放，更小的情况单列进行图片缩放。</p>
-<div class="collapsible">
-  <div class="bar"><em>详细说明</em></div>
-  <div class="content">
+<details class="collapsible">
+  <summary class="bar"><em>详细说明</em></summary>
+  <div class="collapsible-content">
     <blockquote>
 <p>code</p>
 </blockquote>
@@ -248,7 +197,7 @@ Unicode
 </span></span><span class="line"><span class="ln">5</span><span class="cl">{\{<span class="p">&lt;</span> <span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;/media/abc.png&#34;</span>  <span class="na">width</span><span class="o">=</span><span class="s">&#34;50%&#34;</span> <span class="p">&gt;</span>}\}
 </span></span><span class="line"><span class="ln">6</span><span class="cl">网页过宽采用超过一定大小后，向两边padding的做法（大部分网站通用做法），保证纵向大小不变。对于宽度过小的情况，采用等比缩小的策略。</span></span></code></pre></div>
   </div>
-</div>
+</details>
 
 <blockquote>
 <p>markdown标记测试</p>
@@ -275,24 +224,24 @@ Unicode
 <p>特殊样式</p>
 </blockquote>
 <h1 id="折叠框">折叠框</h1>
-<div class="collapsible">
-  <div class="bar">点击展开</div>
-  <div class="content">
+<details class="collapsible">
+  <summary class="bar">点击展开</summary>
+  <div class="collapsible-content">
     <p>啥都没有</p>
-<div class="collapsible">
-  <div class="bar">猜猜看有什么</div>
-  <div class="content">
+<details class="collapsible">
+  <summary class="bar">猜猜看有什么</summary>
+  <div class="collapsible-content">
     <p>🐮🍺</p>
-<div class="collapsible">
-  <div class="bar">啥都没有哦</div>
-  <div class="content">
+<details class="collapsible">
+  <summary class="bar">啥都没有哦</summary>
+  <div class="collapsible-content">
   </div>
-</div>
+</details>
   </div>
-</div>
+</details>
 
   </div>
-</div>
+</details>
 
 <h1 id="aplayer">Aplayer</h1>
 <div id="2"></div>
@@ -355,9 +304,9 @@ Unicode
 })();
 </script>
 
-<div class="collapsible">
-  <div class="bar"><em>详细说明</em></div>
-  <div class="content">
+<details class="collapsible">
+  <summary class="bar"><em>详细说明</em></summary>
+  <div class="collapsible-content">
     <blockquote>
 <p>code</p>
 </blockquote>
@@ -378,34 +327,33 @@ Unicode
 </span></span><span class="line"><span class="ln">13</span><span class="cl"><span class="p">});</span>
 </span></span><span class="line"><span class="ln">14</span><span class="cl"><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span></span></span></code></pre></div>
   </div>
-</div>
+</details>
 
 <h1 id="dplayer">Dplayer</h1>
-<div align="center">
-<div id="1"></div>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    var container = document.getElementById('1');
-    if (container && typeof DPlayer !== 'undefined') {
+<div class="media-embed">
+  <div id="1"></div>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const container = document.getElementById("1");
+      if (container && typeof DPlayer !== "undefined") {
         new DPlayer({
-            container: container,
-            screenshot: true,
-            airplay: true,
-            chromecast: true,
-            preload: 'auto',
-            video: {
-                url: '\/media\/video\/vtest.mp4'
-            }
+          container,
+          screenshot: true,
+          airplay: true,
+          chromecast: true,
+          preload: "auto",
+          video: {
+            url: "\/media\/video\/vtest.mp4"
+          }
         });
-    }
-});
-</script>
+      }
+    });
+  </script>
 </div>
 
-<div class="collapsible">
-  <div class="bar"><em>详细说明</em></div>
-  <div class="content">
+<details class="collapsible">
+  <summary class="bar"><em>详细说明</em></summary>
+  <div class="collapsible-content">
     <blockquote>
 <p>code</p>
 </blockquote>
@@ -422,7 +370,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></span></span></code></pre></div>
   </div>
-</div>
+</details>
 
 <h1 id="youtube">Youtube</h1>
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
@@ -667,54 +615,34 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 <h1 id="bilibili">Bilibili</h1>
-<div align=center class="aspect-ratio">
-    <iframe src="https://player.bilibili.com/player.html?bvid=BV18X4y1N7Yh&page=1&as_wide=1&high_quality=1&danmaku=1&autoplay=0" 
-    scrolling="no" 
-    border="0" 
-    frameborder="no" 
-    framespacing="0" 
-    allowfullscreen="true"> 
-    </iframe>
-
-    <style>
-        .aspect-ratio {
-            position: relative;
-            width: 100%;
-            height: 0;
-            padding-bottom: 56.25%;
-            margin: 1rem 0;
-        }
-              
-        .aspect-ratio iframe {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            left: 0;
-            top: 0;
-            border: 0;
-        }
-    </style>
+<div class="responsive-embed">
+  <iframe
+    src="https://player.bilibili.com/player.html?bvid=BV18X4y1N7Yh&page=1&as_wide=1&high_quality=1&danmaku=1&autoplay=0"
+    title="Bilibili video"
+    scrolling="no"
+    allowfullscreen>
+  </iframe>
 </div>
 
 <p>由于B站的接口，实测用手机端访问，<code>User-agent</code>会导致有的视频无法加载被替换，怀疑与反外链有关</p>
 <h1 id="pdf内嵌">PDF内嵌</h1>
-<div id='s'></div>
+<div id="s"></div>
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    var container = document.getElementById('s');
-    if (container && typeof PDFObject !== 'undefined') {
-        var options = {
-            fallbackLink: "<p>The browser does not support embedded <a href='[url]'>PDF</a> documents. </p>"
-        };
-        PDFObject.embed("\/media\/pdf\/Transformer.pdf", "#" + container.id, {height:'70em'}, options);
+  document.addEventListener("DOMContentLoaded", () => {
+    const container = document.getElementById("s");
+    if (container && typeof PDFObject !== "undefined") {
+      PDFObject.embed("\/media\/pdf\/Transformer.pdf", `#${container.id}`, {
+        height: "70em",
+        fallbackLink: "<p>The browser does not support embedded <a href='[url]'>PDF</a> documents.</p>"
+      });
     }
-});
+  });
 </script>
 
 <p>用于大页面的$\LaTeX$的加载</p>
-<div class="collapsible">
-  <div class="bar"><em>详细说明</em></div>
-  <div class="content">
+<details class="collapsible">
+  <summary class="bar"><em>详细说明</em></summary>
+  <div class="collapsible-content">
     <blockquote>
 <p>code</p>
 </blockquote>
@@ -732,12 +660,12 @@ document.addEventListener('DOMContentLoaded', function() {
 </span></span></span><span class="line"><span class="ln">12</span><span class="cl"><span class="c">引擎不支持的时候，使用fallback，给出Link
 </span></span></span><span class="line"><span class="ln">13</span><span class="cl"><span class="c">--&gt;</span></span></span></code></pre></div>
   </div>
-</div>
+</details>
 
 <h1 id="spotify">Spotify</h1>
-<div class="collapsible">
-  <div class="bar"><em>效果展示</em></div>
-  <div class="content">
+<details class="collapsible">
+  <summary class="bar"><em>效果展示</em></summary>
+  <div class="collapsible-content">
     <blockquote>
 <p>Single</p>
 </blockquote>
@@ -752,7 +680,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <iframe allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" allowfullscreen="allowfullscreen" class="spotify spotify-playlist" id="h-sc-spotify-2" loading="lazy" src="https://open.spotify.com/embed/playlist/37i9dQZF1DWZ85LaIabSBk?theme=1" style="width: 100%; height: 380px; border: none;"></iframe>
 
   </div>
-</div>
+</details>
 
 <h1>$\LaTeX$</h1>
 <p>行公式效果：</p>
@@ -777,9 +705,9 @@ $$$$
           + \cfrac{1}{a_3 + \cfrac{1}{a_4} } } }
 \end{equation}
 $$<p>内联公式效果：$x = {-b \pm \sqrt{b^2-4ac} \over 2a}$，由$\LaTeX$ 强力驱动</p>
-<div class="collapsible">
-  <div class="bar"><em>详细说明</em></div>
-  <div class="content">
+<details class="collapsible">
+  <summary class="bar"><em>详细说明</em></summary>
+  <div class="collapsible-content">
     <p>基于$KaTeX$支持其所有特性，唯一麻烦的问题是根据goldmark的转译规则，需要注意符号转译</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="line"><span class="ln">1</span><span class="cl">注意对于Hugo Goldmark：
 </span></span><span class="line"><span class="ln">2</span><span class="cl">对于单独出现的&#39;<span class="k">\&#39;</span>符号，需要使用转义<span class="k">\\</span>表达
@@ -799,12 +727,12 @@ $$<p>内联公式效果：$x = {-b \pm \sqrt{b^2-4ac} \over 2a}$，由$\LaTeX$ �
 </span></span><span class="line"><span class="ln">12</span><span class="cl">left: &#34;<span class="k">\begin</span><span class="nb">{</span>gather<span class="nb">}</span>&#34;, right: &#34;<span class="k">\end</span><span class="nb">{</span>gather<span class="nb">}</span>&#34;
 </span></span><span class="line"><span class="ln">13</span><span class="cl">left: &#34;<span class="k">\begin</span><span class="nb">{</span>CD<span class="nb">}</span>&#34;, right: &#34;<span class="k">\end</span><span class="nb">{</span>CD<span class="nb">}</span>&#34;</span></span></code></pre></div>
   </div>
-</div>
+</details>
 
 <h1 id="mermaid">mermaid</h1>
-<div class="collapsible">
-  <div class="bar"><em>详细说明</em></div>
-  <div class="content">
+<details class="collapsible">
+  <summary class="bar"><em>详细说明</em></summary>
+  <div class="collapsible-content">
     <p>用于画图，但是对页面加载负担较大（移动端），并且导致切换系统主题时，会刷新界面，以适配主题</p>
 <p>并且对于窄屏幕而言，甘特图，饼图等会出现样式重叠，建议生成后，使用图片嵌入（此处已修改为至少900px）</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="ln"> 1</span><span class="cl">{\{<span class="p">&lt;</span> <span class="nt">mermaid</span> <span class="p">&gt;</span>}\}
@@ -825,12 +753,11 @@ $$<p>内联公式效果：$x = {-b \pm \sqrt{b^2-4ac} \over 2a}$，由$\LaTeX$ �
 </span></span><span class="line"><span class="ln">16</span><span class="cl">    Add to mermaid                      :1d
 </span></span><span class="line"><span class="ln">17</span><span class="cl">{\{<span class="p">&lt;</span> <span class="p">/</span><span class="nt">mermaid</span> <span class="p">&gt;</span>}\}</span></span></code></pre></div>
   </div>
-</div>
+</details>
 
 <h2 id="sequence测试">Sequence测试</h2>
-<pre>
-<div class="mermaid" style="min-width: 600px; text-align: center;">
-
+<div class="mermaid-scroll">
+  <div class="mermaid">
 sequenceDiagram
     participant Alice
     participant Bob
@@ -842,13 +769,12 @@ sequenceDiagram
     John-->Alice: Great!
     John->Bob: How about you?
     Bob-->John: Jolly good!
-
 </div>
-</pre>
-<h2 id="gantt">GANTT</h2>
-<pre>
-<div class="mermaid" style="min-width: 600px; text-align: center;">
+</div>
 
+<h2 id="gantt">GANTT</h2>
+<div class="mermaid-scroll">
+  <div class="mermaid">
 gantt
     dateFormat  YYYY-MM-DD
     title Adding GANTT diagram functionality to mermaid
@@ -864,20 +790,19 @@ gantt
     Future task in critical line        :crit, 5d
     Create tests for renderer           :2d
     Add to mermaid                      :1d
-
 </div>
-</pre>
-<h2 id="pie">Pie</h2>
-<pre>
-<div class="mermaid" style="min-width: 600px; text-align: center;">
+</div>
 
+<h2 id="pie">Pie</h2>
+<div class="mermaid-scroll">
+  <div class="mermaid">
 pie
     "Dogs" : 386
     "Cats" : 85
     "Rats" : 15
-
 </div>
-</pre>
+</div>
+
 <h1 id="footnote">footnote</h1>
 <p>原神<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>是米哈游开发的一款奇幻题材开放世界动作角色扮演游戏，采用基于抽卡的基本免费及道具收费制。</p>
 <p>相对引用：<a href="https://ao2233.github.io/posts/test/">本篇文章</a>
@@ -911,92 +836,26 @@ pie
 </ol>
 </div>
 
-	</article>
-	</section>
+    </article>
+  </section>
 </main>
-
 <footer class="footer">
-<hr>
-<div class="footer-inner">
-      <div class="footer-social"><a class="soc" href="https://github.com/AO2233" title="GitHub"><i data-feather="github"></i></a>
+  <hr>
+  <div class="footer-inner">
+    <div class="footer-social">
+      <a class="soc" href="https://github.com/AO2233" title="GitHub"><i data-feather="github"></i></a>
       <a class="soc" href="https://gitlab.com/AO2233" title="GitLab"><i data-feather="gitlab"></i></a>
       <a class="soc" href="https://steamcommunity.com/id/u604b" title="Steam"><i data-feather="hash"></i></a>
       <a class="soc" href="https://x.com/u604b" title="Twitter"><i data-feather="twitter"></i></a>
       <a class="soc" href="mailto:ao.debian@gmail.com" title="Mail"><i data-feather="mail"></i></a>
-      </div>
-
-      <div class="no-ai-logo">
-            <embed src="/svg/no-ai-white.svg"
-                   type="image/svg+xml"
-                   width="128" height="37">
-            <embed src="/svg/no-ai-black.svg"
-                   type="image/svg+xml"
-                   width="128" height="37">
-          </div>
-      </div>
+    </div>
+    <div class="no-ai-logo">
+      <embed src="/svg/no-ai-white.svg" type="image/svg+xml" width="128" height="37">
+      <embed src="/svg/no-ai-black.svg" type="image/svg+xml" width="128" height="37">
+    </div>
+  </div>
 </footer>
 
-<script>
-      document.addEventListener('DOMContentLoaded', function() {
-            if (typeof feather !== 'undefined') { feather.replace(); }
-            const images = document.querySelectorAll('.zoom-image');
-            if (images.length > 0 && typeof mediumZoom !== 'undefined') {
-                  mediumZoom(images, {
-                        background: 'rgba(0, 0, 0, 0.7)',
-                        margin: 0,
-                  });
-            }
-
-            
-            (function() {
-                var targets = document.querySelectorAll('.title h1.title, h1.title, .site-description p, p.site-description');
-                if (!targets.length) return;
-
-                var katakana = 'アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワン0123456789!?#$@&%';
-
-                targets.forEach(function(el) {
-                    var originalText = el.textContent.trim();
-                    if (!originalText) return;
-
-                    var length = originalText.length;
-                    var step = 0;
-                    var maxSteps = length + 14;
-                    var intervalMs = 65;
-
-                    function getRandomChar() {
-                        return katakana.charAt(Math.floor(Math.random() * katakana.length));
-                    }
-
-                    var timer = setInterval(function() {
-                        step++;
-                        var revealedLength = Math.floor((step / maxSteps) * length);
-                        var result = '';
-
-                        for (var i = 0; i < length; i++) {
-                            if (i < revealedLength) {
-                                result += originalText.charAt(i);
-                            } else {
-                                result += getRandomChar();
-                            }
-                        }
-
-                        if (revealedLength < length) {
-                            result += '<span class="decrypt-cursor">█</span>';
-                        }
-
-                        el.innerHTML = result;
-
-                        if (step >= maxSteps) {
-                            clearInterval(timer);
-                            el.textContent = originalText;
-                        }
-                    }, intervalMs);
-                });
-            })();
-      });
-</script>
-
-</div>
-    </body>
-    
+    </div>
+  </body>
 </html>

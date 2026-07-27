@@ -5,11 +5,10 @@
 	<meta name=viewport content="width=device-width,initial-scale=1">
 	
 <meta name="title" content="学术小飞机 - 帰宅部">
-<meta name="description" content="仅用于学术用途 都什么年代了，还在用传统ss飞机。--by **
+<meta name="description" content="仅用于学术用途 都什么年代了，还在用传统 SS 飞机。——by **
 主流廉价方案：
-Vmess &#43; Websocket &#43; TLS &#43; 端口转发
-将访问域名某路径的流量转发到内部端口走V2ray服务后，从网页端口发回TLS加密的Websocket响应。到达客户端后由客户端解码获取data。
-简化一下，证书续签流程，采用方 …">
+VMess &#43; WebSocket &#43; TLS &#43; 端口转发
+将访问域名某路径的流量转发到内部端口，经过 V2Ray 服务后，从网页端口发回 TLS 加密的 WebSocket 响应；到达客户端后，再由客户端解码获取数据。 简化证书续 …">
 <meta name="author" content="AO">
 <link rel="canonical" href="https://ao2233.github.io/posts/2024/vps/">
 
@@ -17,11 +16,10 @@ Vmess &#43; Websocket &#43; TLS &#43; 端口转发
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://ao2233.github.io/posts/2024/vps/">
 <meta property="og:title" content="学术小飞机 - 帰宅部">
-<meta property="og:description" content="仅用于学术用途 都什么年代了，还在用传统ss飞机。--by **
+<meta property="og:description" content="仅用于学术用途 都什么年代了，还在用传统 SS 飞机。——by **
 主流廉价方案：
-Vmess &#43; Websocket &#43; TLS &#43; 端口转发
-将访问域名某路径的流量转发到内部端口走V2ray服务后，从网页端口发回TLS加密的Websocket响应。到达客户端后由客户端解码获取data。
-简化一下，证书续签流程，采用方 …">
+VMess &#43; WebSocket &#43; TLS &#43; 端口转发
+将访问域名某路径的流量转发到内部端口，经过 V2Ray 服务后，从网页端口发回 TLS 加密的 WebSocket 响应；到达客户端后，再由客户端解码获取数据。 简化证书续 …">
 <meta property="og:site_name" content="帰宅部">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://ao2233.github.io/duck.ico">
@@ -30,11 +28,10 @@ Vmess &#43; Websocket &#43; TLS &#43; 端口转发
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:url" content="https://ao2233.github.io/posts/2024/vps/">
 <meta name="twitter:title" content="学术小飞机 - 帰宅部">
-<meta name="twitter:description" content="仅用于学术用途 都什么年代了，还在用传统ss飞机。--by **
+<meta name="twitter:description" content="仅用于学术用途 都什么年代了，还在用传统 SS 飞机。——by **
 主流廉价方案：
-Vmess &#43; Websocket &#43; TLS &#43; 端口转发
-将访问域名某路径的流量转发到内部端口走V2ray服务后，从网页端口发回TLS加密的Websocket响应。到达客户端后由客户端解码获取data。
-简化一下，证书续签流程，采用方 …">
+VMess &#43; WebSocket &#43; TLS &#43; 端口转发
+将访问域名某路径的流量转发到内部端口，经过 V2Ray 服务后，从网页端口发回 TLS 加密的 WebSocket 响应；到达客户端后，再由客户端解码获取数据。 简化证书续 …">
 <meta name="twitter:image" content="https://ao2233.github.io/duck.ico">
 
 
@@ -51,112 +48,70 @@ Vmess &#43; Websocket &#43; TLS &#43; 端口转发
 
 	
 
-	<title>帰宅部 </title>
-	
-	<link rel="icon" href=https://ao2233.github.io/duck.ico>
-	
-	<link rel="stylesheet" href="https://ao2233.github.io/css/code_style.css">
-	<link rel="stylesheet" href="https://ao2233.github.io/css/code_light.css">
-	<link rel="stylesheet" href="https://ao2233.github.io/css/fonts.css">
-	<link rel="stylesheet" href="https://ao2233.github.io/js/aplayer/APlayer.min.css">
-	<link rel="stylesheet" href="https://ao2233.github.io/js/videojs/video-js.min.css">
-	<link rel="stylesheet" href="https://ao2233.github.io//js/zoom/style.min.css">
+	<title>帰宅部</title>
 
-	<link rel="stylesheet" href="https://ao2233.github.io/css/main.css">
-	<link rel="stylesheet" href="https://ao2233.github.io/css/dark.css" media="(prefers-color-scheme: dark)" />
-	<link rel="stylesheet" href="https://ao2233.github.io/css/code_dark.css" media="(prefers-color-scheme: dark)" />
-	
+	<link rel="icon" href="/duck.ico">
+	<link rel="stylesheet" href="/css/code_style.css">
+	<link rel="stylesheet" href="/css/code_light.css">
+	<link rel="stylesheet" href="/css/fonts.css">
+	<link rel="stylesheet" href="/js/aplayer/APlayer.min.css">
+	<link rel="stylesheet" href="/js/zoom/style.min.css">
+	<link rel="stylesheet" href="/css/main.css">
+	<link rel="stylesheet" href="/css/dark.css" media="(prefers-color-scheme: dark)">
+	<link rel="stylesheet" href="/css/code_dark.css" media="(prefers-color-scheme: dark)">
+	<link rel="stylesheet" href="/js/katex/katex.min.css">
 
-	
-	<script defer src="https://ao2233.github.io/js/aplayer/APlayer.min.js"></script>
-	<script defer src="https://ao2233.github.io/js/dplayer/DPlayer.min.js"></script>
-	<script defer src="https://ao2233.github.io/js/videojs/video.min.js"></script>
-	<script defer src="https://ao2233.github.io/js/zoom/medium-zoom.min.js"></script>
-
-	<script defer src="https://ao2233.github.io/js/pdfobject.min.js"></script>
-	<script defer src="https://ao2233.github.io/js/feather.min.js"></script>
-	<script defer src="https://ao2233.github.io/js/collapsible.js"></script>
-	<script defer src="https://ao2233.github.io/js/mermaid.min.js"></script>
-	
-
-	
-	<link rel="stylesheet" href="https://ao2233.github.io/js/katex/katex.min.css" crossorigin="anonymous">
-	<script defer src="https://ao2233.github.io/js/katex/katex.min.js" crossorigin="anonymous"></script>
-	<script defer src="https://ao2233.github.io/js/katex/contrib/auto-render.min.js" crossorigin="anonymous"
-		onload="renderMathInElement(document.body);"></script>
-	<script>
-		document.addEventListener("DOMContentLoaded", function () {
-			renderMathInElement(document.body, {
-				delimiters: [
-					{ left: "$$", right: "$$", display: true },
-					
-					{ left: "$", right: "$", display: false },
-					
-				]
-			});
-		});
-	</script>
-	
-
-	
-	<script>
-		const mq = window.matchMedia('(prefers-color-scheme: dark)'),
-			config = { startOnLoad: true, flowchart: { useMaxWidth: true, htmlLabels: true, curve: 'cardinal' }, securityLevel: 'loose' };
-		let inited = false,
-			setTheme = dark => {
-				mermaid.initialize({ theme: dark ? 'dark' : 'base', config });
-				if (inited) location.reload(false);
-				inited = true;
-			};
-
-		setTheme(mq.matches);
-		(mq.addEventListener ? mq.addEventListener : mq.addListener).call(mq, 'change', e => setTheme(e.matches));
-	</script>
-
-	
-	
+	<script defer src="/js/aplayer/APlayer.min.js"></script>
+	<script defer src="/js/dplayer/DPlayer.min.js"></script>
+	<script defer src="/js/zoom/medium-zoom.min.js"></script>
+	<script defer src="/js/pdfobject.min.js"></script>
+	<script defer src="/js/feather.min.js"></script>
+	<script defer src="/js/mermaid.min.js"></script>
+	<script defer src="/js/katex/katex.min.js"></script>
+	<script defer src="/js/katex/contrib/auto-render.min.js"></script>
+	<script defer src="/js/theme.js"></script>
 
 </head>
 
-    <body>
-        <div class="crt-overlay"></div>
-        <div class="content"><header class="site-header">
-	<div class="main site-title">
-		<a href="https://ao2233.github.io/">帰宅部</a>
-	</div>
-
-	
-	<nav class="site-nav" aria-label="Main navigation">
-		
-		<a href="/" class="sub-main">Archive</a>
-		
-		<a href="/about" class="sub-main">About</a>
-		
-
-	
-		
-	</nav>
+  <body>
+    <div class="crt-overlay"></div>
+    <div class="content"><header class="site-header">
+  <div class="main site-title">
+    <a href="https://ao2233.github.io/">帰宅部</a>
+  </div>
+  <nav class="site-nav" aria-label="Main navigation">
+    
+    <a href="/" class="sub-main">Archive</a>
+    
+    <a href="/about" class="sub-main">About</a>
+    
+    
+  </nav>
 </header>
 
-        
+      
 <main>
-	
-	<div class="title post-header">
-		<h1 class="title">学术小飞机</h1>
-		<div class="meta">Posted on <time datetime="2021-12-10">2021.12.10</time></div>
-	</div>
-	<section class="body">
-	<article>
-		<h1 id="仅用于学术用途"><em>仅用于学术用途</em></h1>
-<p><code>都什么年代了，还在用传统ss飞机。--by **</code></p>
+  <div class="title post-header">
+    <h1 class="title">学术小飞机</h1>
+    <div class="meta">Posted on <time datetime="2021-12-10">2021.12.10</time></div>
+  </div>
+  <section class="body">
+    <article>
+      <h1 id="仅用于学术用途">仅用于学术用途</h1>
+<blockquote>
+<p>都什么年代了，还在用传统 SS 飞机。——by **</p>
+</blockquote>
 <p>主流廉价方案：</p>
-<p><strong>Vmess + Websocket + TLS + 端口转发</strong></p>
-<p><code>将访问域名某路径的流量转发到内部端口走V2ray服务后，从网页端口发回TLS加密的Websocket响应。到达客户端后由客户端解码获取data。</code></p>
-<p>简化一下，证书续签流程，采用方案：<em><strong>V2ray + Caddy2</strong></em> <a href="https://github.com/233boy/v2ray/tree/master" target="_blank" rel="noopener noreferrer"><em>一键脚本</em></a>
-</p>
+<p><strong>VMess + WebSocket + TLS + 端口转发</strong></p>
+<aside class="callout">
+    将访问域名某路径的流量转发到内部端口，经过 V2Ray 服务后，从网页端口发回 TLS 加密的 WebSocket 响应；到达客户端后，再由客户端解码获取数据。
+</aside>
+
+<p>简化证书续签流程，采用方案：<strong>V2Ray + Caddy 2</strong>（<a href="https://github.com/233boy/v2ray/tree/master" target="_blank" rel="noopener noreferrer"><em>一键脚本</em></a>
+）</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="ln">1</span><span class="cl">https://github.com/233boy/v2ray/tree/master
 </span></span><span class="line"><span class="ln">2</span><span class="cl">cf: DNS 配置见图，理论上开启泛播性能能好
-</span></span><span class="line"><span class="ln">3</span><span class="cl">Namecheap: DNS 配置见图</span></span></code></pre></div><p>
+</span></span><span class="line"><span class="ln">3</span><span class="cl">Namecheap: DNS 配置见图</span></span></code></pre></div>
 
 
 
@@ -187,97 +142,31 @@ Vmess &#43; Websocket &#43; TLS &#43; 端口转发
   </div>
   
 </figure>
-</p>
+
 <h1 id="cloudflare优选">Cloudflare优选</h1>
-<p>指定解析<code>Cloudflare</code>到一个速度最快的IP，<a href="https://github.com/XIU2/CloudflareSpeedTest" target="_blank" rel="noopener noreferrer">优选工具</a>
+<p>指定解析 Cloudflare 到一个速度最快的 IP，<a href="https://github.com/XIU2/CloudflareSpeedTest" target="_blank" rel="noopener noreferrer">优选工具</a>
 。</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">./CloudflareST -n <span class="m">1000</span> -url https://speed.cloudflare.com/__down<span class="se">\?</span>bytes<span class="se">\=</span><span class="m">200000000</span></span></span></code></pre></div>
-	</article>
-	</section>
+    </article>
+  </section>
 </main>
-
 <footer class="footer">
-<hr>
-<div class="footer-inner">
-      <div class="footer-social"><a class="soc" href="https://github.com/AO2233" title="GitHub"><i data-feather="github"></i></a>
+  <hr>
+  <div class="footer-inner">
+    <div class="footer-social">
+      <a class="soc" href="https://github.com/AO2233" title="GitHub"><i data-feather="github"></i></a>
       <a class="soc" href="https://gitlab.com/AO2233" title="GitLab"><i data-feather="gitlab"></i></a>
       <a class="soc" href="https://steamcommunity.com/id/u604b" title="Steam"><i data-feather="hash"></i></a>
       <a class="soc" href="https://x.com/u604b" title="Twitter"><i data-feather="twitter"></i></a>
       <a class="soc" href="mailto:ao.debian@gmail.com" title="Mail"><i data-feather="mail"></i></a>
-      </div>
-
-      <div class="no-ai-logo">
-            <embed src="/svg/no-ai-white.svg"
-                   type="image/svg+xml"
-                   width="128" height="37">
-            <embed src="/svg/no-ai-black.svg"
-                   type="image/svg+xml"
-                   width="128" height="37">
-          </div>
-      </div>
+    </div>
+    <div class="no-ai-logo">
+      <embed src="/svg/no-ai-white.svg" type="image/svg+xml" width="128" height="37">
+      <embed src="/svg/no-ai-black.svg" type="image/svg+xml" width="128" height="37">
+    </div>
+  </div>
 </footer>
 
-<script>
-      document.addEventListener('DOMContentLoaded', function() {
-            if (typeof feather !== 'undefined') { feather.replace(); }
-            const images = document.querySelectorAll('.zoom-image');
-            if (images.length > 0 && typeof mediumZoom !== 'undefined') {
-                  mediumZoom(images, {
-                        background: 'rgba(0, 0, 0, 0.7)',
-                        margin: 0,
-                  });
-            }
-
-            
-            (function() {
-                var targets = document.querySelectorAll('.title h1.title, h1.title, .site-description p, p.site-description');
-                if (!targets.length) return;
-
-                var katakana = 'アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワン0123456789!?#$@&%';
-
-                targets.forEach(function(el) {
-                    var originalText = el.textContent.trim();
-                    if (!originalText) return;
-
-                    var length = originalText.length;
-                    var step = 0;
-                    var maxSteps = length + 14;
-                    var intervalMs = 65;
-
-                    function getRandomChar() {
-                        return katakana.charAt(Math.floor(Math.random() * katakana.length));
-                    }
-
-                    var timer = setInterval(function() {
-                        step++;
-                        var revealedLength = Math.floor((step / maxSteps) * length);
-                        var result = '';
-
-                        for (var i = 0; i < length; i++) {
-                            if (i < revealedLength) {
-                                result += originalText.charAt(i);
-                            } else {
-                                result += getRandomChar();
-                            }
-                        }
-
-                        if (revealedLength < length) {
-                            result += '<span class="decrypt-cursor">█</span>';
-                        }
-
-                        el.innerHTML = result;
-
-                        if (step >= maxSteps) {
-                            clearInterval(timer);
-                            el.textContent = originalText;
-                        }
-                    }, intervalMs);
-                });
-            })();
-      });
-</script>
-
-</div>
-    </body>
-    
+    </div>
+  </body>
 </html>

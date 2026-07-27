@@ -1,225 +1,77 @@
 :root {
-  --mermaid-theme: dark;
+  --maincolor: #9bd6ac;
+  --hovercolor: #82c99a;
   --darkbgcolor: #202124;
-  --pagebg: #202124;
+  --pagebg: var(--darkbgcolor);
   --surfacecolor: #292b2f;
   --mutedcolor: #aaa7a0;
   --linecolor: #55575d;
   --textcolor: #efeee9;
-}
-
-body {
-  color: var(--textcolor);
-  background-color: var(--darkbgcolor);
+  --mermaid-theme: dark;
 }
 
 ::-moz-selection {
-  background: var(--darkcolor);
-  color: #000;
+  color: #161719;
 }
 
 ::selection {
-  background: var(--darkcolor);
-  color: #000;
-}
-
-hr {
-  background: repeating-linear-gradient(
-    90deg,
-    var(--linecolor) 0 8px,
-    transparent 8px 12px
-  );
-}
-
-article del {
-  text-decoration-color: var(--darkcolor);
-}
-
-article strong {
-  background-image: linear-gradient(
-    transparent 65%,
-    rgba(155, 214, 172, 0.2) 65%
-  );
-}
-
-article em {
-  text-emphasis-color: var(--darkcolor);
+  color: #161719;
 }
 
 article mark {
-  color: #202124;
+  color: var(--darkbgcolor);
   background: #f7c948;
 }
 
-article kbd {
-  border-color: var(--linecolor);
-  background: var(--surfacecolor);
-  box-shadow: 0 2px 0 var(--linecolor);
-}
-
-/* ========== code 会覆盖全局所有的普通code颜色 此处加入pre 还原 ``` 的 ========= */
 code {
-  background-color: #c5dacf;
   color: var(--darkbgcolor);
+  background-color: #c5dacf;
 }
-
-a code {
-  color: inherit;
-}
-
-pre code {
-  color: inherit;
-}
-/* =================== */
 
 pre {
   background-color: var(--darkbgcolor);
 }
 
-blockquote {
-  border-color: var(--darkcolor);
-}
-
-h1::before,
-h2::before,
-h3::before,
-h4::before,
-h5::before,
-h6::before {
-  color: var(--darkcolor);
-}
-
-article a {
-  background-image: linear-gradient(var(--darkcolor), var(--darkcolor));
-}
-
-article a:hover,
-article a code:hover {
-  background-size: 100% 100%;
-  color: black;
-}
-
-a:focus-visible {
-  outline-color: var(--darkcolor);
-}
-
-.site-title a {
-  color: var(--textcolor);
-  text-decoration: none !important;
-}
-
-.site-title a:hover,
-.site-nav a:hover {
-  color: var(--darkcolor);
-}
-
-.site-header {
-  border-color: var(--linecolor);
-}
-
-.site-nav a:hover {
-  box-shadow: inset 0 -0.35em 0 rgba(155, 214, 172, 0.16);
-}
-
-.soc:hover {
-  color: var(--darkcolor);
+pre code {
+  color: inherit;
 }
 
 .draft-label {
   color: #1e1e24;
-  background-color: var(--darkcolor);
-  border-color: var(--darkcolor);
-  font-weight: bold;
+  background-color: var(--maincolor);
+  border-color: var(--maincolor);
+  font-weight: 700;
 }
 
-/* 代码块 */
 .chroma {
-  border-color: var(--linecolor);
   background-color: #1c1c1c;
 }
 
-.highlight {
-  border-color: var(--linecolor);
-}
-
-table td,
 table th {
-  border-color: var(--linecolor);
-}
-
-table th {
-  border-bottom-color: var(--darkcolor);
-  background: rgba(80, 250, 123, 0.08);
+  background: color-mix(in srgb, var(--maincolor) 8%, transparent);
 }
 
 .highlight pre code[class*="language-"]::before {
+  color: #111;
   background: #e8e7e2;
-  color: black;
 }
 
 .ln {
   color: lightblue;
 }
 
-/* Aplayer */
-.aplayer-music .aplayer-title {
-  color: #999;
-}
-
-/* 滑动条 */
-::-webkit-scrollbar-thumb {
-  background: #888;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #666;
-}
-
-/* 伸缩 Box */
-.collapsible {
-  border-color: var(--linecolor);
-  box-shadow: none;
-}
-
-.collapsible .bar {
-  background: var(--surfacecolor);
-}
-
-.callout {
-  border-left-color: var(--darkcolor);
-  background-color: var(--surfacecolor);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.07);
+.callout,
+blockquote {
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
 }
 
 blockquote {
   color: #eee;
-}
-
-.list-item {
-  border-bottom: none;
-  color: var(--textcolor);
-  line-height: 1.7em;
-}
-
-.list-item:hover {
-  color: var(--darkcolor);
-}
-
-.media-figure .caption {
-  color: var(--mutedcolor);
-}
-
-.error-page .error-code,
-.error-page .error-return {
-  color: var(--darkcolor);
-}
-
-.error-page .error-return {
-  background-image: linear-gradient(var(--darkcolor), var(--darkcolor));
+  background: rgba(255, 255, 255, 0.04);
 }
 
 .error-page .error-return:hover {
-  color: #202124;
+  color: var(--darkbgcolor);
 }
 
 .no-ai-logo embed[src$="no-ai-black.svg"] {
@@ -229,9 +81,6 @@ blockquote {
 .moe-mask {
   color: transparent;
   background-color: white;
-  transition: all 0.3s ease;
-  display: inline-block;
-  padding: 0 4px;
 }
 
 .moe-mask:hover {
@@ -239,28 +88,17 @@ blockquote {
   background-color: transparent;
 }
 
-/* 暗黑模式 CRT 屏幕光栅与深沉暗角 */
 .crt-overlay {
-  opacity: 0.4;
-  background: 
+  opacity: 0.22;
+  background:
     linear-gradient(rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.35) 50%),
     linear-gradient(90deg, rgba(255, 0, 0, 0.04), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.04));
-  background-size: 100% 3px, 6px 100%;
-  box-shadow: inset 0 0 80px rgba(0, 0, 0, 0.85);
+  background-size: 100% 4px, 8px 100%;
+  box-shadow: inset 0 0 58px rgba(0, 0, 0, 0.62);
 }
 
-h1, .title {
-  text-shadow: 1px 0 2px rgba(80, 250, 123, 0.3), -1px 0 2px rgba(0, 180, 216, 0.3);
-}
-
-blockquote {
-  background: rgba(255, 255, 255, 0.04);
-  border-left-color: var(--darkcolor);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
-}
-
-blockquote p:last-child::after,
-.callout p:last-child::after,
-.decrypt-cursor {
-  color: var(--darkcolor);
+h1 {
+  text-shadow:
+    1px 0 2px rgba(80, 250, 123, 0.3),
+    -1px 0 2px rgba(0, 180, 216, 0.3);
 }
