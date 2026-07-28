@@ -340,8 +340,9 @@ function initTableOfContents() {
 function initFloatingTableOfContents() {
   const floatingToc = document.querySelector(".post-toc--desktop");
   const inlineToc = document.querySelector(".post-toc--mobile");
+  const article = document.querySelector(".body article");
   const handle = floatingToc?.querySelector(".post-toc-header");
-  if (!floatingToc || !inlineToc || !handle) {
+  if (!floatingToc || !inlineToc || !article || !handle) {
     return;
   }
 
@@ -363,7 +364,7 @@ function initFloatingTableOfContents() {
 
   const readState = () => {
     try {
-      const value = JSON.parse(localStorage.getItem(storageKey) || "null");
+      const value = JSON.parse(sessionStorage.getItem(storageKey) || "null");
       if (!value || !["left", "top", "width", "height"].every((key) => Number.isFinite(value[key]))) {
         return null;
       }
@@ -397,7 +398,7 @@ function initFloatingTableOfContents() {
       return;
     }
     try {
-      localStorage.setItem(storageKey, JSON.stringify(currentState()));
+      sessionStorage.setItem(storageKey, JSON.stringify(currentState()));
     } catch {
       // The TOC remains movable for the current page when storage is unavailable.
     }
@@ -412,11 +413,22 @@ function initFloatingTableOfContents() {
     floatingToc.classList.add("is-user-sized");
   };
 
-  const pinCurrentPosition = () => {
+  const pinInitialPosition = () => {
     const rect = floatingToc.getBoundingClientRect();
     floatingToc.style.right = "auto";
     floatingToc.style.left = `${rect.left}px`;
     floatingToc.style.top = `${rect.top}px`;
+  };
+
+  const textLanes = (width) => {
+    const articleRect = article.getBoundingClientRect();
+    return {
+      articleRect,
+      leftMaximum: articleRect.left - width - viewportGap,
+      rightMinimum: articleRect.right + viewportGap,
+      hasLeft: articleRect.left >= width + viewportGap,
+      hasRight: window.innerWidth - articleRect.right >= width + viewportGap,
+    };
   };
 
   const updateScreenAnchor = () => {
@@ -458,13 +470,23 @@ function initFloatingTableOfContents() {
 
   const updateVisibility = () => {
     const rect = floatingToc.getBoundingClientRect();
+    const lanes = textLanes(rect.width);
+    const overlapsText = (
+      rect.right > lanes.articleRect.left - viewportGap
+      && rect.left < lanes.articleRect.right + viewportGap
+    );
     const isClipped = (
       rect.left < 0
       || rect.top < 0
       || rect.right > window.innerWidth
       || rect.bottom > window.innerHeight
     );
-    const useInlineToc = forceInline || isClipped;
+    const useInlineToc = (
+      forceInline
+      || (!lanes.hasLeft && !lanes.hasRight)
+      || overlapsText
+      || isClipped
+    );
 
     floatingToc.classList.toggle("is-viewport-hidden", useInlineToc);
     floatingToc.setAttribute("aria-hidden", String(useInlineToc));
@@ -476,7 +498,7 @@ function initFloatingTableOfContents() {
   if (storedState) {
     restoreState(storedState);
   } else {
-    pinCurrentPosition();
+    pinInitialPosition();
   }
   updateScreenAnchor();
   updateVisibility();
@@ -493,6 +515,8 @@ function initFloatingTableOfContents() {
     }
     commitScreenAnchor();
     const rect = floatingToc.getBoundingClientRect();
+    const lanes = textLanes(rect.width);
+    const side = rect.right <= lanes.articleRect.left ? "left" : "right";
     dragState = {
       pointerId: event.pointerId,
       offsetX: event.clientX - rect.left,
@@ -503,6 +527,7 @@ function initFloatingTableOfContents() {
       top: rect.top,
       width: rect.width,
       height: rect.height,
+      side,
       frame: 0,
     };
 
@@ -520,11 +545,11 @@ function initFloatingTableOfContents() {
       return;
     }
 
-    dragState.left = clamp(
-      event.clientX - dragState.offsetX,
-      viewportGap,
-      window.innerWidth - dragState.width - viewportGap,
-    );
+    const lanes = textLanes(dragState.width);
+    const proposedLeft = event.clientX - dragState.offsetX;
+    dragState.left = dragState.side === "left"
+      ? clamp(proposedLeft, viewportGap, lanes.leftMaximum)
+      : clamp(proposedLeft, lanes.rightMinimum, window.innerWidth - dragState.width - viewportGap);
     dragState.top = clamp(
       event.clientY - dragState.offsetY,
       viewportGap,
