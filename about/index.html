@@ -44,27 +44,15 @@ Address マシュマロ（棉花糖）： /home/ao Nintendo …">
 
 	
 
-	<title>帰宅部</title>
-
-	<link rel="icon" href="/duck.ico">
-	<link rel="stylesheet" href="/css/code_style.css">
-	<link rel="stylesheet" href="/css/code_light.css">
+	<title>帰宅部</title><link rel="icon" href="/duck.ico">
 	<link rel="stylesheet" href="/css/fonts.css">
 	<link rel="stylesheet" href="/js/aplayer/APlayer.min.css">
 	<link rel="stylesheet" href="/js/zoom/style.min.css">
 	<link rel="stylesheet" href="/css/main.css">
 	<link rel="stylesheet" href="/css/dark.css" media="(prefers-color-scheme: dark)">
-	<link rel="stylesheet" href="/css/code_dark.css" media="(prefers-color-scheme: dark)">
-	<link rel="stylesheet" href="/js/katex/katex.min.css">
-
 	<script defer src="/js/aplayer/APlayer.min.js"></script>
-	<script defer src="/js/dplayer/DPlayer.min.js"></script>
 	<script defer src="/js/zoom/medium-zoom.min.js"></script>
-	<script defer src="/js/pdfobject.min.js"></script>
 	<script defer src="/js/feather.min.js"></script>
-	<script defer src="/js/mermaid.min.js"></script>
-	<script defer src="/js/katex/katex.min.js"></script>
-	<script defer src="/js/katex/contrib/auto-render.min.js"></script>
 	<script defer src="/js/theme.js"></script>
 
 </head>
@@ -77,7 +65,7 @@ Address マシュマロ（棉花糖）： /home/ao Nintendo …">
   </div>
   <nav class="site-nav" aria-label="Main navigation">
     
-    <a href="/" class="sub-main">Archive</a>
+    <a href="/time/" class="sub-main">Log</a>
     
     <a href="/about" class="sub-main">About</a>
     
@@ -91,9 +79,29 @@ Address マシュマロ（棉花糖）： /home/ao Nintendo …">
     <h1 class="title">About</h1>
     <div class="meta">Posted on <time datetime="2021-12-10">2021.12.10</time></div>
   </div>
-  <section class="body">
-    <article>
-      <!-- **I'm focusing on finding a job by 2026 → MY [résumé PAGE](/media/pdf/resume.pdf)** -->
+  <div class="post-layout post-layout--with-toc">
+    <aside class="post-toc post-toc--desktop" aria-label="Table of contents" hidden>
+      <div class="post-toc-card">
+        <div class="post-toc-header">
+          <span class="post-toc-label">INDEX</span>
+        </div>
+        <nav>
+          <ul class="post-toc-list"></ul>
+        </nav>
+      </div>
+    </aside>
+    <section class="body">
+      <details class="post-toc post-toc--mobile post-toc-card" hidden>
+        <summary>
+          <span class="post-toc-label">INDEX</span>
+          <span class="post-toc-toggle" aria-hidden="true"></span>
+        </summary>
+        <nav aria-label="Table of contents">
+          <ul class="post-toc-list"></ul>
+        </nav>
+      </details>
+      <article>
+        <!-- **I'm focusing on finding a job by 2026 → MY [résumé PAGE](/media/pdf/resume.pdf)** -->
 <p>本博客作为一个简单的碎碎念放置地、存放一些随便写的东西。采用 Hugo + GitHub Pages 驱动、未来可能会迁移到 Next.js。</p>
 <p>站点名称归宅部（帰宅部），意为放学后什么也不参加直接回家的人。</p>
 <p>头像现在为游戏<a href="https://store.steampowered.com/app/2612700" target="_blank" rel="noopener noreferrer">S4U</a>
@@ -112,7 +120,9 @@ Address マシュマロ（棉花糖）： /home/ao Nintendo …">
 
 
 
-<figure class="media-figure">
+
+
+<figure class="media-figure media-figure--wide">
   <div class="masonry-gallery">
   
     <div class="masonry-gallery-item" style="max-width: 600px">
@@ -134,7 +144,9 @@ Address マシュマロ（棉花糖）： /home/ao Nintendo …">
 
 
 
-<figure class="media-figure">
+
+
+<figure class="media-figure media-figure--wide">
   <div class="masonry-gallery">
   
     <div class="masonry-gallery-item" style="max-width: 700px">
@@ -155,7 +167,9 @@ Address マシュマロ（棉花糖）： /home/ao Nintendo …">
 
 
 
-<figure class="media-figure">
+
+
+<figure class="media-figure media-figure--wide">
   <div class="masonry-gallery">
   
     <div class="masonry-gallery-item" style="max-width: 700px">
@@ -227,8 +241,9 @@ Address マシュマロ（棉花糖）： /home/ao Nintendo …">
 </script>
 
 
-    </article>
-  </section>
+      </article>
+    </section>
+  </div>
 </main>
 <footer class="footer">
   <hr>

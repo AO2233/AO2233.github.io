@@ -39,27 +39,14 @@
 
 	
 
-	<title>帰宅部</title>
-
-	<link rel="icon" href="/duck.ico">
+	<title>帰宅部</title><link rel="icon" href="/duck.ico">
 	<link rel="stylesheet" href="/css/code_style.css">
 	<link rel="stylesheet" href="/css/code_light.css">
 	<link rel="stylesheet" href="/css/fonts.css">
-	<link rel="stylesheet" href="/js/aplayer/APlayer.min.css">
-	<link rel="stylesheet" href="/js/zoom/style.min.css">
 	<link rel="stylesheet" href="/css/main.css">
 	<link rel="stylesheet" href="/css/dark.css" media="(prefers-color-scheme: dark)">
 	<link rel="stylesheet" href="/css/code_dark.css" media="(prefers-color-scheme: dark)">
-	<link rel="stylesheet" href="/js/katex/katex.min.css">
-
-	<script defer src="/js/aplayer/APlayer.min.js"></script>
-	<script defer src="/js/dplayer/DPlayer.min.js"></script>
-	<script defer src="/js/zoom/medium-zoom.min.js"></script>
-	<script defer src="/js/pdfobject.min.js"></script>
 	<script defer src="/js/feather.min.js"></script>
-	<script defer src="/js/mermaid.min.js"></script>
-	<script defer src="/js/katex/katex.min.js"></script>
-	<script defer src="/js/katex/contrib/auto-render.min.js"></script>
 	<script defer src="/js/theme.js"></script>
 
 </head>
@@ -72,7 +59,7 @@
   </div>
   <nav class="site-nav" aria-label="Main navigation">
     
-    <a href="/" class="sub-main">Archive</a>
+    <a href="/time/" class="sub-main">Log</a>
     
     <a href="/about" class="sub-main">About</a>
     
@@ -86,9 +73,29 @@
     <h1 class="title">我的Windows不可能这么的卡顿</h1>
     <div class="meta">Posted on <time datetime="2022-12-09">2022.12.09</time></div>
   </div>
-  <section class="body">
-    <article>
-      <h1 id="bug-发现">Bug 发现</h1>
+  <div class="post-layout post-layout--with-toc">
+    <aside class="post-toc post-toc--desktop" aria-label="Table of contents" hidden>
+      <div class="post-toc-card">
+        <div class="post-toc-header">
+          <span class="post-toc-label">INDEX</span>
+        </div>
+        <nav>
+          <ul class="post-toc-list"></ul>
+        </nav>
+      </div>
+    </aside>
+    <section class="body">
+      <details class="post-toc post-toc--mobile post-toc-card" hidden>
+        <summary>
+          <span class="post-toc-label">INDEX</span>
+          <span class="post-toc-toggle" aria-hidden="true"></span>
+        </summary>
+        <nav aria-label="Table of contents">
+          <ul class="post-toc-list"></ul>
+        </nav>
+      </details>
+      <article>
+        <h1 id="bug-发现">Bug 发现</h1>
 <p>前些天，在 bilibili 的首页刷到一个名为《修 BUG 的第一天，我给微软的 PowerToys 修了一个 BUG》的<a href="https://www.bilibili.com/video/BV1UG4y1t7N3" target="_blank" rel="noopener noreferrer">视频</a>
 。恰好 PowerToys 这款软件我也在使用，于是便点进去看了看视频，是一个文字识别输出方面的 Bug。但视频作者过于自信的语气，加之“标题的第一天”就是没有 <code>C#</code> 或者大型项目开发经验的代名词，对于他的代码，我怀疑有问题。</p>
 <p>第二天早上起来，测试相关模块功能，果然，只是从一个错误转移成了另一个错误。</p>
@@ -150,8 +157,9 @@
 <h1 id="更新">更新</h1>
 <p>上游程序通过更加复杂的筛选方案修复了此 Bug，并已合并到 PowerToys 中，此帖终结。哈哈，相比之下，自己写的代码也是一坨，彼此彼此啦。</p>
 
-    </article>
-  </section>
+      </article>
+    </section>
+  </div>
 </main>
 <footer class="footer">
   <hr>

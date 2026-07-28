@@ -7,39 +7,33 @@
   --mutedcolor: #aaa7a0;
   --linecolor: #55575d;
   --textcolor: #efeee9;
-  --mermaid-theme: dark;
-}
-
-::-moz-selection {
-  color: #161719;
-}
-
-::selection {
-  color: #161719;
-}
-
-article mark {
-  color: var(--darkbgcolor);
-  background: #f7c948;
-}
-
-code {
-  color: var(--darkbgcolor);
-  background-color: #c5dacf;
-}
-
-pre {
-  background-color: var(--darkbgcolor);
-}
-
-pre code {
-  color: inherit;
+  --selection-text: #161719;
+  --mark-text: var(--darkbgcolor);
+  --mark-bg: #f7c948;
+  --code-text: var(--darkbgcolor);
+  --code-bg: #c5dacf;
+  --pre-bg: var(--darkbgcolor);
+  --panel-shadow: rgba(255, 255, 255, 0.08);
+  --blockquote-text: #eee;
+  --blockquote-bg: rgba(255, 255, 255, 0.04);
+  --draft-text: #1e1e24;
+  --draft-bg: var(--maincolor);
+  --draft-border: var(--maincolor);
+  --code-label-text: #111;
+  --code-label-bg: #e8e7e2;
+  --error-hover-text: var(--darkbgcolor);
+  --mask-bg: #fff;
+  --crt-overlay:
+    linear-gradient(rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.35) 50%),
+    linear-gradient(90deg, rgba(255, 0, 0, 0.04), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.04));
+  --crt-opacity: 0.22;
+  --crt-shadow: inset 0 0 58px rgba(0, 0, 0, 0.62);
+  --heading-shadow:
+    1px 0 2px rgba(80, 250, 123, 0.3),
+    -1px 0 2px rgba(0, 180, 216, 0.3);
 }
 
 .draft-label {
-  color: #1e1e24;
-  background-color: var(--maincolor);
-  border-color: var(--maincolor);
   font-weight: 700;
 }
 
@@ -47,58 +41,10 @@ pre code {
   background-color: #1c1c1c;
 }
 
-table th {
-  background: color-mix(in srgb, var(--maincolor) 8%, transparent);
-}
-
-.highlight pre code[class*="language-"]::before {
-  color: #111;
-  background: #e8e7e2;
-}
-
 .ln {
   color: lightblue;
 }
 
-.callout,
-blockquote {
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
-}
-
-blockquote {
-  color: #eee;
-  background: rgba(255, 255, 255, 0.04);
-}
-
-.error-page .error-return:hover {
-  color: var(--darkbgcolor);
-}
-
 .no-ai-logo embed[src$="no-ai-black.svg"] {
   display: block;
-}
-
-.moe-mask {
-  color: transparent;
-  background-color: white;
-}
-
-.moe-mask:hover {
-  color: inherit;
-  background-color: transparent;
-}
-
-.crt-overlay {
-  opacity: 0.22;
-  background:
-    linear-gradient(rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.35) 50%),
-    linear-gradient(90deg, rgba(255, 0, 0, 0.04), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.04));
-  background-size: 100% 4px, 8px 100%;
-  box-shadow: inset 0 0 58px rgba(0, 0, 0, 0.62);
-}
-
-h1 {
-  text-shadow:
-    1px 0 2px rgba(80, 250, 123, 0.3),
-    -1px 0 2px rgba(0, 180, 216, 0.3);
 }

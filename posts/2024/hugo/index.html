@@ -42,25 +42,17 @@
 
 	
 
-	<title>帰宅部</title>
-
-	<link rel="icon" href="/duck.ico">
+	<title>帰宅部</title><link rel="icon" href="/duck.ico">
 	<link rel="stylesheet" href="/css/code_style.css">
 	<link rel="stylesheet" href="/css/code_light.css">
 	<link rel="stylesheet" href="/css/fonts.css">
-	<link rel="stylesheet" href="/js/aplayer/APlayer.min.css">
 	<link rel="stylesheet" href="/js/zoom/style.min.css">
 	<link rel="stylesheet" href="/css/main.css">
 	<link rel="stylesheet" href="/css/dark.css" media="(prefers-color-scheme: dark)">
 	<link rel="stylesheet" href="/css/code_dark.css" media="(prefers-color-scheme: dark)">
 	<link rel="stylesheet" href="/js/katex/katex.min.css">
-
-	<script defer src="/js/aplayer/APlayer.min.js"></script>
-	<script defer src="/js/dplayer/DPlayer.min.js"></script>
 	<script defer src="/js/zoom/medium-zoom.min.js"></script>
-	<script defer src="/js/pdfobject.min.js"></script>
 	<script defer src="/js/feather.min.js"></script>
-	<script defer src="/js/mermaid.min.js"></script>
 	<script defer src="/js/katex/katex.min.js"></script>
 	<script defer src="/js/katex/contrib/auto-render.min.js"></script>
 	<script defer src="/js/theme.js"></script>
@@ -75,7 +67,7 @@
   </div>
   <nav class="site-nav" aria-label="Main navigation">
     
-    <a href="/" class="sub-main">Archive</a>
+    <a href="/time/" class="sub-main">Log</a>
     
     <a href="/about" class="sub-main">About</a>
     
@@ -89,9 +81,29 @@
     <h1 class="title">从零开始的博客编写</h1>
     <div class="meta">Posted on <time datetime="2021-12-06">2021.12.06</time></div>
   </div>
-  <section class="body">
-    <article>
-      <p>本篇指南将会介绍我的 Hugo 主题编写过程，并作为一个备份。太长时间不写 blog，自己都忘了。如果要细看 Go 语法部分，建议重新阅读<a href="https://gohugo.io/documentation/" target="_blank" rel="noopener noreferrer">官方文档</a>
+  <div class="post-layout post-layout--with-toc">
+    <aside class="post-toc post-toc--desktop" aria-label="Table of contents" hidden>
+      <div class="post-toc-card">
+        <div class="post-toc-header">
+          <span class="post-toc-label">INDEX</span>
+        </div>
+        <nav>
+          <ul class="post-toc-list"></ul>
+        </nav>
+      </div>
+    </aside>
+    <section class="body">
+      <details class="post-toc post-toc--mobile post-toc-card" hidden>
+        <summary>
+          <span class="post-toc-label">INDEX</span>
+          <span class="post-toc-toggle" aria-hidden="true"></span>
+        </summary>
+        <nav aria-label="Table of contents">
+          <ul class="post-toc-list"></ul>
+        </nav>
+      </details>
+      <article>
+        <p>本篇指南将会介绍我的 Hugo 主题编写过程，并作为一个备份。太长时间不写 blog，自己都忘了。如果要细看 Go 语法部分，建议重新阅读<a href="https://gohugo.io/documentation/" target="_blank" rel="noopener noreferrer">官方文档</a>
 ，有很多自定义量。</p>
 <h1 id="感想">感想</h1>
 <p>作为一个解析器，Hugo 通过 Go 的模版解析器与内部定义的规则，将扩展 Markdown 生成为 HTML。个人理解是，用 Go 语法写前处理，hook 靠修改 <code>_default</code> 模版和 JS、CSS。和其他 blog 框架比起来，优势就是生成速度快、结构简单，但问题是：</p>
@@ -134,7 +146,9 @@
 
 
 
-<figure class="media-figure">
+
+
+<figure class="media-figure media-figure--wide">
   <div class="masonry-gallery">
   
     <div class="masonry-gallery-item" style="max-width: 700px">
@@ -375,7 +389,9 @@
 
 
 
-<figure class="media-figure">
+
+
+<figure class="media-figure media-figure--wide">
   <div class="masonry-gallery">
   
     <div class="masonry-gallery-item" style="max-width: 700px">
@@ -423,8 +439,9 @@
 </ol>
 </div>
 
-    </article>
-  </section>
+      </article>
+    </section>
+  </div>
 </main>
 <footer class="footer">
   <hr>
