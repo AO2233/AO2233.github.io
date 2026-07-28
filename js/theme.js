@@ -205,6 +205,7 @@ function initTableOfContents() {
     }
   };
   const targets = [...document.querySelectorAll("article > :is(h1, h2, h3)[id]")];
+  const floatingTocController = initContextTableOfContents(targets.length > 0);
   if (!targets.length) {
     return;
   }
@@ -231,11 +232,6 @@ function initTableOfContents() {
 
     list.appendChild(items);
   });
-
-  document.querySelectorAll(".post-toc").forEach((toc) => {
-    toc.hidden = false;
-  });
-  initFloatingTableOfContents();
 
   const links = [...document.querySelectorAll(".post-toc a")];
   const decodeTarget = (link) => decodeHash(link.getAttribute("href"));
@@ -306,7 +302,7 @@ function initTableOfContents() {
       }
 
       event.preventDefault();
-      link.closest(".post-toc--mobile")?.removeAttribute("open");
+      floatingTocController?.hide();
       setActive(id);
 
       window.requestAnimationFrame(() => {
@@ -337,295 +333,224 @@ function initTableOfContents() {
   }, { passive: true });
 }
 
-function initFloatingTableOfContents() {
+function initContextTableOfContents(hasContents) {
   const floatingToc = document.querySelector(".post-toc--desktop");
-  const inlineToc = document.querySelector(".post-toc--mobile");
-  const article = document.querySelector(".body article");
-  const handle = floatingToc?.querySelector(".post-toc-header");
-  if (!floatingToc || !inlineToc || !article || !handle) {
-    return;
-  }
-
-  const storageKey = "pixel-toc-window";
+  const resizeHandle = floatingToc?.querySelector(".post-toc-resize-handle");
+  const sizeStorageKey = "pixel-context-toc-size";
   const viewportGap = 8;
   const minimumWidth = 144;
   const minimumHeight = 96;
-  const forceInline = Boolean(document.querySelector("article > .media-figure--full"));
-  let dragState = null;
-  let resizeTimer = 0;
-  let viewportResizeFrame = 0;
-  let viewportResizeTimer = 0;
-  let observeResize = false;
-  let screenAnchor = null;
+  const longPressDelay = 500;
+  const longPressMoveTolerance = 12;
+  let longPressTimer = 0;
+  let longPressState = null;
+  let suppressContextMenuUntil = 0;
+  let suppressClickUntil = 0;
+  let resizeState = null;
 
   const clamp = (value, minimum, maximum) => {
     return Math.min(Math.max(value, minimum), Math.max(minimum, maximum));
   };
 
-  const readState = () => {
+  const hide = () => {
+    if (!floatingToc) {
+      return;
+    }
+    floatingToc.hidden = true;
+    floatingToc.setAttribute("aria-hidden", "true");
+  };
+
+  const showAt = (clientX, clientY) => {
+    floatingToc.hidden = false;
+    floatingToc.setAttribute("aria-hidden", "false");
+    floatingToc.style.left = `${clientX}px`;
+    floatingToc.style.top = `${clientY}px`;
+
+    const rect = floatingToc.getBoundingClientRect();
+    floatingToc.style.left = `${clamp(
+      clientX,
+      viewportGap,
+      window.innerWidth - rect.width - viewportGap,
+    )}px`;
+    floatingToc.style.top = `${clamp(
+      clientY,
+      viewportGap,
+      window.innerHeight - rect.height - viewportGap,
+    )}px`;
+  };
+
+  const readSize = () => {
     try {
-      const value = JSON.parse(sessionStorage.getItem(storageKey) || "null");
-      if (!value || !["left", "top", "width", "height"].every((key) => Number.isFinite(value[key]))) {
-        return null;
+      const size = JSON.parse(sessionStorage.getItem(sizeStorageKey) || "null");
+      if (!size || !Number.isFinite(size.width) || !Number.isFinite(size.height)) {
+        return;
       }
-      return value;
+      floatingToc.style.width = `${Math.max(size.width, minimumWidth)}px`;
+      floatingToc.style.height = `${Math.max(size.height, minimumHeight)}px`;
+      floatingToc.classList.add("is-user-sized");
     } catch {
-      return null;
+      // Keep the default size when session storage is unavailable.
     }
   };
 
-  const screenPosition = () => {
-    const x = Number.isFinite(window.screenX) ? window.screenX : window.screenLeft;
-    const y = Number.isFinite(window.screenY) ? window.screenY : window.screenTop;
-    return {
-      x: Number.isFinite(x) ? x : 0,
-      y: Number.isFinite(y) ? y : 0,
-    };
-  };
-
-  const currentState = () => {
+  const writeSize = () => {
     const rect = floatingToc.getBoundingClientRect();
-    return {
-      left: rect.left,
-      top: rect.top,
-      width: rect.width,
-      height: rect.height,
-    };
+    try {
+      sessionStorage.setItem(sizeStorageKey, JSON.stringify({
+        width: rect.width,
+        height: rect.height,
+      }));
+    } catch {
+      // Resizing still works for the current page without storage.
+    }
   };
 
-  const writeState = () => {
+  const cancelLongPress = () => {
+    window.clearTimeout(longPressTimer);
+    longPressTimer = 0;
+    longPressState = null;
+  };
+
+  hide();
+  document.documentElement.classList.toggle("has-context-toc", Boolean(hasContents));
+
+  document.addEventListener("contextmenu", (event) => {
+    event.preventDefault();
+    if (!hasContents || !floatingToc) {
+      return;
+    }
+    if (Date.now() < suppressContextMenuUntil) {
+      return;
+    }
+    showAt(event.clientX, event.clientY);
+  });
+
+  if (!hasContents || !floatingToc) {
+    return null;
+  }
+
+  readSize();
+
+  document.addEventListener("pointerdown", (event) => {
+    if (!floatingToc.hidden && !floatingToc.contains(event.target)) {
+      hide();
+    }
+
+    if (
+      event.pointerType !== "touch"
+      || !event.isPrimary
+      || floatingToc.contains(event.target)
+    ) {
+      return;
+    }
+
+    cancelLongPress();
+    longPressState = {
+      pointerId: event.pointerId,
+      clientX: event.clientX,
+      clientY: event.clientY,
+    };
+    longPressTimer = window.setTimeout(() => {
+      if (!longPressState) {
+        return;
+      }
+      showAt(longPressState.clientX, longPressState.clientY);
+      suppressContextMenuUntil = Date.now() + 800;
+      suppressClickUntil = Date.now() + 700;
+      longPressTimer = 0;
+    }, longPressDelay);
+  });
+
+  document.addEventListener("pointermove", (event) => {
+    if (!longPressState || event.pointerId !== longPressState.pointerId) {
+      return;
+    }
+    if (
+      Math.hypot(
+        event.clientX - longPressState.clientX,
+        event.clientY - longPressState.clientY,
+      ) > longPressMoveTolerance
+    ) {
+      cancelLongPress();
+    }
+  });
+
+  document.addEventListener("pointerup", cancelLongPress);
+  document.addEventListener("pointercancel", cancelLongPress);
+
+  document.addEventListener("click", (event) => {
+    if (Date.now() >= suppressClickUntil || floatingToc.contains(event.target)) {
+      return;
+    }
+    event.preventDefault();
+    event.stopImmediatePropagation();
+  }, true);
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      hide();
+    }
+  });
+
+  window.addEventListener("resize", () => {
     if (floatingToc.hidden) {
       return;
     }
-    try {
-      sessionStorage.setItem(storageKey, JSON.stringify(currentState()));
-    } catch {
-      // The TOC remains movable for the current page when storage is unavailable.
-    }
-  };
-
-  const restoreState = (state) => {
-    floatingToc.style.right = "auto";
-    floatingToc.style.left = `${state.left}px`;
-    floatingToc.style.top = `${state.top}px`;
-    floatingToc.style.width = `${Math.max(state.width, minimumWidth)}px`;
-    floatingToc.style.height = `${Math.max(state.height, minimumHeight)}px`;
-    floatingToc.classList.add("is-user-sized");
-  };
-
-  const pinInitialPosition = () => {
     const rect = floatingToc.getBoundingClientRect();
-    floatingToc.style.right = "auto";
-    floatingToc.style.left = `${rect.left}px`;
-    floatingToc.style.top = `${rect.top}px`;
-  };
+    showAt(rect.left, rect.top);
+  });
 
-  const textLanes = (width) => {
-    const articleRect = article.getBoundingClientRect();
-    return {
-      articleRect,
-      leftMaximum: articleRect.left - width - viewportGap,
-      rightMinimum: articleRect.right + viewportGap,
-      hasLeft: articleRect.left >= width + viewportGap,
-      hasRight: window.innerWidth - articleRect.right >= width + viewportGap,
-    };
-  };
-
-  const updateScreenAnchor = () => {
-    const rect = floatingToc.getBoundingClientRect();
-    const screen = screenPosition();
-    screenAnchor = {
-      x: screen.x + rect.left,
-      y: screen.y + rect.top,
-    };
-  };
-
-  const previewScreenAnchor = () => {
-    if (!screenAnchor) {
+  resizeHandle?.addEventListener("pointerdown", (event) => {
+    if (event.button !== 0) {
       return;
     }
-    const screen = screenPosition();
-    const baseLeft = Number.parseFloat(floatingToc.style.left);
-    const baseTop = Number.parseFloat(floatingToc.style.top);
-    if (!Number.isFinite(baseLeft) || !Number.isFinite(baseTop)) {
-      return;
-    }
-    const offsetX = screenAnchor.x - screen.x - baseLeft;
-    const offsetY = screenAnchor.y - screen.y - baseTop;
-    floatingToc.style.transform = `translate3d(${offsetX}px, ${offsetY}px, 0)`;
-  };
-
-  const commitScreenAnchor = () => {
-    if (!screenAnchor) {
-      return;
-    }
-    const screen = screenPosition();
-    floatingToc.style.left = `${screenAnchor.x - screen.x}px`;
-    floatingToc.style.top = `${screenAnchor.y - screen.y}px`;
-    floatingToc.style.transform = "";
-    floatingToc.classList.remove("is-window-resizing");
-    updateVisibility();
-    writeState();
-  };
-
-  const updateVisibility = () => {
     const rect = floatingToc.getBoundingClientRect();
-    const lanes = textLanes(rect.width);
-    const overlapsText = (
-      rect.right > lanes.articleRect.left - viewportGap
-      && rect.left < lanes.articleRect.right + viewportGap
-    );
-    const isClipped = (
-      rect.left < 0
-      || rect.top < 0
-      || rect.right > window.innerWidth
-      || rect.bottom > window.innerHeight
-    );
-    const useInlineToc = (
-      forceInline
-      || (!lanes.hasLeft && !lanes.hasRight)
-      || overlapsText
-      || isClipped
-    );
-
-    floatingToc.classList.toggle("is-viewport-hidden", useInlineToc);
-    floatingToc.setAttribute("aria-hidden", String(useInlineToc));
-    inlineToc.classList.toggle("is-viewport-fallback", useInlineToc);
-    inlineToc.setAttribute("aria-hidden", String(!useInlineToc));
-  };
-
-  const storedState = readState();
-  if (storedState) {
-    restoreState(storedState);
-  } else {
-    pinInitialPosition();
-  }
-  updateScreenAnchor();
-  updateVisibility();
-
-  handle.addEventListener("pointerdown", (event) => {
-    if (event.button !== 0 || floatingToc.classList.contains("is-viewport-hidden")) {
-      return;
-    }
-
-    window.clearTimeout(viewportResizeTimer);
-    if (viewportResizeFrame) {
-      window.cancelAnimationFrame(viewportResizeFrame);
-      viewportResizeFrame = 0;
-    }
-    commitScreenAnchor();
-    const rect = floatingToc.getBoundingClientRect();
-    const lanes = textLanes(rect.width);
-    const side = rect.right <= lanes.articleRect.left ? "left" : "right";
-    dragState = {
+    resizeState = {
       pointerId: event.pointerId,
-      offsetX: event.clientX - rect.left,
-      offsetY: event.clientY - rect.top,
-      startLeft: rect.left,
-      startTop: rect.top,
+      startX: event.clientX,
+      startY: event.clientY,
+      startWidth: rect.width,
+      startHeight: rect.height,
       left: rect.left,
       top: rect.top,
-      width: rect.width,
-      height: rect.height,
-      side,
-      frame: 0,
     };
-
-    floatingToc.style.right = "auto";
-    floatingToc.style.left = `${rect.left}px`;
-    floatingToc.style.top = `${rect.top}px`;
-    floatingToc.style.width = `${rect.width}px`;
-    floatingToc.classList.add("is-dragging");
-    handle.setPointerCapture(event.pointerId);
+    floatingToc.classList.add("is-user-sized");
+    resizeHandle.setPointerCapture(event.pointerId);
     event.preventDefault();
+    event.stopPropagation();
   });
 
-  handle.addEventListener("pointermove", (event) => {
-    if (!dragState || event.pointerId !== dragState.pointerId) {
+  resizeHandle?.addEventListener("pointermove", (event) => {
+    if (!resizeState || event.pointerId !== resizeState.pointerId) {
       return;
     }
-
-    const lanes = textLanes(dragState.width);
-    const proposedLeft = event.clientX - dragState.offsetX;
-    dragState.left = dragState.side === "left"
-      ? clamp(proposedLeft, viewportGap, lanes.leftMaximum)
-      : clamp(proposedLeft, lanes.rightMinimum, window.innerWidth - dragState.width - viewportGap);
-    dragState.top = clamp(
-      event.clientY - dragState.offsetY,
-      viewportGap,
-      window.innerHeight - dragState.height - viewportGap,
-    );
-    if (!dragState.frame) {
-      dragState.frame = window.requestAnimationFrame(() => {
-        if (!dragState) {
-          return;
-        }
-        const offsetX = dragState.left - dragState.startLeft;
-        const offsetY = dragState.top - dragState.startTop;
-        floatingToc.style.transform = `translate3d(${offsetX}px, ${offsetY}px, 0)`;
-        dragState.frame = 0;
-      });
-    }
+    floatingToc.style.width = `${clamp(
+      resizeState.startWidth + event.clientX - resizeState.startX,
+      minimumWidth,
+      window.innerWidth - resizeState.left - viewportGap,
+    )}px`;
+    floatingToc.style.height = `${clamp(
+      resizeState.startHeight + event.clientY - resizeState.startY,
+      minimumHeight,
+      window.innerHeight - resizeState.top - viewportGap,
+    )}px`;
   });
 
-  const finishDrag = (event) => {
-    if (!dragState || event.pointerId !== dragState.pointerId) {
+  const finishResize = (event) => {
+    if (!resizeState || event.pointerId !== resizeState.pointerId) {
       return;
     }
-    const finalDragState = dragState;
-    dragState = null;
-    if (finalDragState.frame) {
-      window.cancelAnimationFrame(finalDragState.frame);
+    resizeState = null;
+    if (resizeHandle.hasPointerCapture(event.pointerId)) {
+      resizeHandle.releasePointerCapture(event.pointerId);
     }
-    floatingToc.style.left = `${finalDragState.left}px`;
-    floatingToc.style.top = `${finalDragState.top}px`;
-    floatingToc.style.transform = "";
-    floatingToc.classList.remove("is-dragging");
-    if (handle.hasPointerCapture(event.pointerId)) {
-      handle.releasePointerCapture(event.pointerId);
-    }
-    writeState();
-    updateScreenAnchor();
-    updateVisibility();
+    writeSize();
   };
 
-  handle.addEventListener("pointerup", finishDrag);
-  handle.addEventListener("pointercancel", finishDrag);
+  resizeHandle?.addEventListener("pointerup", finishResize);
+  resizeHandle?.addEventListener("pointercancel", finishResize);
 
-  if ("ResizeObserver" in window) {
-    const resizeObserver = new ResizeObserver(() => {
-      if (!observeResize) {
-        return;
-      }
-      if (floatingToc.style.height) {
-        floatingToc.classList.add("is-user-sized");
-      }
-      window.clearTimeout(resizeTimer);
-      resizeTimer = window.setTimeout(() => {
-        writeState();
-        updateVisibility();
-      }, 120);
-    });
-    resizeObserver.observe(floatingToc);
-    window.requestAnimationFrame(() => {
-      window.requestAnimationFrame(() => {
-        observeResize = true;
-      });
-    });
-  }
-
-  window.addEventListener("resize", () => {
-    floatingToc.classList.add("is-window-resizing");
-    if (!viewportResizeFrame) {
-      viewportResizeFrame = window.requestAnimationFrame(() => {
-        viewportResizeFrame = 0;
-        previewScreenAnchor();
-        updateVisibility();
-      });
-    }
-    window.clearTimeout(viewportResizeTimer);
-    viewportResizeTimer = window.setTimeout(commitScreenAnchor, 140);
-  });
+  return { hide };
 }
 
 function initMermaid() {
