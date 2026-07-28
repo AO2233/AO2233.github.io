@@ -126,6 +126,12 @@
             setTimeout(initAPlayer, 50);
             return;
         }
+        
+        
+        
+        if ( false  && el.parentNode !== document.body) {
+            document.body.appendChild(el);
+        }
         new APlayer({
             container: el,
             fixed:  false ,

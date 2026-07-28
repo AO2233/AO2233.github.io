@@ -273,6 +273,12 @@ Unicode
             setTimeout(initAPlayer, 50);
             return;
         }
+        
+        
+        
+        if ( false  && el.parentNode !== document.body) {
+            document.body.appendChild(el);
+        }
         new APlayer({
             container: el,
             fixed:  false ,
@@ -302,6 +308,12 @@ Unicode
         if (typeof APlayer === 'undefined') {
             setTimeout(initAPlayer, 50);
             return;
+        }
+        
+        
+        
+        if ( true  && el.parentNode !== document.body) {
+            document.body.appendChild(el);
         }
         new APlayer({
             container: el,

@@ -1697,13 +1697,14 @@ article iframe {
   border-width: 1px 1px 0 0;
 }
 
-.aplayer.aplayer-fixed,
-.aplayer.aplayer-fixed .aplayer-body {
-  bottom: env(safe-area-inset-bottom, 0) !important;
+.aplayer.aplayer-fixed {
+  bottom: 0 !important;
   max-width: 400px;
 }
 
 .aplayer.aplayer-fixed .aplayer-body {
+  bottom: 0 !important;
+  padding-bottom: env(safe-area-inset-bottom, 0);
   border-top: 1px solid var(--linecolor);
   background: var(--surfacecolor);
 }

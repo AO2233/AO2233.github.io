@@ -220,6 +220,12 @@ Address マシュマロ（棉花糖）： /home/ao Nintendo …">
             setTimeout(initAPlayer, 50);
             return;
         }
+        
+        
+        
+        if ( true  && el.parentNode !== document.body) {
+            document.body.appendChild(el);
+        }
         new APlayer({
             container: el,
             fixed:  true ,
